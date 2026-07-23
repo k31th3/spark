@@ -1,0 +1,24 @@
+@reference "tailwindcss";
+
+.BookCall {
+  @apply  flex items-center justify-center gap-[8px]
+          w-[158px] h-[51px]
+          px-6
+          rounded-full
+          font-medium
+          text-[16px]
+          leading-[100%]
+          text-center
+          text-white
+          cursor-pointer
+          select-none
+          transition-shadow duration-200;
+
+  @apply bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)];
+
+  @apply shadow-[inset_0_0_20px_rgba(255,255,255,0.8)];
+}
+
+.BookCall:hover {
+  @apply shadow-[0_0_25px_rgba(209,41,221,0.45)];
+}

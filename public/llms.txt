@@ -1,0 +1,19 @@
+# The Spark Info-Tech Enterprise
+
+> Innovative IT solutions including software development, networking, cybersecurity, and hardware services.
+
+Website: https://yourdomain.com
+
+## Company
+
+- About: https://yourdomain.com/about
+- Services: https://yourdomain.com/services
+- Contact: https://yourdomain.com/contact
+
+## Documentation
+
+- Home: https://yourdomain.com/
+
+## Contact
+
+Email: contact@yourdomain.com
