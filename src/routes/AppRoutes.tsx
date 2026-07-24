@@ -4,21 +4,21 @@ import { Route, Routes } from "react-router-dom";
 import { Navigation } from "@/components";
 
 import useOnlineStatus from "@/hooks/useOnlineStatus";
-import NoInternetConnection from "@/pages/NoInternetConnection";
+import NoInternet from "@/pages/NoInternet";
 import ErrorBoundary from "@/pages/ErrorBoundary";
 
 import { SuspenseLoader, DefaultQueryWrapper } from "./";
 
 import Home from "@/pages/Home";
 const Services = lazy(() => import("@/pages/Services"));
-const AboutUs = lazy(() => import("@/pages/AboutUs"));
+const StartHere = lazy(() => import("@/pages/StartHere"));
 const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
 
 function AppRoutes() {
     const isOnline = useOnlineStatus();
 
     if (import.meta.env.PROD && !isOnline) {
-        return <NoInternetConnection />;
+        return <NoInternet />;
     }
     
     return (
@@ -35,7 +35,7 @@ function AppRoutes() {
                         <Route element={<DefaultQueryWrapper />}>
                             <Route path="/" element={<Home />} />
                             <Route path="/services" element={<Services />} />
-                            <Route path="/about-us" element={<AboutUs />} />
+                            <Route path="/startHere" element={<StartHere />} />
                             <Route path="*" element={<PageNotFound />} />
                         </Route>
                     </Routes>
