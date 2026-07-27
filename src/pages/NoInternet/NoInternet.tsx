@@ -22,9 +22,10 @@ function NoInternet() {
 
 			    	{/*title*/}
 			    	<div className="text-center">
-			    		<p className="font-black text-[42px] text-dark/60% w-[400px]
+			    		<p className="font-black text-[42px] text-dark/60%
                                               mx-auto h-[100px] leading-none">
 			    			Opps... Looks like
+			    			<br/>
 			    			you're <span className="text-gradient">offline.</span>
 			    		</p>
 			    	</div>
@@ -46,6 +47,7 @@ function NoInternet() {
 			                type="button"
 			                whileHover={{ scale: 1.03 }}
 			                whileTap={{ scale: 0.98 }}
+			                onClick={() => window.location.reload()}
 			                className="sparkPrimaryBtn">
 			                <MdRefresh size={20}/>
 			                <span>Retry Connection</span>
