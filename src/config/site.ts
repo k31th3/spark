@@ -1,5 +1,5 @@
 const site = {
-  url: "https://yourdomain.com", // TODO
+  url: "https://getsitgo.com", // TODO
   companyName: "The Spark Info-Tech Enterprise",
   description: "TODO: short company description",
   logo: "/logo.png",

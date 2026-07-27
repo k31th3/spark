@@ -1,5 +1,5 @@
 const contact = {
-  email: "info@yourdomain.com",
+  email: "info@getsitgo.com",
   telephone: "+63-...",
   address: {
     streetAddress: "4F, Simkimban Bldg., 700 Taguig St., Rizal Village",
