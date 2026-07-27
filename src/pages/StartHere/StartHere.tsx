@@ -1,4 +1,5 @@
 import { Seo, StructuredData } from "@/components";
+import ErrorMaintenance from "@/pages/ErrorMaintenance";
 
 	function StartHere() 
 	{
@@ -9,9 +10,10 @@ import { Seo, StructuredData } from "@/components";
 		      		networking, cybersecurity, and custom software development. Our team is committed to delivering reliable technology and exceptional 
 		      		service that supports your success." 
 		        canonical={pageUrl} />
+		        
 		      	<StructuredData data={""} />
 
-		      	
+		      	<ErrorMaintenance />
 		      	
 		    </>
 	    );	
