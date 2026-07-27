@@ -73,8 +73,8 @@ export default function Navigation() {
 
                                                     {/* Mobile */}
                                                     <div className="flex md:hidden flex-col items-center justify-center gap-1">
-                                                        {Icon && <Icon size={18} />}
-                                                        <span className="max-xs:hidden text-[10px]">
+                                                        {Icon && <Icon size={24} />}
+                                                        <span className="max-sm:hidden text-[10px] text-center">
                                                             {title}
                                                         </span>
                                                     </div>
