@@ -9,7 +9,7 @@ import errorMaintenance from "@/assets/errorMaintenance.webp";
 
 function ErrorMaintenance() {
   	return (
-	    <div className="flex flex-col items-center justify-center px-6 lg:px-8">
+	    <div className="flex flex-col items-center justify-center px-6 lg:px-8 min-h-screen md:min-h-fit">
 	    	<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 
 	    		<div className="vstack gap-0">
