@@ -7,7 +7,7 @@ import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
 function Home() {
 
     const pageUrl = `${window.location.origin}/`;
-
+    // throw new Error("Test ErrorBoundary");
     return (
     <>
         <Seo title="Home" description="Your trusted technology partner for software development, cybersecurity, networking, cloud solutions, 

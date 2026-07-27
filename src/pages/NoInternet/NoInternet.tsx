@@ -22,15 +22,15 @@ function NoInternet() {
 
 			    	{/*title*/}
 			    	<div className="text-center">
-			    		<p className="font-bold text-[28px] text-dark / 60%">
+			    		<p className="font-black text-[42px] text-dark/60% w-[400px]
+                                              mx-auto h-[100px] leading-none">
 			    			Opps... Looks like
-			    			<br/>
 			    			you're <span className="text-gradient">offline.</span>
 			    		</p>
 			    	</div>
 
 			    	{/*body*/}
-			    	<div className="text-center text-[#5F6B76] text-[14px] mb-10">
+			    	<div className="text-center text-[#5F6B76] text-[14px] mb-8">
 			    		<p>
 			    		Technology takes a coffee break sometimes ☕
 				    	</p>

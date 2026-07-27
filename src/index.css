@@ -59,8 +59,8 @@ html {
 .text-gradient {
   background: linear-gradient(
     135deg,
-    #A855F7 0%,
-    #EC4899 55%,
+    #A855F7 30%,
+    #EC4899 65%,
     #FB923C 100%
   );
 

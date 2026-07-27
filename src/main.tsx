@@ -9,11 +9,14 @@ import "@fontsource/inter/700.css";
 import "./index.css";
 import App from "./App.js";
 import { HelmetProvider } from "react-helmet-async";
+import ErrorBoundary from "@/pages/ErrorBoundary";
 
 createRoot(document.getElementById("root")).render(
-  <HelmetProvider>
-    <StrictMode>
-      <App />
-    </StrictMode>
-  </HelmetProvider>
+    <HelmetProvider>
+        <StrictMode>
+            <ErrorBoundary>
+                <App />
+            </ErrorBoundary>
+        </StrictMode>
+    </HelmetProvider>
 );
