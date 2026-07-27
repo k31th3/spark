@@ -15,7 +15,6 @@ const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
 
 function AppRoutes() {
     const isOnline = useOnlineStatus();
-        return <NoInternet />;
     
     if (import.meta.env.PROD && !isOnline) {
         return <NoInternet />;
