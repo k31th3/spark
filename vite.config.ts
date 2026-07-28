@@ -13,6 +13,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["**/*"],
       workbox: {
+        skipWaiting: true,
+        clientsClaim: true,
         globPatterns: ["**/*.{js,css,html,png,jpg,jpeg,svg,webp,ico}"]
       }
     })

@@ -8,9 +8,12 @@ import startHereWellExplain from "@/assets/startHereWellExplain.webp";
 export default function TechnologyJumbotron() {
 
     return (
-        <div className="relative w-screen relative left-1/2 -translate-x-1/2 bg-[#FAF5FF]">
-            <ul className="flex flex-col sm:flex-row items-center justify-center">
-                <li className="py-8 sm:p-0">
+        <div className="relative w-screen relative left-1/2 -translate-x-1/2 bg-[#FAF5FF] mb-6">
+
+            <div className="max-w-5xl mx-auto">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                
+                <li className="flex justify-center items-center py-8 sm:p-0">
                     <div className="hstack gap-2">
                         <div className="flex h-8 w-8 rounded-full bg-gradient p-[1px] mr-[4px] my-[4px]">
                             <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
@@ -39,7 +42,7 @@ export default function TechnologyJumbotron() {
                     </div>
                 </li>
 
-                <li className="flex justify-center">
+                <li className="flex items-center justify-center">
                     <img
                         src={startHereWellExplain}
                         alt="We'll explain"
@@ -47,6 +50,7 @@ export default function TechnologyJumbotron() {
                         onContextMenu={(e) => e.preventDefault()}/>
                 </li>
             </ul>
+            </div>
         </div>
     );
 }
