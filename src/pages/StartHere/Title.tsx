@@ -8,7 +8,7 @@ export default function StartHere(){
 				<div className="vstack gap-6">
 
 	      			<div className="text-center">
-			      		<Button variant="secondary" size="sm" className="gap-2">
+			      		<Button variant="secondary" size="sm" className="gap-2" disabled={true}>
 		      				<GoPerson /> About Us
 		      			</Button>
 			      	</div>

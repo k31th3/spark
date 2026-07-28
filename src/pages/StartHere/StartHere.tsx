@@ -1,5 +1,6 @@
 import { Seo, StructuredData } from "@/components";
-import { Title, AboutUsContent, TechnologyJumbotron } from "./";
+import { Title, AboutUsContent, 
+	TechnologyJumbotron, WeSpeakHuman } from "./";
 
 	function StartHere() 
 	{
@@ -18,6 +19,7 @@ import { Title, AboutUsContent, TechnologyJumbotron } from "./";
 		      		<Title />
 		      		<AboutUsContent />
 		      		<TechnologyJumbotron />
+		      		<WeSpeakHuman />
 
                 </div>
 		      	
