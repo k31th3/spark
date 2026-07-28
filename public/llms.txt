@@ -1,19 +1,30 @@
 # The Spark Info-Tech Enterprise
 
-> Innovative IT solutions including software development, networking, cybersecurity, and hardware services.
+SPARK Info-Tech Enterprise helps businesses start, simplify, and grow through technology that feels human.
+At SPARK, we're more than an IT provider—we're a technology partner that helps businesses improve operations and confidently embrace digital transformation. Whether you're starting a new business or scaling an existing one, we solve real problems and grow alongside our clients.
 
-Website: https://yourdomain.com
+## Website
 
-## Company
+- [Home](https://getsitgo.com/)
+- [Services](https://getsitgo.com/services)
+- [About Us](https://getsitgo.com/startHere)
 
-- About: https://yourdomain.com/about
-- Services: https://yourdomain.com/services
-- Contact: https://yourdomain.com/contact
+## Services
 
-## Documentation
+- Software Development
+- Website Development
+- Mobile App Development
+- Networking Solutions
+- Cybersecurity
+- Cloud Services
+- IT Consulting
+- Hardware Sales & Support
 
-- Home: https://yourdomain.com/
+## Resources
+
+- [Blog](https://getsitgo.com/blog)
+- [Support](https://getsitgo.com/support)
 
 ## Contact
 
-Email: contact@yourdomain.com
+- Email: contact@getsitgo.com
