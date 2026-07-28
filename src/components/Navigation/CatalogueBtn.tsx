@@ -47,6 +47,7 @@ export default function CatalogueButton() {
         <>
             <motion.button
                 type="button"
+                aria-label="Open Catalogue"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className={`${style.catalogueBtn} catalogueBtn`}
@@ -85,7 +86,7 @@ export default function CatalogueButton() {
                         buttons: [
                             <ToolbarBtn
                                 key="download"
-                                label="Download"
+                                label="Download Catalogue"
                                 onClick={() => {
                                     const a = document.createElement("a");
                                     a.href = CatalogueFile;
@@ -96,7 +97,7 @@ export default function CatalogueButton() {
                             </ToolbarBtn>,
                             <ToolbarBtn
                                 key="close"
-                                label="Close"
+                                label="Close Catalogue"
                                 onClick={handleClose}>
                                 <IoClose size={20} />
                             </ToolbarBtn>
