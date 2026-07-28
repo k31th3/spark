@@ -49,7 +49,7 @@ export default function CatalogueButton() {
                 type="button"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className={style.catalogueBtn}
+                className={`${style.catalogueBtn} catalogueBtn`}
                 onClick={handleOpen}>
                 <VscDownload size={16}/>
                 <span>Catalogue</span>

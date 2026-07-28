@@ -3,7 +3,7 @@
 import { AiOutlineMessage } from "react-icons/ai";
 
 import { Button, IconGradient } from "@/components";
-import weSpeakHuman from "@/assets/weSpeakHuman.webp";
+import weSpeakHuman from "@/assets/startHereWeSpeakHuman.webp";
 
 export default function WeSpeakHuman() 
 {
@@ -34,11 +34,11 @@ export default function WeSpeakHuman()
 		}
 	];
 	return <>
-		<div>
+		<div className="mb-8">
 			<div className="vstack gap-6">
 
       			<div className="text-center">
-		      		<Button variant="secondary" size="sm" className="gap-2" disabled={true}>
+		      		<Button variant="secondary" size="sm" className="disabled:opacity-100" disabled={true}>
 	      				We Speak Human
 	      			</Button>
 		      	</div>
