@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --default-font-family: "Inter", sans-serif;
+  --default-font-family: "Inter Variable", sans-serif;
   --breakpoint-xs: 345px;
 }
 
