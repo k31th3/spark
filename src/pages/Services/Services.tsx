@@ -85,14 +85,12 @@ function Services() {
         };
     }, []);
 
-    const pageUrl = `${window.location.origin}/services`;
-
     return (
         <>
         <Seo
-            title="Services"
+            title="Services | Spark Info-Tech Enterprise"
             description="Hardware, Software, Security, and Application Services."
-            canonical={pageUrl}/>
+            canonical="https://www.getsitgo.com/services"/>
 
         <section className="relative flex flex-col md:flex-row">
 

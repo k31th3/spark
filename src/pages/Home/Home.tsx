@@ -6,13 +6,12 @@ import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
 
 function Home() {
 
-    const pageUrl = `${window.location.origin}/`;
     // throw new Error("Test ErrorBoundary");
     return (
     <>
-        <Seo title="Home" description="Your trusted technology partner for software development, cybersecurity, networking, cloud solutions, 
+        <Seo title="GetSitGo | IT Solutions & Software Development" description="Your trusted technology partner for software development, cybersecurity, networking, cloud solutions, 
             and IT infrastructure designed to accelerate business growth." 
-        canonical={pageUrl} />
+        canonical="https://www.getsitgo.com" />
         
         <StructuredData data={""} />
 
