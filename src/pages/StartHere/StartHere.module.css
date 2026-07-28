@@ -1,0 +1,19 @@
+@reference "tailwindcss";
+
+.TechSwiper {
+  width: 100%;
+}
+
+.TechSwiper :global(.swiper-wrapper) {
+  align-items: stretch;
+}
+
+.TechSwiper :global(.swiper-slide) {
+  height: auto !important;
+  display: flex;
+}
+
+.TechSwiper :global(.swiper-slide > div) {
+  width: 100%;
+  height: 100%;
+}

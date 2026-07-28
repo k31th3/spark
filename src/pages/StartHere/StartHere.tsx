@@ -1,4 +1,5 @@
 import { Seo, StructuredData } from "@/components";
+import { Title, AboutUsContent, TechnologyJumbotron } from "./";
 
 	function StartHere() 
 	{
@@ -12,13 +13,11 @@ import { Seo, StructuredData } from "@/components";
 		        
 		      	<StructuredData data={""} />
 
-		      	<div className="flex flex-col items-center justify-center px-4 py-12 lg:px-8">
-                    
-		      		<div className="vstack gap-4">
-		      			
-		      			
-		      			
-		      		</div>
+		      	<div className="flex flex-col vstack my-10 lg:px-8 gap-8">
+
+		      		<Title />
+		      		<AboutUsContent />
+		      		<TechnologyJumbotron />
 
                 </div>
 		      	
@@ -27,3 +26,4 @@ import { Seo, StructuredData } from "@/components";
 	}
 
 export default StartHere;
+

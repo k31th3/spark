@@ -4,6 +4,8 @@ export { Seo, StructuredData } from "./Seo";
 export { default as PageLoader } from "./PageLoader";
 export { default as SiteLogo } from "./SiteLogo";
 
+export { default as Button } from "./Button";
+
 // for icon gradient
 export { default as IconGradient } from "./IconGradient";
 

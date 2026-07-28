@@ -69,6 +69,19 @@ html {
   background-clip: text;
 }
 
+.bg-gradient {
+  @apply
+    bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)];
+}
+
+/*.border-color-gradient {
+  border-image: linear-gradient(
+    83.35deg,
+    #D129DD 5.29%,
+    #FF8F27 94.71%
+  ) 1;
+}*/
+
 .sparkPrimaryBtn {
   @apply bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)];
   @apply shadow-[inset_0_0_20px_rgba(255,255,255,0.8)];
@@ -81,3 +94,4 @@ html {
     gap-2 cursor-pointer select-none transition-all duration-300 ease-in-out
     rounded-full;  
 }
+
