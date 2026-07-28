@@ -1,5 +1,4 @@
 import { Seo, StructuredData } from "@/components";
-import ErrorMaintenance from "@/pages/ErrorMaintenance";
 
 	function StartHere() 
 	{
@@ -13,7 +12,15 @@ import ErrorMaintenance from "@/pages/ErrorMaintenance";
 		        
 		      	<StructuredData data={""} />
 
-		      	<ErrorMaintenance />
+		      	<div className="flex flex-col items-center justify-center px-4 py-12 lg:px-8">
+                    
+		      		<div className="vstack gap-4">
+		      			
+		      			
+		      			
+		      		</div>
+
+                </div>
 		      	
 		    </>
 	    );	
