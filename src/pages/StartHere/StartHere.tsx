@@ -1,4 +1,4 @@
-import { Seo, StructuredData } from "@/components";
+import { Seo, StructuredData, ScrollToTop } from "@/components";
 import { Title, 
 	AboutUsContent, TechnologyJumbotron, 
 	WeSpeakHuman, WeSpeakHumanJumbotron,
@@ -18,6 +18,8 @@ import { Title,
 
 		      	<div className="flex flex-col vstack my-10 lg:px-8 gap-8">
 
+		      		<ScrollToTop />
+		      		
 		      		<Title />
 		      		<AboutUsContent />
 		      		<TechnologyJumbotron />
