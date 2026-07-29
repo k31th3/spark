@@ -13,7 +13,7 @@ export default function WeSpeakHumanJumbotron() {
                     overflow-hidden">
                     <div className="vstack gap-6">
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-0">
                             
                             <div className="vstack gap-6 z-1">
                                 

@@ -63,7 +63,7 @@ export default function Footer() {
                         </span>
                     </div>
 
-                    <ul className="vstack gap-4 text-end">
+                    <ul className="vstack gap-4 text-end sm:text-[16px] text-sm">
                         {items.map((item, index) => (
                             <motion.li
                                 key={item.name}
@@ -79,7 +79,7 @@ export default function Footer() {
                         ))}
                         <li>
                             <Button variant="ghost" 
-                                className="hover:bg-gray-0 h-0 p-0 font-normal"
+                                className="hover:bg-gray-0 h-0 p-0 font-normal sm:text-[16px] text-sm"
                                 onClick={() => {
                                     document.querySelector(".catalogueBtn")?.dispatchEvent(
                                         new MouseEvent("click", { bubbles: true })

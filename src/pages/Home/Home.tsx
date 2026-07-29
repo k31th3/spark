@@ -28,6 +28,7 @@ function Home() {
         <div
             className="w-screen relative left-1/2 right-1/2 mx-[-50vw] md:-mt-30 min-h-screen bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${dashboardBg})` }}>
+
             <div className="flex items-center justify-center flex-col gap-10 min-h-screen px-6 md:pt-32 py-12 md:px-12">
             
                 <section className="flex flex-col gap-4 leading-[100%] tracking-normal text-center max-w-3xl ">
@@ -50,7 +51,7 @@ function Home() {
                           loop
                           muted
                           playsInline
-                          preload="auto"
+                          preload="metadata"
                           className="block h-full w-full rounded-3xl object-cover object-center bg-transparent cursor-auto">
                         
                         <source src={DashboardPlayVid} type="video/mp4" />

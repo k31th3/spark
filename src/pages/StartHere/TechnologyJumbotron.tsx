@@ -14,7 +14,7 @@ export default function TechnologyJumbotron() {
             <div className="max-w-5xl mx-auto">
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-0">
                     
-                    <li className="flex justify-center items-center py-8 sm:p-0">
+                    <li className="flex justify-center items-center py-8 sm:py-0">
                         <div className="hstack gap-2">
                             <div className="flex h-8 w-8 rounded-full bg-gradient p-[1px] mr-[4px] my-[4px]">
                                 <div className="flex h-full w-full items-center justify-center rounded-full bg-white">

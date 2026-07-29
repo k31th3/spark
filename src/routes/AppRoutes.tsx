@@ -8,7 +8,7 @@ import NoInternet from "@/pages/NoInternet";
 
 import { SuspenseLoader, DefaultQueryWrapper } from "./";
 
-import Home from "@/pages/Home";
+const Home = lazy(() => import("@/pages/Home"));
 const Services = lazy(() => import("@/pages/Services"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
 const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
@@ -25,10 +25,10 @@ function AppRoutes() {
             
             <header className="pt-5 fixed top-0 left-0 right-0 z-50 flex justify-center 
                 py-5 hidden md:flex">
-                <Navigation />
+                <Navigation mobile={false} />
             </header>
             
-            <div className="max-w-5xl mx-auto p-4 pt-0 md:pt-30">
+            <main className="max-w-5xl mx-auto p-4 pt-0 md:pt-30">
                 <Routes>
                     <Route element={<DefaultQueryWrapper />}>
                         <Route path="/" element={<Home />} />
@@ -37,10 +37,10 @@ function AppRoutes() {
                         <Route path="*" element={<PageNotFound />} />
                     </Route>
                 </Routes>
-            </div>
+            </main>
 
             <nav className="fixed bottom-0 left-0 right-0 z-50 flex md:hidden">
-                <Navigation />
+                <Navigation mobile />
             </nav>
             
             <footer className="h-10"></footer>

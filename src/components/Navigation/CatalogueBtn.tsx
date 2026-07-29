@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { motion } from "motion/react";
 
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
 import { VscDownload } from "react-icons/vsc";
@@ -13,20 +12,25 @@ import { IoClose } from "react-icons/io5";
 import CatalogueFile from "@/assets/catalogue.png";
 import style from "./Navigation.module.css";
 
-export default function CatalogueButton() {
+const Lightbox = lazy(() => import("yet-another-react-lightbox"));
 
-    const slides = [{ src: CatalogueFile }];
+export default function CatalogueButton() {
     const [isOpen, setIsOpen] = useState(false);
 
-    const handleOpen = () => {
-        setIsOpen(true);
-    };
+    const slides = [{ src: CatalogueFile }];
 
-    const handleClose = () => {
-        setIsOpen(false);
-    };
+    const handleOpen = () => setIsOpen(true);
+    const handleClose = () => setIsOpen(false);
 
-    const ToolbarBtn = ({ onClick, children, label }) => (
+    const ToolbarBtn = ({
+        onClick,
+        children,
+        label,
+    }: {
+        onClick: () => void;
+        children: React.ReactNode;
+        label: string;
+    }) => (
         <motion.button
             type="button"
             aria-label={label}
@@ -37,7 +41,7 @@ export default function CatalogueButton() {
             transition={{
                 type: "spring",
                 stiffness: 300,
-                damping: 10
+                damping: 10,
             }}>
             {children}
         </motion.button>
@@ -52,58 +56,68 @@ export default function CatalogueButton() {
                 whileTap={{ scale: 0.98 }}
                 className={`${style.catalogueBtn} catalogueBtn`}
                 onClick={handleOpen}>
-                <VscDownload size={16}/>
+                <VscDownload size={16} />
                 <span>Catalogue</span>
             </motion.button>
 
-            {isOpen && (
-                <Lightbox
-                    open={isOpen}
-                    close={handleClose}
-                    slides={slides}
-                    styles={{
-                        container: {
-                            background: "var(--lightbox-bg)",
-                        },
-                        toolbar: { gap: "8px" },
-                    }}
-                    animation={{
-                        fade: 300
-                    }}
-                    controller={{
-                        closeOnEscape: false,
-                        touchAction: "none",
-                        disableSwipeNavigation: false,
-                        focus: false,
-                        aria: false
-                    }}
-                    carousel={{ finite: slides.length <= 1 }}
-                    render={{
-                        buttonPrev: slides.length <= 1 ? () => null : undefined,
-                        buttonNext: slides.length <= 1 ? () => null : undefined,
-                    }}
-                    toolbar={{
-                        buttons: [
-                            <ToolbarBtn
-                                key="download"
-                                label="Download Catalogue"
-                                onClick={() => {
-                                    const a = document.createElement("a");
-                                    a.href = CatalogueFile;
-                                    a.download = "";
-                                    a.click();
-                                }}>
-                                <FiDownload size={20} />
-                            </ToolbarBtn>,
-                            <ToolbarBtn
-                                key="close"
-                                label="Close Catalogue"
-                                onClick={handleClose}>
-                                <IoClose size={20} />
-                            </ToolbarBtn>
-                        ],
-                    }}/>
-            )}
+            <Suspense fallback={null}>
+                {isOpen && (
+                    <Lightbox
+                        open={isOpen}
+                        close={handleClose}
+                        slides={slides}
+                        styles={{
+                            container: {
+                                background: "var(--lightbox-bg)",
+                            },
+                            toolbar: {
+                                gap: "8px",
+                            },
+                        }}
+                        animation={{
+                            fade: 300,
+                        }}
+                        controller={{
+                            closeOnEscape: false,
+                            touchAction: "none",
+                            disableSwipeNavigation: false,
+                            focus: false,
+                            aria: false,
+                        }}
+                        carousel={{
+                            finite: slides.length <= 1,
+                        }}
+                        render={{
+                            buttonPrev:
+                                slides.length <= 1 ? () => null : undefined,
+                            buttonNext:
+                                slides.length <= 1 ? () => null : undefined,
+                        }}
+                        toolbar={{
+                            buttons: [
+                                <ToolbarBtn
+                                    key="download"
+                                    label="Download Catalogue"
+                                    onClick={() => {
+                                        const a = document.createElement("a");
+                                        a.href = CatalogueFile;
+                                        a.download = "";
+                                        a.click();
+                                    }}>
+                                    <FiDownload size={20} />
+                                </ToolbarBtn>,
+
+                                <ToolbarBtn
+                                    key="close"
+                                    label="Close Catalogue"
+                                    onClick={handleClose}>
+                                    <IoClose size={20} />
+                                </ToolbarBtn>,
+                            ],
+                        }}
+                    />
+                )}
+            </Suspense>
         </>
     );
 }
