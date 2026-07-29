@@ -35,14 +35,17 @@ function Home() {
                 <div className="overflow-hidden w-full max-w-200 aspect-video bg-white rounded-[40px] 
                     flex items-center justify-center cursor-pointer">
                     <video
+                          kind="captions"
                           src={DashboardPlayVid}
                           autoPlay
                           loop
                           muted
                           playsInline
                           preload="auto"
-                          className="block h-full w-full rounded-3xl object-cover object-center bg-transparent cursor-auto"
-                        >
+                          srcLang="en"
+                          label="English"
+                          className="block h-full w-full rounded-3xl object-cover 
+                          object-center bg-transparent cursor-auto">
                     Your browser does not support the video tag.
                     </video>
                 </div>
