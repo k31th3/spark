@@ -31,7 +31,7 @@ function Home() {
                 src={dashboardBg}
                 alt="dashboard background"
                 fetchPriority="high"
-                decoding="async"
+                decoding="sync"
                 className="absolute inset-0 w-full h-full object-cover object-center"/>
 
             <div className="relative z-10 flex items-center justify-center flex-col gap-10 min-h-screen px-6 md:pt-32 py-12 md:px-12">
