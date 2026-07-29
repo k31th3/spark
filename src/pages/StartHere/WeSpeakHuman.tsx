@@ -49,7 +49,7 @@ export default function WeSpeakHuman()
 				  	<div className="rounded-4xl overflow-hidden shadow-sm">
 				    	<img
 				      		src={weSpeakHuman}
-				      		alt="frame"
+				      		alt="We Speak Human"
 				      		className="w-full h-full object-cover"
 				      		onContextMenu={(e) => e.preventDefault()}/>
 				  	</div>

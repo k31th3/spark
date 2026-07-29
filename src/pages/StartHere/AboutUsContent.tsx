@@ -21,7 +21,7 @@ export default function AboutUsContent()
 			<div className="rounded-4xl overflow-hidden shadow-sm">
 	    		<img
 		            src={startHereGrouping}
-		            alt="frame"
+		            alt="Start Here Grouping"
 		            loading="lazy"
 		            fetchPriority="high"
                 	decoding="sync"

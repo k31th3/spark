@@ -6,7 +6,7 @@ At SPARK, we're more than an IT provider—we're a technology partner that helps
 ## Website
 
 - [Home](https://www.getsitgo.com/)
-- [Services](https://www.getsitgo.com/services)
+- [Services](https://www.getsitgo.com/services?tab=0)
 - [About Us](https://www.getsitgo.com/startHere)
 
 ## Services

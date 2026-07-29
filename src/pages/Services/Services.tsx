@@ -8,7 +8,7 @@ import { EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-import { Seo, BookCall } from "@/components";
+import { Seo, StructuredData, BookCall } from "@/components";
 import { tabs } from "./tabs";
 
 import style from "./Services.module.css";
@@ -90,7 +90,9 @@ function Services() {
         <Seo
             title="Services | Spark Info-Tech Enterprise"
             description="Hardware, Software, Security, and Application Services."
-            canonical="https://www.getsitgo.com/services"/>
+            canonical="https://www.getsitgo.com/services?tab=0"/>
+
+        <StructuredData data={""} />
 
         <section className="relative flex flex-col md:flex-row">
 
