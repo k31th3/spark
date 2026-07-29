@@ -1,4 +1,4 @@
-import Logo from "@/assets/siteLogo.svg";
+import Logo from "@/assets/siteLogo.webp";
 
 type SiteLogoProps = {
     width?: number;
