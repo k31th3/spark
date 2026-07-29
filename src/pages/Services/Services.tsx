@@ -53,9 +53,9 @@ function Services() {
                 key={title}
                 type="button"
                 className={`${style.sideBarBtn} ${active === index ? "active" : ""}`}
+                aria-label={title}
                 aria-current={active === index}
-                onClick={() => handleTabClick(index)}
-            >
+                onClick={() => handleTabClick(index)}>
                 <span>
                     <Icon className="text-lg sm:text-xl" />
                 </span>

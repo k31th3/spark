@@ -47,6 +47,9 @@ export default function TechnologyJumbotron() {
                         <img
                             src={startHereWellExplain}
                             alt="We'll explain"
+                            loading="lazy"
+                            fetchPriority="high"
+                            decoding="sync"
                             className="w-full max-w-[360px] object-cover"
                             onContextMenu={(e) => e.preventDefault()}/>
                     </li>

@@ -98,6 +98,9 @@ export default function Footer() {
                     <img
                         src={startHereSpark}
                         alt="Spark vector"
+                        loading="lazy"
+                        fetchPriority="high"
+                        decoding="sync"
                         className="w-full object-cover"
                         onContextMenu={(e) => e.preventDefault()}/>
 

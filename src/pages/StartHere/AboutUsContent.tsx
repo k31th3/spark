@@ -22,6 +22,9 @@ export default function AboutUsContent()
 	    		<img
 		            src={startHereGrouping}
 		            alt="frame"
+		            loading="lazy"
+		            fetchPriority="high"
+                	decoding="sync"
 		            className="w-full h-[350px] object-cover"
 		            onContextMenu={(e) => e.preventDefault()}/>
 		        <div className="rounded-b-4xl h-[100px] bg-gradient-to-r from-[#FFEBFD] to-[#FFE4D3] p-[16px]">
