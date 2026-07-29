@@ -25,13 +25,18 @@ function Home() {
         
         <StructuredData data={""} />
 
-        <div
-            className="w-screen relative left-1/2 right-1/2 mx-[-50vw] md:-mt-30 min-h-screen bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${dashboardBg})` }}>
+        <div className="w-screen relative left-1/2 right-1/2 mx-[-50vw] md:-mt-30 min-h-screen overflow-hidden">
 
-            <div className="flex items-center justify-center flex-col gap-10 min-h-screen px-6 md:pt-32 py-12 md:px-12">
+            <img
+                src={dashboardBg}
+                alt="dashboard background"
+                fetchPriority="high"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"/>
+
+            <div className="relative z-10 flex items-center justify-center flex-col gap-10 min-h-screen px-6 md:pt-32 py-12 md:px-12">
             
-                <section className="flex flex-col gap-4 leading-[100%] tracking-normal text-center max-w-3xl ">
+                <section className="flex flex-col gap-4 leading-[100%] tracking-normal text-center max-w-3xl">
                     <h1 className="font-medium text-6xl">
                         Igniting Every Aspect of Your Digital Growth.
                     </h1>
