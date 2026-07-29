@@ -68,7 +68,7 @@ export default defineConfig({
     minify: "terser",
     cssMinify: true,
     cssCodeSplit: true,
-    sourcemap: false,
+    sourcemap: "hidden",
 
     rollupOptions: {
       output: {
