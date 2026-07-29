@@ -1,12 +1,22 @@
 
+import { useEffect, useRef } from "react";
 import { Seo, StructuredData, BookCall } from "@/components";
 import dashboardBg from "@/assets/dashboardBg.webp";
 import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
-
+import DashboardCaptions from "@/assets/dashboardPlayVid.en.vtt";
 
 function Home() {
 
     // throw new Error("Test ErrorBoundary");
+
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        if (videoRef.current?.textTracks.length) {
+            videoRef.current.textTracks[0].mode = "hidden"; // o "disabled"
+        }
+    }, []);
+
     return (
     <>
         <Seo title="GetSitGo | IT Solutions & Software Development" description="Your trusted technology partner for software development, cybersecurity, networking, cloud solutions, 
@@ -35,18 +45,24 @@ function Home() {
                 <div className="overflow-hidden w-full max-w-200 aspect-video bg-white rounded-[40px] 
                     flex items-center justify-center cursor-pointer">
                     <video
-                          kind="captions"
-                          src={DashboardPlayVid}
+                          ref={videoRef}
                           autoPlay
                           loop
                           muted
                           playsInline
                           preload="auto"
-                          srcLang="en"
-                          label="English"
-                          className="block h-full w-full rounded-3xl object-cover 
-                          object-center bg-transparent cursor-auto">
-                    Your browser does not support the video tag.
+                          className="block h-full w-full rounded-3xl object-cover object-center bg-transparent cursor-auto">
+                        
+                        <source src={DashboardPlayVid} type="video/mp4" />
+
+                        <track
+                            kind="captions"
+                            src={DashboardCaptions}
+                            srcLang="en"
+                            label="English"
+                            default/>
+
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 
