@@ -15,12 +15,12 @@ export default function Seo({
 }: SEOProps) {
   return (
     <Helmet>
-      <title>{title}</title>
+      {/*<title>{title}</title>
 
       <meta
         name="description"
         content={description}
-      />
+      />*/}
 
       <meta
         name="robots"

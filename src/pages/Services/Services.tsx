@@ -88,7 +88,7 @@ function Services() {
     return (
         <>
         <Seo
-            title="Services | Spark Info-Tech Enterprise"
+            title="GetSitGo | Spark Info-Tech Enterprise - Services"
             description="Hardware, Software, Security, and Application Services."
             canonical="https://www.getsitgo.com/services?tab=0"/>
 

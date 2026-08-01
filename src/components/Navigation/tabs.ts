@@ -1,7 +1,6 @@
 
 import { MdDesignServices } from "react-icons/md";
-import { FaHome } from "react-icons/fa";
-import { IoPeople } from "react-icons/io5";
+import { IoBookSharp } from "react-icons/io5";
 
 import { IconType } from "react-icons";
 
@@ -14,12 +13,6 @@ export interface Tab {
 
 export const tabs: Tab[] = [
   {
-    title: "Home",
-    path: "",
-    id: 1,
-    icon: FaHome
-  },
-  {
     title: "Services",
     path: "services?tab=0",
     id: 2,
@@ -29,6 +22,6 @@ export const tabs: Tab[] = [
     title: "Let’s Start Here",
     path: "startHere",
     id: 3,
-    icon: IoPeople
+    icon: IoBookSharp
   }
 ];

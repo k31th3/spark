@@ -1,10 +1,16 @@
+import { useEffect, useRef } from "react";
+
 import { PiBriefcaseDuotone } from "react-icons/pi";
 import { PiLightbulbFilamentDuotone } from "react-icons/pi";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { PiSparkleDuotone } from "react-icons/pi";
 
 import { IconGradient } from "@/components";
-import startHereGrouping from "@/assets/startHereGrouping.webp";
+
+import dashboardBg from "@/assets/dashboardBg.webp";
+import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
+import DashboardCaptions from "@/assets/dashboardPlayVid.en.vtt";
+
 
 export default function AboutUsContent()
 {
@@ -15,18 +21,51 @@ export default function AboutUsContent()
   		{ icon: PiSparkleDuotone, label: "Possibilities" }
 	];
 
+	const videoRef = useRef(null);
+
+    useEffect(() => {
+        if (videoRef.current?.textTracks.length) {
+            videoRef.current.textTracks[0].mode = "hidden"; // o "disabled"
+        }
+    }, []);
+
 	return <>
 		
 		<div>
-			<div className="rounded-4xl overflow-hidden shadow-sm">
-	    		<img
-		            src={startHereGrouping}
-		            alt="Start Here Grouping"
-		            loading="lazy"
-		            fetchPriority="high"
-                	decoding="sync"
-		            className="w-full h-[350px] object-cover"
-		            onContextMenu={(e) => e.preventDefault()}/>
+			<div className="rounded-4xl overflow-hidden shadow-sm relative ">
+
+				<div>
+		            <img
+		                src={dashboardBg}
+		                alt="dashboard background"
+		                fetchPriority="high"
+		                decoding="sync"
+		                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
+	            </div>
+
+	    		<div className="w-full aspect-video
+                    flex items-center justify-center cursor-pointer">
+                    <video
+                          ref={videoRef}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          preload="metadata"
+                          className="block h-full w-full rounded-t-3xl object-cover object-center bg-transparent z-10">
+                        
+                        <source src={DashboardPlayVid} type="video/mp4" />
+
+                        <track
+                            kind="captions"
+                            src={DashboardCaptions}
+                            srcLang="en"
+                            label="English"
+                            default/>
+
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
 		        <div className="rounded-b-4xl h-[100px] bg-gradient-to-r from-[#FFEBFD] to-[#FFE4D3] p-[16px]">
                     <IconGradient />
 		        	<ul className="hstack gap-3 justify-around items-center h-full">

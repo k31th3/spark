@@ -7,7 +7,7 @@ const contact = {
     region: "Metro Manila",
     postalCode: "1208",
     country: "PH",
-  },
+  }
 };
 
 export default contact;

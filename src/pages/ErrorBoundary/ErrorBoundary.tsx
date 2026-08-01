@@ -6,7 +6,7 @@ import { IconGradient } from "@/components";
 
 import errorBoundary from "@/assets/errorBoundary.webp";
 
-import { Component, ErrorInfo, type ReactNode } from "react";
+import { Component, type ReactNode } from "react";
 
 type Props = {
     children: ReactNode;

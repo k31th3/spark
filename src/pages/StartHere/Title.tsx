@@ -1,17 +1,9 @@
 
 import { Button } from "@/components";
-import { FiArrowRight } from "react-icons/fi";
-import { GoPerson } from "react-icons/go";
 
 export default function StartHere(){
 	return <>
 				<div className="vstack gap-6">
-
-	      			<div className="text-center">
-			      		<Button variant="secondary" size="sm" className="disabled:opacity-100 gap-2" disabled={true}>
-		      				<GoPerson /> About Us
-		      			</Button>
-			      	</div>
 
 			      	<div className="mb-4">
 			      		
@@ -30,8 +22,8 @@ export default function StartHere(){
 		      		</div>
 
 		      		<div className="text-center">
-		      			<Button variant="gradient" size="lg" className="gap-2">
-		      				Our Story <FiArrowRight />
+		      			<Button variant="gradient" size="lg" className="disabled:opacity-100 gap-2" disabled={true}>
+		      				Our Story
 		      			</Button>
 		      		</div>
 

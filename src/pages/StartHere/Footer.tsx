@@ -10,10 +10,6 @@ export default function Footer() {
 
     const items = [
         {
-            name: "Home",
-            path: "/",
-        },
-        {
             name: "Services",
             path: "/services",
         },
@@ -28,7 +24,7 @@ export default function Footer() {
             opacity: 0,
             y: -20
         },
-        visible: (index) => ({
+        visible: (index: number) => ({
             opacity: 1,
             y: 0,
             transition: {

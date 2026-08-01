@@ -22,13 +22,13 @@ export const organizationSchema = {
 
     streetAddress: contact.address.streetAddress,
 
-    addressLocality: contact.address.addressLocality,
+    addressLocality: contact.address.locality,
 
-    addressRegion: contact.address.addressRegion,
+    addressRegion: contact.address.region,
 
     postalCode: contact.address.postalCode,
 
-    addressCountry: contact.address.addressCountry,
+    addressCountry: contact.address.country
   },
 };
 

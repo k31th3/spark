@@ -1,6 +1,4 @@
-import { motion } from "motion/react";
 
-import { MdRefresh } from "react-icons/md";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaHeadset } from "react-icons/fa6";
 import { IconGradient } from "@/components";

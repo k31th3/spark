@@ -1,8 +1,6 @@
 "use client";
 
 import { AiOutlineMessage } from "react-icons/ai";
-
-import { Button, IconGradient } from "@/components";
 import weSpeakHuman from "@/assets/startHereWeSpeakHuman.webp";
 
 export default function WeSpeakHuman() 
@@ -36,12 +34,6 @@ export default function WeSpeakHuman()
 	return <>
 		<div className="mb-8">
 			<div className="vstack gap-6">
-
-      			<div className="text-center">
-		      		<Button variant="secondary" size="sm" className="disabled:opacity-100" disabled={true}>
-	      				We Speak Human
-	      			</Button>
-		      	</div>
 
 		      	<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 				  

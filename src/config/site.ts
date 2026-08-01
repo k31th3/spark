@@ -1,8 +1,9 @@
 const site = {
   url: "https://www.getsitgo.com", // TODO
-  companyName: "The Spark Info-Tech Enterprise",
-  description: "TODO: short company description",
-  logo: "/logo.png",
+  companyName: "Spark Info-Tech Enterprise",
+  description: `SPARK Info-Tech Enterprise helps businesses start, simplify, and grow through technology that feels human.
+          At SPARK, we're more than an IT provider—we're a technology partner that helps businesses improve operations and confidently embrace digital transformation. Whether you're starting a new business or scaling an existing one, we solve real problems and grow alongside our clients.`,
+  logo: "/siteLogo.webp",
 };
 
 export default site;

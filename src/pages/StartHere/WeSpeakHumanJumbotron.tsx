@@ -1,7 +1,7 @@
 "use client";
 
 import { FiArrowRight } from "react-icons/fi";
-import { Button, IconGradient } from "@/components";
+import { Button } from "@/components";
 
 import startHereWeSpeakHumanJumboron from "@/assets/startHereWeSpeakHumanJumboron.png";
 
