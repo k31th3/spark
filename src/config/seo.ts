@@ -1,4 +1,6 @@
-import { site, contact, services } from "@config";
+import site from "./site";
+import contact from "./contact";
+import services from "./services";
 
 export const organizationSchema = {
   "@context": "https://schema.org",

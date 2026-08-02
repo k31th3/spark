@@ -1,4 +1,6 @@
 import { Seo, StructuredData, ScrollToTop } from "@/components";
+import { organizationSchema } from "@/config";
+
 import { Title, 
 	AboutUsContent, TechnologyJumbotron, 
 	WeSpeakHuman, WeSpeakHumanJumbotron,
@@ -6,15 +8,14 @@ import { Title,
 
 	function StartHere() 
 	{
-		const pageUrl = `${window.location.origin}/startHere`;
 	  	return (
 		    <>
 		      	<Seo title="GetSitGo | Spark Info-Tech Enterprise - Let's Start Here" description="We help businesses grow through innovative IT solutions, including hardware, 
 		      		networking, cybersecurity, and custom software development. Our team is committed to delivering reliable technology and exceptional 
 		      		service that supports your success." 
-		        canonical={pageUrl} />
+		        canonical="https://www.getsitgo.com/startHere" />
 		        
-		      	<StructuredData data={""} />
+		      	<StructuredData data={organizationSchema} />
 
 		      	<div className="flex flex-col vstack my-10 lg:px-8 gap-8">
 

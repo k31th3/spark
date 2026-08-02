@@ -32,9 +32,9 @@ export default function Navigation() {
 
                         {/* Logo */}
                         <li className="shrink-0 px-2">
-                            <a href="/" aria-label="Spark Info-Tech Enterprise | Homepage">
+                            <NavLink to="/" aria-label="Spark Info-Tech Enterprise | Homepage">
                                 <SiteLogo className="min-h-10 min-w-10" />
-                            </a>
+                            </NavLink>
                         </li>
 
                         {/* Navigation Tabs */}

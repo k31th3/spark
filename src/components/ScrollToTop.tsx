@@ -4,7 +4,7 @@ import { FaChevronUp } from "react-icons/fa";
 
 import { Button } from "@/components";
 
-const MotionButton = motion(Button);
+const MotionButton = motion.create(Button);
 
 function ScrollToTop() {
     const [visible, setVisible] = useState(false);
