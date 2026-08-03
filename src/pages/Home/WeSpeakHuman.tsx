@@ -32,55 +32,54 @@ export default function WeSpeakHuman()
 		}
 	];
 	return <>
-		<div className="mb-8">
-			<div className="vstack gap-6">
+		
+		<div className="vstack gap-6">
 
-		      	<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-				  
-				  	{/* Image */}
-				  	<div className="rounded-4xl overflow-hidden shadow-sm">
-				    	<img
-				      		src={weSpeakHuman}
-				      		alt="We Speak Human"
-				      		className="w-full h-full object-cover"
-				      		onContextMenu={(e) => e.preventDefault()}/>
-				  	</div>
+	      	<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+			  
+			  	{/* Image */}
+			  	<div className="rounded-4xl overflow-hidden shadow-sm">
+			    	<img
+			      		src={weSpeakHuman}
+			      		alt="We Speak Human"
+			      		className="w-full h-full object-cover"
+			      		onContextMenu={(e) => e.preventDefault()}/>
+			  	</div>
 
-				  	{/* Content */}
-				  	<div className="flex flex-col gap-6">
-				    	
-				    	<p className="text-2xl font-semibold leading-tight">
-				      		Technology should feel like talking to your smartest friend,
-				      		not reading an instruction manual.
-				    	</p>
+			  	{/* Content */}
+			  	<div className="flex flex-col gap-6">
+			    	
+			    	<p className="text-2xl font-semibold leading-tight">
+			      		Technology should feel like talking to your smartest friend,
+			      		not reading an instruction manual.
+			    	</p>
 
-				    	<ul className="vstack gap-4 px-[16px]">
-				    		{items.map((item, index) => (
-							    <li key={index}>
-							      	<div className="hstack items-center gap-3">
-								        <div
-								          	className={`flex items-center justify-center h-8 w-8 rounded-full ${item.bgColor}`}>
-								          	<AiOutlineMessage
-								            	size={16}
-								            	className={item.iconColor}/>
-								        </div>
+			    	<ul className="vstack gap-4 px-[16px]">
+			    		{items.map((item, index) => (
+						    <li key={index}>
+						      	<div className="hstack items-center gap-3">
+							        <div
+							          	className={`flex items-center justify-center h-8 w-8 rounded-full ${item.bgColor}`}>
+							          	<AiOutlineMessage
+							            	size={16}
+							            	className={item.iconColor}/>
+							        </div>
 
-							        	<div className="flex flex-col gap-0">
-							          		<p className="font-semibold text-[20px]">{item.title}</p>
-							          		<span className="font-tiny text-[14px] text-[#6E7884]">
-							            		{item.subtitle}
-							          		</span>
-							        	</div>
-							      	</div>
-							    </li>
-							 ))}
-				    	</ul>
+						        	<div className="flex flex-col gap-0">
+						          		<p className="font-semibold text-[20px]">{item.title}</p>
+						          		<span className="font-tiny text-[14px] text-[#6E7884]">
+						            		{item.subtitle}
+						          		</span>
+						        	</div>
+						      	</div>
+						    </li>
+						 ))}
+			    	</ul>
 
-				  	</div>
-
-				</div>
+			  	</div>
 
 			</div>
+
 		</div>
 	</>;
 }

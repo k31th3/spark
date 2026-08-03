@@ -15,7 +15,7 @@ export default function Footer() {
         },
         {
             name: "Let's Start Here",
-            path: "/startHere",
+            path: "/lets-start-here",
         }
     ];
 
@@ -45,7 +45,7 @@ export default function Footer() {
 
     return (
         <>
-            <div>
+            <div className="max-w-5xl mx-auto p-4 mb-30">
                 
                 {/*Header*/}
                 <div className="flex justify-between mb-28">
@@ -97,8 +97,7 @@ export default function Footer() {
                         loading="lazy"
                         fetchPriority="high"
                         decoding="sync"
-                        className="w-full object-cover"
-                        onContextMenu={(e) => e.preventDefault()}/>
+                        className="w-full object-cover"/>
 
                     <ul className="flex md:flex-row flex-col justify-between text-sm font-normal">
                         <li>

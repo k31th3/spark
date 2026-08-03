@@ -8,6 +8,9 @@ import NoInternet from "@/pages/NoInternet";
 
 import { SuspenseLoader, DefaultQueryWrapper } from "./";
 
+import Footer from "@/pages/Footer";
+
+
 const Home = lazy(() => import("@/pages/Home"));
 const Services = lazy(() => import("@/pages/Services"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
@@ -23,29 +26,38 @@ function AppRoutes() {
     return (
         <SuspenseLoader>
             
-            <header className="pt-5 fixed top-0 left-0 right-0 z-50 flex justify-center 
-                py-5 hidden md:flex">
-                <Navigation />
-            </header>
-            
-            <main className="max-w-5xl mx-auto p-4 pt-0 md:pt-30">
-                <Routes>
-                    <Route element={<DefaultQueryWrapper />}>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/services" element={<Services />} />
-                        <Route path="/lets-start-here" element={<StartHere />} />
-                        <Route path="*" element={<PageNotFound />} />
-                    </Route>
-                </Routes>
-            </main>
+            <Routes>
+                <Route
+                    element={
+                        <>
+                            <div>
+                                <header className="fixed top-0 left-0 right-0 z-50 hidden md:flex justify-center py-5">
+                                    <Navigation />
+                                </header>
 
-            <nav className="fixed bottom-0 left-0 right-0 z-50 flex md:hidden">
-                <Navigation />
-            </nav>
-            
-            <footer className="h-10"></footer>
+                                <main className="max-w-5xl mx-auto p-4 pt-0 md:pt-30">
+                                    <DefaultQueryWrapper />
+                                </main>
 
+                                <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+                                    <Navigation />
+                                </nav>
+
+                                <Footer />
+                            </div>
+                        </>
+                    }>
+
+                    <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/lets-start-here" element={<StartHere />} />
+                </Route>
+
+                {/* Outside the layout */}
+                <Route path="*" element={<PageNotFound />} />
+                
+            </Routes>
         </SuspenseLoader>
     );
   

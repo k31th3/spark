@@ -3,8 +3,10 @@ import { organizationSchema } from "@/config";
 
 import { Title, 
 	AboutUsContent, TechnologyJumbotron, 
-	WeSpeakHuman, WeSpeakHumanJumbotron,
-	Footer } from "./";
+	WeSpeakHuman
+} from "./";
+
+import dashboardBg from "@/assets/dashboardBg.webp";
 
 	function Home() 
 	{
@@ -17,16 +19,26 @@ import { Title,
 		        
 		      	<StructuredData data={organizationSchema} />
 
-		      	<div className="flex flex-col vstack my-10 lg:px-8 gap-8">
+		      	<div className="flex flex-col vstack my-10 lg:px-8 gap-15">
 
 		      		<ScrollToTop />
 		      		
-		      		<Title />
-		      		<AboutUsContent />
+		      		<div className="vstack gap-15">
+			            <img
+			                src={dashboardBg}
+			                alt="dashboard background"
+			                fetchPriority="high"
+			                decoding="sync"
+			                className="absolute inset-0 w-full h-full object-cover object-center -z-10"
+			            	onContextMenu={(e) => e.preventDefault()}
+    						draggable={false}/>
+
+			            <Title />
+		      			<AboutUsContent />
+	            	</div>
+
 		      		<TechnologyJumbotron />
 		      		<WeSpeakHuman />
-		      		<WeSpeakHumanJumbotron />
-		      		<Footer />
 
                 </div>
 		      	

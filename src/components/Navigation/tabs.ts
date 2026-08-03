@@ -20,7 +20,7 @@ export const tabs: Tab[] = [
   },
   {
     title: "Let’s Start Here",
-    path: "startHere",
+    path: "lets-start-here",
     id: 3,
     icon: IoBookSharp
   }

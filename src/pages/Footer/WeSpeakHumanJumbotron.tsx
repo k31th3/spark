@@ -18,12 +18,6 @@ export default function WeSpeakHumanJumbotron() {
                             <div className="vstack gap-6 z-1">
                                 
                                 <div>
-                                    <Button variant="secondary" size="sm" className="disabled:opacity-100" disabled={true}>
-                                        We Speak Human
-                                    </Button>    
-                                </div>
-                                
-                                <div>
                                     <p className="bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)]
                                         bg-clip-text text-transparent 
                                         text-[24px] mb-3 leading-none font-semibold">
