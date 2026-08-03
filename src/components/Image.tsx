@@ -29,12 +29,7 @@ export default function Image({
 
     return (
         <div
-            className={className}
-            style={{
-                position: "relative",
-                overflow: "hidden",
-                ...style
-            }} >
+            className={className} >
 
         {!loaded &&
             (placeholder ?? (

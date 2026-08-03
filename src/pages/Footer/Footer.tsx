@@ -1,116 +1,31 @@
 "use client";
 
-import { NavLink } from "react-router-dom";
-import { motion } from "motion/react";
-import { Button } from "@/components";
-
-import startHereSpark from "@/assets/startHereSpark.svg";
+import { 
+    WeSpeakHumanJumbotron,
+    Social
+} from "./";
 
 export default function Footer() {
 
-    const items = [
-        {
-            name: "Services",
-            path: "/services",
-        },
-        {
-            name: "Let's Start Here",
-            path: "/lets-start-here",
-        }
-    ];
-
-    const variants = {
-        hidden: {
-            opacity: 0,
-            y: -20
-        },
-        visible: (index: number) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: index * 0.1,
-                duration: 0.4
-            },
-        }),
-    };
-
-    const animation = {
-        whileTap: { scale: 1.04 },
-        transition: {
-            type: "spring" as const,
-            stiffness: 300,
-            damping: 10
-        },
-    };
-
     return (
         <>
-            <div className="max-w-5xl mx-auto p-4 mb-30">
+            <div className="max-w-5xl mx-auto p-4 mb-20 sm:mb-0 vstack gap-15">
                 
+                <WeSpeakHumanJumbotron />
+
                 {/*Header*/}
-                <div className="flex justify-between mb-28">
+                <div className="flex justify-between">
                         
-                    <div>
-                        <p className="text-xl font-semibold">
-                           The Spark Info-Tech Enterprise 
-                        </p>
-                        <span className="text-sm text-[#6E7884] font-normal">
-                            lorem ipsum dolor sit amet consecteur
-                        </span>
-                    </div>
-
-                    <ul className="vstack gap-4 text-end sm:text-[16px] text-sm">
-                        {items.map((item, index) => (
-                            <motion.li
-                                key={item.name}
-                                variants={variants}
-                                initial="hidden"
-                                animate="visible"
-                                {...animation}
-                                custom={index}>
-                                <NavLink to={item.path}>
-                                    {item.name}
-                                </NavLink>
-                            </motion.li>
-                        ))}
-                        <li>
-                            <Button variant="ghost" 
-                                className="hover:bg-gray-0 h-0 p-0 font-normal sm:text-[16px] text-sm"
-                                onClick={() => {
-                                    document.querySelector(".catalogueBtn")?.dispatchEvent(
-                                        new MouseEvent("click", { bubbles: true })
-                                    );
-                                }}>
-                                Catalogue
-                            </Button>
-                        </li>
-                    </ul>
-
+                                        
+                    
                 </div>
 
-                {/*Footer*/}
+                {/*Bottom*/}
+                <Social />
 
-                <div>
-                    <img
-                        src={startHereSpark}
-                        alt="Spark vector"
-                        loading="lazy"
-                        fetchPriority="high"
-                        decoding="sync"
-                        className="w-full object-cover"/>
-
-                    <ul className="flex md:flex-row flex-col justify-between text-sm font-normal">
-                        <li>
-                            ©2026 The Spark Info-Tech Enterprise. All rights reserved.
-                        </li>
-                        <li>
-                            Terms & Conditions
-                        </li>
-                        <li>
-                            Privacy Policy
-                        </li>
-                    </ul>
-                </div>
+                <p className="text-xs font-normal">
+                    @2026 The Spark Info-Tech Enterprise. All rights reserved.
+                </p>
 
             </div>
         </>

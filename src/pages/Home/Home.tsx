@@ -1,4 +1,4 @@
-import { Seo, StructuredData, ScrollToTop } from "@/components";
+import { Seo, StructuredData, ScrollToTop, Image } from "@/components";
 import { organizationSchema } from "@/config";
 
 import { Title, 
@@ -19,20 +19,15 @@ import dashboardBg from "@/assets/dashboardBg.webp";
 		        
 		      	<StructuredData data={organizationSchema} />
 
-		      	<div className="flex flex-col vstack my-10 lg:px-8 gap-15">
+		      	<div className="flex flex-col vstack my-10 gap-15">
 
 		      		<ScrollToTop />
 		      		
 		      		<div className="vstack gap-15">
-			            <img
+			            <Image
 			                src={dashboardBg}
 			                alt="dashboard background"
-			                fetchPriority="high"
-			                decoding="sync"
-			                className="absolute inset-0 w-full h-full object-cover object-center -z-10"
-			            	onContextMenu={(e) => e.preventDefault()}
-    						draggable={false}/>
-
+			                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 			            <Title />
 		      			<AboutUsContent />
 	            	</div>

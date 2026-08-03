@@ -3,6 +3,8 @@
 import { AiOutlineMessage } from "react-icons/ai";
 import weSpeakHuman from "@/assets/startHereWeSpeakHuman.webp";
 
+import { Image } from "@/components";
+
 export default function WeSpeakHuman() 
 {
 	const items = [
@@ -39,11 +41,10 @@ export default function WeSpeakHuman()
 			  
 			  	{/* Image */}
 			  	<div className="rounded-4xl overflow-hidden shadow-sm">
-			    	<img
+			    	<Image
 			      		src={weSpeakHuman}
 			      		alt="We Speak Human"
-			      		className="w-full h-full object-cover"
-			      		onContextMenu={(e) => e.preventDefault()}/>
+			      		className="w-full h-full object-cover"/>
 			  	</div>
 
 			  	{/* Content */}

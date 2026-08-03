@@ -1,6 +1,6 @@
 "use client";
 
-import { IconGradient } from "@/components";
+import { IconGradient, Image } from "@/components";
 import { AiOutlineMessage } from "react-icons/ai";
 
 import startHereWellExplain from "@/assets/startHereWellExplain.webp";
@@ -44,14 +44,10 @@ export default function TechnologyJumbotron() {
                     </li>
 
                     <li className="flex items-center justify-center">
-                        <img
+                        <Image
                             src={startHereWellExplain}
                             alt="We'll explain"
-                            loading="lazy"
-                            fetchPriority="high"
-                            decoding="sync"
-                            className="w-full max-w-[360px] object-cover"
-                            onContextMenu={(e) => e.preventDefault()}/>
+                            className="w-full max-w-[360px] object-cover"/>
                     </li>
                     
                 </ul>
