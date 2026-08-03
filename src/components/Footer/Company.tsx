@@ -3,6 +3,8 @@ import { Button, SiteLogo } from "@/components";
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
 
+import { Text } from "@/components";
+
 export default function Company() {
 
 	return <>
@@ -17,7 +19,7 @@ export default function Company() {
 			</div>
 
 			<div className="border border-[#E9D5FF] rounded-[24px] 
-                shadow-[0px_12px_40px_rgba(143,19,149,0.08)] p-[20px] flex lg:hidden">
+                shadow-[0px_12px_40px_rgba(143,19,149,0.08)] p-[20px] block lg:hidden">
 				<div className="flex items-center justify-between gap-3">
 	                <div
 	                    className={`flex items-center justify-center h-10 w-10 rounded-full bg-[#FAF5FF]`}>
@@ -25,10 +27,10 @@ export default function Company() {
 	                </div>
 
 	                <div className="flex flex-col gap-0">
-	                    <p className="font-semibold text-sm">Need Help?</p>
-	                    <span className="font-tiny text-[12px] text-[#6E7884]">
+	                    <Text variant="caption">Need Help?</Text>
+	                    <Text variant="label" color="muted">
 	                        We’re here for you
-	                    </span>
+	                    </Text>
 	                </div>
 
 	                <div>

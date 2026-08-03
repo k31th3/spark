@@ -1,5 +1,5 @@
 
-import { Button } from "@/components";
+import { Button, Text } from "@/components";
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { FiMail } from "react-icons/fi";
 import { MdOutlinePhone } from "react-icons/md";
@@ -28,7 +28,7 @@ export default function NeedHelp() {
 
     return (
         <>
-            <div className="border border-[#E9D5FF] rounded-[52px] 
+            <div className="border border-[#E9D5FF] rounded-[24px] 
                 shadow-[0px_12px_40px_rgba(143,19,149,0.08)] p-[20px]">
 
                 <div className="vstack gap-[32px]">
@@ -40,10 +40,10 @@ export default function NeedHelp() {
                         </div>
 
                         <div className="flex flex-col gap-0">
-                            <p className="font-semibold text-sm">Need Help?</p>
-                            <span className="font-tiny text-[12px] text-[#6E7884]">
+                            <Text variant="caption">Need Help?</Text>
+                            <Text variant="label" color="muted">
                                 We’re here for you
-                            </span>
+                            </Text>
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@ export default function NeedHelp() {
                                         href={item.href}
                                         target={item.href.startsWith("http") ? "_blank" : undefined}
                                         rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                                        className="text-[11px] text-[#6E7884] hover:text-[#A855F7] transition-colors">
+                                        className="text-[11px] text-muted hover:text-primary transition-colors">
                                         {item.value}
                                     </a>
                                     </div>

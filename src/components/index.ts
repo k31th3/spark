@@ -9,6 +9,7 @@ export { default as SiteLogo } from "./SiteLogo";
 export { default as Button } from "./Button";
 export { default as ScrollToTop } from "./ScrollToTop";
 export { default as Image } from "./Image";
+export { default as Text } from "./Text";
 
 // for icon gradient
 export { default as IconGradient } from "./IconGradient";

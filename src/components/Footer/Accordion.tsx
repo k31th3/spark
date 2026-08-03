@@ -1,19 +1,20 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa6";
 
 import { PiBuildingsDuotone } from "react-icons/pi";
 import { MdDesignServices } from "react-icons/md";
 import { GrResources } from "react-icons/gr";
 
+import { Text } from "@/components";
+
 	const menus = [
 	  	{
 	    	title: "Company",
 	    	links: [
 	      		{  label: "About Us", href: "/about-us" },
-			    {  label: "Our Story", href: "/" },
+			    {  label: "Our Story", href: "/lets-start-here" },
 			    {  label: "Careers", href: "/careers" },
 			    {  label: "Contact Us", href: "/contact-us" }
 	    	],
@@ -57,22 +58,23 @@ export default function Accordion() {
 			<div className="hidden md:grid md:grid-cols-3 gap-10 px-5">
 		        {menus.map((menu) => (
 		        <div key={`accordion${menu.title}`}>
-		            <h3 className="font-bold mb-5">{menu.title}</h3>
+		            <Text variant="h4" className="mb-5">{menu.title}</Text>
 
 		            <ul className="space-y-3">
 		              	{menu.links.map((link) => (
 						    <li key={`accordion${link.label}`}>
-						      	<NavLink
-						        	to={link.href}
+						      	<a
+						        	href={link.href}
 						        	aria-label={link.label}
-						        	className="flex items-center gap-4 text-[11px] text-[#6E7884] 
-						        	hover:text-[#A855F7] transition-colors">
-						        	<span>{link.label}</span>
+						        	className="flex items-center gap-4 text-[11px] text-muted 
+						        	hover:text-primary transition-colors">
+
+						        	<Text variant="caption" className="text-[11px]">{link.label}</Text>
 
 						        	{menu.enableIcon && (
 						          		<FaChevronRight size={8} />
 						        	)}
-						      	</NavLink>
+						      	</a>
 						    </li>
 						))}
 		            </ul>
@@ -92,7 +94,7 @@ export default function Accordion() {
 				        	
 				        	<div>
 				        		<menu.icon />
-				        		<span className="font-semibold text-[14px]">{menu.title}</span>
+				        		<Text variant="h6">{menu.title}</Text>
 				        	</div>
 
 				        	<motion.div
@@ -118,12 +120,12 @@ export default function Accordion() {
 					                  	animate={{ opacity: 1, y: 0 }}
 					                  	exit={{ opacity: 0, y: -8 }}
 					                  	transition={{ duration: 0.2 }}>
-					                  	<NavLink
-					                    	to={link.href}
-					                    	className="flex items-center justify-between text-[13px] 
-					                    	text-[#6E7884] hover:text-[#A855F7]">
-					                    	<span>{link.label}</span>
-					                  	</NavLink>
+					                  	<a
+					                    	href={link.href}
+					                    	className="flex items-center justify-between text-[12px] 
+					                    	text-muted hover:text-primary">
+					                    	<Text variant="caption">{link.label}</Text>
+					                  	</a>
 					                </motion.li>
 					              	))}
 					            </ul>

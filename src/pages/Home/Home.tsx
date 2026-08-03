@@ -1,4 +1,4 @@
-import { Seo, StructuredData, ScrollToTop, Image } from "@/components";
+import { Seo, StructuredData, Image } from "@/components";
 import { organizationSchema } from "@/config";
 
 import { Title, 
@@ -20,8 +20,6 @@ import dashboardBg from "@/assets/dashboardBg.webp";
 		      	<StructuredData data={organizationSchema} />
 
 		      	<div className="flex flex-col vstack my-10 gap-15">
-
-		      		<ScrollToTop />
 		      		
 		      		<div className="vstack gap-15">
 			            <Image

@@ -1,7 +1,8 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { Navigation, IconGradient, Footer } from "@/components";
+import { Navigation, IconGradient, 
+         ScrollToTop, Footer } from "@/components";
 
 import useOnlineStatus from "@/hooks/useOnlineStatus";
 import NoInternet from "@/pages/NoInternet";
@@ -35,6 +36,7 @@ function AppRoutes() {
                     element={
                         <>
                             <IconGradient />
+                            <ScrollToTop />
                             <div>
                                 <header className="fixed top-0 left-0 right-0 z-50 hidden md:flex justify-center py-5">
                                     <Navigation />
