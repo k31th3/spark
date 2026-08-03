@@ -12,9 +12,12 @@ export default defineConfig({
     tailwindcss(),
 
     VitePWA({
-      registerType: "autoUpdate",
+      registerType: "prompt",
 
-      includeAssets: ["**/*"],
+      includeAssets: [
+        "favicon.ico",
+        "apple-touch-icon.png",
+        "noInternet.webp"],
 
       workbox: {
         skipWaiting: true,
