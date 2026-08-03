@@ -5,8 +5,6 @@ import { PiLightbulbFilamentDuotone } from "react-icons/pi";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { PiSparkleDuotone } from "react-icons/pi";
 
-import { IconGradient } from "@/components";
-
 import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
 import DashboardCaptions from "@/assets/dashboardPlayVid.en.vtt";
 
@@ -57,7 +55,6 @@ export default function AboutUsContent()
                 </div>
 
 		        <div className="rounded-b-4xl h-[100px] bg-gradient-to-r from-[#FFEBFD] to-[#FFE4D3] p-[16px]">
-                    <IconGradient />
 		        	<ul className="hstack gap-3 justify-around items-center h-full">
 					  	{items.map(({ icon: Icon, label }) => (
 					    	<li

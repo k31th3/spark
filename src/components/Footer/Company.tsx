@@ -1,5 +1,5 @@
 
-import { Button, SiteLogo, IconGradient } from "@/components";
+import { Button, SiteLogo } from "@/components";
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
 
@@ -21,7 +21,6 @@ export default function Company() {
 				<div className="flex items-center justify-between gap-3">
 	                <div
 	                    className={`flex items-center justify-center h-10 w-10 rounded-full bg-[#FAF5FF]`}>
-	                    <IconGradient />
 	                    <PiHeadsetDuotone size={20} style={{ fill: "url(#iconGradient)" }} />
 	                </div>
 

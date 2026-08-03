@@ -56,12 +56,12 @@ export default function Accordion() {
 
 			<div className="hidden md:grid md:grid-cols-3 gap-10 px-5">
 		        {menus.map((menu) => (
-		        <div key={menu.title}>
+		        <div key={`accordion${menu.title}`}>
 		            <h3 className="font-bold mb-5">{menu.title}</h3>
 
 		            <ul className="space-y-3">
 		              	{menu.links.map((link) => (
-						    <li key={link.href}>
+						    <li key={`accordion${link.label}`}>
 						      	<NavLink
 						        	to={link.href}
 						        	aria-label={link.label}

@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaArrowUp } from "react-icons/fa6";
 
-import { Button, IconGradient } from "@/components";
+import { Button } from "@/components";
 
 export default function Social() {
 
@@ -62,7 +62,6 @@ export default function Social() {
                                 href={href}
                                 target="_blank"
                                 rel="noopener noreferrer">
-                                <IconGradient />
                                 <Icon
                                     size={13}
                                     style={{ fill: "url(#iconGradient)" }}/>

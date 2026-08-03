@@ -1,6 +1,6 @@
 "use client";
 
-import { IconGradient, Image } from "@/components";
+import { Image } from "@/components";
 import { AiOutlineMessage } from "react-icons/ai";
 
 import startHereWellExplain from "@/assets/startHereWellExplain.webp";
@@ -18,7 +18,6 @@ export default function TechnologyJumbotron() {
                         <div className="hstack gap-2">
                             <div className="flex h-8 w-8 rounded-full bg-gradient p-[1px] mr-[4px] my-[4px]">
                                 <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
-                                    <IconGradient />
                                     <AiOutlineMessage
                                         size={16}
                                         style={{ fill: "url(#iconGradient)" }}/>

@@ -1,5 +1,5 @@
 
-import { Button, IconGradient } from "@/components";
+import { Button } from "@/components";
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { FiMail } from "react-icons/fi";
 import { MdOutlinePhone } from "react-icons/md";
@@ -36,7 +36,6 @@ export default function NeedHelp() {
                     <div className="hstack items-center gap-3">
                         <div
                             className={`flex items-center justify-center h-10 w-10 rounded-full bg-[#FAF5FF]`}>
-                            <IconGradient />
                             <PiHeadsetDuotone size={20} style={{ fill: "url(#iconGradient)" }} />
                         </div>
 
