@@ -1,20 +1,24 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { Navigation } from "@/components";
+import { Navigation, Footer } from "@/components";
 
 import useOnlineStatus from "@/hooks/useOnlineStatus";
 import NoInternet from "@/pages/NoInternet";
 
 import { SuspenseLoader, DefaultQueryWrapper } from "./";
 
-import Footer from "@/pages/Footer";
-
-
 const Home = lazy(() => import("@/pages/Home"));
 const Services = lazy(() => import("@/pages/Services"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
+
+const Careers = lazy(() => import("@/pages/Careers"));
+const Faq = lazy(() => import("@/pages/Faq"));
+const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+
+
 const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
+
 
 function AppRoutes() {
     const isOnline = useOnlineStatus();
@@ -52,6 +56,10 @@ function AppRoutes() {
                     <Route path="/home" element={<Home />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/lets-start-here" element={<StartHere />} />
+                    <Route path="/careers" element={<Careers />} />
+                    <Route path="/frequently-asked-questions" element={<Faq />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
                 </Route>
 
                 {/* Outside the layout */}

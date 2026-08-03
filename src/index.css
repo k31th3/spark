@@ -5,6 +5,10 @@
   --breakpoint-xs: 345px;
 }
 
+* {
+  scroll-behavior: auto !important;
+}
+
 html, body {
   overflow-x: hidden;
 }

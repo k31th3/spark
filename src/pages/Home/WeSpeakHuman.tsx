@@ -3,7 +3,7 @@
 import { AiOutlineMessage } from "react-icons/ai";
 import weSpeakHuman from "@/assets/startHereWeSpeakHuman.webp";
 
-import { Image } from "@/components";
+import { Button, Image } from "@/components";
 
 export default function WeSpeakHuman() 
 {
@@ -50,6 +50,12 @@ export default function WeSpeakHuman()
 			  	{/* Content */}
 			  	<div className="flex flex-col gap-6">
 			    	
+			    	<div>	
+				  		<Button variant="secondary" size="sm" className="disabled:opacity-100" disabled={true}>
+		      				We Speak Human
+		      			</Button>
+		      		</div>
+
 			    	<p className="text-2xl font-semibold leading-tight">
 			      		Technology should feel like talking to your smartest friend,
 			      		not reading an instruction manual.
