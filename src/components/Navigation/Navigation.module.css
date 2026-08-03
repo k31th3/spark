@@ -6,16 +6,17 @@
   @apply
     flex
     md:w-fit
-    w-full
+    w-[70%]
     items-center
     justify-center
-    p-[8px]
+    
+    md:p-[8px]
+    p-4
+
     gap-1
     md:rounded-full 
-		bg-white
-		shadow-[10px_-4px_10px_rgba(0,27,92,0.08)]
+		md:bg-white
     md:shadow-[0px_12px_40px_rgba(0,27,92,0.08)];
-
 }
 
 .navLink {
@@ -62,18 +63,15 @@
 		flex
 		w-full
 		max-w-xs
-		sm:max-w-sm
 		md:max-w-md
 
-		min-h-[45px]
+		min-h-[44px]
 		items-center
 		justify-center
 		gap-2
 
-		px-4
-		py-2.5
-		sm:px-5
-		sm:py-3
+		p-4
+		md:px-6
 
 		text-xs
 		sm:text-sm

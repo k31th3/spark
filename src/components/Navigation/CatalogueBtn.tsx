@@ -57,7 +57,7 @@ export default function CatalogueButton() {
                 className={`${style.catalogueBtn} catalogueBtn`}
                 onClick={handleOpen}>
                 <VscDownload size={16} />
-                <span>Catalogue</span>
+                <span className="hidden md:flex">Catalogue</span>
             </motion.button>
 
             <Suspense fallback={null}>

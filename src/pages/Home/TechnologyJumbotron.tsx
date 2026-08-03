@@ -5,6 +5,8 @@ import { AiOutlineMessage } from "react-icons/ai";
 
 import startHereWellExplain from "@/assets/startHereWellExplain.webp";
 
+import { Text } from "@/components";
+
 export default function TechnologyJumbotron() {
 
     return (
@@ -25,18 +27,18 @@ export default function TechnologyJumbotron() {
                             </div>
 
                             <div className="flex flex-col gap-3">
-                                <p className="text-xl font-semibold leading-tight">
+                                <Text variant="h6">
                                     Technology Shouldn't Be
                                     <br />
-                                Confusing
-                                </p>
+                                    Confusing
+                                </Text>
 
                                 <div className="flex flex-col gap-2 text-xs">
-                                    <span>
+                                    <Text variant="caption">
                                         If you don't know what RAM, DNS, VLAN, or RAID means...
-                                    </span>
-                                    <span>Good.</span>
-                                    <span>That's exactly why we're here.</span>
+                                    <br />
+                                    Good.<br />
+                                    That's exactly why we're here.</Text>
                                 </div>
                             </div>
                         </div>

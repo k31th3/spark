@@ -23,13 +23,15 @@ export default function Navigation() {
     return (
         <>    
             <div className="md:container md:mx-auto w-full md:py-4">
-                <div className="absolute w-[100%] h-[100%] top-0 left-0 right-0 z-10 bg-white"  style={{
+                {/*<div className="absolute w-[100%] h-[100%] top-0 left-0 right-0 z-10 sm:bg-white"  style={{
                     maskImage: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))"
                 }}>
-                </div>
+                </div>*/}
                 <div className="flex items-center justify-center z-100 relative">
                     <ul className={style.unOrderList}>
 
+                        <div className="flex w-full items-center md:bg-transparent bg-white md:p-0 p-2 rounded-full shadow-sm md:shadow-none">
+                        
                         {/* Logo */}
                         <li className="shrink-0 px-2">
                             <NavLink to="/" aria-label="Spark Info-Tech Enterprise | Homepage">
@@ -75,9 +77,6 @@ export default function Navigation() {
                                                     {/* Mobile */}
                                                     <div className="flex md:hidden flex-col items-center justify-center gap-1">
                                                         {Icon && <Icon size={24} />}
-                                                        <span className="max-sm:hidden text-[10px] text-center">
-                                                            {title}
-                                                        </span>
                                                     </div>
                                                 </>
                                             )}
@@ -86,6 +85,7 @@ export default function Navigation() {
                                 </li>
                             );
                         })}
+                        </div>
 
                         {/* Catalogue */}
                         <li className="shrink-0 px-2">

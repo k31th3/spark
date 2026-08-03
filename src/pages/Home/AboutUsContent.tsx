@@ -8,6 +8,8 @@ import { PiSparkleDuotone } from "react-icons/pi";
 import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
 import DashboardCaptions from "@/assets/dashboardPlayVid.en.vtt";
 
+import { Text } from "@/components";
+
 export default function AboutUsContent()
 {
 	const items = [
@@ -61,7 +63,7 @@ export default function AboutUsContent()
 					      		key={label}
 					      		className="flex flex-col items-center sm:text-[14px] text-[12px] gap-2">
 					      		<Icon size={28} style={{ fill: "url(#iconGradient)" }} />
-					      		<span className="font-semibold">{label}</span>
+					      		<Text variant="caption" className="font-semibold">{label}</Text>
 					    	</li>
 					  	))}
 					</ul>
