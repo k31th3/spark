@@ -16,7 +16,6 @@ export default function Image({
     fetchPriority = "high",
     placeholder,
     onContextMenu,
-    className,
     style,
     ...props
 }: ImageProps) {
@@ -28,8 +27,7 @@ export default function Image({
     }, [src]);
 
     return (
-        <div
-            className={className} >
+        <div>
 
         {!loaded &&
             (placeholder ?? (
@@ -45,7 +43,6 @@ export default function Image({
         ))}
 
         <img
-            {...props}
             src={src}
             alt={alt}
             decoding={decoding}
@@ -58,10 +55,10 @@ export default function Image({
             onLoad={() => setLoaded(true)}
             onError={() => setLoaded(true)}
             style={{
-                width: "100%",
-                height: "100%",
-                display: loaded ? "block" : "none"
-            }} />
+                opacity: loaded ? 1 : 0,
+                transition: "opacity .2s ease"
+            }}
+            {...props} />
         </div>
     );
 }

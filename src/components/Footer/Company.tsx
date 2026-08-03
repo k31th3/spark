@@ -11,7 +11,7 @@ export default function Company() {
 
 			<div className="vstack gap-4">
 				<SiteLogo width={30} height={30}/>
-				<p className="font-semibold leading-none">
+				<p className="font-medium leading-none">
 					The Spark Info-Tech Enterprise
 				</p>
 			</div>

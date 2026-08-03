@@ -40,12 +40,15 @@ export default function WeSpeakHuman()
 	      	<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 			  
 			  	{/* Image */}
-			  	<div className="rounded-4xl overflow-hidden shadow-sm">
-			    	<Image
-			      		src={weSpeakHuman}
-			      		alt="We Speak Human"
-			      		className="w-full h-full object-cover"/>
-			  	</div>
+
+			  	<div className="flex flex-col">
+				  	<div className="rounded-4xl overflow-hidden">
+				    	<Image
+				      		src={weSpeakHuman}
+				      		alt="We Speak Human"
+				      		className="w-full h-full object-cover"/>
+				  	</div>
+				</div>
 
 			  	{/* Content */}
 			  	<div className="flex flex-col gap-6">
@@ -73,7 +76,7 @@ export default function WeSpeakHuman()
 							        </div>
 
 						        	<div className="flex flex-col gap-0">
-						          		<p className="font-semibold text-[20px]">{item.title}</p>
+						          		<p className="font-medium text-[20px]">{item.title}</p>
 						          		<span className="font-tiny text-[14px] text-[#6E7884]">
 						            		{item.subtitle}
 						          		</span>
