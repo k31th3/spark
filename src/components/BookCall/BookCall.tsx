@@ -2,7 +2,7 @@ import { motion, type HTMLMotionProps } from "motion/react";
 import { MdOutlineLocalPhone } from "react-icons/md";
 import type { ReactNode } from "react";
 
-import styles from "./BookCall.module.css";
+import style from "./BookCall.module.css";
 
 interface BookCallProps extends HTMLMotionProps<"button"> {
     children?: ReactNode;
@@ -23,7 +23,7 @@ export default function BookCall({
                 damping: 15
             }}
             aria-label="Book a call"
-            className={styles.BookCall}
+            className={style.BookCall}
             {...props}
         >
             {children ?? (
