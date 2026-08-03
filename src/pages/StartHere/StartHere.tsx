@@ -1,11 +1,6 @@
 import { Seo, StructuredData, ScrollToTop } from "@/components";
 import { organizationSchema } from "@/config";
 
-import { Title, 
-	AboutUsContent, TechnologyJumbotron, 
-	WeSpeakHuman, WeSpeakHumanJumbotron,
-	Footer } from "./";
-
 	function StartHere() 
 	{
 	  	return (
@@ -21,13 +16,6 @@ import { Title,
 
 		      		<ScrollToTop />
 		      		
-		      		<Title />
-		      		<AboutUsContent />
-		      		<TechnologyJumbotron />
-		      		<WeSpeakHuman />
-		      		<WeSpeakHumanJumbotron />
-		      		<Footer />
-
                 </div>
 		      	
 		    </>

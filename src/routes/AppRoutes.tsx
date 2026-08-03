@@ -8,6 +8,7 @@ import NoInternet from "@/pages/NoInternet";
 
 import { SuspenseLoader, DefaultQueryWrapper } from "./";
 
+const Home = lazy(() => import("@/pages/Home"));
 const Services = lazy(() => import("@/pages/Services"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
 const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
@@ -30,10 +31,10 @@ function AppRoutes() {
             <main className="max-w-5xl mx-auto p-4 pt-0 md:pt-30">
                 <Routes>
                     <Route element={<DefaultQueryWrapper />}>
-                        <Route path="/" element={<StartHere />} />
-                        <Route path="/home" element={<StartHere />} />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/home" element={<Home />} />
                         <Route path="/services" element={<Services />} />
-                        <Route path="/startHere" element={<StartHere />} />
+                        <Route path="/lets-start-here" element={<StartHere />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Route>
                 </Routes>

@@ -11,7 +11,6 @@ import dashboardBg from "@/assets/dashboardBg.webp";
 import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
 import DashboardCaptions from "@/assets/dashboardPlayVid.en.vtt";
 
-
 export default function AboutUsContent()
 {
 	const items = [

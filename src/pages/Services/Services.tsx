@@ -90,7 +90,7 @@ function Services() {
         <Seo
             title="GetSitGo | Spark Info-Tech Enterprise - Services"
             description="Hardware, Software, Security, and Application Services."
-            canonical="https://www.getsitgo.com/services?tab=0"/>
+            canonical="https://www.getsitgo.com/services"/>
 
         <StructuredData data={""} />
 
