@@ -15,9 +15,18 @@ export default defineConfig({
       registerType: "prompt",
 
       includeAssets: [
+        "site.webmanifest",
+        "sitemap.xml",
         "favicon.ico",
+        "favicon-96x96.png",
+        "favicon.svg",
         "apple-touch-icon.png",
-        "noInternet.webp"],
+        "web-app-manifest-192x192.png",
+        "web-app-manifest-512x512.png",
+        "src/assets/noInternet.webp",
+        "src/assets/errorBoundary.webp",
+        "src/assets/errorMaintenance.webp"
+      ],
 
       workbox: {
         skipWaiting: true,
