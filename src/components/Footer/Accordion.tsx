@@ -58,7 +58,7 @@ export default function Accordion() {
 			<div className="hidden md:grid md:grid-cols-3 gap-10 px-5">
 		        {menus.map((menu) => (
 		        <div key={`accordion${menu.title}`}>
-		            <Text variant="h4" className="mb-5">{menu.title}</Text>
+		            <Text variant="h1" className="text-xl sm:text-xl lg:text-xl mb-5">{menu.title}</Text>
 
 		            <ul className="space-y-3">
 		              	{menu.links.map((link) => (
@@ -69,7 +69,7 @@ export default function Accordion() {
 						        	className="flex items-center gap-4 text-[11px] text-muted 
 						        	hover:text-primary transition-colors">
 
-						        	<Text variant="caption" className="text-[11px]">{link.label}</Text>
+						        	<Text variant="h2" className="sm:text-[11px] text-[11px] font-normal">{link.label}</Text>
 
 						        	{menu.enableIcon && (
 						          		<FaChevronRight size={8} />
@@ -94,7 +94,7 @@ export default function Accordion() {
 				        	
 				        	<div>
 				        		<menu.icon />
-				        		<Text variant="h6">{menu.title}</Text>
+				        		<Text variant="h1" className="text-lg sm:text-lg lg:text-lg">{menu.title}</Text>
 				        	</div>
 
 				        	<motion.div
@@ -124,7 +124,7 @@ export default function Accordion() {
 					                    	href={link.href}
 					                    	className="flex items-center justify-between text-[12px] 
 					                    	text-muted hover:text-primary">
-					                    	<Text variant="caption">{link.label}</Text>
+					                    	<Text variant="h2" className="sm:text-[12px] text-[12px] font-normal">{link.label}</Text>
 					                  	</a>
 					                </motion.li>
 					              	))}

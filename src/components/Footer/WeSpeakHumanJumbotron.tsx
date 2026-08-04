@@ -1,7 +1,7 @@
 "use client";
 
 import { FiArrowRight } from "react-icons/fi";
-import { Button } from "@/components";
+import { Button, Text } from "@/components";
 
 import startHereWeSpeakHumanJumboron from "@/assets/startHereWeSpeakHumanJumboron.png";
 
@@ -18,19 +18,19 @@ export default function WeSpeakHumanJumbotron() {
                             <div className="vstack gap-6 z-1">
                                 
                                 <div>
-                                    <p className="bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)]
+                                    <Text variant="h2" className="bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)]
                                         bg-clip-text text-transparent 
-                                        text-[24px] mb-3 leading-none font-semibold">
+                                        lg:text-[24px] mb-3">
                                         Technology should be your
                                         <br />
                                         teammate.
-                                    </p>
-                                    <p className="text-[#000000A3] text-sm font-bold">
+                                    </Text>
+                                    <Text variant="caption" className="text-[#000000A3] text-sm font-medium">
                                         So... SIT with us. Tell us what you're building.
                                         <br />
                                         Because every great business starts with 
                                         a <span className="text-black">SPARK!</span>
-                                    </p>
+                                    </Text>
                                 </div>
 
                                 <div>

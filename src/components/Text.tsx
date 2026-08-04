@@ -1,4 +1,5 @@
 import type { ElementType, ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 type TextVariant =
     | "h1"
@@ -84,7 +85,11 @@ export default function Text({
 
     return (
         <Component
-            className={`${variants[variant]} ${colors[color]} ${className}`}>
+            className={cn(
+                    variants[variant],
+                    colors[color],
+                    className
+                )}>
             {children}
         </Component>
     );

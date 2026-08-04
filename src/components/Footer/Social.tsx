@@ -42,7 +42,8 @@ export default function Social() {
     return (
         <>
 
-            <div className="flex items-center justify-between py-3 border-y-1 border-[#E7E8EA]"
+            <div className="flex sm:flex-row flex-col gap-4
+                items-center justify-between py-3 border-y-1 border-[#E7E8EA]"
                  id="socialSection">
 
                 {/*left*/}

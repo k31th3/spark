@@ -30,7 +30,8 @@ export default function Navigation() {
                 <div className="flex items-center justify-center z-100 relative">
                     <ul className={style.unOrderList}>
 
-                        <div className="flex w-full items-center md:bg-transparent bg-white md:p-0 p-2 rounded-full shadow-sm md:shadow-none">
+                        <div className="flex w-full items-center md:bg-transparent 
+                            bg-white md:p-0 p-2 rounded-full shadow-sm md:shadow-none">
                         
                         {/* Logo */}
                         <li className="shrink-0 px-2">
