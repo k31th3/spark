@@ -9,7 +9,7 @@ import { Seo, StructuredData,
 		Text, Image } from "@/components";
 
 import { organizationSchema } from "@/config";
-import { IoSearch } from "react-icons/io5";
+import { IoSearch, IoClose } from "react-icons/io5";
 
 import FaqWebp from "@/assets/faq.webp"
 import dashboardBg from "@/assets/dashboardBg.webp";
@@ -28,7 +28,8 @@ function Faq() {
             .map((menu) => ({
             ...menu,
             frequently: menu.frequently.filter((item) =>
-                item.question.toLowerCase().includes(search.toLowerCase())
+                item.question.toLowerCase().includes(search.toLowerCase()) ||
+                item.answer.toLowerCase().includes(search.toLowerCase())
             ),
             }))
             .filter((menu) => menu.frequently.length > 0);
@@ -42,21 +43,21 @@ function Faq() {
     }, []);
 
     useEffect(() => {
-        if (!search) {
+        if (!search.trim()) {
             setOpen(null);
             return;
         }
 
-        const firstResult = filteredQuestions[0]?.frequently[0];
+        const firstMenu = filteredQuestions[0];
+        const firstItem = firstMenu?.frequently[0];
 
-        if (firstResult) {
-            const id = `${filteredQuestions[0].title}-${firstResult.question}`;
-
-            setTimeout(() => {
-                setOpen(id);
-            }, 50);
+        if (!firstItem) {
+            setOpen(null);
+            return;
         }
-    }, [search, filteredQuestions]);
+
+        setOpen(`${firstMenu.title}-${firstItem.question}`);
+    }, [search]);
 
     const highlightText = (text: string) => {
         if (!search) return text;
@@ -74,23 +75,10 @@ function Faq() {
         );
     };
 
-    useEffect(() => {
-        if (!open) return;
-
-        const timer = setTimeout(() => {
-            const element = faqRefs.current[open];
-
-            if (element) {
-                element.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                });
-            }
-        }, 500);
-
-        return () => clearTimeout(timer);
-
-    }, [open]);
+    // const totalResults = filteredQuestions.reduce(
+    //     (total, menu) => total + menu.frequently.length,
+    //     0
+    // );
 
     useEffect(() => {
         faqRefs.current = {};
@@ -146,6 +134,7 @@ function Faq() {
                         id="search"
                         name="search"
                         type="text"
+                        autoComplete="off"
                         value={search}
                         onChange={(e) => {
                             const value = e.target.value;
@@ -160,12 +149,45 @@ function Faq() {
                                 setSearchParams({});
                             }
                         }}
-                        placeholder="Search your question..."
+                        placeholder="Looking for something?"
                         className="block min-w-0 grow py-3 pr-3 pl-2 text-base focus:outline-none text-sm bg-white"/>
                     <div className="grid shrink-0 grid-cols-1 focus-within:relative">
-                        <IoSearch
-                            aria-hidden="true"
-                            className="pointer-events-none col-start-1 row-start-1 mr-4 self-center justify-self-end text-primary"/>
+                        <AnimatePresence mode="wait" initial={false}>
+                            {search ? (
+                                <motion.button
+                                    key="close"
+                                    type="button"
+                                    aria-label="Clear search"
+                                    onClick={() => {
+                                        setSearch("");
+                                        setOpen(null);
+                                        setSearchParams({});
+                                    }}
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.5 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="rounded-full cursor-pointer">
+                                    <IoClose 
+                                        aria-hidden="true"
+                                        className="mr-4 text-primary"
+                                        size={18}/>
+                                </motion.button>
+                            ) : (
+                                <motion.div
+                                    key="search"
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.5 }}
+                                    transition={{ duration: 0.2 }}>
+                                    <IoSearch
+                                        aria-hidden="true"
+                                        className="mr-4 text-primary"
+                                        size={18}
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
@@ -180,8 +202,6 @@ function Faq() {
                             </Text>
                         </div>
                     ) : (
-
-
                     filteredQuestions.map((menu) => (
                     <div key={menu.title}>
                         <Text variant="h1" className="text-lg sm:text-lg lg:text-lg mb-4">{menu.title}</Text>
@@ -197,6 +217,8 @@ function Faq() {
                                     onClick={() => {
                                         setOpen(open === id ? null : id);
                                     }}
+                                    aria-expanded={open === id}
+                                    aria-controls={`faq-${id}`}
                                     className={`p-4 cursor-pointer border-1 w-full shadow-sm border-[#E7E8EA]
                                         ${index === 0 ? "rounded-t-xl" : ""}
                                         ${index === menu.frequently.length - 1 ? "rounded-b-xl" : ""}
@@ -224,7 +246,7 @@ function Faq() {
                                             transition={{ duration: 0.3 }}
                                             className="overflow-hidden px-6 py-4 text-start">
 
-                                            <Text variant="label" className="font-light">{item.answer}</Text>
+                                            <Text variant="label" className="font-light">{highlightText(item.answer)}</Text>
 
                                         </motion.div>
                                         )}
@@ -237,6 +259,13 @@ function Faq() {
                     )))
                 }
                 </div>
+                {/*{search && (
+                    <div className="text-end">
+                    <Text variant="caption">
+                        {totalResults} results found
+                    </Text>
+                    </div>
+                )}*/}
             </div>
 		</div>
 	</>;
