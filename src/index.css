@@ -3,6 +3,14 @@
 @theme {
   --default-font-family: "Inter Variable", sans-serif;
   --breakpoint-xs: 345px;
+
+
+  --color-muted: #6E7884;
+  --color-primary: #A855F7;
+}
+
+* {
+  scroll-behavior: auto !important;
 }
 
 html, body {

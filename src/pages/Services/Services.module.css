@@ -2,8 +2,6 @@
 
 .sideBarDesktop {
    @apply
-    fixed
-    h-screen
     flex-col
     gap-[16px];
 }

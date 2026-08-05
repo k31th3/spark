@@ -1,8 +1,7 @@
 
-import { FaHeadset } from "react-icons/fa6";
+import { PiHeadsetDuotone } from "react-icons/pi";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { RiPokerHeartsFill } from "react-icons/ri";
-import { IconGradient } from "@/components";
 
 import errorBoundary from "@/assets/errorBoundary.webp";
 
@@ -73,9 +72,8 @@ class ErrorBoundary extends Component<Props, State> {
                             {/*footer*/}
                             <div className="w-[80%] mx-auto">
                                 <div className="hstack gap-4 items-center">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-pink-50">
-                                        <IconGradient />
-                                        <FaHeadset size={24} style={{ fill: "url(#iconGradient)" }} />
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FAF5FF]">
+                                        <PiHeadsetDuotone size={24} style={{ fill: "url(#iconGradient)" }} />
                                     </div>
                                     <div className="vstack gap-0">
                                         <ul>

@@ -90,11 +90,11 @@ function Services() {
         <Seo
             title="GetSitGo | Spark Info-Tech Enterprise - Services"
             description="Hardware, Software, Security, and Application Services."
-            canonical="https://www.getsitgo.com/services?tab=0"/>
+            canonical="https://www.getsitgo.com/services"/>
 
         <StructuredData data={""} />
 
-        <section className="relative flex flex-col md:flex-row">
+        <section className="relative flex flex-col md:flex-row gap-6">
 
             {/* Desktop Sidebar */}
             <nav
@@ -120,9 +120,9 @@ function Services() {
             </motion.nav>
 
             {/* Content */}
-            <main className="w-full md:pl-[220px] min-w-0 py-3 pb-20 lg:pb-3 flex flex-col gap-5">
+            <main className="w-full min-w-0 py-3 flex flex-col gap-5">
                 <Swiper
-                    className="w-full h-auto"
+                    className="w-full"
                     autoHeight={true}
                     modules={[EffectFade]}
                     effect="fade"

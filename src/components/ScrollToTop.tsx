@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { FaChevronUp } from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa6";
+
 
 import { Button } from "@/components";
 
@@ -13,22 +14,31 @@ function ScrollToTop() {
     useEffect(() => {
         let timer: ReturnType<typeof setTimeout>;
 
-    const handleScroll = () => {
-        setVisible(window.scrollY > 300);
+        const handleScroll = () => {
+            const socialSection = document.getElementById("socialSection");
 
-        setIsScrolling(true);
+            let isSocialVisible = false;
 
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            setIsScrolling(false);
-        }, 500);
-    };
+            if (socialSection) {
+                const rect = socialSection.getBoundingClientRect();
+                isSocialVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+            }
 
-    handleScroll();
+            setVisible(window.scrollY > 300 && !isSocialVisible);
 
-    window.addEventListener("scroll", handleScroll);
+            setIsScrolling(true);
 
-    return () => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                setIsScrolling(false);
+            }, 500);
+        };
+
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
             window.removeEventListener("scroll", handleScroll);
             clearTimeout(timer);
         };
@@ -58,10 +68,10 @@ function ScrollToTop() {
                     }}
                     onClick={scrollToTop}
                     className="fixed bottom-20 right-4 md:top-1/2 md:bottom-auto 
-                      md:-translate-y-1/2 z-50 rounded-full h-10 w-10"
+                      md:-translate-y-1/2 z-50 rounded-full h-[32px] w-[32px] shadow-[0px_12px_24px_rgba(187,77,192,0.4)"
                     variant="gradient"
                     size="sm">
-                <FaChevronUp size={24}/>
+                <FaArrowUp size={13}/>
                 </MotionButton>
             )}
         </AnimatePresence>

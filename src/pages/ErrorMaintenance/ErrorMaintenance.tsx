@@ -1,7 +1,6 @@
 
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaHeadset } from "react-icons/fa6";
-import { IconGradient } from "@/components";
 
 import errorMaintenance from "@/assets/errorMaintenance.webp";
 
@@ -47,7 +46,6 @@ function ErrorMaintenance() {
 			    	<div className="w-[80%] mx-auto">
 			    		<div className="hstack gap-4 items-center">
                             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-pink-50">
-                                <IconGradient />
                                 <FaHeadset size={24} style={{ fill: "url(#iconGradient)" }} />
                             </div>
                             <div className="vstack gap-0">

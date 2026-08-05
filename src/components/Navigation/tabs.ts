@@ -1,6 +1,6 @@
 
 import { MdDesignServices } from "react-icons/md";
-import { IoBookSharp } from "react-icons/io5";
+import { IoBookOutline } from "react-icons/io5";
 
 import { IconType } from "react-icons";
 
@@ -20,8 +20,8 @@ export const tabs: Tab[] = [
   },
   {
     title: "Let’s Start Here",
-    path: "startHere",
+    path: "lets-start-here",
     id: 3,
-    icon: IoBookSharp
+    icon: IoBookOutline
   }
 ];
