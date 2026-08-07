@@ -92,27 +92,28 @@ function Faq() {
 	                alt="dashboard background"
 	                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 
-                <div className="flex items-center justify-center">
-                    <div className="hstack gap-2">
-                        <div className="flex flex-col gap-3">
-                            <Text variant="h1" className="lg:text-1xl">
-                                Frequently Asked
-                                <br />
-                                <span className="text-gradient">Questions</span>
-                            </Text>
+                <div className="flex items-center justify-center sm:w-auto w-full">
+                    <div className="flex flex-col gap-3">
+                        <Text variant="h1" className="lg:text-1xl">
+                            Frequently Asked
+                            <br />
+                            <span className="text-gradient">Questions</span>
+                        </Text>
 
-                            <div className="flex flex-col gap-2 text-xs">
-                                <Text variant="caption">
-                                    Find answers to the common 
-                                <br />
-                                questions about SIT and our services.</Text>
-                            </div>
+                        <div className="flex flex-col gap-2 text-xs">
+                            <Text variant="caption">
+                                Find answers to the common 
+                            <br />
+                            questions about SIT and our services.</Text>
                         </div>
                     </div>
+                    
+                    <div className="flex">
                     <Image
 		      			src={FaqWebp}
 		      			alt="Frequently Asked Questions"
-		      			className="w-full max-w-[320px] object-cover"/>
+		      			className="w-full max-w-[480px] object-cover"/>
+                    </div>
                 </div>
 
 		  	</div>
@@ -211,7 +212,7 @@ function Faq() {
                                     }}
                                     aria-expanded={open === id}
                                     aria-controls={`faq-${id}`}
-                                    className={`p-4 cursor-pointer border-1 w-full shadow-sm border-[#E7E8EA]
+                                    className={`p-4 cursor-pointer border-1 w-full shadow-sm border-[#E7E8EA] bg-white
                                         ${index === 0 ? "rounded-t-xl" : ""}
                                         ${index === menu.frequently.length - 1 ? "rounded-b-xl" : ""}
                                         ${index !== menu.frequently.length - 1 ? "border-b-0" : ""}

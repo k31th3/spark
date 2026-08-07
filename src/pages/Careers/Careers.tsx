@@ -24,31 +24,31 @@ function Careers() {
 	                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 
                 <div className="flex items-center justify-center">
-                    <div className="hstack gap-2">
-                        <div className="flex flex-col gap-3">
-                            <Text variant="h1" className="lg:text-1xl">
-                                Build The Future <br /> 
-                                with <span className="text-gradient">Spark</span>
-                            </Text>
+                    <div className="flex flex-col gap-3 sm:w-auto w-full">
+                        <Text variant="h1" className="lg:text-1xl">
+                            Build The Future <br /> 
+                            with <span className="text-gradient">Spark</span>
+                        </Text>
 
-                            <div className="vstack gap-8 text-xs">
-                                <Text variant="caption">
-                                    We're a team of innovators, creators, and problem solvers.<br />
-                                	passionate about building solations that make a difference.
-                            	</Text>
+                        <div className="vstack gap-8 text-xs">
+                            <Text variant="caption">
+                                We're a team of innovators, creators, and problem solvers.<br />
+                            	passionate about building solations that make a difference.
+                        	</Text>
 
-                            	<div>
-                            		<Button variant="gradient" className="shadow-sm">
-                            			Open positions <LuCircleArrowRight size={24} className="ms-4"/>
-                            		</Button>
-                            	</div>
-                            </div>
+                        	<div>
+                        		<Button variant="gradient" className="shadow-sm">
+                        			Open positions <LuCircleArrowRight size={24} className="ms-4"/>
+                        		</Button>
+                        	</div>
                         </div>
                     </div>
+                    <div className="flex">
                     <Image
 		      			src={career}
 		      			alt="Careers"
-		      			className="w-full max-w-[450px] object-cover"/>
+		      			className="w-full max-w-[480px] object-cover"/>
+                	</div>
                 </div>
 
 		  	</div>

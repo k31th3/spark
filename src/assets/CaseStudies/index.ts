@@ -1,0 +1,1 @@
+export { default as caseStudiesPng } from "./caseStudies.png";

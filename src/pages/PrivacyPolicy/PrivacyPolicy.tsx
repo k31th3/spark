@@ -21,7 +21,7 @@ function PrivacyPolicy() {
 	                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 
                 <div className="flex items-center justify-center">
-                    <div className="hstack gap-2">
+                    <div className="flex flex-col gap-4 sm:w-auto w-full">
                         <div className="flex flex-col gap-3">
                             <Text variant="h1" className="lg:text-1xl">
                                 Privacy <span className="text-gradient">policy</span>
@@ -36,10 +36,12 @@ function PrivacyPolicy() {
                             </div>
                         </div>
                     </div>
+                    <div className="flex">
                     <Image
 		      			src={privacyPolicy}
 		      			alt="Frequently Asked Questions"
-		      			className="w-full max-w-[450px] object-cover"/>
+		      			className="w-full max-w-[480px] object-cover"/>
+		      		</div>
                 </div>
 
 		  	</div>

@@ -37,7 +37,7 @@ import { Text } from "@/components";
 	    	title: "Resources",
 	    	links: [
 	    		{  label: "Blog", href: "/" },
-	      		{  label: "Case Studies", href: "/" },
+	      		{  label: "Case Studies", href: "/case-studies" },
 			    {  label: "FAQ", href: "/frequently-asked-questions" },
 			    {  label: "Privacy Policy", href: "/privacy-policy" },
 			    {  label: "Terms of Service", href: "/" }

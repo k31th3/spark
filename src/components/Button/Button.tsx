@@ -18,7 +18,7 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
 }
 
 const variants: Record<ButtonVariant, string> = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
+    primary: "bg-primary text-white hover:opacity-90",
     gradient: `bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)] text-white 
     hover:opacity-90 shadow-[inset_0_0_20px_rgba(255,255,255,0.8)]`,
     secondary: "bg-[#FAF5FF] text-[#A855F7] border-1 border-color-[#E9D5FF] hover:opacity-90",

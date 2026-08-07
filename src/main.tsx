@@ -4,11 +4,12 @@ import { createRoot } from "react-dom/client";
 import "@fontsource-variable/inter/wght.css";
 
 import "./index.css";
-import App from "./App.js";
+import App from "./App.tsx";
 import { HelmetProvider } from "react-helmet-async";
 import ErrorBoundary from "@/pages/ErrorBoundary";
 
 import { registerSW } from "virtual:pwa-register";
+import { ThemeProvider } from "@material-tailwind/react";
 
 const updateSW = registerSW({
   onNeedRefresh() {
@@ -23,7 +24,9 @@ createRoot(document.getElementById("root")).render(
     <HelmetProvider>
         <StrictMode>
             <ErrorBoundary>
-                <App />
+                <ThemeProvider value={{}}>
+                    <App />
+                </ThemeProvider>
             </ErrorBoundary>
         </StrictMode>
     </HelmetProvider>
