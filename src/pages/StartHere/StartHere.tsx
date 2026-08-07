@@ -1,7 +1,4 @@
-import { Seo, StructuredData, 
-		Text, Image } from "@/components";
-
-import { organizationSchema } from "@/config";
+import { Header, Text, Image } from "@/components";
 import startHereGrouping from "@/assets/startHereGrouping.webp"
 
 import { storySections } from "./storySections";
@@ -10,13 +7,7 @@ import { storySections } from "./storySections";
 	{
 	  	return (
 		    <>
-		      	<Seo title="GetSitGo | Spark Info-Tech Enterprise - Let's Start Here" description="We help businesses grow through innovative IT solutions, including hardware, 
-		      		networking, cybersecurity, and custom software development. Our team is committed to delivering reliable technology and exceptional 
-		      		service that supports your success." 
-		        canonical="https://www.getsitgo.com/startHere" />
-		        
-		      	<StructuredData data={organizationSchema} />
-
+        		<Header title="Lets start here" path="lets-start-here">
 		      	<div className="flex flex-col vstack my-10 gap-15">
 
 		      		<div className="text-center vstack gap-1">
@@ -58,7 +49,7 @@ import { storySections } from "./storySections";
 					</div>
 
                 </div>
-		      	
+		      	</Header>
 		    </>
 	    );	
 	}

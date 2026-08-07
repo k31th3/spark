@@ -5,10 +5,8 @@ import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaChevronRight } from "react-icons/fa6";
 
-import { Seo, StructuredData, 
-		Text, Image } from "@/components";
+import { Header, Text, Image } from "@/components";
 
-import { organizationSchema } from "@/config";
 import { IoSearch, IoClose } from "react-icons/io5";
 
 import FaqWebp from "@/assets/faq.webp"
@@ -85,13 +83,7 @@ function Faq() {
     }, [search]);
 
 	return <>
-		<Seo title="GetSitGo | Spark Info-Tech Enterprise - Frequently Asked Questions" description="We help businesses grow through innovative IT solutions, including hardware, 
-		      		networking, cybersecurity, and custom software development. Our team is committed to delivering reliable technology and exceptional 
-		      		service that supports your success." 
-		        canonical="https://www.getsitgo.com/startHere" />
-		        
-		<StructuredData data={organizationSchema} />
-
+        <Header title="Frequently asked questions" path="frequently-asked-questions">
       	<div className="flex flex-col vstack my-10 gap-15">
         	<div className="grid grid-cols-1 gap-0">
                 
@@ -268,6 +260,7 @@ function Faq() {
                 )}*/}
             </div>
 		</div>
+        </Header>
 	</>;
 }
 

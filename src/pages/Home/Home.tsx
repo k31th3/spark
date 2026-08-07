@@ -1,5 +1,4 @@
-import { Seo, StructuredData, Image } from "@/components";
-import { organizationSchema } from "@/config";
+import { Image } from "@/components";
 
 import { Title, 
 	AboutUsContent, TechnologyJumbotron, 
@@ -12,13 +11,6 @@ import dashboardBg from "@/assets/dashboardBg.webp";
 	{
 	  	return (
 		    <>
-		      	<Seo title="GetSitGo | Spark Info-Tech Enterprise - Home" description="We help businesses grow through innovative IT solutions, including hardware, 
-		      		networking, cybersecurity, and custom software development. Our team is committed to delivering reliable technology and exceptional 
-		      		service that supports your success." 
-		        canonical="https://www.getsitgo.com/Home" />
-		        
-		      	<StructuredData data={organizationSchema} />
-
 		      	<div className="flex flex-col vstack my-10 gap-15">
 		      		
 		      		<div className="vstack gap-15">

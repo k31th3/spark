@@ -1,7 +1,4 @@
-import { Seo, StructuredData, 
-		Text, Image } from "@/components";
-
-import { organizationSchema } from "@/config";
+import { Header, Text, Image } from "@/components";
 
 import privacyPolicy from "@/assets/privacyPolicy.png"
 import dashboardBg from "@/assets/dashboardBg.webp";
@@ -11,13 +8,8 @@ import { Contents } from "./Contents";
 
 function PrivacyPolicy() {
 	return <>
-		
-		<Seo title="GetSitGo | Spark Info-Tech Enterprise - Privacy Policy" description="We help businesses grow through innovative IT solutions, including hardware, 
-		      		networking, cybersecurity, and custom software development. Our team is committed to delivering reliable technology and exceptional 
-		      		service that supports your success." 
-		        canonical="https://www.getsitgo.com/startHere" />
-		        
-		<StructuredData data={organizationSchema} />
+
+        <Header title="Privacy policy" path="privacy-policy">
 
 		<div className="flex flex-col vstack my-10 gap-20">
 
@@ -81,7 +73,7 @@ function PrivacyPolicy() {
 		  	</div>
 
 		</div>
-
+		</Header>
 
 	</>;
 }

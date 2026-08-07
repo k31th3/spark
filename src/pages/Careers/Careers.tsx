@@ -1,10 +1,7 @@
 import { LuCircleArrowRight } from "react-icons/lu";
 import { PiAirplaneTiltDuotone } from "react-icons/pi";
 
-import { Seo, StructuredData, 
-		Text, Image, Button } from "@/components";
-
-import { organizationSchema } from "@/config";
+import { Header, Text, Image, Button } from "@/components";
 
 import career from "@/assets/career.png"
 import dashboardBg from "@/assets/dashboardBg.webp";
@@ -14,12 +11,8 @@ import { OpenPositions } from "./OpenPositions";
 
 function Careers() {
 	return <>
-		<Seo title="GetSitGo | Spark Info-Tech Enterprise - Privacy Policy" description="We help businesses grow through innovative IT solutions, including hardware, 
-		      		networking, cybersecurity, and custom software development. Our team is committed to delivering reliable technology and exceptional 
-		      		service that supports your success." 
-		        canonical="https://www.getsitgo.com/startHere" />
-		        
-		<StructuredData data={organizationSchema} />
+
+		<Header title="Careers" path="careers">
 
 		<div className="flex flex-col vstack my-10 gap-20">
 
@@ -202,6 +195,7 @@ function Careers() {
 		  	</div>
 
 		</div>
+		</Header>
 	</>;
 }
 
