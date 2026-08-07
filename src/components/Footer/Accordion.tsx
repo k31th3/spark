@@ -7,7 +7,7 @@ import { PiBuildingsDuotone } from "react-icons/pi";
 import { MdDesignServices } from "react-icons/md";
 import { GrResources } from "react-icons/gr";
 
-import { Text } from "@/components";
+import { Icon, Text } from "@/components";
 
 	const menus = [
 	  	{
@@ -100,7 +100,7 @@ export default function Accordion() {
 				        	<motion.div
 				          		animate={{ rotate: open === index ? 90 : 0 }}
 				          		transition={{ duration: 0.25 }}>
-				          		<FaChevronRight size={12} />
+				          		<Icon icon={FaChevronRight} size="sm" />
 				        	</motion.div>
 			      		</button>
 

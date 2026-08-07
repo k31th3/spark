@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { FaArrowUp } from "react-icons/fa6";
 
 
-import { Button } from "@/components";
+import { Button, Icon } from "@/components";
 
 const MotionButton = motion.create(Button);
 
@@ -68,10 +68,10 @@ function ScrollToTop() {
                     }}
                     onClick={scrollToTop}
                     className="fixed bottom-20 right-4 md:top-1/2 md:bottom-auto 
-                      md:-translate-y-1/2 z-50 rounded-full h-[32px] w-[32px] shadow-[0px_12px_24px_rgba(187,77,192,0.4)"
+                      md:-translate-y-1/2 z-50 rounded-full p-0 shadow-[0px_12px_24px_rgba(187,77,192,0.4)]"
                     variant="gradient"
                     size="sm">
-                <FaArrowUp size={13}/>
+                    <Icon icon={FaArrowUp} size="md" avatar={true} variant="light"/>
                 </MotionButton>
             )}
         </AnimatePresence>

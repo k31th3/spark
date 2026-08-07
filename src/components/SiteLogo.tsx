@@ -1,24 +1,30 @@
 import Logo from "@/assets/siteLogo.webp";
+import { cn } from "@/lib/utils";
 
 type SiteLogoProps = {
-    width?: number;
-    height?: number;
+    size?: "sm" | "md" | "lg";
     className?: string;
 };
 
+const sizeMap = {
+    sm: 32,
+    md: 40,
+    lg: 56,
+};
+
 export default function SiteLogo({
-    width = 40,
-    height = 40,
-    className = ""
+    size = "md",
+    className = "",
 }: SiteLogoProps) {
+    const dimension = sizeMap[size];
+
     return (
         <img
             src={Logo}
             alt="Site Logo"
-            width={width}
-            height={height}
-            className={`rounded-full object-cover ${className}`}
-            onContextMenu={(e) => e.preventDefault()}
-        />
+            width={dimension}
+            height={dimension}
+            className={cn(`rounded-full object-cover`, className)}
+            onContextMenu={(e) => e.preventDefault()}/>
     );
 }

@@ -3,6 +3,13 @@ import { CgIfDesign, CgWebsite } from "react-icons/cg";
 import { MdDeveloperMode } from "react-icons/md";
 import { VscDeveloperTools } from "react-icons/vsc";
 
+type IconVariant =
+  | "default"
+  | "primary"
+  | "success"
+  | "warning"
+  | "danger";
+  
 export const categories = [
     "Web Development",
     "Mobile App",
@@ -24,6 +31,13 @@ export const icons: Record<Category, IconType> = {
     "Mobile App": MdDeveloperMode,
     "System Integration": VscDeveloperTools,
     "UI/UX Design": CgIfDesign,
+};
+
+export const colors: Record<Category, IconVariant> = {
+    "Web Development": "danger",
+    "Mobile App": "warning",
+    "System Integration": "success",
+    "UI/UX Design": "primary",
 };
 
 export interface Card {

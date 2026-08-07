@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaChevronRight } from "react-icons/fa6";
 
-import { Wrapper, Text, Image } from "@/components";
+import { Icon, Image, Text, Wrapper } from "@/components";
 
 import { IoSearch, IoClose } from "react-icons/io5";
 
@@ -161,10 +161,12 @@ function Faq() {
                                     exit={{ opacity: 0, scale: 0.5 }}
                                     transition={{ duration: 0.2 }}
                                     className="rounded-full cursor-pointer">
-                                    <IoClose 
+                                    <Icon 
+                                        icon={IoClose} 
                                         aria-hidden="true"
-                                        className="mr-4 text-primary"
-                                        size={18}/>
+                                        variant="primary"
+                                        size="md"
+                                        className="mr-4"/>
                                 </motion.button>
                             ) : (
                                 <motion.div
@@ -173,10 +175,11 @@ function Faq() {
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.5 }}
                                     transition={{ duration: 0.2 }}>
-                                    <IoSearch
+                                    <Icon icon={IoSearch}
                                         aria-hidden="true"
-                                        className="mr-4 text-primary"
-                                        size={18}
+                                        variant="primary"
+                                        size="md"
+                                        className="mr-4"
                                     />
                                 </motion.div>
                             )}
@@ -226,7 +229,7 @@ function Faq() {
                                     <motion.div
                                         animate={{ rotate: open === id ? 90 : 0 }}
                                         transition={{ duration: 0.25 }}>
-                                        <FaChevronRight size={12} />
+                                        <Icon icon={FaChevronRight} size="sm" />
                                     </motion.div>
                                     </div>
 

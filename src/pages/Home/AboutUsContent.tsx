@@ -8,7 +8,7 @@ import { PiSparkleDuotone } from "react-icons/pi";
 import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
 import DashboardCaptions from "@/assets/dashboardPlayVid.en.vtt";
 
-import { Text } from "@/components";
+import { Icon, Text } from "@/components";
 
 export default function AboutUsContent()
 {
@@ -58,11 +58,11 @@ export default function AboutUsContent()
 
 		        <div className="rounded-b-4xl h-[100px] bg-gradient-to-r from-[#FFEBFD] to-[#FFE4D3] p-[16px]">
 		        	<ul className="hstack gap-3 justify-around items-center h-full">
-					  	{items.map(({ icon: Icon, label }) => (
+					  	{items.map(({ icon, label }) => (
 					    	<li
 					      		key={label}
 					      		className="flex flex-col items-center sm:text-[14px] text-[12px] gap-2">
-					      		<Icon size={28} style={{ fill: "url(#iconGradient)" }} />
+					      		<Icon icon={icon} size="lg" variant="gradient" />
 					      		<Text variant="caption" className="font-semibold">{label}</Text>
 					    	</li>
 					  	))}

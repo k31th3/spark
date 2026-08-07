@@ -1,4 +1,4 @@
-import { Wrapper, Text, Image } from "@/components";
+import { Icon, Image, Text, Wrapper  } from "@/components";
 
 import privacyPolicy from "@/assets/privacyPolicy.png"
 import dashboardBg from "@/assets/dashboardBg.webp";
@@ -48,15 +48,13 @@ function PrivacyPolicy() {
 
 		  	<div className="max-w-5xl mx-auto">
 		  		<ul className="vstack gap-4 px-[16px]">
-		    		{Contents.map((item, index) => (
+		    		{Contents.map((item, index) => {
+                        return (
 					    <li key={index}>
-					      	<div className="hstack gap-3">
-						        <div
-						          	className={`flex items-center justify-center h-10 w-10 rounded-full bg-[#FAF5FF]`}>
-						          	<item.icon
-						            	size={24} style={{ fill: "url(#iconGradient)" }}/>
-						        </div>
-
+					      	<div className="grid grid-cols-[48px_1fr] gap-4">    
+					          	<Icon icon={item.icon}
+					            	size="md" variant="gradient" avatar={true}/>
+					        
 					        	<div className="flex flex-col gap-0">
 					          		<Text variant="lead" className="font-medium">{item.title}</Text>
 					          		<Text variant="bodySmall" color="muted">
@@ -70,7 +68,8 @@ function PrivacyPolicy() {
 					        	</div>
 					      	</div>
 					    </li>
-					))}
+                        );
+                    })}
 		    	</ul>
 		  	</div>
 

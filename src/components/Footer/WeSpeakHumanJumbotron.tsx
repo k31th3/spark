@@ -1,7 +1,7 @@
 "use client";
 
 import { FiArrowRight } from "react-icons/fi";
-import { Button, Text } from "@/components";
+import { Button, Icon, Text } from "@/components";
 
 import startHereWeSpeakHumanJumboron from "@/assets/startHereWeSpeakHumanJumboron.png";
 
@@ -35,7 +35,7 @@ export default function WeSpeakHumanJumbotron() {
 
                                 <div>
                                     <Button variant="gradient" size="md" className="gap-2">
-                                        Let's Talk  <FiArrowRight />
+                                        Let's Talk  <Icon icon={FiArrowRight} variant="light"/>
                                     </Button>
                                 </div>
 

@@ -5,29 +5,29 @@ import { FaGithub } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaArrowUp } from "react-icons/fa6";
 
-import { Button } from "@/components";
+import { Icon, Button } from "@/components";
 
 export default function Social() {
 
     const socialLinks = [
         {
             id: 1,
-            Icon: TfiFacebook,
+            icon: TfiFacebook,
             href: "https://facebook.com/yourusername",
         },
         {
             id: 2,
-            Icon: FaXTwitter,
+            icon: FaXTwitter,
             href: "https://x.com/yourusername",
         },
         {
             id: 3,
-            Icon: FaGithub,
+            icon: FaGithub,
             href: "https://github.com/yourusername",
         },
         {
             id: 4,
-            Icon: RiInstagramFill,
+            icon: RiInstagramFill,
             href: "https://instagram.com/yourusername",
         }
     ];
@@ -47,25 +47,27 @@ export default function Social() {
                  id="socialSection">
 
                 {/*left*/}
-                <ul className="hstack gap-1 items-center">
+                <ul className="hstack gap-2 items-center">
                     
-                    <li className="font-semibold text-sm mr-3">
+                    <li className="font-semibold text-sm mr-2">
                         Follow us
                     </li>
 
-                    {socialLinks.map(({ id, Icon, href }) => (
+                    {socialLinks.map(({ id, icon, href }) => (
                         <li key={id}>
                             <Button
-                                className="rounded-full h-[32px] w-[32px]"
+                                className="rounded-full p-0 border-0 h-0"
                                 variant="outline"
                                 size="sm">
                             <a
                                 href={href}
                                 target="_blank"
                                 rel="noopener noreferrer">
-                                <Icon
-                                    size={13}
-                                    style={{ fill: "url(#iconGradient)" }}/>
+                                <Icon 
+                                    icon={icon}
+                                    size="sm"
+                                    variant="gradient"
+                                    avatar={true}/>
                             </a>
                           </Button>
                         </li>
@@ -79,13 +81,12 @@ export default function Social() {
 
                         <li>
                             <Button
-                                className="rounded-full h-[32px] w-[32px] shadow-[0px_12px_24px_rgba(187,77,192,0.4)]"
+                                className="rounded-full rounded-full p-0 shadow-[0px_12px_24px_rgba(187,77,192,0.4)]"
                                 variant="gradient"
                                 size="sm"
                                 onClick={scrollToTop}>
-                            <FaArrowUp
-                                size={13}/>
-                          </Button>
+                                <Icon icon={FaArrowUp} size="sm" avatar={true} variant="light"/>
+                            </Button>
                         </li>
 
                         <li className="font-normal text-sm mr-3">

@@ -1,13 +1,15 @@
 import { useState } from "react";
 
 import { Tabs } from "@material-tailwind/react";
+import { TbArrowNarrowRight } from "react-icons/tb";
 
 import { Wrapper, Text, Chip,
-		 Image, Card, Icon } from "@/components";
+		 Image, Card, Icon, 
+         Button} from "@/components";
 
 import dashboardBg from "@/assets/dashboardBg.webp";
 import { caseStudiesPng} from "@/assets/CaseStudies";
-import { cards, tabs, icons } from "./Content";
+import { cards, tabs, icons, colors } from "./Content";
 
 function CaseStudy() {
 
@@ -60,7 +62,7 @@ function CaseStudy() {
 					</div>
 				</div>	
 
-				<div className="mb-4 relative md:w-full
+				<div className="mb-2 relative md:w-full
 						  w-screen max-md:left-1/2 max-md:-translate-x-1/2 ">
 	  				<div className="w-full md:w-fit bg-white md:rounded-full shadow-md overflow-hidden absolute">
 	  					<div className="px-4 py-2 md:p-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -88,27 +90,38 @@ function CaseStudy() {
 
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
 			        {filteredProjects.map((project) => {
-						const ProjectIcon = icons[project.category];
+						const icon = icons[project.category];
+                        const color = colors[project.category];
 						return (
 						    <Card key={project.id}>
 						      	<Card.Body>
 							        <div className="hstack gap-4">
 
-							          	<Icon icon={ProjectIcon} size="lg" />
+							          	<Icon icon={icon} size="md" avatar={true} variant={color} />
 
 							          	<div className="flex flex-col gap-2">
-							          		<Chip variant="default" size="sm">
+							          		<Chip variant={color} size="sm">
 												{project.category}
 											</Chip>
-								            <Text variant="h6">
-								              	{project.title}
-								            </Text>
-								            <Text variant="label" className="text-gray-500">
-								              	{project.information}
-								            </Text>
+								            <div>
+                                                <Text variant="h6">
+                                                    {project.title}
+                                                </Text>
+                                                <Text variant="label" className="text-gray-500">
+                                                    {project.information}
+                                                </Text>
+                                            </div>
 							          	</div>
 							          	
 							        </div>
+
+                                    <div>
+                                        <Button variant="ghost" size="sm" className="hover:opacity-80 
+                                            hover:bg-transparent text-primary items-center gap-1 p-0">
+                                            View Case Study <Icon icon={TbArrowNarrowRight} size="md" variant="primary" />
+                                        </Button>
+                                    </div>                                        
+
 						      	</Card.Body>
 						    </Card>
 						);

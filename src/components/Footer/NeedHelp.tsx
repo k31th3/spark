@@ -1,5 +1,5 @@
 
-import { Button, Text } from "@/components";
+import { Button, Icon, Text } from "@/components";
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { FiMail } from "react-icons/fi";
 import { MdOutlinePhone } from "react-icons/md";
@@ -34,10 +34,9 @@ export default function NeedHelp() {
                 <div className="vstack gap-[32px]">
 
                     <div className="hstack items-center gap-3">
-                        <div
-                            className={`flex items-center justify-center h-10 w-10 rounded-full bg-[#FAF5FF]`}>
-                            <PiHeadsetDuotone size={20} style={{ fill: "url(#iconGradient)" }} />
-                        </div>
+                        
+                        <Icon icon={PiHeadsetDuotone} size="md" avatar={true} 
+                            variant="gradient" />
 
                         <div className="flex flex-col gap-0">
                             <Text variant="caption">Need Help?</Text>
@@ -49,15 +48,16 @@ export default function NeedHelp() {
 
                     <ul className="vstack gap-2">
                         {contactInfo.map((item, index) => {
-                        const Icon = item.icon;
+                        const icon = item.icon;
 
                         return (
                             <li key={index}>
                                 <div className="hstack gap-3">
                                     <div>
                                         <Icon
-                                            size={16}
-                                            className="text-[#A855F7]"/>
+                                            icon={icon}    
+                                            size="sm"
+                                            variant="primary"/>
                                     </div>
 
                                     <div className="flex flex-col gap-0">
@@ -75,8 +75,8 @@ export default function NeedHelp() {
                         })}
                     </ul>
 
-                    <Button variant="gradient" size="sm" className="gap-2">
-                        Contact SPARK <FiArrowRight />
+                    <Button variant="gradient" size="sm" className="gap-1">
+                        Contact SPARK <Icon icon={FiArrowRight} size="sm" variant="light" />
                     </Button>
 
                 </div>

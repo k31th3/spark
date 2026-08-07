@@ -46,8 +46,10 @@ const variants: Record<TextVariant, string> = {
 
     lead: "text-xl leading-8",
     caption: "text-xs leading-5",
-    label: "text-[11px] font-medium"
+    label: "text-[11px]"
 };
+
+
 
 const colors: Record<TextColor, string> = {
     primary: "text-primary",

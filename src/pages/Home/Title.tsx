@@ -22,7 +22,7 @@ export default function StartHere(){
 	      		</div>
 
 	      		<div className="text-center">
-	      			<Button variant="gradient" size="lg" className="disabled:opacity-100 gap-2" disabled={true}>
+	      			<Button variant="gradient" size="md" className="disabled:opacity-100" disabled={true}>
 	      				Our Story
 	      			</Button>
 	      		</div>

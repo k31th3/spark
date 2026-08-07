@@ -3,7 +3,8 @@
 import { AiOutlineMessage } from "react-icons/ai";
 import weSpeakHuman from "@/assets/startHereWeSpeakHuman.webp";
 
-import { Button, Image } from "@/components";
+import { Button, Icon, 
+        Image, Text } from "@/components";
 
 export default function WeSpeakHuman() 
 {
@@ -11,26 +12,22 @@ export default function WeSpeakHuman()
 		{
 		    title: "We Explain",
 		    subtitle: "In a way that actually makes sense.",
-		    bgColor: "bg-[#FAF5FF]",
-		    iconColor: "text-[#A855F7]"
+            color: "primary"
 		},
 		{
 		    title: "We Answer",
 		    subtitle: `Your "stupid questions" don't exist.`,
-		    bgColor: "bg-[#FFF7ED]",
-		    iconColor: "text-[#F97316]"
+            color: "warning"
 		},
 		{
 		    title: "We Sketch",
 		    subtitle: "On tissue paper if that's what makes it click.",
-		    bgColor: "bg-[#FDF2F8]",
-		    iconColor: "text-[#EC4899]"
+            color: "danger"
 		},
 		{
 		    title: "We Listen",
 		    subtitle: "Because good tech starts with understanding people.",
-		    bgColor: "bg-[#EFF6FF]",
-		    iconColor: "text-[#3B82F6]"
+            color: "success"
 		}
 	];
 	return <>
@@ -40,7 +37,6 @@ export default function WeSpeakHuman()
 	      	<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 			  
 			  	{/* Image */}
-
 			  	<div className="flex flex-col">
 				  	<div className="rounded-4xl overflow-hidden">
 				    	<Image
@@ -59,27 +55,27 @@ export default function WeSpeakHuman()
 		      			</Button>
 		      		</div>
 
-			    	<p className="text-2xl font-semibold leading-tight">
+			    	<Text variant="h4">
 			      		Technology should feel like talking to your smartest friend,
 			      		not reading an instruction manual.
-			    	</p>
+			    	</Text>
 
 			    	<ul className="vstack gap-4 px-[16px]">
 			    		{items.map((item, index) => (
 						    <li key={index}>
 						      	<div className="hstack items-center gap-3">
-							        <div
-							          	className={`flex items-center justify-center h-8 w-8 rounded-full ${item.bgColor}`}>
-							          	<AiOutlineMessage
-							            	size={16}
-							            	className={item.iconColor}/>
-							        </div>
+							        
+						          	<Icon icon={AiOutlineMessage}
+						            	size="md"
+                                        avatar={true}
+                                        variant={item.color}
+						            	/>
 
 						        	<div className="flex flex-col gap-0">
-						          		<p className="font-medium text-[20px]">{item.title}</p>
-						          		<span className="font-tiny text-[14px] text-[#6E7884]">
+						          		<Text variant="lead">{item.title}</Text>
+						          		<Text variant="caption" color="muted">
 						            		{item.subtitle}
-						          		</span>
+						          		</Text>
 						        	</div>
 						      	</div>
 						    </li>
