@@ -8,7 +8,7 @@ import { EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-import { Header, BookCall } from "@/components";
+import { Wrapper, BookCall } from "@/components";
 import { tabs } from "./tabs";
 
 import style from "./Services.module.css";
@@ -87,7 +87,7 @@ function Services() {
 
     return (
         <>
-        <Header title="Services" path="services">
+        <Wrapper title="Services" path="services">
 
         <section className="relative flex flex-col md:flex-row gap-6">
 
@@ -146,7 +146,7 @@ function Services() {
             </main>
             
         </section>
-        </Header>
+        </Wrapper>
         </>
     );
 }

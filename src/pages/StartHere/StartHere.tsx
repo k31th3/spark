@@ -1,4 +1,4 @@
-import { Header, Text, Image } from "@/components";
+import { Wrapper, Text, Image } from "@/components";
 import startHereGrouping from "@/assets/startHereGrouping.webp"
 
 import { storySections } from "./storySections";
@@ -7,7 +7,7 @@ import { storySections } from "./storySections";
 	{
 	  	return (
 		    <>
-        		<Header title="Lets start here" path="lets-start-here">
+        		<Wrapper title="Lets start here" path="lets-start-here">
 		      	<div className="flex flex-col vstack my-10 gap-15">
 
 		      		<div className="text-center vstack gap-1">
@@ -49,7 +49,7 @@ import { storySections } from "./storySections";
 					</div>
 
                 </div>
-		      	</Header>
+		      	</Wrapper>
 		    </>
 	    );	
 	}

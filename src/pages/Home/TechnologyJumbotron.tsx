@@ -13,11 +13,11 @@ export default function TechnologyJumbotron() {
         <>
         <div className="relative w-screen relative left-1/2 -translate-x-1/2 bg-[#FAF5FF] mb-6">
 
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-5xl mx-auto p-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                     
-                    <div className="flex justify-center items-center py-8 sm:py-0">
-                        <div className="hstack gap-2">
+                    <div className="flex justify-center items-center">
+                        <div className="hstack gap-4">
                             <div className="flex h-8 w-8 rounded-full bg-gradient p-[2px]">
                                 <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
                                     <AiOutlineMessage

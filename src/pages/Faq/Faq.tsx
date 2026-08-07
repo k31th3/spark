@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaChevronRight } from "react-icons/fa6";
 
-import { Header, Text, Image } from "@/components";
+import { Wrapper, Text, Image } from "@/components";
 
 import { IoSearch, IoClose } from "react-icons/io5";
 
@@ -83,7 +83,7 @@ function Faq() {
     }, [search]);
 
 	return <>
-        <Header title="Frequently asked questions" path="frequently-asked-questions">
+        <Wrapper title="Frequently asked questions" path="frequently-asked-questions">
       	<div className="flex flex-col vstack my-10 gap-15">
         	<div className="grid grid-cols-1 gap-0">
                 
@@ -260,7 +260,7 @@ function Faq() {
                 )}*/}
             </div>
 		</div>
-        </Header>
+        </Wrapper>
 	</>;
 }
 

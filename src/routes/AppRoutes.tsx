@@ -16,7 +16,7 @@ const StartHere = lazy(() => import("@/pages/StartHere"));
 const Careers = lazy(() => import("@/pages/Careers"));
 const Faq = lazy(() => import("@/pages/Faq"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
-
+const CaseStudy = lazy(() => import("@/pages/CaseStudy"));
 
 const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
 
@@ -62,6 +62,8 @@ function AppRoutes() {
                     <Route path="/careers" element={<Careers />} />
                     <Route path="/frequently-asked-questions" element={<Faq />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/case-study" element={<CaseStudy />} />
+
 
                 </Route>
 

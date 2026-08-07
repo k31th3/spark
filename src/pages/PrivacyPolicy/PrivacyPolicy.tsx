@@ -1,4 +1,4 @@
-import { Header, Text, Image } from "@/components";
+import { Wrapper, Text, Image } from "@/components";
 
 import privacyPolicy from "@/assets/privacyPolicy.png"
 import dashboardBg from "@/assets/dashboardBg.webp";
@@ -9,7 +9,7 @@ import { Contents } from "./Contents";
 function PrivacyPolicy() {
 	return <>
 
-        <Header title="Privacy policy" path="privacy-policy">
+        <Wrapper title="Privacy policy" path="privacy-policy">
 
 		<div className="flex flex-col vstack my-10 gap-20">
 
@@ -73,7 +73,7 @@ function PrivacyPolicy() {
 		  	</div>
 
 		</div>
-		</Header>
+		</Wrapper>
 
 	</>;
 }
