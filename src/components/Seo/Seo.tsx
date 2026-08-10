@@ -17,6 +17,8 @@ export default function Seo({
     <Helmet>
       <title>{title}</title>
 
+      <meta name="url" content={canonical} />
+
       <meta
         name="description"
         content={description}
@@ -41,6 +43,8 @@ export default function Seo({
         property="og:type"
         content="website"
       />
+
+      <meta property="og:url" content={canonical} />
 
       {image && (
         <meta

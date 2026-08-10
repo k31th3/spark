@@ -39,6 +39,10 @@ function AppRoutes() {
                             <ScrollToTop />
                             <div>
                                 <header className="fixed top-0 left-0 right-0 z-50 hidden md:flex justify-center py-5">
+                                    <div className="absolute w-[100%] h-[100%] top-0 left-0 right-0 z-10 sm:bg-white"  style={{
+                                        maskImage: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))"
+                                    }}>
+                                    </div>
                                     <Navigation />
                                 </header>
 
@@ -48,6 +52,15 @@ function AppRoutes() {
 
                                 <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
                                     <Navigation />
+                                    <div
+                                        className="absolute w-[100%] h-[100%] top-0 left-0 right-0 z-10 inset-0 bg-white"
+                                        style={{
+                                            WebkitMaskImage:
+                                                "linear-gradient(to bottom, transparent, black)",
+                                            maskImage:
+                                                "linear-gradient(to bottom, transparent, black)",
+                                        }}
+                                    />
                                 </nav>
 
                                 <Footer />

@@ -1,4 +1,4 @@
-import { Image } from "@/components";
+import { Image, Wrapper } from "@/components";
 
 import { Title, 
 	AboutUsContent, TechnologyJumbotron, 
@@ -11,6 +11,7 @@ import dashboardBg from "@/assets/dashboardBg.webp";
 	{
 	  	return (
 		    <>
+            <Wrapper title="Frequently asked questions" path="frequently-asked-questions">
 		      	<div className="flex flex-col vstack my-10 gap-15">
 		      		
 		      		<div className="vstack gap-15">
@@ -26,7 +27,7 @@ import dashboardBg from "@/assets/dashboardBg.webp";
 		      		<WeSpeakHuman />
 
                 </div>
-		      	
+		    </Wrapper>
 		    </>
 	    );	
 	}

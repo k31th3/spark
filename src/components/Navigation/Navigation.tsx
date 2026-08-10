@@ -23,10 +23,7 @@ export default function Navigation() {
     return (
         <>    
             <div className="md:container md:mx-auto w-full md:py-4">
-                <div className="absolute w-[100%] h-[100%] top-0 left-0 right-0 z-10 sm:bg-white"  style={{
-                    maskImage: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))"
-                }}>
-                </div>
+                
                 <div className="flex items-center justify-center z-100 relative">
                     <ul className={style.unOrderList}>
 
