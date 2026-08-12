@@ -140,7 +140,7 @@ function Careers() {
 
 			  						<div className="text-end">
 			  							<Button variant="outline" size="sm" className="rounded-lg border-1 
-			  								border-pink-400 hover:bg-transparent p-4 shadow-sm">
+			  								border-pink-400 hover:bg-transparent shadow-sm">
 			  								<Text variant="label" color="gradient">
 											    View Details
 											</Text>

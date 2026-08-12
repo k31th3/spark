@@ -53,28 +53,28 @@ export const cards: Card[] = [
         id: 1,
         title: "Portfolio Website",
         category: "Web Development",
-        information: "",
+        information: "A modern and responsive portfolio website showcasing",
         link: ""
     },
     {
         id: 2,
         title: "Food Delivery App",
         category: "Mobile App",
-        information: "",
+        information: "A user-friendly food delivery application that allows users to browse restaurants, order meals, and track their deliveries.",
         link: ""
     },
     {
         id: 3,
         title: "Banking Dashboard",
         category: "UI/UX Design",
-        information: "",
+        information: "A clean and intuitive banking dashboard designed to help users easily manage accounts, monitor transactions, and view financial information.",
         link: ""
     },
     {
         id: 4,
         title: "E-commerce",
         category: "Web Development",
-        information: "",
+        information: "A responsive e-commerce website where users can browse products, view product details, add items to their cart, and complete purchases.",
         link: ""
     }
 ];

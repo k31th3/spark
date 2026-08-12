@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 
 interface CardProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     className?: string;
 }
 
 interface CardSectionProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     className?: string;
 }
 
@@ -56,6 +56,15 @@ function Footer({ children, className }: CardSectionProps) {
         </div>
     );
 }
+
+interface CardComponent {
+    (props: CardProps): React.ReactNode;
+    Header: typeof Header;
+    Body: typeof Body;
+    Footer: typeof Footer;
+}
+
+const CardComponent = Card as CardComponent;
 
 Card.Header = Header;
 Card.Body = Body;

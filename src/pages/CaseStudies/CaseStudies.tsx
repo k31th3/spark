@@ -95,19 +95,23 @@ function CaseStudy() {
 						return (
 						    <Card key={project.id}>
 						      	<Card.Body>
-							        <div className="hstack gap-4">
+							        <div className="hstack gap-4 mb-4">
 
-							          	<Icon icon={icon} size="md" avatar={true} variant={color} />
-
+                                        <div>
+        						          	<Icon icon={icon} size="md" avatar={true} variant={color} />
+                                        </div>
+                                        
 							          	<div className="flex flex-col gap-2">
 							          		<Chip variant={color} size="sm">
 												{project.category}
 											</Chip>
 								            <div>
-                                                <Text variant="h6">
+                                                <Text variant="h6" className="animate-pulse text-gray-800 bg-gray-800 
+                                                    rounded-full p-0 text-[12px] mb-4">
                                                     {project.title}
                                                 </Text>
-                                                <Text variant="label" className="text-gray-500">
+                                                <Text variant="label" className="animate-pulse text-gray-500 bg-gray-500 line-clamp-3 
+                                                    rounded-sm">
                                                     {project.information}
                                                 </Text>
                                             </div>

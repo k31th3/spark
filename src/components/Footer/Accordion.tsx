@@ -40,7 +40,7 @@ import { Icon, Text } from "@/components";
 	      		{  label: "Case Studies", href: "/case-studies" },
 			    {  label: "FAQ", href: "/frequently-asked-questions" },
 			    {  label: "Privacy Policy", href: "/privacy-policy" },
-			    {  label: "Terms of Service", href: "/" }
+			    {  label: "Terms of Service", href: "/terms-of-service" }
 	    	],
 	    	icon: GrResources,
 	    	enableIcon: true

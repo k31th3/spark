@@ -25,5 +25,12 @@ export const OpenPositions: OpenPosition[] = [
             "Create intuitive and beautiful designs that deliver",
             "exceptional user experiences."
         ]
+    },
+    {
+        title: "Hardware",
+        lines: [
+            "Install, maintain, and troubleshoot computer hardware",
+            "and ensure systems are working properly."
+        ]
     }
 ];

@@ -14,9 +14,12 @@ const Services = lazy(() => import("@/pages/Services"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
 
 const Careers = lazy(() => import("@/pages/Careers"));
+
+
+const CaseStudies = lazy(() => import("@/pages/CaseStudies"));
 const Faq = lazy(() => import("@/pages/Faq"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
-const CaseStudies = lazy(() => import("@/pages/CaseStudies"));
+const TermsService = lazy(() => import("@/pages/TermsService"));
 
 const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
 
@@ -73,10 +76,12 @@ function AppRoutes() {
                     <Route path="/services" element={<Services />} />
                     <Route path="/lets-start-here" element={<StartHere />} />
                     <Route path="/careers" element={<Careers />} />
+                    
+                    {/*Resources*/}
+                    <Route path="/case-studies" element={<CaseStudies />} />
                     <Route path="/frequently-asked-questions" element={<Faq />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                    <Route path="/case-studies" element={<CaseStudies />} />
-
+                    <Route path="/terms-of-service" element={<TermsService />} />
 
                 </Route>
 
