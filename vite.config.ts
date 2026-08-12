@@ -16,6 +16,8 @@ export default defineConfig({
 
       includeAssets: [
         "site.webmanifest",
+        "llms.txt",
+        "robots.txt",
         "sitemap.xml",
         "favicon.ico",
         "favicon-96x96.png",
