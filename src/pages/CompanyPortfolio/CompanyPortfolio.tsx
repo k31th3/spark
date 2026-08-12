@@ -8,10 +8,10 @@ import { Wrapper, Text, Chip,
          Button} from "@/components";
 
 import dashboardBg from "@/assets/dashboardBg.webp";
-import { caseStudiesPng} from "@/assets/CaseStudies";
+import { companyPortfolioPng } from "@/assets/CompanyPortfolio";
 import { cards, tabs, icons, colors } from "./Content";
 
-function CaseStudy() {
+function CompanyPortfolio() {
 
 	const [activeTab, setActiveTab] = useState("All Projects");
 
@@ -23,7 +23,7 @@ function CaseStudy() {
 
 	return <>
 
-		<Wrapper title="Case Study" path="caseStudy">
+		<Wrapper title="Company Portfolio" path="company-portfolio">
 
 			<div className="flex flex-col vstack my-10 gap-20">
 
@@ -43,7 +43,7 @@ function CaseStudy() {
 								</Chip>
 							</div>
 	                        <Text variant="h1" className="lg:text-1xl">
-	                            <span className="text-gradient">Case</span> Studies
+	                            <span className="text-gradient">Company</span> Portfolio
 	                        </Text>
 
 	                        <Text variant="caption">
@@ -54,8 +54,8 @@ function CaseStudy() {
 	                    
 	                    <div className="flex">
 	                    	<Image
-			      			src={caseStudiesPng}
-			      			alt="Case Studies"
+			      			src={companyPortfolioPng}
+			      			alt="Company Portfolio"
 			      			className="w-full max-w-[480px] object-cover"/>
 	                    </div>
 
@@ -68,15 +68,16 @@ function CaseStudy() {
 	  					<div className="px-4 py-2 md:p-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
 						<Tabs defaultValue="All Projects" value={activeTab} onValueChange={setActiveTab}>
-					      	<Tabs.List>
+					      	<Tabs.List className="gap-2">
 						        {tabs.map((tab) => (
 							        <Tabs.Trigger key={tab} value={tab} className={`
 							        	whitespace-nowrap cursor-pointer h-10 px-4 
 							        	rounded-full text-xs ease-out z-10 transition-all duration-300 ease-in
+                                        shadow-sm 
 							        	${
 								            activeTab === tab
 								              ? "text-white"
-								              : ""
+								              : "dark:text-black"
 								        }`}>
 							           	{tab}
 							        </Tabs.Trigger>
@@ -122,7 +123,7 @@ function CaseStudy() {
                                     <div>
                                         <Button variant="ghost" size="sm" className="hover:opacity-80 
                                             hover:bg-transparent text-primary items-center gap-1 p-0">
-                                            View Case Study <Icon icon={TbArrowNarrowRight} size="md" variant="primary" />
+                                            Go to information <Icon icon={TbArrowNarrowRight} size="md" variant="primary" />
                                         </Button>
                                     </div>                                        
 
@@ -139,4 +140,4 @@ function CaseStudy() {
 	</>
 }
 
-export default CaseStudy;
+export default CompanyPortfolio;

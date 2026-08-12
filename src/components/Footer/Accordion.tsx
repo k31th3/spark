@@ -37,7 +37,7 @@ import { Icon, Text } from "@/components";
 	    	title: "Resources",
 	    	links: [
 	    		{  label: "Blog", href: "/" },
-	      		{  label: "Case Studies", href: "/case-studies" },
+	      		{  label: "Company Portfolio", href: "/company-portfolio" },
 			    {  label: "FAQ", href: "/frequently-asked-questions" },
 			    {  label: "Privacy Policy", href: "/privacy-policy" },
 			    {  label: "Terms of Service", href: "/terms-of-service" }

@@ -1,0 +1,1 @@
+export { default as companyPortfolioPng } from "./companyPortfolio.png";

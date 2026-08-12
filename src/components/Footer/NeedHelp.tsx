@@ -16,12 +16,12 @@ export default function NeedHelp() {
         },
         {
             icon: MdOutlinePhone,
-            value: "+63 923 456 7890",
-            href: "tel:+639234567890",
+            value: "+63 000 000 0000",
+            href: "tel:+630000000000",
         },
         {
             icon: LuMapPin,
-            value: "Simkimban Building 5th flr, 9532B Taguig, Makati City, 1208 Metro Manila",
+            value: "Simkimban Building 4th flr, 9532B Taguig, Makati City, 1208 Metro Manila",
             href: "https://maps.app.goo.gl/Uosp84QvCXteTDsg8",
         }
     ];

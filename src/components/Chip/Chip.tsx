@@ -5,7 +5,8 @@ type ChipVariant =
   | "primary"
   | "success"
   | "warning"
-  | "danger";
+  | "danger"
+  | "gradient";
 
 type ChipSize = "sm" | "md" | "lg";
 
@@ -17,11 +18,12 @@ interface ChipProps {
 }
 
 const variants: Record<ChipVariant, string> = {
-    default: "bg-gray-100 text-gray-700 border-gray-200",
-    primary: "bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)]/200",
-    success: "bg-green-100 text-green-700 border-green-200",
-    warning: "bg-yellow-100 text-yellow-800 border-yellow-200",
-    danger: "bg-red-100 text-red-700 border-red-200"
+    default:  "bg-gray-100 text-gray-700 border-gray-200",
+    primary:  "bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)]/200",
+    success:  "bg-green-100 text-green-700 border-green-200",
+    warning:  "bg-yellow-100 text-yellow-800 border-yellow-200",
+    danger:   "bg-red-100 text-red-700 border-red-200",
+    gradient: "bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)] text-white"
 };
 
 const sizes: Record<ChipSize, string> = {

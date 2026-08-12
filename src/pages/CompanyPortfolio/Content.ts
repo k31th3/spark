@@ -2,19 +2,22 @@ import { IconType } from "react-icons";
 import { CgIfDesign, CgWebsite } from "react-icons/cg";
 import { MdDeveloperMode } from "react-icons/md";
 import { VscDeveloperTools } from "react-icons/vsc";
+import { FaComputer } from "react-icons/fa6";
 
 type IconVariant =
   | "default"
   | "primary"
   | "success"
   | "warning"
-  | "danger";
+  | "danger"
+  | "gradient";
   
 export const categories = [
     "Web Development",
     "Mobile App",
     "System Integration",
-    "UI/UX Design"
+    "UI/UX Design",
+    "Hardware"
 ] as const;
 
 export type Category = (typeof categories)[number];
@@ -31,6 +34,7 @@ export const icons: Record<Category, IconType> = {
     "Mobile App": MdDeveloperMode,
     "System Integration": VscDeveloperTools,
     "UI/UX Design": CgIfDesign,
+    "Hardware": FaComputer
 };
 
 export const colors: Record<Category, IconVariant> = {
@@ -38,6 +42,7 @@ export const colors: Record<Category, IconVariant> = {
     "Mobile App": "warning",
     "System Integration": "success",
     "UI/UX Design": "primary",
+    "Hardware": "gradient"
 };
 
 export interface Card {
