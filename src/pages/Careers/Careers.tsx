@@ -4,7 +4,7 @@ import { PiAirplaneTiltDuotone } from "react-icons/pi";
 import { Wrapper, Text, Image, Button } from "@/components";
 
 import career from "@/assets/career.png"
-import dashboardBg from "@/assets/dashboardBg.webp";
+import {dashboardBgWeBp} from "@/assets/Dashboard";
 
 import { Contents } from "./Contents";
 import { OpenPositions } from "./OpenPositions";
@@ -19,7 +19,7 @@ function Careers() {
 			<div className="grid grid-cols-1 gap-0">
                 
                 <Image
-	                src={dashboardBg}
+	                src={dashboardBgWeBp}
 	                alt="dashboard background"
 	                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 

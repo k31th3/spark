@@ -5,8 +5,7 @@ import { PiLightbulbFilamentDuotone } from "react-icons/pi";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { PiSparkleDuotone } from "react-icons/pi";
 
-import DashboardPlayVid from "@/assets/dashboardPlayVid.mp4";
-import DashboardCaptions from "@/assets/dashboardPlayVid.en.vtt";
+import { dashboardPlayVidMp4, dashboardPlayVidVtt } from "@/assets/Dashboard";
 
 import { Icon, Text } from "@/components";
 
@@ -86,13 +85,13 @@ export default function AboutUsContent() {
                         preload="metadata"
                         className="block h-full w-full rounded-t-3xl object-cover object-center bg-transparent">
                         <source
-                            src={DashboardPlayVid}
+                            src={dashboardPlayVidMp4}
                             type="video/mp4"
                         />
 
                         <track
                             kind="captions"
-                            src={DashboardCaptions}
+                            src={dashboardPlayVidVtt}
                             srcLang="en"
                             label="English"
                             default

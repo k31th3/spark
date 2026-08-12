@@ -10,7 +10,7 @@ import { Icon, Image, Text, Wrapper } from "@/components";
 import { IoSearch, IoClose } from "react-icons/io5";
 
 import FaqWebp from "@/assets/faq.webp"
-import dashboardBg from "@/assets/dashboardBg.webp";
+import { dashboardBgWeBp } from "@/assets/Dashboard";
 
 import { clientQuestions } from "./clientQuestions";
 
@@ -88,7 +88,7 @@ function Faq() {
         	<div className="grid grid-cols-1 gap-0">
                 
                 <Image
-	                src={dashboardBg}
+	                src={dashboardBgWeBp}
 	                alt="dashboard background"
 	                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 

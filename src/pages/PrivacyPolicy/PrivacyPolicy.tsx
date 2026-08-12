@@ -1,7 +1,7 @@
 import { Icon, Image, Text, Wrapper  } from "@/components";
 
 import privacyPolicy from "@/assets/privacyPolicy.png"
-import dashboardBg from "@/assets/dashboardBg.webp";
+import { dashboardBgWeBp } from "@/assets/Dashboard";
 
 
 import { Contents } from "./Contents";
@@ -16,7 +16,7 @@ function PrivacyPolicy() {
 			<div className="grid grid-cols-1 gap-0">
                 
                 <Image
-	                src={dashboardBg}
+	                src={dashboardBgWeBp}
 	                alt="dashboard background"
 	                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 

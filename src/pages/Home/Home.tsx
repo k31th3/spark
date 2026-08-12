@@ -5,7 +5,7 @@ import { Title,
 	WeSpeakHuman
 } from "./";
 
-import dashboardBg from "@/assets/dashboardBg.webp";
+import { dashboardBgWeBp } from "@/assets/Dashboard";
 
 	function Home() 
 	{
@@ -16,7 +16,7 @@ import dashboardBg from "@/assets/dashboardBg.webp";
 		      		
 		      		<div className="vstack gap-15">
 			            <Image
-			                src={dashboardBg}
+			                src={dashboardBgWeBp}
 			                alt="dashboard background"
 			                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 			            <Title />

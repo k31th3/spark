@@ -9,10 +9,6 @@ At SPARK, we're more than an IT provider—we're a technology partner that helps
 - [Services](https://www.getsitgo.com/services?tab=0)
 - [Let's Start Here Us](https://www.getsitgo.com/lets-start-here)
 - [Careers](https://www.getsitgo.com/careers)
-- [Company Portfolio](https://www.getsitgo.com/company-portfolio)
-- [Faq](https://www.getsitgo.com/frequently-asked-questions)
-- [Privacy Policy](https://www.getsitgo.com/privacy-policy)
-- [Terms Service](https://www.getsitgo.com/terms-of-service)
 
 ## Services
 
@@ -28,8 +24,11 @@ At SPARK, we're more than an IT provider—we're a technology partner that helps
 ## Resources
 
 - [Blog](https://www.getsitgo.com/blog)
-- [Support](https://www.getsitgo.com/support)
+- [Company Portfolio](https://www.getsitgo.com/company-portfolio)
+- [Faq](https://www.getsitgo.com/frequently-asked-questions)
+- [Privacy Policy](https://www.getsitgo.com/privacy-policy)
+- [Terms of Service](https://www.getsitgo.com/terms-of-service)
 
 ## Contact
 
-- Email: contact@getsitgo.com
+- Email: hello@getsitgo.com

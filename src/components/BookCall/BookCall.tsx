@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import style from "./BookCall.module.css";
 
-interface BookCallProps extends HTMLMotionProps<"button"> {
+interface BookCallProps extends HTMLMotionProps<"a"> {
     children?: ReactNode;
 }
 
@@ -13,8 +13,7 @@ export default function BookCall({
     ...props
 }: BookCallProps) {
     return (
-        <motion.button
-            type="button"
+        <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 1.02 }}
             transition={{
@@ -22,18 +21,18 @@ export default function BookCall({
                 stiffness: 400,
                 damping: 15
             }}
-            aria-label="Book a call"
+            aria-label="Talk to Us"
             className={style.BookCall}
-            {...props}
-        >
+            href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
+            {...props}>
             {children ?? (
                 <>
                     <MdOutlineLocalPhone />
                     <span>
-                        Book a Call
+                        Talk to us
                     </span>
                 </>
             )}
-        </motion.button>
+        </motion.a>
     );
 }

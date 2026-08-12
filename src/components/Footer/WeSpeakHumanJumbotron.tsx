@@ -34,7 +34,8 @@ export default function WeSpeakHumanJumbotron() {
                                 </div>
 
                                 <div>
-                                    <Button variant="gradient" size="md" className="gap-2">
+                                    <Button variant="gradient" size="md" className="gap-2"
+                                    onClick={() => window.location.href = `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}>
                                         Let's Talk  <Icon icon={FiArrowRight} variant="light"/>
                                     </Button>
                                 </div>

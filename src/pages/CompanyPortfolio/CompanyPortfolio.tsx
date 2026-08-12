@@ -7,7 +7,7 @@ import { Wrapper, Text, Chip,
 		 Image, Card, Icon, 
          Button} from "@/components";
 
-import dashboardBg from "@/assets/dashboardBg.webp";
+import { dashboardBgWeBp } from "@/assets/Dashboard";
 import { companyPortfolioPng } from "@/assets/CompanyPortfolio";
 import { cards, tabs, icons, colors } from "./Content";
 
@@ -30,7 +30,7 @@ function CompanyPortfolio() {
 				<div className="grid grid-cols-1 gap-0">
 					
 					<Image
-		                src={dashboardBg}
+		                src={dashboardBgWeBp}
 		                alt="dashboard background"
 		                className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 

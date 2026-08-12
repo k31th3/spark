@@ -68,7 +68,7 @@ export const Contents: Content[] = [
     {
         title: "Contact Us",
         lines: [
-            "If you have any questions about this Privacy Policy, please contact us at hello@getsitgo.com."
+            `If you have any questions about this Privacy Policy, please contact us at ${import.meta.env.VITE_CONTACT_EMAIL}.`
         ],
         icon: PiPhoneListDuotone
     }

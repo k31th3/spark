@@ -11,13 +11,13 @@ export default function NeedHelp() {
     const contactInfo = [
         {
             icon: FiMail,
-            value: "hello@getsitgo.com",
-            href: "mailto:hello@getsitgo.com",
+            value: import.meta.env.VITE_CONTACT_EMAIL,
+            href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`,
         },
         {
             icon: MdOutlinePhone,
-            value: "+63 000 000 0000",
-            href: "tel:+630000000000",
+            value: `${import.meta.env.VITE_CONTACT_PHONE}`,
+            href: `tel:${import.meta.env.VITE_CONTACT_PHONE}`,
         },
         {
             icon: LuMapPin,
@@ -75,7 +75,8 @@ export default function NeedHelp() {
                         })}
                     </ul>
 
-                    <Button variant="gradient" size="sm" className="gap-1">
+                    <Button variant="gradient" size="sm" className="gap-1" 
+                        onClick={() => window.location.href = `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}>
                         Contact SPARK <Icon icon={FiArrowRight} size="sm" variant="light" />
                     </Button>
 
