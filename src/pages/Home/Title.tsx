@@ -1,6 +1,6 @@
 
 import { Text, Chip, Image, Icon } from "@/components";
-import startHereGrouping from "@/assets/startHereGrouping.webp";
+import { hereGrouping } from "@/assets/StartHere";
 
 import { PiBriefcaseDuotone } from "react-icons/pi";
 import { PiLightbulbFilamentDuotone } from "react-icons/pi";
@@ -78,7 +78,7 @@ export default function StartHere(){
                 <div className="relative w-full max-w-[500px] 
                     overflow-hidden rounded-[24px] shadow-sm">
                     <Image
-                        src={startHereGrouping}
+                        src={hereGrouping}
                         alt="Home"
                         className="block w-full h-auto"/>
                 </div>

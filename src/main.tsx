@@ -11,6 +11,8 @@ import ErrorBoundary from "@/pages/ErrorBoundary";
 import { registerSW } from "virtual:pwa-register";
 import { ThemeProvider } from "@material-tailwind/react";
 
+import { initGA } from "./lib/analytics";
+
 const updateSW = registerSW({
   onNeedRefresh() {
     updateSW(true);
@@ -19,6 +21,8 @@ const updateSW = registerSW({
     console.log("App is ready for offline use.");
   },
 });
+
+initGA();
 
 createRoot(document.getElementById("root")).render(
     <HelmetProvider>

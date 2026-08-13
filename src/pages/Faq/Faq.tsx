@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { FaChevronRight } from "react-icons/fa6";
 
 import { Icon, Image, Text, Wrapper } from "@/components";

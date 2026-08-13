@@ -23,7 +23,7 @@ The homepage introduces the company and highlights its core services.
 
 - Company tagline
 - Short company description
-- **Book a Call** button
+- **Talk to Us** button
 - Embedded promotional/company video
 
 ### Navigation
@@ -211,7 +211,7 @@ Downloadable service catalogue and pricing.
 
 # 📞 Contact
 
-Customers can schedule a consultation using the **Book a Call** button available on the homepage.
+Customers can schedule a consultation using the **Talk to Us** button available on the homepage.
 
 ---
 
