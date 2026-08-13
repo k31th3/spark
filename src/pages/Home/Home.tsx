@@ -1,35 +1,31 @@
-import { Image, Wrapper } from "@/components";
+
+import { Wrapper } from "@/components";
 
 import { Title, 
 	AboutUsContent, TechnologyJumbotron, 
 	WeSpeakHuman
 } from "./";
 
-import { dashboardBgWeBp } from "@/assets/Dashboard";
-
 	function Home() 
 	{
 	  	return (
 		    <>
-            <Wrapper title="Spark Info-Tech Enterprise" path="">
-		      	<div className="vstack gap-15">
-		      		
-		            {/*<Image
-                        src={dashboardBgWeBp}
-                        alt="dashboard background"
-                        className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>*/}
+                <Wrapper title="Spark Info-Tech Enterprise" path="">
+                    <Wrapper.FullBleed className="relative min-h-screen">
 
-                    <div className="absolute w-[100%] h-[100%] bottom-0 left-0 right-0 bg-white -z-10" 
-                    style={{ maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))" }} />
+                        <Wrapper.Background/>
+                    
+                        <Wrapper.Body className="vstack gap-12">
+                            
+                            <Title />
+                            <AboutUsContent />
+                            <TechnologyJumbotron />
+                            <WeSpeakHuman />
 
-		            <Title />
-	      			<AboutUsContent />
+                        </Wrapper.Body>
 
-		      		<TechnologyJumbotron />
-		      		<WeSpeakHuman />
-
-                </div>
-		    </Wrapper>
+                    </Wrapper.FullBleed>
+                </Wrapper>
 		    </>
 	    );	
 	}

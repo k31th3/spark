@@ -24,7 +24,7 @@ export default function StartHere(){
 	return <>
         <div className="vstack max-md:gap-8">
 
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-16 w-full">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-16 w-full">
                 
                 {/* Text Content */}
                 <div className="w-full lg:w-1/2">
@@ -84,7 +84,7 @@ export default function StartHere(){
                 </div>
             </div>
 
-            <div className="mb-2 relative w-screen left-1/2 -translate-x-1/2 bg-pink-50">
+            <div className="mb-2 relative w-screen left-1/2 -translate-x-1/2 bg-pink-50 mt-10">
  
                 <div className="absolute w-[100%] h-[100%] top-0 left-0 right-0 -z-10 bg-white" 
                     style={{ maskImage: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))" }} />

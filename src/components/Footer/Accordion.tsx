@@ -14,7 +14,7 @@ import { Icon, Text } from "@/components";
 	    	title: "Company",
 	    	links: [
 	      		{  label: "About Us", href: "/about-us" },
-			    {  label: "Our Story", href: "/lets-start-here" },
+			    {  label: "Our Story", href: "/" },
 			    {  label: "Careers", href: "/careers" },
 			    {  label: "Contact Us", href: "/contact-us" }
 	    	],
@@ -55,7 +55,7 @@ export default function Accordion() {
 
 		{/*Desktop*/}
 
-			<div className="hidden md:grid md:grid-cols-3 gap-10 px-5">
+			<div className="hidden md:grid md:grid-cols-3 gap-10">
 		        {menus.map((menu) => (
 		        <div key={`accordion${menu.title}`}>
 		            <Text variant="h1" className="text-xl sm:text-xl lg:text-xl mb-5">{menu.title}</Text>

@@ -49,7 +49,7 @@ function AppRoutes() {
                                     <Navigation />
                                 </header>
 
-                                <main className="max-w-5xl mx-auto p-4 pt-0 md:pt-30">
+                                <main className="pt-10 md:pt-40">
                                     <DefaultQueryWrapper />
                                 </main>
 
@@ -74,7 +74,7 @@ function AppRoutes() {
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path="/lets-start-here" element={<StartHere />} />
+                    <Route path="/lets-start-here" element={<Home />} />
                     <Route path="/careers" element={<Careers />} />
                     
                     {/*Resources*/}

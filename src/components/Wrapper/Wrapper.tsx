@@ -3,8 +3,12 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
+import { cn } from "@/lib/utils";
 import { Seo, StructuredData } from "@/components";
 import { organizationSchema } from "@/config";
+
+import { Image } from "@/components";
+import { dashboardBgWeBp } from "@/assets/Dashboard";
 
 type WrapperProps = {
     title: string;
@@ -12,10 +16,88 @@ type WrapperProps = {
     children?: React.ReactNode;
 };
 
-export default function Wrapper({title, path, children}:WrapperProps) {
+type WrapperComponentProps = {
+    children?: React.ReactNode;
+    className?: string;
+};
 
-    // const { scrollYProgress } = useScroll();
+function WrapperSection({
+    children,
+    className,
+}: WrapperComponentProps) {
+    return (
+        <section className={cn(className)}>
+            {children}
+        </section>
+    );
+}
 
+function WrapperBody({
+    children,
+    className,
+}: WrapperComponentProps) {
+    return (
+        <div className={cn("max-w-5xl mx-auto sm:px-4 px-6", className)}>
+            {children}
+        </div>
+    );
+}
+
+function WrapperFullBleed({
+    children,
+    className,
+}: WrapperComponentProps) {
+    return (
+        <div
+            className={cn(
+                "relative left-1/2 w-screen -translate-x-1/2",
+                className
+            )}
+        >
+            {children}
+        </div>
+    );
+}
+
+type WrapperBackgroundProps = {
+    className?: string;
+    topBlur?: boolean;
+    bottomBlur?: boolean;
+};
+
+function WrapperBackground({
+    className,
+    topBlur = true,
+    bottomBlur = true,
+}: WrapperBackgroundProps) {
+    return (
+        <>
+            <Image
+                src={dashboardBgWeBp}
+                alt="section background"
+                className={cn(
+                    "absolute top-0 left-1/2 -z-15 h-[420px] w-fit -translate-x-1/2",
+                    className
+                )}
+            />
+
+            {topBlur && (
+                    <div
+                        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-white via-white/80 to-transparent "/>
+            )}
+
+            {bottomBlur && (
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-white/90 to-transparent backdrop-blur-sm" />
+            )}
+        </>
+    );
+}
+
+function Wrapper({
+    title,
+    path,
+    children,
+}: WrapperProps) {
     useEffect(() => {
         const lenis = new Lenis({
             smoothWheel: true,
@@ -36,23 +118,27 @@ export default function Wrapper({title, path, children}:WrapperProps) {
             lenis.destroy();
         };
     }, []);
-    
+
     return (
         <>
-            <Seo title={`GetSitGo - ${title}`} description="SPARK Info-Tech Enterprise helps businesses start, simplify, and grow through technology that feels human.
-                At SPARK, we're more than an IT provider—we're a technology partner that helps businesses improve operations and confidently embrace digital transformation. Whether you're starting a new business or scaling an existing one, we solve real problems and grow alongside our clients.
-                SPARK can be contacted through its website at https://getsitgo.com." 
-                canonical={`https://www.getsitgo.com/${path}`} />
-                
+            <Seo
+                title={`GetSitGo - ${title}`}
+                description="SPARK Info-Tech Enterprise helps businesses start, simplify, and grow through technology that feels human.
+                    At SPARK, we're more than an IT provider—we're a technology partner that helps businesses improve operations and confidently embrace digital transformation. Whether you're starting a new business or scaling an existing one, we solve real problems and grow alongside our clients.
+                    SPARK can be contacted through its website at https://getsitgo.com."
+                canonical={`https://www.getsitgo.com/${path}`}
+            />
+
             <StructuredData data={organizationSchema} />
-            
-            {/*<motion.div
-                className="fixed top-0 left-0 right-0 z-[9999] h-1 origin-left bg-primary"
-                style={{ scaleX: scrollYProgress }}
-            />*/}
 
             {children}
         </>
-    )
-
+    );
 }
+
+Wrapper.Section = WrapperSection;
+Wrapper.Body = WrapperBody;
+Wrapper.FullBleed = WrapperFullBleed;
+Wrapper.Background = WrapperBackground;
+
+export default Wrapper;

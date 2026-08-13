@@ -89,63 +89,66 @@ function Services() {
         <>
         <Wrapper title="Services" path="services">
 
-        <section className="relative flex flex-col md:flex-row gap-6">
+            <Wrapper.Body>
+                <section className="relative flex flex-col md:flex-row gap-6">
 
-            {/* Desktop Sidebar */}
-            <nav
-                className={`${style.sideBarDesktop} hidden md:flex`}
-                aria-label="Service Categories">
-              {renderTabs()}
-            </nav>
+                    {/* Desktop Sidebar */}
+                    <nav
+                        className={`${style.sideBarDesktop} hidden md:flex`}
+                        aria-label="Service Categories">
+                      {renderTabs()}
+                    </nav>
 
-            {/* Mobile RideBar Tabs */}
-            <motion.nav
-                initial={{ x: 0, opacity: 1 }}
-                animate={
-                    isScrolling
-                      ? { x: 80, opacity: 0 }
-                      : { x: 0, opacity: 1 }
-                    }
-                transition={{
-                    duration: 0.35,
-                    ease: "easeInOut",
-                }}
-                className={`${style.sideBarMobile} flex md:hidden`}>
-                {renderTabs()}
-            </motion.nav>
+                    {/* Mobile RideBar Tabs */}
+                    <motion.nav
+                        initial={{ x: 0, opacity: 1 }}
+                        animate={
+                            isScrolling
+                              ? { x: 80, opacity: 0 }
+                              : { x: 0, opacity: 1 }
+                            }
+                        transition={{
+                            duration: 0.35,
+                            ease: "easeInOut",
+                        }}
+                        className={`${style.sideBarMobile} flex md:hidden`}>
+                        {renderTabs()}
+                    </motion.nav>
 
-            {/* Content */}
-            <main className="w-full min-w-0 py-3 flex flex-col gap-5">
-                <Swiper
-                    className="w-full"
-                    autoHeight={true}
-                    modules={[EffectFade]}
-                    effect="fade"
-                    fadeEffect={{
-                        crossFade: true,
-                    }}
-                    speed={500}
-                    allowTouchMove={false}
-                    onSwiper={(swiper) => {
-                        swiperRef.current = swiper;
+                    {/* Content */}
+                    <main className="w-full min-w-0 py-3 flex flex-col gap-5">
+                        <Swiper
+                            className="w-full"
+                            autoHeight={true}
+                            modules={[EffectFade]}
+                            effect="fade"
+                            fadeEffect={{
+                                crossFade: true,
+                            }}
+                            speed={500}
+                            allowTouchMove={false}
+                            onSwiper={(swiper) => {
+                                swiperRef.current = swiper;
 
-                        const index = getTabFromUrl();
+                                const index = getTabFromUrl();
 
-                        swiper.slideTo(index, 0);
-                        setActive(index);
-                    }}
-                    onSlideChange={handleSlideChange}>
-                    {tabs.map(({ title, component: Component }) => (
-                    <SwiperSlide key={title} className="w-full">
-                        <Component />
-                    </SwiperSlide>
-                ))}
-                </Swiper>
+                                swiper.slideTo(index, 0);
+                                setActive(index);
+                            }}
+                            onSlideChange={handleSlideChange}>
+                            {tabs.map(({ title, component: Component }) => (
+                            <SwiperSlide key={title} className="w-full">
+                                <Component />
+                            </SwiperSlide>
+                        ))}
+                        </Swiper>
 
-                <BookCall />
-            </main>
+                        <BookCall />
+                    </main>
+                    
+                </section>
+            </Wrapper.Body>
             
-        </section>
         </Wrapper>
         </>
     );

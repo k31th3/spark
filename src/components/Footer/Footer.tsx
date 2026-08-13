@@ -8,12 +8,14 @@ import {
     NeedHelp
 } from "./";
 
+import { Wrapper } from "@/components";
+
 function Footer() {
 
     return (
         <>
-            <div className="max-w-5xl mx-auto p-4 mb-20 sm:mb-0 vstack gap-15">
-                
+            <Wrapper.Body className="vstack gap-12 my-12">
+
                 <WeSpeakHumanJumbotron />
 
                 {/*navigation link*/}
@@ -40,7 +42,7 @@ function Footer() {
                     @2026 The Spark Info-Tech Enterprise. All rights reserved.
                 </p>
 
-            </div>
+            </Wrapper.Body>
         </>
     );
 }
