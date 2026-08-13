@@ -54,7 +54,7 @@ export default function WeSpeakHuman()
                 <div className="grid max-xs:grid-cols-1 grid-cols-3 gap-4 mb-4">
 
                     {cardMaintenance.map((item, info) => (
-                        <Card >
+                        <Card key={`card${info}`}>
                             <Card.Body>
 
                                 <div className="vstack gap-4 items-center">
@@ -63,7 +63,7 @@ export default function WeSpeakHuman()
                                         <Icon icon={item.icon} size="lg" />
                                     </div>
 
-                                    <Text key={`card${info}`} variant="label" className="block leading-4 
+                                    <Text variant="label" className="block leading-4 
                                         font-medium text-muted text-center">
                                         {item.info}
                                     </Text>
