@@ -2,8 +2,7 @@
 
 import { FiArrowRight } from "react-icons/fi";
 import { Button, Icon, Text } from "@/components";
-
-import startHereWeSpeakHumanJumboron from "@/assets/startHereWeSpeakHumanJumboron.png";
+import { weSpeakHumanJumboron } from "@/assets/StartHere";
 
 export default function WeSpeakHumanJumbotron() {
     return (
@@ -45,7 +44,7 @@ export default function WeSpeakHumanJumbotron() {
                                             bg-[position:right_-80px_top_-50px] bg-[length:55%]
                                             md:bg-[position:right_-70px_center] md:bg-[length:55%]"
                                   style={{
-                                    backgroundImage: `url(${startHereWeSpeakHumanJumboron})`,
+                                    backgroundImage: `url(${weSpeakHumanJumboron})`,
                                   }}/>  
                             </div>                              
 

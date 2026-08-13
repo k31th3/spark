@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { FaChevronRight } from "react-icons/fa6";
 
 import { PiBuildingsDuotone } from "react-icons/pi";

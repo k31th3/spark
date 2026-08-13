@@ -10,7 +10,7 @@ import {
     AnimatePresence,
     motion,
     type HTMLMotionProps,
-} from "framer-motion";
+} from "motion/react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 import { Icon } from "@/components";

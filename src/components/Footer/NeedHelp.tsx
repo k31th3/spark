@@ -16,12 +16,12 @@ export default function NeedHelp() {
         },
         {
             icon: MdOutlinePhone,
-            value: `${import.meta.env.VITE_CONTACT_PHONE}`,
+            value: import.meta.env.VITE_CONTACT_PHONE,
             href: `tel:${import.meta.env.VITE_CONTACT_PHONE}`,
         },
         {
             icon: LuMapPin,
-            value: "Simkimban Building 4th flr, 9532B Taguig, Makati City, 1208 Metro Manila",
+            value: import.meta.env.VITE_CONTACT_ADDRESS,
             href: "https://maps.app.goo.gl/Uosp84QvCXteTDsg8",
         }
     ];
