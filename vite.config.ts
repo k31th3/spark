@@ -12,7 +12,7 @@ export default defineConfig({
     tailwindcss(),
 
     VitePWA({
-      registerType: "prompt",
+      registerType: "autoUpdate",
 
       includeAssets: [
         "site.webmanifest",
@@ -35,10 +35,23 @@ export default defineConfig({
         clientsClaim: true,
 
         globPatterns: [
-          "**/*.{js,css,html,ico,woff2,json,webmanifest}"
+          "**/*.{js,css,ico,woff2,json,webmanifest}"
         ],
 
         runtimeCaching: [
+          {
+            urlPattern: ({ request }) =>
+              request.mode === "navigate",
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "html-cache",
+              networkTimeoutSeconds: 3,
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60,
+              },
+            },
+          },
           {
             urlPattern: /\.(?:png|jpg|jpeg|webp|svg)$/i,
             handler: "CacheFirst",
