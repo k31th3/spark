@@ -1,5 +1,5 @@
 import { Wrapper, Text, Image } from "@/components";
-import startHereGrouping from "@/assets/startHereGrouping.webp"
+import { hereGrouping } from "@/assets/startHere"
 
 import { storySections } from "./storySections";
 
@@ -24,7 +24,7 @@ import { storySections } from "./storySections";
 		      		
 		      		<div className="rounded-4xl overflow-hidden">
 				    	<Image
-				      		src={startHereGrouping}
+				      		src={hereGrouping}
 				      		alt="Start Here Grouping"
 				      		className="w-full h-[400px] object-cover"/>
 				  	</div>
