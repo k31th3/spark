@@ -7,7 +7,6 @@ import { GoDotFill } from "react-icons/go";
 
 import { dashboardBgWeBp } from "@/assets/Dashboard";
 import termsService from "@/assets/termsService.png";
-
 import { Contents } from "./Contents";
 
 
@@ -15,39 +14,38 @@ function TermsService() {
 
     return <>
         <Wrapper title="Terms of Service" path="terms-of-service">
-            <div className="flex flex-col vstack my-10 gap-20">
-                <div className="grid grid-cols-1 gap-0">
-                    
-                    <Image
+                
+            <div className="vstack gap-15">
+
+                <Image
                         src={dashboardBgWeBp}
                         alt="dashboard background"
                         className="absolute inset-0 w-full h-full object-cover object-center -z-10"/>
 
-                    <div className="flex items-center justify-center">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-16 w-full">
+
+                    <div className="w-full lg:w-1/2">
                         
-                        <div className="flex flex-col gap-4 sm:w-auto w-full">
+                        <div className="mb-8">
+                            <Chip variant="primary" size="sm" className="uppercase">
+                                <Icon icon={GoDotFill} size="sm" variant="danger" /> legal
+                            </Chip>
+                        </div>
 
-                            <div>
-                                <div className="mb-4">
-                                    <Chip variant="primary" size="lg" className="uppercase px-3">
-                                        <Icon icon={GoDotFill} size="sm" variant="danger" /> legal
-                                    </Chip>
-                                </div>
+                        <Text variant="h1" className="lg:text-1xl">
+                            Terms of Service
+                        </Text>
 
-                                <Text variant="h1" className="lg:text-1xl">
-                                    Terms of Service
-                                </Text>
+                        <Text variant="h4" className="mb-4">
+                            Clear expectations. <span className="text-gradient">Better partnerships.</span>
+                        </Text>
 
-                                <Text variant="h4">
-                                    Clear expectations. <span className="text-gradient">Better partnerships.</span>
-                                </Text>
-
-                                <div className="lg:hidden px-8">
-                                    <Image
-                                    src={termsService}
-                                    alt="Case Studies"
-                                    className="w-full max-w-[480px] object-cover"/>
-                                </div>
+                        <div className="vstack gap-4 sm:w-auto w-full">
+                            <div className="lg:hidden px-8">
+                                <Image
+                                src={termsService}
+                                alt="Terms of service"
+                                className="w-full max-w-[480px] object-cover m-auto"/>
                             </div>
 
                             <Text variant="caption">
@@ -60,21 +58,22 @@ function TermsService() {
                                 <div>
                                     <Icon icon={FcCalendar} size="md" variant="primary" />
                                 </div>
-                                <Text variant="caption">
+                                <Text variant="label">
                                     Last update: Aug 12, 2026
                                 </Text>
                             </div>
                         </div>
 
-                        <div className="hidden lg:flex ">
-                            <Image
-                            src={termsService}
-                            alt="Case Studies"
-                            className="w-full max-w-[480px] object-cover"/>
-                        </div>
-
                     </div>
-                </div>  
+
+                    <div className="hidden lg:flex">
+                        <Image
+                        src={termsService}
+                        alt="Terms of service"
+                        className="w-full max-w-[480px] object-cover"/>
+                    </div>
+
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-4">
 
@@ -123,6 +122,7 @@ function TermsService() {
                 </div>
 
             </div>
+
         </Wrapper> 
     </>
 }

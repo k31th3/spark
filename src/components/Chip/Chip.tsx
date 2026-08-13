@@ -27,9 +27,9 @@ const variants: Record<ChipVariant, string> = {
 };
 
 const sizes: Record<ChipSize, string> = {
-    sm: "text-[10px]",
-    md: "text-[12px]",
-    lg: "text-[14px]"
+    sm: "text-[10px] px-3 py-2",
+    md: "text-[12px] px-4 py-2",
+    lg: "text-[14px] px-6 py-3"
 };
 
 export default function Chip({

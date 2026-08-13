@@ -1,91 +1,159 @@
 "use client";
 
-import { AiOutlineMessage } from "react-icons/ai";
-import weSpeakHuman from "@/assets/startHereWeSpeakHuman.webp";
+import { Text, Icon, Card } from "@/components";
+import { RiNumber1 } from "react-icons/ri";
 
-import { Button, Icon, 
-        Image, Text } from "@/components";
+import { LuRocket } from "react-icons/lu";
+import { TbMessageHeart } from "react-icons/tb";
+import { IoPeopleCircleOutline } from "react-icons/io5";
+import { FaCircleCheck } from "react-icons/fa6";
+
+import { PiAirplaneTiltDuotone } from "react-icons/pi";
 
 export default function WeSpeakHuman() 
 {
-	const items = [
-		{
-		    title: "We Explain",
-		    subtitle: "In a way that actually makes sense.",
-            color: "primary"
-		},
-		{
-		    title: "We Answer",
-		    subtitle: `Your "stupid questions" don't exist.`,
-            color: "warning"
-		},
-		{
-		    title: "We Sketch",
-		    subtitle: "On tissue paper if that's what makes it click.",
-            color: "danger"
-		},
-		{
-		    title: "We Listen",
-		    subtitle: "Because good tech starts with understanding people.",
-            color: "success"
-		}
-	];
+    const msgMaintenance = [
+        `We weren't built to be a silent supplier.`,
+        `You deserve more than hearing from us only when something breaks.`,
+    ];
+
+    const cardMaintenance = [
+
+        { icon: LuRocket, info: "We don't Deploy. We Set You Up." },
+        { icon: TbMessageHeart, info: "We don't do Maintenance. We Check In." },
+        { icon: IoPeopleCircleOutline, info: "We don't close tickets. We keep conversations going." }
+
+    ];
+
+    const msgPhilosopy = [
+        `Technology shouldn't make people feel stupid.`,
+        `It shouldn't require a translator.`,
+        `It shouldn't be intimidating.`,
+        `It shouldn't get in the way of what you're building.`,
+    ];
+
 	return <>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+            <div className="col-span-1">
+                
+                <Text variant="h3" className="font-bold mb-2 flex gap-4">
+                    <Icon icon={RiNumber1} variant="primary" size="sm" avatar={true} />
+                    More Than <br/>Maintenance
+                </Text>
+
+                <div className="vstack gap-2 mb-4">
+                {msgMaintenance.map((message, index) => (
+                    <Text key={`maintenance${index}`} variant="caption" className="block leading-4 font-medium">
+                        {message}
+                    </Text>
+                ))}
+                </div>
+
+                <div className="grid max-xs:grid-cols-1 grid-cols-3 gap-4 mb-4">
+
+                    {cardMaintenance.map((item, info) => (
+                        <Card >
+                            <Card.Body>
+
+                                <div className="vstack gap-4 items-center">
+
+                                    <div>
+                                        <Icon icon={item.icon} size="lg" />
+                                    </div>
+
+                                    <Text key={`card${info}`} variant="label" className="block leading-4 
+                                        font-medium text-muted text-center">
+                                        {item.info}
+                                    </Text>
+
+                                </div>
+
+                            </Card.Body>
+                        </Card>
+                    ))}
+                </div>
+
+                <Text variant="caption" className="block leading-4 font-medium mb-4">
+                    Because you're more than a ticket number. <br /> And yes...
+                </Text>
+
+                <Text variant="lead" className="block leading-4 font-medium" color="primary">
+                    We'll probably become friends.
+                </Text>
+
+            </div>
+
+            <div className="col-span-1">
+
+                <Card >
+                    <Card.Body className="p-10">
+                        <Text variant="h3" className="font-bold mb-2 flex gap-4">
+                            We Keep It Simple.
+                        </Text>
+                        <div className="vstack gap-2 mb-4">
+                            <Text variant="caption" className="block leading-4 font-medium">
+                                Technology doesn't have to be complicated.
+                            </Text>
+                            <Text variant="caption" className="block leading-4 font-medium">
+                                People do a pretty good job of that already.
+                            </Text>
+                        </div>
+
+                        <div className="vstack gap-2 mb-4">
+                        {msgPhilosopy.map((message, index) => (
+                            <Text key={`philosopy${index}`} variant="label" className="block 
+                                leading-4 text-muted hstack gap-2 font-medium">
+                                <Icon icon={FaCircleCheck} size="sm" variant="gradient" />{message} 
+                            </Text>
+                        ))}
+                        </div>
+
+                        <div className="vstack gap-2 mb-4">
+                            <Text variant="caption" className="block leading-4">
+                                Life's already complicated.
+                            </Text>
+                            <Text variant="lead" className="block leading-4 font-medium">
+                                Technology should feel like a teammate.                            
+                            </Text>
+                            <Text variant="caption" className="block leading-4">
+                                Not another problem.
+                            </Text>
+                        </div>
+
+                        <Card className="bg-primary/5 border border-1 border-primary rounded-md">
+                            <Card.Body>
+
+                                <div className="flex flex-row gap-4">
+
+                                    <div className="flex">
+                                        <Icon icon={PiAirplaneTiltDuotone} size="lg" variant="gradient" />
+                                    </div>
+
+                                    <div>
+
+                                        <Text variant="caption" className="block leading-4 font-medium">
+                                            It should help you move faster. <br />
+                                            Build better.
+                                        </Text>
+                                        <Text variant="caption" color="primary" className="font-medium">
+                                            Dream bigger.
+                                        </Text>
+
+                                    </div>
+
+                                </div>
+
+                            </Card.Body>
+                        </Card>
+                    
+                    </Card.Body>
+                </Card>
+
+            </div>
+
+        </div>
 		
-		<div className="vstack gap-6">
-
-	      	<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-			  
-			  	{/* Image */}
-			  	<div className="flex flex-col">
-				  	<div className="rounded-4xl overflow-hidden">
-				    	<Image
-				      		src={weSpeakHuman}
-				      		alt="We Speak Human"
-				      		className="w-full h-full object-cover"/>
-				  	</div>
-				</div>
-
-			  	{/* Content */}
-			  	<div className="flex flex-col gap-6">
-			    	
-			    	<div>	
-				  		<Button variant="secondary" size="sm" className="disabled:opacity-100" disabled={true}>
-		      				We Speak Human
-		      			</Button>
-		      		</div>
-
-			    	<Text variant="h4">
-			      		Technology should feel like talking to your smartest friend,
-			      		not reading an instruction manual.
-			    	</Text>
-
-			    	<ul className="vstack gap-4 px-[16px]">
-			    		{items.map((item, index) => (
-						    <li key={index}>
-						      	<div className="hstack items-center gap-3">
-							        
-						          	<Icon icon={AiOutlineMessage}
-						            	size="md"
-                                        avatar={true}
-                                        variant={item.color}
-						            	/>
-
-						        	<div className="flex flex-col gap-0">
-						          		<Text variant="lead">{item.title}</Text>
-						          		<Text variant="caption" color="muted">
-						            		{item.subtitle}
-						          		</Text>
-						        	</div>
-						      	</div>
-						    </li>
-						 ))}
-			    	</ul>
-
-			  	</div>
-
-			</div>
-
-		</div>
 	</>;
 }

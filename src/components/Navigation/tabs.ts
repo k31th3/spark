@@ -19,8 +19,8 @@ export const tabs: Tab[] = [
     icon: MdDesignServices
   },
   {
-    title: "Let’s Start Here",
-    path: "lets-start-here",
+    title: "Company Portfolio",
+    path: "company-portfolio",
     id: 3,
     icon: IoBookOutline
   }

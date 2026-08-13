@@ -1,21 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-import { PiBriefcaseDuotone } from "react-icons/pi";
-import { PiLightbulbFilamentDuotone } from "react-icons/pi";
-import { LiaUserFriendsSolid } from "react-icons/lia";
-import { PiSparkleDuotone } from "react-icons/pi";
-
 import { dashboardPlayVidMp4, dashboardPlayVidVtt } from "@/assets/Dashboard";
-
-import { Icon, Text } from "@/components";
+import { Text } from "@/components";
 
 export default function AboutUsContent() {
-    const items = [
-        { icon: PiBriefcaseDuotone, label: "Business" },
-        { icon: PiLightbulbFilamentDuotone, label: "Ideas" },
-        { icon: LiaUserFriendsSolid, label: "Friendship" },
-        { icon: PiSparkleDuotone, label: "Possibilities" }
-    ];
 
     const videoRef = useRef(null);
     const hideTimerRef = useRef(null);
@@ -67,75 +55,95 @@ export default function AboutUsContent() {
         setShowControls(false);
     };
 
+    const messages = [
+        <div className="mb-2 font-semibold">
+            Technology should feel like talking to your smartest friend…
+            <br/>
+            …not reading an instruction manual.
+        </div>,
+        `If you don't know what RAM, DNS, VLAN, or RAID means...`,
+        `Good.`,
+        `That's what we're here for.`,
+        `We'll explain Wi-Fi in a way that actually makes sense.`,
+        `We'll answer your "stupid questions" because we don't believe they exist.`,
+        `We'll sketch ideas on tissue paper if that's what makes it click.`,
+        `Because understanding technology shouldn't require learning another language.
+           Around here...`,
+        <div className="font-semibold">We don't speak IT.<br />We speak people.</div>,
+    ];
+
+
     return (
-        <div>
-            <div className="rounded-4xl overflow-hidden shadow-sm relative">
+        <>
+            <div className="grid grid-cols-1 xl:grid-cols-[550px_1fr] lg:grid-cols-2 gap-4">
 
-                <div
-                    className="group relative w-full aspect-video flex items-center justify-center cursor-pointer"
-                    onClick={toggleSound}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}>
-                    <video
-                        ref={videoRef}
-                        autoPlay
-                        loop
-                        muted={isMuted}
-                        playsInline
-                        preload="metadata"
-                        className="block h-full w-full rounded-t-3xl object-cover object-center bg-transparent">
-                        <source
-                            src={dashboardPlayVidMp4}
-                            type="video/mp4"
-                        />
+                <div className="col-span-1">
+                    <div className="rounded-4xl overflow-hidden shadow-lg relative">
 
-                        <track
-                            kind="captions"
-                            src={dashboardPlayVidVtt}
-                            srcLang="en"
-                            label="English"
-                            default
-                        />
+                        <div
+                            className="group relative w-full aspect-video flex items-center justify-center cursor-pointer"
+                            onClick={toggleSound}
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}>
+                            <video
+                                ref={videoRef}
+                                autoPlay
+                                loop
+                                muted={isMuted}
+                                playsInline
+                                preload="metadata"
+                                className="block h-full w-full rounded-t-3xl object-cover object-center bg-transparent">
+                                <source
+                                    src={dashboardPlayVidMp4}
+                                    type="video/mp4"/>
 
-                        Your browser does not support the video tag.
-                    </video>
+                                <track
+                                    kind="captions"
+                                    src={dashboardPlayVidVtt}
+                                    srcLang="en"
+                                    label="English"
+                                    default/>
 
-                    {/* Sound indicator */}
-                    <div
-                        className={`
-                            pointer-events-none
-                            absolute top-1/2 left-1/2
-                            -translate-x-1/2 -translate-y-1/2
-                            bg-black/60 text-white
-                            rounded-full p-3
-                            transition-all duration-200
-                            ${
-                                showControls
-                                    ? "opacity-100 scale-100"
-                                    : "opacity-0 scale-90"
-                            }
-                        `}>
-                        {isMuted ? "🔇" : "🔊"}
+                                Your browser does not support the video tag.
+                            </video>
+
+                            {/* Sound indicator */}
+                            <div
+                                className={`
+                                    pointer-events-none
+                                    absolute top-1/2 left-1/2
+                                    -translate-x-1/2 -translate-y-1/2
+                                    bg-black/60 text-white
+                                    rounded-full p-3
+                                    transition-all duration-200
+                                    ${
+                                        showControls
+                                            ? "opacity-100 scale-100"
+                                            : "opacity-0 scale-90"
+                                    }`}>
+                                {isMuted ? "🔇" : "🔊"}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div className="rounded-b-4xl h-[100px] bg-gradient-to-r from-[#FFEBFD] to-[#FFE4D3] p-[16px]">
-                    <ul className="hstack gap-3 justify-around items-center h-full">
-                        {items.map(({ icon, label }) => (
-                            <li
-                                key={label}
-                                className="flex flex-col items-center sm:text-[14px] text-[12px] gap-2">
-                                <Icon icon={icon} size="lg" variant="gradient"/>
+                <div className="col-span-1 pl-4">
 
-                                <Text variant="caption" className="font-semibold">
-                                    {label}
-                                </Text>
-                            </li>
-                        ))}
-                    </ul>
+                    <Text variant="h3" className="font-bold mb-2">
+                        We Speak <span className="text-gradient">Human.</span>
+                    </Text>
+                    
+                    <div className="vstack gap-2">
+                    {messages.map((message, index) => (
+                        <Text key={index} variant="caption" className="block leading-4 font-normal">
+                            {message}
+                        </Text>
+                    ))}
+                    </div>
                 </div>
 
             </div>
-        </div>
+        </>
     );
 }

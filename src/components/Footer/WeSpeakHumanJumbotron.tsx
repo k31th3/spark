@@ -18,18 +18,14 @@ export default function WeSpeakHumanJumbotron() {
                             <div className="vstack gap-6 z-1">
                                 
                                 <div>
-                                    <Text variant="h2" className="bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)]
-                                        bg-clip-text text-transparent 
-                                        lg:text-[24px] mb-3">
-                                        Technology should be your
-                                        <br />
-                                        teammate.
+                                    <Text variant="h3" className="font-semibold">
+                                        So... <span className="text-primary font-bold">SIT</span> with us. 
                                     </Text>
                                     <Text variant="caption" className="text-[#000000A3] text-sm font-medium">
-                                        So... SIT with us. Tell us what you're building.
+                                        Tell us what you're building.
                                         <br />
                                         Because every great business starts with 
-                                        a <span className="text-black">SPARK!</span>
+                                        a <span className="text-primary font-semibold">SPARK!</span>
                                     </Text>
                                 </div>
 

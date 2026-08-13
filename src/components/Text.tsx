@@ -45,7 +45,7 @@ const variants: Record<TextVariant, string> = {
     bodyLarge: "text-lg leading-8",
 
     lead: "text-xl leading-8",
-    caption: "text-xs leading-5",
+    caption: "text-[14px] leading-5",
     label: "text-[11px]"
 };
 
