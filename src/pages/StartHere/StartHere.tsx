@@ -1,5 +1,5 @@
 import { Wrapper, Text, Image } from "@/components";
-import { hereGrouping } from "@/assets/startHere"
+import { hereGrouping } from "@/assets/StartHere"
 
 import { storySections } from "./storySections";
 
