@@ -8,7 +8,7 @@ import { Seo, StructuredData } from "@/components";
 import { organizationSchema } from "@/config";
 
 import { Image } from "@/components";
-import { dashboardBgWeBp } from "@/assets/Dashboard";
+import { DashboardBgWeBp } from "@/assets/Dashboard";
 
 type WrapperProps = {
     title: string;
@@ -73,7 +73,7 @@ function WrapperBackground({
     return (
         <>
             <Image
-                src={dashboardBgWeBp}
+                src={DashboardBgWeBp}
                 alt="section background"
                 className={cn(
                     "absolute top-0 left-1/2 -z-15 h-[420px] w-fit -translate-x-1/2",
@@ -90,6 +90,33 @@ function WrapperBackground({
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-white/90 to-transparent backdrop-blur-sm" />
             )}
         </>
+    );
+}
+
+type WrapperMaskProps = {
+    position: "top" | "bottom";
+    className?: string;
+};
+
+function WrapperMask({
+    position,
+    className,
+}: WrapperMaskProps) {
+    const isTop = position === "top";
+
+    return (
+        <div
+            className={cn(
+                "absolute w-full h-full left-0 right-0 -z-10 bg-white",
+                isTop ? "top-0" : "bottom-0",
+                className
+            )}
+            style={{
+                maskImage: isTop
+                    ? "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))"
+                    : "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+            }}
+        />
     );
 }
 
@@ -140,5 +167,6 @@ Wrapper.Section = WrapperSection;
 Wrapper.Body = WrapperBody;
 Wrapper.FullBleed = WrapperFullBleed;
 Wrapper.Background = WrapperBackground;
+Wrapper.Mask = WrapperMask;
 
 export default Wrapper;

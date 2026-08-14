@@ -1,21 +1,21 @@
+"use client";
 
 import { Text, Chip, Image, Icon } from "@/components";
-import { hereGrouping } from "@/assets/StartHere";
+import { HereGrouping } from "@/assets/StartHere";
 
 import { PiBriefcaseDuotone } from "react-icons/pi";
 import { PiLightbulbFilamentDuotone } from "react-icons/pi";
-import { AiTwotoneMessage } from "react-icons/ai";
+import { AiOutlineMessage } from "react-icons/ai";
 import { PiMedalDuotone } from "react-icons/pi";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { PiSparkleDuotone } from "react-icons/pi";
 
-
-export default function StartHere(){
+export default function LetStartHere(){
 
     const items = [
         { icon: PiBriefcaseDuotone, label: "A business" },
         { icon: PiLightbulbFilamentDuotone, label: "A crazy idea" },
-        { icon: AiTwotoneMessage, label: "A conversation" },
+        { icon: AiOutlineMessage, label: "A conversation" },
         { icon: PiMedalDuotone, label: "Confidence" },
         { icon: LiaUserFriendsSolid, label: "Friendships" },
         { icon: PiSparkleDuotone, label: "Possibilities" }
@@ -78,7 +78,7 @@ export default function StartHere(){
                 <div className="relative w-full max-w-[500px] 
                     overflow-hidden rounded-[24px] shadow-sm">
                     <Image
-                        src={hereGrouping}
+                        src={HereGrouping}
                         alt="Home"
                         className="block w-full h-auto"/>
                 </div>
@@ -91,7 +91,7 @@ export default function StartHere(){
 
                 <div className="max-w-5xl mx-auto p-4">
                     
-                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 justify-around items-center h-full">
+                    <div className="grid grid-cols-3 md:grid-cols-6 gap-4 justify-around items-center h-full">
                         {items.map(({ icon, label }) => (
                             <div
                                 key={label}

@@ -1,9 +1,9 @@
 
-import { Wrapper } from "@/components";
+import { Wrapper, Grid } from "@/components";
 
-import { Title, 
-	AboutUsContent, TechnologyJumbotron, 
-	WeSpeakHuman
+import { LetStartHere, 
+	WeSpeakHuman, TextBeforeGoogle, 
+	MoreThanMaintenance
 } from "./";
 
 	function Home() 
@@ -15,12 +15,16 @@ import { Title,
 
                         <Wrapper.Background/>
                     
-                        <Wrapper.Body className="vstack gap-12">
+                        <Wrapper.Body>
                             
-                            <Title />
-                            <AboutUsContent />
-                            <TechnologyJumbotron />
-                            <WeSpeakHuman />
+                            <Grid.VStack gap={12}>
+
+                                <LetStartHere />
+                                <WeSpeakHuman />
+                                <TextBeforeGoogle />
+                                <MoreThanMaintenance />
+
+                            </Grid.VStack>
 
                         </Wrapper.Body>
 

@@ -1,7 +1,8 @@
-export { default as hereGrouping } from "./hereGrouping.webp";
-export { default as spark } from "./spark.svg";
-export { default as wellExplain } from "./wellExplain.webp";
-export { default as weSpeakHuman } from "./weSpeakHuman.webp";
-export { default as weSpeakHumanJumboron } from "./weSpeakHumanJumboron.png";
+export { default as HereGrouping } from "./hereGrouping.webp";
+export { default as Spark } from "./spark.svg";
+export { default as WellExplain } from "./wellExplain.webp";
+export { default as WeSpeakHuman } from "./weSpeakHuman.webp";
+export { default as WeSpeakHumanJumboron } from "./weSpeakHumanJumboron.png";
+export { default as HomeAskPng } from "./homeAsk.png";
 
 
