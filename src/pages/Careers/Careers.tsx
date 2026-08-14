@@ -2,7 +2,7 @@ import { LuCircleArrowRight } from "react-icons/lu";
 import { PiAirplaneTiltDuotone } from "react-icons/pi";
 
 import { Wrapper, Text, Card,
-    Image, Button, Icon } from "@/components";
+    Image, Button, Icon, Grid } from "@/components";
 
 import career from "@/assets/career.png"
 
@@ -20,13 +20,14 @@ function Careers() {
                 <Wrapper.Body className="vstack gap-12">
                     
                     <div className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-16 w-full">
-                        <div className="flex flex-col gap-3 sm:w-auto w-full">
+                        
+                        <Grid.VStack gap={3} className="sm:w-auto w-full">
                             <Text variant="h1" className="lg:text-1xl">
                                 Build The Future <br /> 
                                 with <span className="text-gradient">Spark</span>
                             </Text>
+                            <Grid cols={{ base: 1 }} gap={{ base: 4 }}>
 
-                            <div className="vstack gap-8 text-xs">
                                 <Text variant="caption">
                                     We're a team of innovators, creators, and problem solvers.<br />
                                     passionate about building solations that make a difference.
@@ -37,8 +38,9 @@ function Careers() {
                                         Open positions <Icon icon={LuCircleArrowRight} size="lg" variant="light"/>
                                     </Button>
                                 </div>
-                            </div>
-                        </div>
+                            </Grid>
+                        </Grid.VStack>
+
                         <div className="flex">
                         <Image
                             src={career}
@@ -56,17 +58,17 @@ function Careers() {
                         </Text>
                     </div>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <Grid cols={{ base: 2, sm: 4 }} gap={{ base: 4 }} >
 
                         {Contents.map((item, index) => (
                         
                         <Card key={`${item.title}-${index}`}>
                             <Card.Body>
                                 {/*Title*/}
-                                <div className="vstack items-center gap-2">
+                                <Grid.VStack gap={2} className="items-center">
                                     <Icon icon={item.icon} size="xl" variant="gradient" />
                                     <Text variant="h6" className="text-center">{item.title}</Text>
-                                </div>
+                                </Grid.VStack>
 
                                 {/*Subtitle*/}
                                 <Text variant="label" color="muted" className="block leading-4 text-center">
@@ -81,7 +83,7 @@ function Careers() {
                         </Card>
 
                         ))}
-                    </div>
+                    </Grid>
 
                     <div className="text-center">
                         <Text variant="h3">
@@ -92,7 +94,7 @@ function Careers() {
                         </Text>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <Grid cols={{ base: 1, sm: 3 }} gap={{ base: 4 }} >
 
                     {OpenPositions.map((item, index) => (
                     
@@ -101,7 +103,7 @@ function Careers() {
                                 {/*Title*/}
                                 <Text variant="h4">{item.title}</Text>
                                 {/*Subtitle*/}
-                                <div className="flex flex-col justify-between gap-4">
+                                <Grid.VStack gap={4} className="justify-between">
 
                                     <Text variant="label" color="muted">
                                         {item.lines.map((line, item) => (
@@ -121,11 +123,11 @@ function Careers() {
                                         </Button>
                                     </div>
 
-                                </div>
+                                </Grid.VStack>
                             </Card.Body>
                         </Card>
                     ))}
-                    </div>
+                    </Grid>
 
                     <Card className="p-4">
                         <Card.Body className="flex flex-row justify-between gap-4">
@@ -134,7 +136,8 @@ function Careers() {
                             </div>
                             
                             <div className="flex sm:flex-row flex-col gap-8">
-                                <div className="vstack gap-4">
+                                
+                                <Grid.VStack gap={4}>
 
                                     <Text variant="h4">
                                         Don't see the right role?
@@ -144,7 +147,7 @@ function Careers() {
                                         we'd love to hear from you. Send us your resume, and we'll keep you in mind for future opportunities.
                                     </Text>
 
-                                </div>
+                                </Grid.VStack>
 
                                 <div className="flex justify-end items-center">
                                     <Button variant="gradient" className="shadow-sm flex gap-4">

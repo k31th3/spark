@@ -11,7 +11,6 @@ import { SuspenseLoader, DefaultQueryWrapper } from "./";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Services = lazy(() => import("@/pages/Services"));
-const StartHere = lazy(() => import("@/pages/StartHere"));
 
 const Careers = lazy(() => import("@/pages/Careers"));
 

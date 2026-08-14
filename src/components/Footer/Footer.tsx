@@ -4,7 +4,7 @@ import {
     WeSpeakHumanJumbotron,
     Social,
     Company,
-    Accordion,
+    Services,
     NeedHelp
 } from "./";
 
@@ -26,7 +26,7 @@ function Footer() {
                     </div>
 
                     <div className="flex flex-col">
-                        <Accordion />
+                        <Services />
                     </div>
 
                     <div className="lg:flex flex-col hidden">
