@@ -107,14 +107,17 @@ function WrapperMask({
     return (
         <div
             className={cn(
-                "absolute w-full h-full left-0 right-0 -z-10 bg-white",
+                "absolute w-full h-full left-0 right-0 z-[1] bg-white pointer-events-none",
                 isTop ? "top-0" : "bottom-0",
                 className
             )}
             style={{
                 maskImage: isTop
-                    ? "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))"
-                    : "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+                    ? "linear-gradient(to bottom, black, transparent)"
+                    : "linear-gradient(to top, black, transparent)",
+                WebkitMaskImage: isTop
+                    ? "linear-gradient(to bottom, black, transparent)"
+                    : "linear-gradient(to top, black, transparent)",
             }}
         />
     );

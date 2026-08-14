@@ -1,7 +1,7 @@
 import type { IconType, IconBaseProps } from "react-icons";
 import { cn } from "@/lib/utils";
 
-type IconSize = "xs" | "sm" | "md" | "lg" | "xl";
+type IconSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 type IconVariant =
     | "default"
@@ -28,7 +28,8 @@ const sizes: Record<IconSize, string> = {
     sm: "h-7 w-7",
     md: "h-9 w-9",
     lg: "h-12 w-12",
-    xl: "h-15 w-15"
+    xl: "h-15 w-15",
+    "2xl": "h-18 w-18"
 };
 
 const variantsBg: Record<IconVariant, string> = {
@@ -56,7 +57,8 @@ const iconSizes: Record<IconSize, number> = {
     sm: 14,
     md: 20,
     lg: 28,
-    xl: 36
+    xl: 36,
+    "2xl": 42
 };
 
 export default function Icon({

@@ -17,6 +17,7 @@ export { default as Grid } from "./Grid";
 export { default as Image } from "./Image";
 export { default as Icon } from "./Icon";
 export { default as Text } from "./Text";
+export { default as ProgressIndicator } from "./ProgressIndicator";
 
 // for icon gradient
 export { default as IconGradient } from "./IconGradient";

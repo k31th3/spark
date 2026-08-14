@@ -28,7 +28,7 @@ export default function TextBeforeGoogle() {
                     
                     <Wrapper.Mask position="top" />
 
-                    <Grid.Item span={{ base: 1 }} >
+                    <Grid.Item span={{ base: 1 }} className="z-10">
                         <Text variant="h3" className="font-bold mb-2">
                             We are Who You'll <br/>
                             Text Before You <span className="text-gradient">Google.</span>
@@ -43,7 +43,7 @@ export default function TextBeforeGoogle() {
                         </Grid.VStack>
                     </Grid.Item>    
 
-                    <Grid.Item span={{ base: 1 }} >
+                    <Grid.Item span={{ base: 1 }} className="z-10">
                         <Image
                             src={HomeAskPng}
                             alt="We'll explain"

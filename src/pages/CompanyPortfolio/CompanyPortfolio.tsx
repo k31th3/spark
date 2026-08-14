@@ -30,7 +30,7 @@ function CompanyPortfolio() {
 
                 <Wrapper.Body className="vstack gap-20">
                     
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-16 w-full">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
                     
                         <div className="flex flex-col gap-4 sm:w-auto w-full">
                             <div className="mb-4">

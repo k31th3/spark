@@ -2,6 +2,7 @@ import {
     createContext,
     useContext,
     useState,
+    type ComponentProps,
     type ReactNode,
     type HTMLAttributes,
     type ButtonHTMLAttributes,
@@ -11,31 +12,57 @@ import {
     motion,
     type HTMLMotionProps,
 } from "motion/react";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import {
+    FaMinus,
+    FaPlus,
+    FaChevronRight,
+} from "react-icons/fa";
 
-import { Icon } from "@/components";
+import { Button, Icon } from "@/components";
 import { cn } from "@/lib/utils";
 
-type AccordionProps = HTMLAttributes<HTMLDivElement> & {
-    defaultOpen?: string | null;
-};
+type AccordionIcon =
+    | "arithmetic"
+    | "comparison"
+    | false;
 
-type AccordionItemProps = HTMLAttributes<HTMLDivElement> & {
-    id: string;
-};
+type AccordionProps =
+    HTMLAttributes<HTMLDivElement> & {
+        defaultOpen?: string | null;
+        icon?: AccordionIcon;
+    };
+
+type AccordionItemProps =
+    HTMLAttributes<HTMLDivElement> & {
+        id: string;
+    };
 
 type AccordionHeaderProps =
-    ButtonHTMLAttributes<HTMLButtonElement>;
+    Omit<
+        ButtonHTMLAttributes<HTMLButtonElement>,
+        "children"
+    > & {
+        children:
+            | ReactNode
+            | ((isOpen: boolean) => ReactNode);
+    };
 
 type AccordionBodyProps = Omit<
     HTMLMotionProps<"div">,
-    "children"> & {
+    "children"
+> & {
     children: ReactNode;
 };
+
+type AccordionActionProps =
+    ComponentProps<typeof Button>;
 
 type AccordionContextType = {
     openItem: string | null;
     toggleItem: (id: string) => void;
+    openItemById: (id: string) => void;
+    closeItem: () => void;
+    icon: AccordionIcon;
 };
 
 type AccordionItemContextType = {
@@ -61,7 +88,9 @@ function useAccordion() {
 }
 
 function useAccordionItem() {
-    const context = useContext(AccordionItemContext);
+    const context = useContext(
+        AccordionItemContext
+    );
 
     if (!context) {
         throw new Error(
@@ -75,12 +104,12 @@ function useAccordionItem() {
 function Accordion({
     children,
     defaultOpen = null,
+    icon = "arithmetic",
     className,
     ...props
 }: AccordionProps) {
-    const [openItem, setOpenItem] = useState<string | null>(
-        defaultOpen
-    );
+    const [openItem, setOpenItem] =
+        useState<string | null>(defaultOpen);
 
     const toggleItem = (id: string) => {
         setOpenItem((current) =>
@@ -88,11 +117,22 @@ function Accordion({
         );
     };
 
+    const openItemById = (id: string) => {
+        setOpenItem(id);
+    };
+
+    const closeItem = () => {
+        setOpenItem(null);
+    };
+
     return (
         <AccordionContext.Provider
             value={{
                 openItem,
                 toggleItem,
+                openItemById,
+                closeItem,
+                icon,
             }}>
             <div
                 {...props}
@@ -110,7 +150,8 @@ function AccordionItem({
     ...props
 }: AccordionItemProps) {
     return (
-        <AccordionItemContext.Provider value={{ id }}>
+        <AccordionItemContext.Provider
+            value={{ id }}>
             <div
                 {...props}
                 className={className}>
@@ -126,10 +167,56 @@ function AccordionHeader({
     onClick,
     ...props
 }: AccordionHeaderProps) {
-    const { openItem, toggleItem } = useAccordion();
+    const {
+        openItem,
+        toggleItem,
+        icon,
+    } = useAccordion();
+
     const { id } = useAccordionItem();
 
     const isOpen = openItem === id;
+
+    const renderIcon = () => {
+        if (icon === false) {
+            return null;
+        }
+
+        if (icon === "comparison") {
+            return (
+                <motion.span
+                    animate={{
+                        rotate: isOpen ? 90 : 0,
+                    }}
+                    transition={{
+                        duration: 0.2,
+                        ease: "easeInOut",
+                    }}>
+                    <Icon
+                        icon={FaChevronRight}
+                        size="md"
+                    />
+                </motion.span>
+            );
+        }
+
+        return isOpen ? (
+            <Icon
+                icon={FaMinus}
+                size="xs"
+                avatar={true}
+                variant="light"
+                className="bg-primary"
+            />
+        ) : (
+            <Icon
+                icon={FaPlus}
+                size="xs"
+                avatar={true}
+                variant="primary"
+            />
+        );
+    };
 
     return (
         <button
@@ -146,29 +233,11 @@ function AccordionHeader({
                 "text-left font-semibold",
                 className
             )}>
+            {typeof children === "function"
+                ? children(isOpen)
+                : children}
 
-            {children}
-
-            <motion.span
-                transition={{
-                    duration: 0.2,
-                }}>
-                {
-                    isOpen ? <Icon
-                        icon={FaMinus}
-                        size="xs"
-                        avatar={true}
-                        variant="light"
-                        className="bg-primary"
-                    /> : 
-                    <Icon
-                        icon={FaPlus}
-                        size="xs"
-                        avatar={true}
-                        variant="primary"
-                    />
-                }
-            </motion.span>
+            {renderIcon()}
         </button>
     );
 }
@@ -205,7 +274,11 @@ function AccordionBody({
                         ease: "easeInOut",
                     }}
                     className="overflow-hidden">
-                    <div className={cn("pb-4 px-4", className)}>
+                    <div
+                        className={cn(
+                            "px-4 pb-4",
+                            className
+                        )}>
                         {children}
                     </div>
                 </motion.div>
@@ -214,9 +287,53 @@ function AccordionBody({
     );
 }
 
+function AccordionOpen({
+    children,
+    onClick,
+    ...props
+}: AccordionActionProps) {
+    const { openItemById } = useAccordion();
+    const { id } = useAccordionItem();
+
+    return (
+        <Button
+            variant="ghost"
+            size="sm"
+            {...props}
+            onClick={(event) => {
+                openItemById(id);
+                onClick?.(event);
+            }}>
+            {children}
+        </Button>
+    );
+}
+
+function AccordionClose({
+    children,
+    onClick,
+    ...props
+}: AccordionActionProps) {
+    const { closeItem } = useAccordion();
+
+    return (
+        <Button
+            variant="ghost"
+            size="sm"
+            {...props}
+            onClick={(event) => {
+                closeItem();
+                onClick?.(event);
+            }}>
+            {children}
+        </Button>
+    );
+}
 
 Accordion.Item = AccordionItem;
 Accordion.Header = AccordionHeader;
 Accordion.Body = AccordionBody;
+Accordion.Open = AccordionOpen;
+Accordion.Close = AccordionClose;
 
 export default Accordion;

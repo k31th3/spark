@@ -9,8 +9,8 @@ export const Contents: Content[] = [
     {
         title: "Introduction & Agreement",
         description: [
-            `SPARK provides technology and digital services to businesses, organizations, teams, and individuals. Depending on the project, our work may include web development, software development, UI/UX design, system integration, automation, IT consulting, technical support, maintenance, and related digital services.`,
-            `These Terms form an agreement between you and SPARK when you purchase, engage, or use our services.`,
+            `SIT provides technology and digital services to businesses, organizations, teams, and individuals. Depending on the project, our work may include web development, software development, UI/UX design, system integration, automation, IT consulting, technical support, maintenance, and related digital services.`,
+            `These Terms form an agreement between you and SIT when you purchase, engage, or use our services.`,
             `A specific project may also have a proposal, statement of work, service agreement, quotation, or other written agreement. If a project-specific agreement contains terms that conflict with these Terms, the project-specific agreement will generally apply to that project.`
         ]
     },
@@ -36,7 +36,7 @@ export const Contents: Content[] = [
     {
         title: "Using Our Services",
         description: [
-            "You agree to use SPARK services responsibly and only for lawful purposes.",
+            "You agree to use SIT services responsibly and only for lawful purposes.",
             "You must not use our services to:",
             `1. Violate applicable laws or regulations`,
             `2. Commit fraud or facilitate illegal activity`,
@@ -116,7 +116,7 @@ export const Contents: Content[] = [
             `9. Pre-existing designs`,
             `For custom deliverables created specifically for a client, ownership or usage rights will follow the terms stated in the applicable project agreement.`,
             `Third-party libraries, frameworks, APIs, fonts, stock assets, and other components remain subject to their respective licenses.`,
-            `SPARK may retain ownership of reusable development techniques, internal tools, generic components, know-how, and non-client-specific methods used during a project unless otherwise agreed.`
+            `SIT may retain ownership of reusable development techniques, internal tools, generic components, know-how, and non-client-specific methods used during a project unless otherwise agreed.`
         ]
     },
     {
@@ -134,7 +134,7 @@ export const Contents: Content[] = [
         description: [
             "We respect the privacy and security of information entrusted to us.",
             `We only collect, access, use, or process information as reasonably necessary to provide our services, communicate with you, maintain our systems, or fulfill applicable legal and contractual obligations.`,
-            `You are responsible for ensuring that information you provide to SPARK may legally be shared with us for the purpose of the engagement.`,
+            `You are responsible for ensuring that information you provide to SIT may legally be shared with us for the purpose of the engagement.`,
             `Our Privacy Policy provides additional information about how personal information may be handled.`,
             `You should not provide sensitive information unless it is necessary for the service and appropriate safeguards have been discussed.`
         ]
@@ -219,12 +219,12 @@ export const Contents: Content[] = [
         description: [
             `If you have questions about these Terms, your project, billing, responsibilities, or anything that does not make sense, please reach out.`,
             `We would rather explain something clearly than leave you guessing.`,
-            `***SPARK***`,
+            `***SIT***`,
             `Website: http://www.getsitgo.com`,
             `Clear terms. Better partnerships.`,
             `Technology works better when people understand what they are building together.`,
             `**Let's start something.**`,
-            `*Important: This is website copy and should be reviewed and adapted by a qualified Philippine lawyer before being published as SPARK legally binding Terms of Service.*`
+            `*Important: This is website copy and should be reviewed and adapted by a qualified Philippine lawyer before being published as SIT legally binding Terms of Service.*`
 
         ],
         email: `${import.meta.env.VITE_CONTACT_EMAIL}`

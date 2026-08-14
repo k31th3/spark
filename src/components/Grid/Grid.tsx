@@ -24,6 +24,7 @@ type GridItemProps = {
     number | "first" | "last" | "none"
   >;
   className?: string;
+  id?: string
 };
 
 type StackProps = {
@@ -409,6 +410,7 @@ function GridItem({
   hide,
   order,
   className = "",
+  id
 }: GridItemProps) {
   const spanClasses = getResponsiveClasses(
     span,
@@ -421,12 +423,13 @@ function GridItem({
 
   return (
     <div
-      className={[
-        spanClasses,
-        showClasses,
-        hideClasses,
-        className,
-      ]
+        id={id}
+        className={[
+            spanClasses,
+            showClasses,
+            hideClasses,
+            className,
+        ]
         .filter(Boolean)
         .join(" ")}
     >

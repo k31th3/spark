@@ -26,7 +26,7 @@ function Header({ children, className }: CardSectionProps) {
     return (
         <div
             className={cn(
-            "border-b px-6 py-4",
+            "border-b border-gray-300 px-6 py-4",
             className
         )}>
             {children}
