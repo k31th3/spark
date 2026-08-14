@@ -1,6 +1,8 @@
 "use client";
+import React from "react";
 
-import { Text, Chip, Image, Icon } from "@/components";
+import { Text, Chip, Grid,
+    Image, Icon, Wrapper } from "@/components";
 import { HereGrouping } from "@/assets/StartHere";
 
 import { PiBriefcaseDuotone } from "react-icons/pi";
@@ -9,6 +11,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { PiMedalDuotone } from "react-icons/pi";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { PiSparkleDuotone } from "react-icons/pi";
+
 
 export default function LetStartHere(){
 
@@ -21,21 +24,35 @@ export default function LetStartHere(){
         { icon: PiSparkleDuotone, label: "Possibilities" }
     ];
 
-	return <>
-        <div className="vstack max-md:gap-8">
+    const paragraphs = [
+        [
+            "Technology should feel a little more human. That's why SPARK exists.",
+        ],
+        [
+            'Every IT company says they "provide solutions." We\'d rather start things.',
+        ],
+        [
+            "Because that's what a spark is.",
+            "Not a fire.",
+            "The beginning of one.",
+            "A tiny moment that starts something bigger.",
+        ],
+    ];
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-16 w-full">
+	return <>
+        <Grid.VStack gap={8}>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full">
                 
                 {/* Text Content */}
                 <div className="w-full lg:w-1/2">
-                    <div className="mb-8">
-                        <Chip
-                            variant="gradient"
-                            size="sm"
-                            className="uppercase">
-                            our story
-                        </Chip>
-                    </div>
+                    
+                    <Chip
+                        variant="gradient"
+                        size="sm"
+                        className="uppercase mb-8">
+                        our story
+                    </Chip>
 
                     <Text
                         variant="h1"
@@ -49,28 +66,19 @@ export default function LetStartHere(){
                         We start <span className="text-gradient">things.</span>
                     </Text>
 
-                    <Text
-                        variant="caption"
-                        className="block font-normal tracking-wide leading-5 mb-4 text-[14px]">
-                        Technology should feel a little more human.
-                        That's why SPARK exists. 
-                    </Text>
-
-                    <Text
-                        variant="caption"
-                        className="block font-normal tracking-wide leading-5 mb-4 text-[14px]">
-                        Every IT company says
-                        they "provide solutions." We'd rather start things.   
-                    </Text>
-
-                    <Text
-                        variant="caption"
-                        className="block font-normal tracking-wide leading-5 mb-4 text-[14px]">
-                        Because that's what a spark is. <br />
-                        Not a fire. <br />
-                        The beginning of one. <br />
-                        A tiny moment that starts something bigger.
-                    </Text>
+                    {paragraphs.map((lines, index) => (
+                        <Text
+                            key={index}
+                            variant="caption"
+                            className="block font-normal tracking-wide leading-5 mb-4 text-[14px]">
+                        {lines.map((line, lineIndex) => (
+                            <React.Fragment key={lineIndex}>
+                                {line}
+                                {lineIndex !== lines.length - 1 && <br />}
+                            </React.Fragment>
+                        ))}
+                      </Text>
+                    ))}
 
                 </div>
 
@@ -84,31 +92,31 @@ export default function LetStartHere(){
                 </div>
             </div>
 
-            <div className="mb-2 relative w-screen left-1/2 -translate-x-1/2 bg-pink-50 mt-10">
- 
-                <div className="absolute w-[100%] h-[100%] top-0 left-0 right-0 -z-10 bg-white" 
-                    style={{ maskImage: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))" }} />
+            <Wrapper.FullBleed className="relative bg-pink-50 mt-8">
 
-                <div className="max-w-5xl mx-auto p-4">
-                    
-                    <div className="grid grid-cols-3 md:grid-cols-6 gap-4 justify-around items-center h-full">
-                        {items.map(({ icon, label }) => (
-                            <div
-                                key={label}
-                                className="flex flex-col items-center sm:text-[14px] text-[12px] gap-2 max-sm:mb-4">
-                                <Icon icon={icon} size="md" variant="gradient" className="z-10"/>
+                <Wrapper.Mask position="top"/>
+                
+                    <Wrapper.Body className="p-4">
+                        
+                        <Grid cols={{ base: 3, md: 6 }} gap={{ base: 4 }} >
+                        
+                            {items.map(({ icon, label }) => (
+                                <div
+                                    key={label}
+                                    className="vstack gap-2 items-center sm:text-[14px] text-[12px] max-sm:mb-4">
+                                    <Icon icon={icon} size="md" variant="gradient" className="z-10"/>
+                                    <Text variant="caption" className="font-semibold z-10">
+                                        {label}
+                                    </Text>
+                                </div>
+                            ))}
 
-                                <Text variant="caption" className="font-semibold z-10">
-                                    {label}
-                                </Text>
-                            </div>
-                        ))}
-                    </div>
+                        </Grid>
 
-                </div>
+                    </Wrapper.Body>
 
-            </div>
+            </Wrapper.FullBleed>
 
-        </div>
+        </Grid.VStack>
 	</>	
 };

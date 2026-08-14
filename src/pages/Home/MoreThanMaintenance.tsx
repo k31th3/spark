@@ -1,6 +1,7 @@
 "use client";
 
-import { Text, Icon, Card } from "@/components";
+import { Text, Icon, 
+    Card, Grid } from "@/components";
 import { RiNumber1 } from "react-icons/ri";
 
 import { LuRocket } from "react-icons/lu";
@@ -34,98 +35,105 @@ export default function MoreThanMaintenance()
 
 	return <>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-            <div className="col-span-1">
+        <Grid cols={{ base: 1, lg: 2 }} gap={{ base: 8 }} >
+
+            <Grid.Item span={{ base: 1 }} >
                 
                 <Text variant="h3" className="font-bold mb-2 flex gap-4">
                     <Icon icon={RiNumber1} variant="primary" size="sm" avatar={true} />
                     More Than <br/>Maintenance
                 </Text>
 
-                <div className="vstack gap-2 mb-4">
-                {msgMaintenance.map((message, index) => (
-                    <Text key={`maintenance${index}`} variant="caption" className="block leading-4 font-medium">
-                        {message}
-                    </Text>
-                ))}
-                </div>
+                <Grid.VStack gap={4}>
 
-                <div className="grid max-xs:grid-cols-1 grid-cols-3 gap-4 mb-4">
+                    <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
+                        {msgMaintenance.map((message, index) => (
+                            <Text key={`maintenance${index}`} variant="caption" className="block leading-4 font-medium">
+                                {message}
+                            </Text>
+                        ))}
+                    </Grid>
 
-                    {cardMaintenance.map((item, info) => (
-                        <Card key={`card${info}`}>
-                            <Card.Body>
+                    <Grid cols={{ base: 3, xs: 1 }} gap={{ base: 4 }}>
+                        {cardMaintenance.map((item, info) => (
+                            <Card key={`card${info}`}>
+                                <Card.Body>
 
-                                <div className="vstack gap-4 items-center">
+                                    <Grid.VStack gap={4} className="items-center">
 
-                                    <div>
                                         <Icon icon={item.icon} size="lg" />
-                                    </div>
+                                        
+                                        <Text variant="label" className="block leading-4 
+                                            font-medium text-muted text-center">
+                                            {item.info}
+                                        </Text>
 
-                                    <Text variant="label" className="block leading-4 
-                                        font-medium text-muted text-center">
-                                        {item.info}
-                                    </Text>
+                                    </Grid.VStack>
 
-                                </div>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </Grid>
 
-                            </Card.Body>
-                        </Card>
-                    ))}
-                </div>
+                    <Text variant="caption" className="block leading-4 font-medium">
+                        Because you're more than a ticket number. <br /> And yes...
+                    </Text>
 
-                <Text variant="caption" className="block leading-4 font-medium mb-4">
-                    Because you're more than a ticket number. <br /> And yes...
-                </Text>
+                    <Text variant="lead" className="block leading-6 font-medium" color="primary">
+                        We'll probably become friends.
+                    </Text>
+                
+                </Grid.VStack>
 
-                <Text variant="lead" className="block leading-6 font-medium" color="primary">
-                    We'll probably become friends.
-                </Text>
+            </Grid.Item>
 
-            </div>
-
-            <div className="col-span-1">
+            <Grid.Item span={{ base: 1 }} >
 
                 <Card >
                     <Card.Body className="p-10">
+                        
                         <Text variant="h3" className="font-bold mb-2 flex gap-4">
                             We Keep It Simple.
                         </Text>
-                        <div className="vstack gap-2 mb-4">
-                            <Text variant="caption" className="block leading-4 font-medium">
-                                Technology doesn't have to be complicated.
-                            </Text>
-                            <Text variant="caption" className="block leading-4 font-medium">
-                                People do a pretty good job of that already.
-                            </Text>
-                        </div>
+                        
+                        <Grid.VStack gap={4} className="mb-4">
 
-                        <div className="vstack gap-2 mb-4">
-                        {msgPhilosopy.map((message, index) => (
-                            <Text key={`philosopy${index}`} variant="label" className="block 
-                                leading-4 text-muted hstack gap-2 font-medium">
-                                <Icon icon={FaCircleCheck} size="sm" variant="gradient" />{message} 
-                            </Text>
-                        ))}
-                        </div>
+                            <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
+                                <Text variant="caption" className="block leading-4 font-medium">
+                                    Technology doesn't have to be complicated.
+                                </Text>
+                                <Text variant="caption" className="block leading-4 font-medium">
+                                    People do a pretty good job of that already.
+                                </Text>
+                            </Grid>
 
-                        <div className="vstack gap-2 mb-4">
-                            <Text variant="caption" className="block leading-4">
-                                Life's already complicated.
-                            </Text>
-                            <Text variant="lead" className="block leading-6 font-medium">
-                                Technology should feel like a teammate.                            
-                            </Text>
-                            <Text variant="caption" className="block leading-4">
-                                Not another problem.
-                            </Text>
-                        </div>
+                            <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
+                            {msgPhilosopy.map((message, index) => (
+                                <Text key={`philosopy${index}`} variant="label" className="block 
+                                    leading-4 text-muted hstack gap-2 font-medium">
+                                    <Icon icon={FaCircleCheck} size="sm" variant="gradient" />{message} 
+                                </Text>
+                            ))}
+                            </Grid>
+
+                            <Grid cols={{ base: 1 }} gap={{ base: 0 }}>
+                                <Text variant="caption" className="block leading-4">
+                                    Life's already complicated.
+                                </Text>
+                                <Text variant="lead" className="block leading-6 font-medium">
+                                    Technology should feel like a teammate.                            
+                                </Text>
+                                <Text variant="caption" className="block leading-4">
+                                    Not another problem.
+                                </Text>
+                            </Grid>
+                        
+                        </Grid.VStack>
 
                         <Card className="bg-primary/5 border border-1 border-primary rounded-md">
                             <Card.Body>
 
-                                <div className="flex flex-row gap-4">
+                                <Grid.VStack gap={4}>
 
                                     <div className="flex">
                                         <Icon icon={PiAirplaneTiltDuotone} size="lg" variant="gradient" />
@@ -143,7 +151,7 @@ export default function MoreThanMaintenance()
 
                                     </div>
 
-                                </div>
+                                </Grid.VStack>
 
                             </Card.Body>
                         </Card>
@@ -151,9 +159,9 @@ export default function MoreThanMaintenance()
                     </Card.Body>
                 </Card>
 
-            </div>
+            </Grid.Item>
 
-        </div>
-		
+        </Grid>
+        
 	</>;
 }
