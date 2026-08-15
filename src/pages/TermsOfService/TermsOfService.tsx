@@ -3,7 +3,8 @@
 
 import { Wrapper, Grid} from "@/components";
 import { HeroBackGround } from "@/assets/TermsOfService";
-import { HeroSection, LetsMakeThingsClear, ListOfService } from "./";
+import { HeroSection, LetsMakeThingsClear, 
+        NeedQuickAnswer, ListOfService, AboutTheseTerms } from "./";
 
 function TermsOfService() {
 
@@ -20,7 +21,7 @@ function TermsOfService() {
 
         <Wrapper title="Terms of Service" path="terms-of-service">
 
-            <Wrapper.FullBleed className="relative min-h-screen z-1">
+            <Wrapper.FullBleed className="relative z-1">
 
                 <Wrapper.Body>
                     
@@ -28,17 +29,26 @@ function TermsOfService() {
 
                         <HeroSection />
 
-                        <Grid cols={{ base: 1, md: 12 }} gap={{ base: 6, md: 8, lg: 10 }} >
+                        <Grid cols={{ base: 1, md: 12 }} gap={{ base: 8, lg: 10 }} >
 
                             <Grid.Item span={{ base: 1, lg: 4, md: 5 }}>
                                 
-                                <LetsMakeThingsClear />
-                            
+                                <Grid.VStack gap={2}>
+                                    <LetsMakeThingsClear />
+                                    <NeedQuickAnswer />
+                                </Grid.VStack>
+
                             </Grid.Item>
 
                             <Grid.Item span={{ base: 1, lg: 8, md: 7 }}>
                                 
                                 <ListOfService />
+
+                            </Grid.Item>
+
+                            <Grid.Item span={{ base: 1, lg: 12, md: 12 }}>
+                                
+                                <AboutTheseTerms />
 
                             </Grid.Item>
 

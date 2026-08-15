@@ -50,16 +50,16 @@ export const MakeItClear: Content[] = [
         description: `How information is handled and what responsibilities you have when sharing data or granting access to SIT.`,
         icon: FiLock
     },
-    // {
-    //     title: "When Things Change",
-    //     description: `How revisions, scope changes, new requirements, and additional work can affect a project's cost and timeline.`,
-    //     icon: FiRefreshCw
-    // },
-    // {
-    //     title: "Service Limitations",
-    //     description: `Why we can't guarantee uninterrupted service, every third-party integration, every security threat, or a specific business outcome.`,
-    //     icon: FiAlertCircle
-    // },
+    {
+        title: "When Things Change",
+        description: `How revisions, scope changes, new requirements, and additional work can affect a project's cost and timeline.`,
+        icon: FiRefreshCw
+    },
+    {
+        title: "Service Limitations",
+        description: `Why we can't guarantee uninterrupted service, every third-party integration, every security threat, or a specific business outcome.`,
+        icon: FiAlertCircle
+    },
     // {
     //     title: "If Things Go Wrong",
     //     description: `A plain-language overview of liability, confidentiality, termination, and dispute resolution.`,
