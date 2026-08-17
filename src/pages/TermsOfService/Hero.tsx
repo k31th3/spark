@@ -10,7 +10,7 @@ function HeroSection()
 {
     return <>
         <Grid cols={{ base: 1, md: 12 }} gap={{ base: 6, md: 8, lg: 10 }} >
-                        
+            
             <Grid.Item span={{ base: 1, md: 7 }} className="z-10">
                 <Chip variant="primary" size="md" className="uppercase mb-8 font-bold">
                     <Icon icon={LuShieldCheck} size="md" variant="primary" /> legal

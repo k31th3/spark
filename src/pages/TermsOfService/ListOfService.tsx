@@ -23,7 +23,7 @@ function ListOfService()
                                 {item.description.map((line, row) => (
                                     <Text 
                                         key={`text${row}`}
-                                        variant="label" 
+                                        variant="caption" 
                                         className="block leading-4 mb-2">         
                                         {line}
                                     </Text>

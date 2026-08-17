@@ -9,8 +9,8 @@ import {
   FiLock,
   FiRefreshCw,
   FiAlertCircle,
-  FiAlertTriangle,
-  FiFileText,
+  // FiAlertTriangle,
+  // FiFileText,
 } from "react-icons/fi";
 
 export interface Content {

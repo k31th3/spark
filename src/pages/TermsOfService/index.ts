@@ -1,5 +1,5 @@
 export { default } from "./TermsOfService";
-export { default as HeroSection } from "./HeroSection";
+export { default as Hero } from "./Hero";
 export { default as LetsMakeThingsClear } from "./LetsMakeThingsClear";
 export { default as NeedQuickAnswer } from "./NeedQuickAnswer";
 export { default as ListOfService } from "./ListOfService";

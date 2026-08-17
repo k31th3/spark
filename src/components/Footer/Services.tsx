@@ -1,15 +1,12 @@
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { FaChevronRight } from "react-icons/fa6";
-
+import { LuArrowUpRight } from "react-icons/lu";
 import { PiBuildingsDuotone } from "react-icons/pi";
 import { MdDesignServices } from "react-icons/md";
 import { GrResources } from "react-icons/gr";
 
-import { Icon, Text, Grid } from "@/components";
+import { Accordion, Text, Grid } from "@/components";
 
-	const menus = [
+	const navigation = [
 	  	{
 	    	title: "Company",
 	    	links: [
@@ -28,7 +25,7 @@ import { Icon, Text, Grid } from "@/components";
 	      		{  label: "IT Services", href: "/" },
 			    {  label: "Cloud Solutions", href: "/" },
 			    {  label: "System Integration", href: "/" },
-			    {  label: "Support & Maintenance", href: "/" }
+			    {  label: "Support & Maintenance", href: "/support-and-maintenance" }
 	    	],
 	    	icon: MdDesignServices,
 	    	enableIcon: false
@@ -49,14 +46,12 @@ import { Icon, Text, Grid } from "@/components";
 
 export default function Services() {
 
-	const [open, setOpen] = useState(null);
-
 	return <>
 
         <Grid cols={{ base: 0, md: 3 }} gap={{ base: 10 }}  >
     	
            {/*Desktop*/}
-           {menus.map((menu) => (
+           {navigation.map((menu) => (
             <Grid.Item hide={{ base: true }} show={{ md: true }} key={`accordion${menu.title}`} >
 	            <Text variant="h1" className="text-xl sm:text-xl lg:text-xl mb-5">{menu.title}</Text>
 	            <ul className="space-y-3">
@@ -65,13 +60,13 @@ export default function Services() {
 					      	<a
 					        	href={link.href}
 					        	aria-label={link.label}
-					        	className="flex items-center gap-4 text-[11px] text-muted 
+					        	className="flex items-center gap-2 text-[11px] text-muted 
 					        	hover:text-primary transition-colors">
 
 					        	<Text variant="h2" className="sm:text-[11px] text-[11px] font-normal">{link.label}</Text>
 
 					        	{menu.enableIcon && (
-					          		<FaChevronRight size={8} />
+					          		<LuArrowUpRight size={12} />
 					        	)}
 					      	</a>
 					    </li>
@@ -83,54 +78,38 @@ export default function Services() {
 
             {/*Mobile*/}
             <Grid.Item hide={{ md: true }}>
-                {menus.map((menu, index) => (
-                    <div key={menu.title}>
-                        <button
-                            onClick={() => setOpen(open === index ? null : index)}
-                            className="flex w-full items-center justify-between py-4 cursor-pointer">
-                            
-                            <div>
-                                <menu.icon />
-                                <Text variant="h1" className="text-lg sm:text-lg lg:text-lg">{menu.title}</Text>
-                            </div>
+                <Accordion defaultOpen="" className="vstack gap-2" icon="comparison">
 
-                            <motion.div
-                                animate={{ rotate: open === index ? 90 : 0 }}
-                                transition={{ duration: 0.25 }}>
-                                <Icon icon={FaChevronRight} size="sm" />
-                            </motion.div>
-                        </button>
+                    {navigation.map((row, index) => {
+                        return (
+                            <>
+                            <Accordion.Item
+                                key={`navigation${index}`}
+                                id={`navigation${index}`}>
+                                
+                                <Accordion.Header>
+                                    <Text variant="h6">{row.title}</Text>
+                                </Accordion.Header>
 
-                    <AnimatePresence initial={false}>
-                        {open === index && (
-                            <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="overflow-hidden">
-                                <ul className="pb-4 pl-4 space-y-3">
-                                    {menu.links.map((link) => (
-                                    <motion.li
-                                        key={link.href}
-                                        initial={{ opacity: 0, y: -8 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -8 }}
-                                        transition={{ duration: 0.2 }}>
+                                <Accordion.Body className="px-12">
+                                    <Grid.VStack gap={2}> 
+                                    {row.links.map((link) => (
                                         <a
                                             href={link.href}
-                                            className="flex items-center justify-between text-[12px] 
-                                            text-muted hover:text-primary">
-                                            <Text variant="h2" className="sm:text-[12px] text-[12px] font-normal">{link.label}</Text>
+                                            className="text-muted hover:text-primary">
+                                            <Text variant="h2" className="sm:text-[14px] 
+                                                text-[14px] font-normal">{link.label}</Text>
                                         </a>
-                                    </motion.li>
                                     ))}
-                                </ul>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-                ))}
+                                    </Grid.VStack> 
+                                </Accordion.Body>
+
+                            </Accordion.Item>
+                            </>
+                        )
+                    })}
+
+                </Accordion>
             </Grid.Item>
             {/*End mobile*/}
 	    </Grid>

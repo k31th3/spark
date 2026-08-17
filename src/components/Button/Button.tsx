@@ -10,7 +10,7 @@ type ButtonVariant =
   | "ghost"
   | "destructive";
 
-type ButtonSize = "sm" | "md" | "lg";
+type ButtonSize = "xs" | "sm" | "md" | "lg";
 
 interface ButtonProps extends HTMLMotionProps<"button"> {
   variant?: ButtonVariant;
@@ -28,6 +28,7 @@ const variants: Record<ButtonVariant, string> = {
 };
 
 const sizes: Record<ButtonSize, string> = {
+    xs: "p-2 text-[12px]",
     sm: "p-3 text-[12px]",
     md: "py-4 px-5 text-[14px]",
     lg: "py-5 px-6 text-[16px]"

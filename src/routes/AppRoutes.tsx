@@ -12,14 +12,20 @@ import { SuspenseLoader, DefaultQueryWrapper } from "./";
 const Home = lazy(() => import("@/pages/Home"));
 const Services = lazy(() => import("@/pages/Services"));
 
+// Company
 const Careers = lazy(() => import("@/pages/Careers"));
 
+// Services
+const SupportAndMaintenance = lazy(() => import("@/pages/SupportAndMaintenance"));
 
+// Resources
 const CompanyPortfolio = lazy(() => import("@/pages/CompanyPortfolio"));
 const Faq = lazy(() => import("@/pages/Faq"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
 
+
+// Error Page
 const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
 
 
@@ -76,6 +82,9 @@ function AppRoutes() {
                     <Route path="/lets-start-here" element={<Home />} />
                     <Route path="/careers" element={<Careers />} />
                     
+                    {/*Services*/}
+                    <Route path="/support-and-maintenance" element={<SupportAndMaintenance />} />
+
                     {/*Resources*/}
                     <Route path="/company-portfolio" element={<CompanyPortfolio />} />
                     <Route path="/frequently-asked-questions" element={<Faq />} />

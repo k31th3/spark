@@ -37,7 +37,7 @@ function WrapperBody({
     className,
 }: WrapperComponentProps) {
     return (
-        <div className={cn("max-w-5xl mx-auto sm:px-4 px-6", className)}>
+        <div className={cn("max-w-5xl mx-auto px-6", className)}>
             {children}
         </div>
     );

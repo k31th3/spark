@@ -13,11 +13,11 @@ function NeedQuickAnswer()
 				
 				<Grid.VStack gap={4}>
 
-					<Text variant="caption" className="font-medium">
+					<Text variant="lead" className="font-medium">
 						Need a quick answer?
 					</Text>
 
-					<Text variant="label">
+					<Text variant="caption" className="leading-4">
 						Check our FAQ or reach out
 						anytime - we're happy to help.
 					</Text>
@@ -25,7 +25,7 @@ function NeedQuickAnswer()
 					<Grid.HStack className="justify-between">
 						
 						<Grid.Item span={{base:1}}>
-							<Button variant="primary" size="sm" 
+							<Button variant="primary" size="xs" 
 								className="hstack gap-1 rounded-lg"
 								onClick={() => window.location.href = `frequently-asked-questions`}>
 								View FAQ <Icon icon={FiArrowRight} size="sm" variant="light" />

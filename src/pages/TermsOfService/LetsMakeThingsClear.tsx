@@ -54,7 +54,7 @@ function LetsMakeThingsClear()
             <Accordion defaultOpen="" icon={false} >
                 <Accordion.Item
                             id={`makeItClear`}
-                            className="shadow-sm bg-white border border-mist-300">
+                            className="shadow-sm bg-white border-0 border-mist-300">
 
                     <Accordion.Header className="block pt-6" onClick={() => setIsOpen((prev) => !prev)}>
                         <Grid.VStack gap={6}>

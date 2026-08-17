@@ -8,41 +8,49 @@ import {
     NeedHelp
 } from "./";
 
-import { Wrapper } from "@/components";
+import { Wrapper, Grid } from "@/components";
 
 function Footer() {
 
     return (
         <>
-            <Wrapper.Body className="vstack gap-12 my-12">
+            <Wrapper.FullBleed className="relative">
 
-                <WeSpeakHumanJumbotron />
+                <Wrapper.Body>
+                    <Grid.Item>
+                        <Grid.VStack gap={12} className="my-12">
 
-                {/*navigation link*/}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_2fr_1fr] gap-4">
-                        
-                    <div className="flex flex-col">
-                        <Company />
-                    </div>
+                        <WeSpeakHumanJumbotron />
 
-                    <div className="flex flex-col">
-                        <Services />
-                    </div>
+                        {/*navigation link*/}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_2fr_1fr] gap-4">
+                                
+                            <div className="flex flex-col">
+                                <Company />
+                            </div>
 
-                    <div className="lg:flex flex-col hidden">
-                        <NeedHelp />
-                    </div>
-                    
-                </div>
+                            <div className="flex flex-col">
+                                <Services />
+                            </div>
 
-                {/*Bottom*/}
-                <Social />
+                            <div className="lg:flex flex-col hidden">
+                                <NeedHelp />
+                            </div>
+                            
+                        </div>
 
-                <p className="text-xs font-normal">
-                    @2026 The Spark Info-Tech Enterprise. All rights reserved.
-                </p>
+                        {/*Bottom*/}
+                        <Social />
 
-            </Wrapper.Body>
+                        <p className="text-xs font-normal">
+                            @2026 The Spark Info-Tech Enterprise. All rights reserved.
+                        </p>
+
+                        </Grid.VStack>
+                    </Grid.Item>
+                </Wrapper.Body>
+
+            </Wrapper.FullBleed>
         </>
     );
 }
