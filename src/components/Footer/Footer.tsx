@@ -1,14 +1,13 @@
 "use client";
 
 import { 
-    WeSpeakHumanJumbotron,
-    Social,
-    Company,
-    Services,
-    NeedHelp
+    SitWithUs,
+    Navigation,
+    NeedHelp,
+    Social
 } from "./";
 
-import { Wrapper, Grid } from "@/components";
+import { Wrapper, Grid, Text } from "@/components";
 
 function Footer() {
 
@@ -20,31 +19,29 @@ function Footer() {
                     <Grid.Item>
                         <Grid.VStack gap={12} className="my-12">
 
-                        <WeSpeakHumanJumbotron />
+                        <SitWithUs />
 
                         {/*navigation link*/}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_2fr_1fr] gap-4">
-                                
-                            <div className="flex flex-col">
-                                <Company />
-                            </div>
+                        <Grid cols={{ base: 1, md: 2, lg: 12 }} gap={4}>
+                            <Grid.Item span={{ base: 1, md: 1, lg: 3 }}>
+                                <NeedHelp screen="sm" />
+                            </Grid.Item>
 
-                            <div className="flex flex-col">
-                                <Services />
-                            </div>
+                            <Grid.Item span={{ base: 1, md: 1, lg: 6 }}>
+                                <Navigation />
+                            </Grid.Item>
 
-                            <div className="lg:flex flex-col hidden">
-                                <NeedHelp />
-                            </div>
-                            
-                        </div>
+                            <Grid.Item span={{ base: 1, md: 1, lg: 3 }} hide={{ base: true }} show={{ lg:true }}>
+                                <NeedHelp screen="lg" />
+                            </Grid.Item>
+                        </Grid>
 
                         {/*Bottom*/}
                         <Social />
 
-                        <p className="text-xs font-normal">
+                        <Text variant="bodySmall">
                             @2026 The Spark Info-Tech Enterprise. All rights reserved.
-                        </p>
+                        </Text>
 
                         </Grid.VStack>
                     </Grid.Item>

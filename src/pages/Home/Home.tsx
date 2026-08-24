@@ -11,9 +11,10 @@ import { LetStartHere,
 	  	return (
 		    <>
                 <Wrapper title="Spark Info-Tech Enterprise" path="">
-                    <Wrapper.FullBleed className="relative min-h-screen">
 
-                        <Wrapper.Background/>
+                    <Wrapper.Background/>
+
+                    <Wrapper.FullBleed className="relative">
                     
                         <Wrapper.Body>
                             

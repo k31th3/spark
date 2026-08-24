@@ -6,7 +6,7 @@ import { MdOutlinePhone } from "react-icons/md";
 import { LuMapPin } from "react-icons/lu";
 import { FiArrowRight } from "react-icons/fi";
 
-export default function NeedHelp() {
+export default function Desktop() {
 
     const contactInfo = [
         {

@@ -6,6 +6,7 @@ import style from "./Navigation.module.css";
 
 import { tabs } from "./tabs";
 import { SiteLogo } from "@/components";
+import { scrollToTop } from "@/utils";
 
 import CatalogueBtn from "./CatalogueBtn";
 
@@ -20,6 +21,7 @@ export default function Navigation() {
         },
     };
 
+    
     return (
         <>    
             <div className="md:container md:mx-auto w-full md:py-4">
@@ -47,6 +49,7 @@ export default function Navigation() {
                                     className="flex-1 md:flex-none">
                                     <motion.div
                                         {...tapAnimation}
+                                        onClick={scrollToTop}
                                         className="flex w-full">
                                         <NavLink
                                             to={path}

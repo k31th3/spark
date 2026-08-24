@@ -1,9 +1,8 @@
 
-import { Button, SiteLogo } from "@/components";
+import { Button, SiteLogo,
+		Icon, Text } from "@/components";
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
-
-import { Icon, Text } from "@/components";
 
 export default function Company() {
 
@@ -42,7 +41,7 @@ export default function Company() {
 	            </div>
 			</div>
 
-	</div>
+		</div>
 
 	</>
 

@@ -35,7 +35,7 @@ export default defineConfig({
         clientsClaim: true,
 
         globPatterns: [
-          "**/*.{js,css,ico,woff2,json,webmanifest}"
+          "**/*.{html,js,css,ico,woff2,json,webmanifest}"
         ],
 
         runtimeCaching: [
