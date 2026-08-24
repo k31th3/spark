@@ -1,4 +1,3 @@
-"use client";
 
 import { Text, Icon, 
     Card, Grid } from "@/components";
@@ -54,24 +53,12 @@ export default function MoreThanMaintenance()
                         ))}
                     </Grid>
 
-                    <Grid cols={{ base: 3, xs: 1 }} gap={{ base: 4 }}>
+                    <Grid cols={{ base: 1 }} gap={{ base: 4 }}>
                         {cardMaintenance.map((item, info) => (
-                            <Card key={`card${info}`}>
-                                <Card.Body>
-
-                                    <Grid.VStack gap={4} className="items-center">
-
-                                        <Icon icon={item.icon} size="lg" />
-                                        
-                                        <Text variant="label" className="block leading-4 
-                                            font-medium text-muted text-center">
-                                            {item.info}
-                                        </Text>
-
-                                    </Grid.VStack>
-
-                                </Card.Body>
-                            </Card>
+                            <Text variant="bodySmall" className="block leading-4 
+                                font-medium text-muted">
+                                {item.info}
+                            </Text>
                         ))}
                     </Grid>
 
@@ -88,77 +75,55 @@ export default function MoreThanMaintenance()
             </Grid.Item>
 
             <Grid.Item span={{ base: 1 }} >
+        
+                <Text variant="h3" className="font-bold mb-2 flex gap-4">
+                    We Keep It Simple.
+                </Text>
+                
+                <Grid.VStack gap={4} className="mb-4">
 
-                <Card >
-                    <Card.Body className="p-10">
-                        
-                        <Text variant="h3" className="font-bold mb-2 flex gap-4">
-                            We Keep It Simple.
+                    <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
+                        <Text variant="caption" className="block leading-4 font-medium">
+                            Technology doesn't have to be complicated.
                         </Text>
-                        
-                        <Grid.VStack gap={4} className="mb-4">
+                        <Text variant="caption" className="block leading-4 font-medium">
+                            People do a pretty good job of that already.
+                        </Text>
+                    </Grid>
 
-                            <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
-                                <Text variant="caption" className="block leading-4 font-medium">
-                                    Technology doesn't have to be complicated.
-                                </Text>
-                                <Text variant="caption" className="block leading-4 font-medium">
-                                    People do a pretty good job of that already.
-                                </Text>
-                            </Grid>
+                    <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
+                    {msgPhilosopy.map((message, index) => (
+                        <Text key={`philosopy${index}`} variant="bodySmall" className="block 
+                            leading-4 text-muted font-medium">
+                            {message} 
+                        </Text>
+                    ))}
+                    </Grid>
 
-                            <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
-                            {msgPhilosopy.map((message, index) => (
-                                <Text key={`philosopy${index}`} variant="label" className="block 
-                                    leading-4 text-muted hstack gap-2 font-medium">
-                                    <Icon icon={FaCircleCheck} size="sm" variant="gradient" />{message} 
-                                </Text>
-                            ))}
-                            </Grid>
+                    <Grid cols={{ base: 1 }} gap={{ base: 0 }}>
+                        <Text variant="caption" className="block leading-4">
+                            Life's already complicated.
+                        </Text>
+                        <Text variant="lead" className="block leading-6 font-medium">
+                            Technology should feel like a teammate.                            
+                        </Text>
+                        <Text variant="caption" className="block leading-4">
+                            Not another problem.
+                        </Text>
+                    </Grid>
+                
+                </Grid.VStack>
 
-                            <Grid cols={{ base: 1 }} gap={{ base: 0 }}>
-                                <Text variant="caption" className="block leading-4">
-                                    Life's already complicated.
-                                </Text>
-                                <Text variant="lead" className="block leading-6 font-medium">
-                                    Technology should feel like a teammate.                            
-                                </Text>
-                                <Text variant="caption" className="block leading-4">
-                                    Not another problem.
-                                </Text>
-                            </Grid>
-                        
-                        </Grid.VStack>
-
-                        <Card className="bg-primary/5 border border-1 border-primary rounded-md">
-                            <Card.Body>
-
-                                <Grid.VStack gap={4}>
-
-                                    <div className="flex">
-                                        <Icon icon={PiAirplaneTiltDuotone} size="lg" variant="gradient" />
-                                    </div>
-
-                                    <div>
-
-                                        <Text variant="caption" className="block leading-4 font-medium">
-                                            It should help you move faster. <br />
-                                            Build better.
-                                        </Text>
-                                        <Text variant="caption" color="primary" className="font-medium">
-                                            Dream bigger.
-                                        </Text>
-
-                                    </div>
-
-                                </Grid.VStack>
-
-                            </Card.Body>
-                        </Card>
+                <Grid.VStack gap={4}>
+                    <Text variant="caption" className="block leading-4 font-medium">
+                        It should help you move faster. <br />
+                        Build better.
+                    </Text>
+                    <Text variant="bodySmall" color="primary" className="font-medium">
+                        Dream bigger.
+                    </Text>
+                </Grid.VStack>
                     
-                    </Card.Body>
-                </Card>
-
             </Grid.Item>
 
         </Grid>

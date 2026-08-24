@@ -1,9 +1,10 @@
+"use client";
 
 import { Wrapper, Grid } from "@/components";
 
 import { LetStartHere, 
 	WeSpeakHuman, TextBeforeGoogle, 
-	MoreThanMaintenance
+	MoreThanMaintenance, SitWithUs
 } from "./";
 
 	function Home() 
@@ -24,6 +25,7 @@ import { LetStartHere,
                                 <WeSpeakHuman />
                                 <TextBeforeGoogle />
                                 <MoreThanMaintenance />
+                                <SitWithUs />
 
                             </Grid.VStack>
 

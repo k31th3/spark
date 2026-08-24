@@ -1,4 +1,3 @@
-"use client";
 
 import { Grid, Image, Wrapper } from "@/components";
 
@@ -11,7 +10,8 @@ export default function TextBeforeGoogle() {
         <div className="mb-2 font-semibold">
             The people who get excited about your next move… 
             <br/>
-            and remind you to back up your files because... let's be honest... 
+            and remind you to back up your files because... let's be honest...
+            <br/> 
             you probably forgot.
         </div>,
         `We're not here to make technology less scary.`,

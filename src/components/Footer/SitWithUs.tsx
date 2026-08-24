@@ -11,8 +11,8 @@ export default function SitWithUs() {
                 bg-[linear-gradient(90deg,_#FFEBFD_0%,_#FFE4D3_100%)]
                 px-8 py-12
               ">
-            <Grid cols={{ base: 1, md: 2 }} gap={{ base: 0, md: 10 }}>
-                <Grid.Item span={{ base: 1, md: 1 }} className="relative z-10">
+            <Grid cols={{ base: 1, md: 2 }} gap={{ base: 0, md: 10 }} className="min-h-50">
+                {/*<Grid.Item span={{ base: 1, md: 1 }} className="relative z-10">
                     <Grid.VStack gap={6}>
                         <div>
                             <Text variant="h3" className="font-semibold">
@@ -41,7 +41,7 @@ export default function SitWithUs() {
                             </Button>
                         </div>
                     </Grid.VStack>
-                </Grid.Item>
+                </Grid.Item>*/}
                 
                 <div
                     className="

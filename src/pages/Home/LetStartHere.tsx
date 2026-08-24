@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 
 import { Text, Chip, Grid,
@@ -15,15 +15,6 @@ import { PiSparkleDuotone } from "react-icons/pi";
 
 export default function LetStartHere(){
 
-    const items = [
-        { icon: PiBriefcaseDuotone, label: "A business" },
-        { icon: PiLightbulbFilamentDuotone, label: "A crazy idea" },
-        { icon: AiOutlineMessage, label: "A conversation" },
-        { icon: PiMedalDuotone, label: "Confidence" },
-        { icon: LiaUserFriendsSolid, label: "Friendships" },
-        { icon: PiSparkleDuotone, label: "Possibilities" }
-    ];
-
     const paragraphs = [
         [
             "Technology should feel a little more human. That's why SPARK exists.",
@@ -36,6 +27,12 @@ export default function LetStartHere(){
             "Not a fire.",
             "The beginning of one.",
             "A tiny moment that starts something bigger.",
+            "A business.",
+            "A crazy idea.",
+            "A conversation.",
+            "Confidence.",
+            "Friendships.",
+            "Possibilities."
         ],
     ];
 
@@ -63,7 +60,7 @@ export default function LetStartHere(){
                     <Text
                         variant="h4"
                         className="text-xl sm:text-2xl lg:text-3xl font-semibold tracking-wide mb-4">
-                        We start <span className="text-gradient">things.</span>
+                        We <span className="text-gradient">start</span> things.
                     </Text>
 
                     {paragraphs.map((lines, index) => (
@@ -91,31 +88,6 @@ export default function LetStartHere(){
                         className="block w-full h-auto"/>
                 </div>
             </div>
-
-            <Wrapper.FullBleed className="relative bg-pink-50 mt-8">
-
-                <Wrapper.Mask position="top"/>
-                
-                    <Wrapper.Body className="p-4">
-                        
-                        <Grid cols={{ base: 3, md: 6 }} gap={{ base: 4 }} >
-                        
-                            {items.map(({ icon, label }) => (
-                                <div
-                                    key={label}
-                                    className="vstack gap-2 items-center sm:text-[14px] text-[12px] max-sm:mb-4">
-                                    <Icon icon={icon} size="md" variant="gradient" className="z-10"/>
-                                    <Text variant="caption" className="font-semibold z-10">
-                                        {label}
-                                    </Text>
-                                </div>
-                            ))}
-
-                        </Grid>
-
-                    </Wrapper.Body>
-
-            </Wrapper.FullBleed>
 
         </Grid.VStack>
 	</>	
