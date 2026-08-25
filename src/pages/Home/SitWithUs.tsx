@@ -9,7 +9,7 @@ export default function SitWithUs()
     {
         return <>
             <Grid.VStack gap={1}>
-                <Text variant="caption" color="muted" className="block font-medium leading-4">
+                <Text variant="caption" className="block font-medium leading-4">
                     Tell us what you're building
                 </Text>
 
@@ -21,47 +21,59 @@ export default function SitWithUs()
     }
 
 	return <>
-			<Card className="relative bg-transparent min-h-[120px] my-8 shadow-none">
-            <Card.Body className="relative h-full">
-                <Grid cols={{ base: 12 }} >
+			<Card className="relative bg-transparent shadow-none overflow-hidden">
+                <Card.Body>
+                    <Grid cols={{ base: 12 }} className="items-center">
 
-                    <Grid.Item span={{ base:6, lg: 4, md: 4, sm: 4 }}>
-                        <div>
-                            <Image
-                            src={StartWithSparkWebp}
-                            alt="oncall"
-                            className="absolute top-0 left-0 h-[180px] w-fit -translate-y-1/3 translate-x-1/6"/>
-                        </div>
-                    </Grid.Item>    
+                        {/* Image */}
+                        <Grid.Item
+                            span={{ base: 12, sm: 4, md: 4, lg: 4 }}
+                            className="flex justify-center sm:justify-start">
+                            <div>
+                                <Image
+                                    src={StartWithSparkWebp}
+                                    alt="oncall"
+                                    className="
+                                        relative
+                                        h-[180px]
+                                        w-auto
+                                        max-w-full
+                                        object-contain"/>
+                            </div>
+                        </Grid.Item>
 
-                    <Grid.Item span={{ base:6, lg: 8, md: 8, sm: 8 }}>
-                        <>
-                            <Grid cols={{ base: 12 }} >
-                            
-                                <Grid.Item span={{ base: 6, md: 10, sm: 8 }}>
-
-                                    <Grid.VStack gap={4}>
-                                        
-                                        <Text variant="h3" className="leading-5">
+                        {/* Content */}
+                        <Grid.Item span={{ base: 12, sm: 8, md: 8, lg: 8 }}>
+                            <Grid cols={{ base: 12 }}>
+                                <Grid.Item span={{ base: 12, md: 10, lg: 10 }}>
+                                    <Grid.VStack gap={4} className="items-center sm:items-start text-center sm:text-left">
+                                        <Text
+                                            variant="h3"
+                                            className="leading-5">
                                             So... <span className="text-primary">SIT</span> with us?
                                         </Text>
-                                        
+
                                         <ProgressIndicator size="sm" />
 
-                                        <Grid.Item hide={{base: true}} show={{md: true}}>
+                                        {/* Desktop / tablet */}
+                                        <div className="hidden sm:block w-full">
                                             {talkAbout()}
-                                        </Grid.Item>
-
+                                        </div>
                                     </Grid.VStack>
-
                                 </Grid.Item>
+                            </Grid>
+                        </Grid.Item>
 
-                            </Grid>   
-                        </>
-                    </Grid.Item>   
+                        {/* Mobile */}
+                        <Grid.Item
+                            span={{ base: 12 }}
+                            hide={{ base: false, sm: true }}>
+                            {talkAbout()}
+                        </Grid.Item>
 
-                </Grid>
-            </Card.Body>
-        </Card>
+                    </Grid>
+                </Card.Body>
+            </Card>
+
 		</>;
 }

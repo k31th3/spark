@@ -13,7 +13,7 @@ function Footer() {
 
     return (
         <>
-            <Wrapper.FullBleed className="relative">
+            <Wrapper.FullBleed className="relative pb-16">
 
                 <Wrapper.Body>
                     <Grid.Item>
@@ -37,11 +37,13 @@ function Footer() {
                         </Grid>
 
                         {/*Bottom*/}
-                        <Social />
+                        <Grid.Item span={{ base: 12 }}>
+                            <Social />
 
-                        <Text variant="bodySmall">
-                            @2026 The Spark Info-Tech Enterprise. All rights reserved.
-                        </Text>
+                            <Text variant="label">
+                                @2026 The Spark Info-Tech Enterprise. All rights reserved.
+                            </Text>
+                        </Grid.Item>
 
                         </Grid.VStack>
                     </Grid.Item>
