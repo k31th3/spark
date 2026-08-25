@@ -11,9 +11,9 @@ export default function SitWithUs() {
                 bg-[linear-gradient(90deg,_#FFEBFD_0%,_#FFE4D3_100%)]
                 px-8 py-12
               ">
-            <Grid cols={{ base: 1, md: 2 }} gap={{ base: 0, md: 10 }} className="min-h-50">
-                {/*<Grid.Item span={{ base: 1, md: 1 }} className="relative z-10">
-                    <Grid.VStack gap={6}>
+            <Grid cols={{ base: 1, md: 2 }} gap={{ base: 0, md: 10 }}>
+                <Grid.Item span={{ base: 1, md: 1 }} className="relative z-10">
+                    {/*<Grid.VStack gap={6}>
                         <div>
                             <Text variant="h3" className="font-semibold">
                                 So...{" "}
@@ -40,8 +40,16 @@ export default function SitWithUs() {
                                 <Icon icon={FiArrowRight} variant="light" />
                             </Button>
                         </div>
-                    </Grid.VStack>
-                </Grid.Item>*/}
+                    </Grid.VStack>*/}
+                    <div>
+                        <Button variant="gradient" size="md" className="gap-2"
+                            onClick={() =>
+                              (window.location.href = `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`)}>
+                            Let's Talk
+                            <Icon icon={FiArrowRight} variant="light" />
+                        </Button>
+                    </div>
+                </Grid.Item>
                 
                 <div
                     className="

@@ -21,15 +21,17 @@ export default function SitWithUs()
     }
 
 	return <>
-			<Card className="relative bg-purple-50 min-h-[120px] my-8">
+			<Card className="relative bg-transparent min-h-[120px] my-8 shadow-none">
             <Card.Body className="relative h-full">
                 <Grid cols={{ base: 12 }} >
 
                     <Grid.Item span={{ base:6, lg: 4, md: 4, sm: 4 }}>
-                        <Image
+                        <div>
+                            <Image
                             src={StartWithSparkWebp}
                             alt="oncall"
                             className="absolute top-0 left-0 h-[180px] w-fit -translate-y-1/3 translate-x-1/6"/>
+                        </div>
                     </Grid.Item>    
 
                     <Grid.Item span={{ base:6, lg: 8, md: 8, sm: 8 }}>
