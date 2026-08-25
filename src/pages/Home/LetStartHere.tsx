@@ -1,17 +1,9 @@
 
 import React from "react";
 
-import { Text, Chip, Grid,
-    Image, Icon, Wrapper } from "@/components";
+import { Text, Chip, 
+    Grid, Image } from "@/components";
 import { HereGrouping } from "@/assets/StartHere";
-
-import { PiBriefcaseDuotone } from "react-icons/pi";
-import { PiLightbulbFilamentDuotone } from "react-icons/pi";
-import { AiOutlineMessage } from "react-icons/ai";
-import { PiMedalDuotone } from "react-icons/pi";
-import { LiaUserFriendsSolid } from "react-icons/lia";
-import { PiSparkleDuotone } from "react-icons/pi";
-
 
 export default function LetStartHere(){
 

@@ -1,5 +1,5 @@
-import { Button, Card, Grid, 
-    Text, Icon, Image, ProgressIndicator } from "@/components";
+import { Card, Grid, 
+    Text, Image, ProgressIndicator } from "@/components";
 
 import { StartWithSparkWebp } from "@/assets/Dashboard";
 

@@ -1,14 +1,10 @@
 
-import { Text, Icon, 
-    Card, Grid } from "@/components";
+import { Text, Icon, Grid } from "@/components";
 import { RiNumber1 } from "react-icons/ri";
 
 import { LuRocket } from "react-icons/lu";
 import { TbMessageHeart } from "react-icons/tb";
 import { IoPeopleCircleOutline } from "react-icons/io5";
-import { FaCircleCheck } from "react-icons/fa6";
-
-import { PiAirplaneTiltDuotone } from "react-icons/pi";
 
 export default function MoreThanMaintenance() 
 {
@@ -54,7 +50,7 @@ export default function MoreThanMaintenance()
                     </Grid>
 
                     <Grid cols={{ base: 1 }} gap={{ base: 4 }}>
-                        {cardMaintenance.map((item, info) => (
+                        {cardMaintenance.map((item) => (
                             <Text variant="bodySmall" className="block leading-4 
                                 font-medium text-muted">
                                 {item.info}
