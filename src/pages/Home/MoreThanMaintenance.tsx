@@ -49,10 +49,10 @@ export default function MoreThanMaintenance()
                         ))}
                     </Grid>
 
-                    <Grid cols={{ base: 1 }} gap={{ base: 4 }}>
+                    <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
                         {cardMaintenance.map((item) => (
                             <Text variant="bodySmall" className="block leading-4 
-                                font-medium text-muted">
+                                font-medium">
                                 {item.info}
                             </Text>
                         ))}
@@ -90,7 +90,7 @@ export default function MoreThanMaintenance()
                     <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
                     {msgPhilosopy.map((message, index) => (
                         <Text key={`philosopy${index}`} variant="bodySmall" className="block 
-                            leading-4 text-muted font-medium">
+                            leading-4 font-medium">
                             {message} 
                         </Text>
                     ))}

@@ -29,10 +29,12 @@ function AboutTheseTerms()
                 <Grid cols={{ base: 12 }} >
 
                     <Grid.Item span={{ base:6, lg: 3, md: 4, sm: 4 }}>
-                        <Image
-                            src={OnCall}
-                            alt="oncall"
-                            className="absolute top-0 left-0 h-[120px] w-fit -translate-y-1/3 translate-x-1/6"/>
+                        <div>
+                            <Image
+                                src={OnCall}
+                                alt="oncall"
+                                className="absolute top-0 left-0 h-[120px] w-fit -translate-y-1/3 translate-x-1/6"/>
+                        </div>
                     </Grid.Item>    
 
                     <Grid.Item span={{ base:6, lg: 9, md: 8, sm: 8 }}>
