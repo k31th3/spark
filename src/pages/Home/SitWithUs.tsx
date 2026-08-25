@@ -28,7 +28,7 @@ export default function SitWithUs()
                         {/* Image */}
                         <Grid.Item
                             span={{ base: 12, sm: 4, md: 4, lg: 4 }}
-                            className="flex justify-center sm:justify-start">
+                            justify="center">
                             <div>
                                 <Image
                                     src={StartWithSparkWebp}

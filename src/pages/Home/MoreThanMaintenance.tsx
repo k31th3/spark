@@ -2,10 +2,6 @@
 import { Text, Icon, Grid } from "@/components";
 import { RiNumber1 } from "react-icons/ri";
 
-import { LuRocket } from "react-icons/lu";
-import { TbMessageHeart } from "react-icons/tb";
-import { IoPeopleCircleOutline } from "react-icons/io5";
-
 export default function MoreThanMaintenance() 
 {
     const msgMaintenance = [
@@ -14,11 +10,9 @@ export default function MoreThanMaintenance()
     ];
 
     const cardMaintenance = [
-
-        { icon: LuRocket, info: "We don't Deploy. We Set You Up." },
-        { icon: TbMessageHeart, info: "We don't do Maintenance. We Check In." },
-        { icon: IoPeopleCircleOutline, info: "We don't close tickets. We keep conversations going." }
-
+        "We don't Deploy. We Set You Up.",
+        "We don't do Maintenance. We Check In.",
+        "We don't close tickets. We keep conversations going."
     ];
 
     const msgPhilosopy = [
@@ -30,7 +24,7 @@ export default function MoreThanMaintenance()
 
 	return <>
         
-        <Grid cols={{ base: 1, lg: 2 }} gap={{ base: 8 }} >
+        <Grid cols={{ base: 1, lg: 2, md: 2 }} gap={{ base: 8 }} >
 
             <Grid.Item span={{ base: 1 }} >
                 
@@ -43,17 +37,17 @@ export default function MoreThanMaintenance()
 
                     <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
                         {msgMaintenance.map((message, index) => (
-                            <Text key={`maintenance${index}`} variant="caption" className="block leading-4 font-medium">
+                            <Text key={`msgMaintenance${index}`} variant="caption" className="block leading-4 font-medium">
                                 {message}
                             </Text>
                         ))}
                     </Grid>
 
                     <Grid cols={{ base: 1 }} gap={{ base: 2 }}>
-                        {cardMaintenance.map((item) => (
-                            <Text variant="bodySmall" className="block leading-4 
+                        {cardMaintenance.map((item, index) => (
+                            <Text key={`cardMaintenance${index}`} variant="bodySmall" className="block leading-4 
                                 font-medium">
-                                {item.info}
+                                {item}
                             </Text>
                         ))}
                     </Grid>

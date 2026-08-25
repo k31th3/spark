@@ -18,11 +18,13 @@ type GridProps = {
 type GridItemProps = {
   children: React.ReactNode;
   span?: Responsive<number>;
+  start?: Responsive<number>;
   show?: Responsive<boolean>;
   hide?: Responsive<boolean>;
   order?: Responsive<
     number | "first" | "last" | "none"
   >;
+  justify?: "start" | "center" | "end";
   className?: string;
   id?: string
 };
@@ -31,6 +33,9 @@ type StackProps = {
   children: React.ReactNode;
 
   gap?: number | Responsive<number>;
+
+  justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
+  align?: "start" | "center" | "end" | "stretch" | "baseline";
 
   show?: Responsive<boolean>;
   hide?: Responsive<boolean>;
@@ -41,6 +46,117 @@ type StackProps = {
 /* =========================================================
    CLASS MAPS
 ========================================================= */
+
+const JUSTIFY_SELF = {
+  start: "justify-self-start",
+  center: "justify-self-center",
+  end: "justify-self-end",
+} as const;
+
+const JUSTIFY = {
+  start: "justify-start",
+  center: "justify-center",
+  end: "justify-end",
+  between: "justify-between",
+  around: "justify-around",
+  evenly: "justify-evenly",
+} as const;
+
+const ALIGN = {
+  start: "items-start",
+  center: "items-center",
+  end: "items-end",
+  stretch: "items-stretch",
+  baseline: "items-baseline",
+} as const;
+
+const COL_START = {
+  base: {
+    1: "col-start-1",
+    2: "col-start-2",
+    3: "col-start-3",
+    4: "col-start-4",
+    5: "col-start-5",
+    6: "col-start-6",
+    7: "col-start-7",
+    8: "col-start-8",
+    9: "col-start-9",
+    10: "col-start-10",
+    11: "col-start-11",
+    12: "col-start-12",
+  },
+  sm: {
+    1: "sm:col-start-1",
+    2: "sm:col-start-2",
+    3: "sm:col-start-3",
+    4: "sm:col-start-4",
+    5: "sm:col-start-5",
+    6: "sm:col-start-6",
+    7: "sm:col-start-7",
+    8: "sm:col-start-8",
+    9: "sm:col-start-9",
+    10: "sm:col-start-10",
+    11: "sm:col-start-11",
+    12: "sm:col-start-12",
+  },
+  md: {
+    1: "md:col-start-1",
+    2: "md:col-start-2",
+    3: "md:col-start-3",
+    4: "md:col-start-4",
+    5: "md:col-start-5",
+    6: "md:col-start-6",
+    7: "md:col-start-7",
+    8: "md:col-start-8",
+    9: "md:col-start-9",
+    10: "md:col-start-10",
+    11: "md:col-start-11",
+    12: "md:col-start-12",
+  },
+  lg: {
+    1: "lg:col-start-1",
+    2: "lg:col-start-2",
+    3: "lg:col-start-3",
+    4: "lg:col-start-4",
+    5: "lg:col-start-5",
+    6: "lg:col-start-6",
+    7: "lg:col-start-7",
+    8: "lg:col-start-8",
+    9: "lg:col-start-9",
+    10: "lg:col-start-10",
+    11: "lg:col-start-11",
+    12: "lg:col-start-12",
+  },
+  xl: {
+    1: "xl:col-start-1",
+    2: "xl:col-start-2",
+    3: "xl:col-start-3",
+    4: "xl:col-start-4",
+    5: "xl:col-start-5",
+    6: "xl:col-start-6",
+    7: "xl:col-start-7",
+    8: "xl:col-start-8",
+    9: "xl:col-start-9",
+    10: "xl:col-start-10",
+    11: "xl:col-start-11",
+    12: "xl:col-start-12",
+  },
+  "2xl": {
+    1: "2xl:col-start-1",
+    2: "2xl:col-start-2",
+    3: "2xl:col-start-3",
+    4: "2xl:col-start-4",
+    5: "2xl:col-start-5",
+    6: "2xl:col-start-6",
+    7: "2xl:col-start-7",
+    8: "2xl:col-start-8",
+    9: "2xl:col-start-9",
+    10: "2xl:col-start-10",
+    11: "2xl:col-start-11",
+    12: "2xl:col-start-12",
+  },
+} as const;
+
 
 const GRID_COLS = {
   base: {
@@ -406,9 +522,10 @@ function getGapClasses(gap?: number | Responsive<number>) {
 function GridItem({
   children,
   span = { base: 1 },
+  start,
   show,
   hide,
-  order,
+  justify,
   className = "",
   id
 }: GridItemProps) {
@@ -417,8 +534,16 @@ function GridItem({
     COL_SPAN
   );
 
-  const showClasses = getDisplayClasses(show);
+  const startClasses = getResponsiveClasses(
+    start,
+    COL_START
+  );
 
+  const justifyClass = justify
+    ? JUSTIFY_SELF[justify]
+    : "";
+    
+  const showClasses = getDisplayClasses(show);
   const hideClasses = getDisplayClasses(hide, true);
 
   return (
@@ -426,6 +551,8 @@ function GridItem({
         id={id}
         className={[
             spanClasses,
+            startClasses,
+            justifyClass,
             showClasses,
             hideClasses,
             className,
@@ -445,6 +572,8 @@ function GridItem({
 function GridVStack({
   children,
   gap = 0,
+  justify,
+  align,
   show,
   hide,
   className = "",
@@ -459,6 +588,8 @@ function GridVStack({
     <div
       className={[
         "vstack",
+        justify ? JUSTIFY[justify] : "",
+        align ? ALIGN[align] : "",
         gapClasses,
         showClasses,
         hideClasses,
@@ -479,6 +610,8 @@ function GridVStack({
 function GridHStack({
   children,
   gap = 0,
+  justify,
+  align,
   show,
   hide,
   className = "",
@@ -493,6 +626,8 @@ function GridHStack({
     <div
       className={[
         "hstack",
+        justify ? JUSTIFY[justify] : "",
+        align ? ALIGN[align] : "",
         gapClasses,
         showClasses,
         hideClasses,
