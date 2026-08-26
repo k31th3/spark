@@ -16,6 +16,7 @@ const Services = lazy(() => import("@/pages/Services"));
 const Careers = lazy(() => import("@/pages/Careers"));
 
 // Services
+const SystemIntegration = lazy(() => import("@/pages/SystemIntegration"));
 const SupportAndMaintenance = lazy(() => import("@/pages/SupportAndMaintenance"));
 
 // Resources
@@ -83,6 +84,7 @@ function AppRoutes() {
                     <Route path="/careers" element={<Careers />} />
                     
                     {/*Services*/}
+                    <Route path="system-integration" element={<SystemIntegration />} />
                     <Route path="/support-and-maintenance" element={<SupportAndMaintenance />} />
 
                     {/*Resources*/}

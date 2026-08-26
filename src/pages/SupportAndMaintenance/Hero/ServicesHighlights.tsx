@@ -31,7 +31,7 @@ const Items = [
 function ServicesHighlights() 
 {
     return (
-        <Grid cols={{ base: 12 }} gap={8} className="justify-between">
+        <Grid cols={{ base: 12 }} gap={8}>
         
             {Items.map(
                 ({ label, icon }, index) => (
