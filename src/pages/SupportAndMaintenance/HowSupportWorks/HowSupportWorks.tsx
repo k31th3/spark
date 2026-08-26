@@ -8,23 +8,23 @@ import { RiNumber1, RiNumber2,
 const steps = [
 
     {
-        title: "Technical Support",
-        info: "When something isn't working as expected, we'll help investigate and resolve the issue.",
+        title: "Reach Out",
+        info: "Tell us what's happening. We'll start by understanding the issue.",
         icon: RiNumber1
     },
     {
-        title: "Technical Support",
-        info: "When something isn't working as expected, we'll help investigate and resolve the issue.",
+        title: "We Investigate",
+        info: "Our team looks into the problem and identifies what needs attention.",
         icon: RiNumber2
     },
     {
-        title: "Technical Support",
-        info: "When something isn't working as expected, we'll help investigate and resolve the issue.",
+        title: "We Keep You Updated",
+        info: "No disappearing into the void. We keep communication clear throughout.",
         icon: RiNumber3
     },
     {
-        title: "Technical Support",
-        info: "When something isn't working as expected, we'll help investigate and resolve the issue.",
+        title: "Back to Business",
+        info: "Once resolved, we make sure everything is working property again.",
         icon: RiNumber4
     }
 
