@@ -31,10 +31,10 @@ export const Items: Item[] = [
 	  	{
 	    	title: "Services",
 	    	links: [
-	      		{  label: "Web development", href: "/" },
-	      		{  label: "IT Services", href: "/" },
-			    {  label: "Cloud Solutions", href: "/" },
-			    {  label: "System Integration", href: "/" },
+	      		{  label: "Web development", href: "/web-development" },
+	      		{  label: "IT Services", href: "/it-services" },
+			    {  label: "Cloud Solutions", href: "/cloud-solutions" },
+			    {  label: "System Integration", href: "/system-integration" },
 			    {  label: "Support & Maintenance", href: "/support-and-maintenance" }
 	    	],
 	    	icon: MdDesignServices,

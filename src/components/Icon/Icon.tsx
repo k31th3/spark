@@ -10,7 +10,8 @@ type IconVariant =
     | "primary"
     | "success"
     | "warning"
-    | "danger";
+    | "danger"
+    | "orange";
 
 interface IconProps extends IconBaseProps {
     icon?: IconType;
@@ -39,7 +40,9 @@ const variantsBg: Record<IconVariant, string> = {
     primary: "bg-[var(--color-primary)]/10",
     success: "bg-green-100",
     warning: "bg-yellow-100",
-    danger: "bg-red-100"
+    danger: "bg-red-100",
+    orange: "bg-orange-100"
+
 };
 
 const variantsColor: Record<IconVariant, string> = {
@@ -47,9 +50,10 @@ const variantsColor: Record<IconVariant, string> = {
     light:    "text-white",
     gradient: "",
     primary:  "text-[var(--color-primary)]",
-    success:  "text-green-700",
+    success:  "text-green-600",
     warning:  "text-yellow-800",
-    danger:   "text-red-700"
+    danger:   "text-red-700",
+    orange: "text-orange-500"
 };
 
 const iconSizes: Record<IconSize, number> = {

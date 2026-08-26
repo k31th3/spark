@@ -1,6 +1,10 @@
 
-import { Grid, Chip, Text } from "@/components";
+import { Grid, Chip, 
+    Text, Card } from "@/components";
+
 import HelpButton from  "./HelpButton";
+import ServicesHighlights from  "./ServicesHighlights";
+import WeHelpYou from  "./WeHelpYou";
 
 function Hero() 
 {
@@ -28,6 +32,24 @@ function Hero()
                     <HelpButton />
 
                 </Grid.VStack>
+
+            </Grid.Item>
+
+            <Grid.Item span={{ base: 12, lg: 10, md: 10 }} start={{ lg: 2, md: 2 }}>
+
+                <Card className="shadow-lg shadow-pink-500/10 p-5">
+                    <Card.Body>
+                    
+                        <ServicesHighlights />
+
+                    </Card.Body> 
+                </Card>
+
+            </Grid.Item>
+
+            <Grid.Item span={{ base: 12 }}>
+
+                <WeHelpYou />
 
             </Grid.Item>
         </Grid>

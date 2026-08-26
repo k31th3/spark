@@ -1,7 +1,8 @@
 "use client";
 
 import { Wrapper, Grid } from "@/components";
-import { Hero } from  "./";
+import { Hero, MoreThanMaintenance,
+    HowSupportWorks } from  "./";
 
 function SupportAndMaintenance() 
 {
@@ -14,6 +15,8 @@ function SupportAndMaintenance()
                 <Wrapper.Body>
                     <Grid.VStack gap={12}>
                         <Hero />
+                        <MoreThanMaintenance />
+                        <HowSupportWorks />
                     </Grid.VStack>
                 </Wrapper.Body>
 

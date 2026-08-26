@@ -22,7 +22,8 @@ type TextColor =
     | "background"
     | "white"
     | "black"
-    | "gradient";
+    | "gradient"
+    | "green";
 
 interface TextProps {
     as?: ElementType;
@@ -58,7 +59,8 @@ const colors: Record<TextColor, string> = {
     background: "text-background",
     white: "text-white",
     black: "text-black",
-    gradient: "text-gradient"
+    gradient: "text-gradient",
+    green: "text-green-600"
 };
 
 const defaultElements: Record<TextVariant, ElementType> = {
