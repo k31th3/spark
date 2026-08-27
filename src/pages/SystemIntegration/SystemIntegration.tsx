@@ -2,13 +2,12 @@
 
 import { Wrapper, Grid } from "@/components";
 import { Hero, FeatureHighlights,
-    WhatWeIntegrate } from  "./";
-
+    WhatWeIntegrate, OurIntegrationProcess,
+    RealBusinessImpact } from  "./";
 
 function SystemIntegration() 
 {
-    return <>
-
+    return (
         <Wrapper title="System Integration" path="system-integration">
 
             <Wrapper.FullBleed className="relative">
@@ -19,13 +18,15 @@ function SystemIntegration()
                         <Hero />
                         <FeatureHighlights />
                         <WhatWeIntegrate />
+                        <RealBusinessImpact />
+                        <OurIntegrationProcess />
 
                     </Grid.VStack>
                 </Wrapper.Body>
 
             </Wrapper.FullBleed>
         </Wrapper>
-    </>;
+    );
 }
 
 export default SystemIntegration;

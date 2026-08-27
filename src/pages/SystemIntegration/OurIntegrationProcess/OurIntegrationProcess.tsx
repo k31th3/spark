@@ -1,4 +1,3 @@
-
 import { Grid, ProgressIndicator, 
     Text, Icon, Card } from "@/components";
 
@@ -6,31 +5,29 @@ import { RiNumber1, RiNumber2,
     RiNumber3, RiNumber4 } from "react-icons/ri";
 
 const steps = [
-
     {
-        title: "Reach Out",
-        info: "Tell us what's happening. We'll start by understanding the issue.",
+        title: "Understand",
+        info: "We learn your business, processes, and systems.",
         icon: RiNumber1
     },
     {
-        title: "We Investigate",
-        info: "Our team looks into the problem and identifies what needs attention.",
+        title: "Plan",
+        info: "We design the right integration solution for your needs.",
         icon: RiNumber2
     },
     {
-        title: "We Keep You Updated",
-        info: "No disappearing into the void. We keep communication clear throughout.",
+        title: "Integrate",
+        info: "We build, connect, and test everything for a seamless fit.",
         icon: RiNumber3
     },
     {
-        title: "Back to Business",
-        info: "Once resolved, we make sure everything is working property again.",
+        title: "Support",
+        info: "We monitor, optimize, and support for long-term success.",
         icon: RiNumber4
     }
-
 ];
 
-function HowSupportWorks()
+function OurIntegrationProcess()
 {
     return (
         <Grid cols={{ base: 12 }} gap={8}>
@@ -38,12 +35,12 @@ function HowSupportWorks()
                 <Grid.VStack gap={2}>
                     <Grid.HStack gap={2} align="center" justify="center">
                         <Text variant="caption" color="primary" className="uppercase font-bold">
-                            how support works 
+                            our integration process
                         </Text>
                         <ProgressIndicator size="xs" />
                     </Grid.HStack>
                     <Text variant="h3" className="font-bold">
-                        Simple Support. Clear <span className="text-gradient">Communication</span>. 
+                        Simple Process. <span className="text-gradient">Powerful Result</span>. 
                     </Text>
                 </Grid.VStack>
             </Grid.Item>
@@ -79,4 +76,4 @@ function HowSupportWorks()
     )
 }
 
-export default HowSupportWorks;
+export default OurIntegrationProcess;

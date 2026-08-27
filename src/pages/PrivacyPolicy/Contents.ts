@@ -1,11 +1,10 @@
 import { IconType } from "react-icons";
-import { PiArchiveDuotone } from "react-icons/pi";
-import { PiAppWindowDuotone } from "react-icons/pi";
-import { PiShareFatDuotone } from "react-icons/pi";
-import { PiAngularLogoDuotone } from "react-icons/pi";
-import { PiSealCheckDuotone } from "react-icons/pi";
+
+import { PiArchiveDuotone, PiAppWindowDuotone,
+    PiShareFatDuotone, PiAngularLogoDuotone,
+    PiSealCheckDuotone, PiPhoneListDuotone } from "react-icons/pi";
+
 import { AiTwotoneContacts } from "react-icons/ai";
-import { PiPhoneListDuotone } from "react-icons/pi";
 
 export interface Content {
     title: string;

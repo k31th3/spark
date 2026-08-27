@@ -6,7 +6,7 @@ import { Grid, Button, Icon } from "@/components";
 const buttons = [
     {
         id: "support",
-        label: "Let's Integrate",
+        label: "Let's Talk Integration",
         variant: "gradient" as const,
         icon: FiArrowRight,
         iconVariant: "light",
@@ -15,11 +15,11 @@ const buttons = [
     },
     {
         id: "team",
-        label: "Talk to Our Team",
+        label: "View Our Work",
         variant: "outline" as const,
         icon: BiMessageSquareDots,
         className: "gap-1 justify-center bg-white",
-        href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`
+        href: "/company-portfolio"
     }
 ];
 
