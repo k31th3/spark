@@ -17,7 +17,7 @@ At SPARK, we're more than an IT provider—we're a technology partner that helps
 - Mobile App Development
 - Networking Solutions
 - Cybersecurity
-- Cloud Services
+- [Cloud solutions](https://www.getsitgo.com/cloud-solutions)
 - [System Integration](https://www.getsitgo.com/system-integration)
 - [Support & Maintenance](https://www.getsitgo.com/support-and-maintenance)
 

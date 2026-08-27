@@ -1,7 +1,7 @@
 import { Grid, Chip, 
     Text, Image } from "@/components";
 
-import { HeroBgWebp } from "@/assets/SystemIntegration";
+import { HeroBgWebp } from "@/assets/CloudSolutions";
 import HelpButton from  "./HelpButton";
 
 function Hero()
@@ -25,18 +25,18 @@ function Hero()
 
                 <Chip variant="gradient" size="sm" className="uppercase border-0 
                     shadow-lg shadow-orange-500/50 mb-6">
-                    system integration
+                    cloud solutions
                 </Chip>
-
+ 
                 <Grid.VStack gap={4}>
                     <Text variant="h2">
-                        Connect. Integrate. <br />
-                        Make It Work <span className="text-gradient">Together</span>.
+                        Elevate Your Business <br />
+                        with the Power of <span className="text-gradient">Cloud</span>.
                     </Text>
                     <Text variant="bodySmall" color="muted" className="mb-4 block leading-7 max-w-[400px]">
-                        We integrate the right systems, applications, and technologies
-                        to help your business operate as one seamless, efficient,
-                        and future-ready solution.
+                        Scalable. Secure. Reliable. Our cloud solutions help you 
+                        innovate faster, reduce costs, and stay ahead— 
+                        wherever your business takes you.
                     </Text>
                     <HelpButton />
                 </Grid.VStack>
