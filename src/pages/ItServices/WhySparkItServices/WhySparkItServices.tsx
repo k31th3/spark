@@ -19,7 +19,7 @@ function WhySparkItServices()
             <Grid.Item span={{ base: 12, lg: 6, md: 6 }}>
                 <Grid.HStack gap={2} className="mb-4">
                     <Text variant="caption" color="primary" className="uppercase font-bold">
-                        why spark it services
+                        why spark
                     </Text>
                     <ProgressIndicator size="xs" color="primary" />
                 </Grid.HStack>
@@ -39,7 +39,7 @@ function WhySparkItServices()
                         (item, index) => (
                             <Grid.HStack gap={2} align="center" key={`descriptions${index}`}>
                                 <Icon icon={LuBadgeCheck} size="sm" variant="success" />
-                                <Text variant="label" className="block leading-6"> 
+                                <Text variant="bodySmall" className="block leading-6"> 
                                     {item}
                                 </Text>
                             </Grid.HStack>

@@ -2,14 +2,15 @@ import Logo from "@/assets/siteLogo.webp";
 import { cn } from "@/lib/utils";
 
 type SiteLogoProps = {
-    size?: "sm" | "md" | "lg";
+    size?: "xs"| "sm" | "md" | "lg";
     className?: string;
 };
 
 const sizeMap = {
+    xs: 25,
     sm: 32,
     md: 40,
-    lg: 56,
+    lg: 56
 };
 
 export default function SiteLogo({

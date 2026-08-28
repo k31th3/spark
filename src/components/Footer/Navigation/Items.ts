@@ -20,7 +20,6 @@ export const Items: Item[] = [
 	  	{
 	    	title: "Company",
 	    	links: [
-	      		{  label: "About Us", href: "/about-us" },
 			    {  label: "Our Story", href: "/" },
 			    {  label: "Careers", href: "/careers" },
 			    {  label: "Contact Us", href: "/contact-us" }

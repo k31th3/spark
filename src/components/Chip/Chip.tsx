@@ -1,36 +1,5 @@
-import { cn } from "@/lib/utils";
-
-type ChipVariant =
-  | "default"
-  | "primary"
-  | "success"
-  | "warning"
-  | "danger"
-  | "gradient";
-
-type ChipSize = "sm" | "md" | "lg";
-
-interface ChipProps {
-    children: React.ReactNode;
-    variant?: ChipVariant;
-    size?: ChipSize;
-    className?: string;
-}
-
-const variants: Record<ChipVariant, string> = {
-    default:  "bg-gray-100 text-gray-700 border-gray-200",
-    primary:  "bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)]/200",
-    success:  "bg-green-100 text-green-700 border-green-200",
-    warning:  "bg-yellow-100 text-yellow-800 border-yellow-200",
-    danger:   "bg-red-100 text-red-700 border-red-200",
-    gradient: "bg-[linear-gradient(83.35deg,_#D129DD_5.29%,_#FF8F27_94.71%)] text-white"
-};
-
-const sizes: Record<ChipSize, string> = {
-    sm: "text-[10px] px-3 py-2",
-    md: "text-[12px] px-4 py-2",
-    lg: "text-[14px] px-6 py-3"
-};
+import { getChipClassName } from "./Chip.helpers";
+import type { ChipProps } from "./Chip.types";
 
 export default function Chip({
     children,
@@ -40,12 +9,11 @@ export default function Chip({
 }: ChipProps) {
     return (
         <span
-            className={cn(
-                "w-fit px-2 py-1 border inline-flex items-center gap-1 rounded-full font-medium transition-colors",
-                variants[variant],
-                sizes[size],
+            className={getChipClassName(
+                variant,
+                size,
                 className
-              )}>
+            )}>
             {children}
         </span>
     );

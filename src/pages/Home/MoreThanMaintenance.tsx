@@ -1,6 +1,5 @@
 
-import { Text, Icon, Grid } from "@/components";
-import { RiNumber1 } from "react-icons/ri";
+import { Text, Grid } from "@/components";
 
 export default function MoreThanMaintenance() 
 {
@@ -28,8 +27,7 @@ export default function MoreThanMaintenance()
 
             <Grid.Item span={{ base: 1 }} >
                 
-                <Text variant="h3" className="font-bold mb-2 flex gap-4">
-                    <Icon icon={RiNumber1} variant="primary" size="sm" avatar={true} />
+                <Text variant="h3" className="font-bold mb-2">
                     More Than <br/>Maintenance
                 </Text>
 
@@ -109,7 +107,7 @@ export default function MoreThanMaintenance()
                         It should help you move faster. <br />
                         Build better.
                     </Text>
-                    <Text variant="bodySmall" color="primary" className="font-medium">
+                    <Text variant="lead" className="block leading-6 font-medium" color="primary">
                         Dream bigger.
                     </Text>
                 </Grid.VStack>

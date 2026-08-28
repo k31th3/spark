@@ -1,20 +1,36 @@
-import { cn } from "@/lib/utils";
 
-interface CardProps {
-    children?: React.ReactNode;
-    className?: string;
-}
+import {
+    getCardBodyClassName,
+    getCardClassName,
+    getCardFooterClassName,
+    getCardHeaderClassName
+} from "./Card.helpers";
 
-interface CardSectionProps {
-    children?: React.ReactNode;
-    className?: string;
-}
+import type {
+    CardComponent,
+    CardProps,
+    CardSectionProps
+} from "./Card.types";
 
-function Card({ children, className }: CardProps) {
+function Card({
+    children,
+    className
+}: CardProps) {
     return (
         <div
-            className={cn(
-                "rounded-[24px] bg-white shadow-sm",
+            className={getCardClassName(className)}>
+            {children}
+        </div>
+    );
+}
+
+function Header({
+    children,
+    className
+}: CardSectionProps) {
+    return (
+        <div
+            className={getCardHeaderClassName(
                 className
             )}>
             {children}
@@ -22,52 +38,38 @@ function Card({ children, className }: CardProps) {
     );
 }
 
-function Header({ children, className }: CardSectionProps) {
+function Body({
+    children,
+    className
+}: CardSectionProps) {
     return (
         <div
-            className={cn(
-            "border-b border-gray-300 px-6 py-4",
-            className
-        )}>
+            className={getCardBodyClassName(
+                className
+            )}>
             {children}
         </div>
     );
 }
 
-function Body({ children, className }: CardSectionProps) {
+function Footer({
+    children,
+    className
+}: CardSectionProps) {
     return (
         <div
-            className={cn(
-            "px-6 py-4",
-            className
-        )}>
+            className={getCardFooterClassName(
+                className
+            )}>
             {children}
         </div>
     );
-}
-
-function Footer({ children, className }: CardSectionProps) {
-    return (
-        <div
-            className={cn(
-            "border-t px-6 py-4",
-            className)}>
-        {children}
-        </div>
-    );
-}
-
-interface CardComponent {
-    (props: CardProps): React.ReactNode;
-    Header: typeof Header;
-    Body: typeof Body;
-    Footer: typeof Footer;
 }
 
 const CardComponent = Card as CardComponent;
 
-Card.Header = Header;
-Card.Body = Body;
-Card.Footer = Footer;
+CardComponent.Header = Header;
+CardComponent.Body = Body;
+CardComponent.Footer = Footer;
 
-export default Card;
+export default CardComponent;
