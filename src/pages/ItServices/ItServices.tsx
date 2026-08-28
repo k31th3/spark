@@ -1,7 +1,9 @@
 "use client";
 
 import { Wrapper, Grid } from "@/components";
-import { Hero } from  "./";
+import { Hero, Industries,
+    WhySparkItServices, OurCoreItServices,
+    Productivity, OurContent } from  "./";
 
 function ItServices() {
     return (
@@ -13,13 +15,18 @@ function ItServices() {
                     <Grid.VStack gap={12}>
 
                         <Hero />
+                        <Industries />
+                        <WhySparkItServices />
+                        <OurCoreItServices />
+                        <Productivity />
+                        <OurContent />
 
                     </Grid.VStack>
                 </Wrapper.Body>
 
             </Wrapper.FullBleed>
         </Wrapper>
-        )
+    )
 }
 
 export default ItServices;

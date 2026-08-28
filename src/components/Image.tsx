@@ -7,6 +7,7 @@ import { useState } from "react";
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     placeholder?: ReactNode;
     skeleton?: boolean;
+    wrapperClassName?: string;
 }
 
 export default function Image({
@@ -17,6 +18,7 @@ export default function Image({
     fetchPriority = "auto",
     placeholder,
     skeleton = true,
+    wrapperClassName = "",
     onLoad,
     onError,
     onContextMenu,
@@ -27,7 +29,7 @@ export default function Image({
     const [error, setError] = useState(false);
 
     return (
-        <div>
+        <div className={wrapperClassName}>
             
             {/* Skeleton */}
             {skeleton && !loaded && !error && (

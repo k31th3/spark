@@ -29,8 +29,8 @@ const sizes = {
 
 const colors = {
     primary: {
-        bar: "bg-[#7049E8]",
-        dot: "bg-[#7049E8]"
+        bar: "bg-primary",
+        dot: "bg-primary"
     },
     gradient: {
         bar: "bg-gradient",
