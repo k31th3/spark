@@ -1,64 +1,38 @@
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
-  title: string;
-  description: string;
-  canonical?: string;
-  image?: string;
+    title: string;
+    description: string;
+    canonical?: string;
+    image?: string;
 }
 
 export default function Seo({
-  title,
-  description,
-  canonical,
-  image,
+    title,
+    description,
+    canonical,
+    image
 }: SEOProps) {
-  return (
+    return (
     <Helmet>
-      <title>{title}</title>
+        <title>{title}</title>
 
-      <meta name="url" content={canonical} />
+        <meta name="url" content={canonical} />
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow" />
 
-      <meta
-        name="description"
-        content={description}
-      />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical} />
 
-      <meta
-        name="robots"
-        content="index, follow"
-      />
+        {image && (
+            <meta property="og:image" content={image} />
+        )}
 
-      <meta
-        property="og:title"
-        content={title}
-      />
-
-      <meta
-        property="og:description"
-        content={description}
-      />
-
-      <meta
-        property="og:type"
-        content="website"
-      />
-
-      <meta property="og:url" content={canonical} />
-
-      {image && (
-        <meta
-          property="og:image"
-          content={image}
-        />
-      )}
-
-      {canonical && (
-        <link
-          rel="canonical"
-          href={canonical}
-        />
-      )}
+        {canonical && (
+            <link rel="canonical" href={canonical} />
+        )}
     </Helmet>
-  );
+    );
 }

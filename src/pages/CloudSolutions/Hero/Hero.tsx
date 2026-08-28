@@ -33,7 +33,7 @@ function Hero()
                         Elevate Your Business <br />
                         with the Power of <span className="text-gradient">Cloud</span>.
                     </Text>
-                    <Text variant="bodySmall" color="muted" className="mb-4 block leading-7 max-w-[400px]">
+                    <Text variant="bodySmall" className="mb-4 block leading-6 max-w-[400px]">
                         Scalable. Secure. Reliable. Our cloud solutions help you 
                         innovate faster, reduce costs, and stay ahead— 
                         wherever your business takes you.

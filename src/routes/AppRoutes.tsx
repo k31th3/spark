@@ -16,6 +16,7 @@ const Services = lazy(() => import("@/pages/Services"));
 const Careers = lazy(() => import("@/pages/Careers"));
 
 // Services
+const ItServices = lazy(() => import("@/pages/ItServices"));
 const CloudSolutions = lazy(() => import("@/pages/CloudSolutions"));
 const SystemIntegration = lazy(() => import("@/pages/SystemIntegration"));
 const SupportAndMaintenance = lazy(() => import("@/pages/SupportAndMaintenance"));
@@ -85,6 +86,7 @@ function AppRoutes() {
                     <Route path="/careers" element={<Careers />} />
                     
                     {/*Services*/}
+                    <Route path="/it-services" element={<ItServices />} />
                     <Route path="/cloud-solutions" element={<CloudSolutions />} />
                     <Route path="/system-integration" element={<SystemIntegration />} />
                     <Route path="/support-and-maintenance" element={<SupportAndMaintenance />} />

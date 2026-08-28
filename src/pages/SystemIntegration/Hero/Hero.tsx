@@ -33,7 +33,7 @@ function Hero()
                         Connect. Integrate. <br />
                         Make It Work <span className="text-gradient">Together</span>.
                     </Text>
-                    <Text variant="bodySmall" color="muted" className="mb-4 block leading-7 max-w-[400px]">
+                    <Text variant="bodySmall" className="mb-4 block leading-6 max-w-[400px]">
                         We integrate the right systems, applications, and technologies
                         to help your business operate as one seamless, efficient,
                         and future-ready solution.

@@ -35,8 +35,7 @@ function PageNotFound() {
 
                 <Wrapper.Body>
                     <Grid cols={{ base: 12 }}>
-                        <Grid.Item span={{ base: 12 }} className="flex min-h-[100dvh] flex-col justify-center"
->
+                        <Grid.Item span={{ base: 12 }} className="flex min-h-[100dvh] flex-col justify-center">
                             <Image
                                 src={Error404WeBp}
                                 alt="Hero background"
