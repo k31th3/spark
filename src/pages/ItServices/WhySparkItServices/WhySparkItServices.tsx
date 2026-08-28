@@ -16,7 +16,7 @@ function WhySparkItServices()
 {
     return (
         <Grid cols={{ base: 12 }} gap={8}>
-            <Grid.Item span={{ base: 12, lg: 6, md: 10 }}>
+            <Grid.Item span={{ base: 12, lg: 6, md: 6 }}>
                 <Grid.HStack gap={2} className="mb-4">
                     <Text variant="caption" color="primary" className="uppercase font-bold">
                         why spark it services
@@ -48,7 +48,7 @@ function WhySparkItServices()
                     </div>
                 </Grid.VStack>
             </Grid.Item>
-            <Grid.Item span={{ base: 12, lg: 6, md: 10 }} className="relative p-20">
+            <Grid.Item span={{ base: 12, lg: 6, md: 6 }} className="relative p-20">
                 <Services />
             </Grid.Item>
         </Grid>
