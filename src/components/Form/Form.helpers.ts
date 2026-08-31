@@ -1,19 +1,19 @@
 import { cn } from "@/lib/utils";
 
 import {
-    INPUT_SIZE_MAP,
-    INPUT_VARIANT_MAP
-} from "./Input.maps";
+    FORM_SIZE_MAP,
+    FORM_VARIANT_MAP
+} from "./Form.maps";
 
 import type {
-    InputSize,
-    InputVariant
-} from "./Input.types";
+    FormSize,
+    FormVariant
+} from "./Form.types";
 
-export function getInputClassName(
-    variant: InputVariant,
-    size: InputSize,
-    error: boolean,
+export function getFormControlClassName(
+    variant: FormVariant,
+    size: FormSize,
+    error = false,
     className?: string
 ) {
     return cn(
@@ -25,8 +25,8 @@ export function getInputClassName(
         "disabled:cursor-not-allowed",
         "disabled:opacity-50",
 
-        INPUT_VARIANT_MAP[variant],
-        INPUT_SIZE_MAP[size],
+        FORM_VARIANT_MAP[variant],
+        FORM_SIZE_MAP[size],
 
         error &&
             "border-red-500 focus:border-red-500",
@@ -35,13 +35,17 @@ export function getInputClassName(
     );
 }
 
-export function getInputWrapperClassName(
-    leftIcon?: boolean,
-    rightIcon?: boolean
+export function getFormWrapperClassName(
+    leftIcon = false,
+    rightIcon = false
 ) {
     return cn(
         "relative flex items-center",
-        leftIcon && "[&>input]:pl-10",
-        rightIcon && "[&>input]:pr-10"
+
+        leftIcon &&
+            "[&>input]:pl-10",
+
+        rightIcon &&
+            "[&>input]:pr-10"
     );
 }

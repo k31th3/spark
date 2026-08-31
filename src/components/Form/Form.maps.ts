@@ -1,9 +1,9 @@
 import type {
-    InputSize,
-    InputVariant
-} from "./Input.types";
+    FormSize,
+    FormVariant
+} from "./Form.types";
 
-export const INPUT_VARIANT_MAP: Record< InputVariant, string > = {
+export const FORM_VARIANT_MAP: Record< FormVariant, string > = {
     default:
         "bg-white border border-gray-200 " +
         "focus:border-primary",
@@ -17,7 +17,7 @@ export const INPUT_VARIANT_MAP: Record< InputVariant, string > = {
         "focus:border-primary"
 };
 
-export const INPUT_SIZE_MAP: Record< InputSize, string > = {
+export const FORM_SIZE_MAP: Record< FormSize, string > = {
     sm: "h-9 px-3 text-sm",
     md: "h-11 px-4 text-sm",
     lg: "h-13 px-5 text-base"
