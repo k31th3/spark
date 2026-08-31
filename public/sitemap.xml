@@ -24,6 +24,12 @@
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://www.getsitgo.com/contact-us</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Resources -->
     <url>
         <loc>https://www.getsitgo.com/company-portfolio</loc>

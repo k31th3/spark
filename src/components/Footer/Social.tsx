@@ -14,21 +14,25 @@ export default function Social() {
     const socialLinks = [
         {
             id: 1,
+            label: "Facebook",
             icon: TfiFacebook,
             href: "https://facebook.com/yourusername",
         },
         {
             id: 2,
+            label: "X",
             icon: FaXTwitter,
             href: "https://x.com/yourusername",
         },
         {
             id: 3,
+            label: "GitHub",
             icon: FaGithub,
             href: "https://github.com/yourusername",
         },
         {
             id: 4,
+            label: "Instagram",
             icon: RiInstagramFill,
             href: "https://instagram.com/yourusername",
         }
@@ -45,12 +49,13 @@ export default function Social() {
                           Follow us
                         </span>
 
-                        {socialLinks.map(({ id, icon, href }) => (
-                            <a key={id} href={href} target="_blank" rel="noopener noreferrer">
-                                <Button className="rounded-full border-0 p-0" variant="outline" size="sm">
+                        {socialLinks.map(({ id, label, icon }) => (
+                            // <a key={id} href="#" target="_blank" rel="noopener noreferrer">
+                                <Button className="rounded-full border-0 p-0" 
+                                    variant="outline" size="sm" aria-label={label} key={`social${id}`}>
                                     <Icon icon={icon} size="sm" variant="gradient" avatar={true}/>
                                 </Button>
-                            </a>
+                            // </a>
                         ))}
                     </Grid.HStack>
                 </Grid.Item>
@@ -59,7 +64,7 @@ export default function Social() {
                 <Grid.Item span={{ base: 1, sm: 1 }}>
                     <Grid.HStack gap={4} className="items-center justify-center sm:justify-end" >
                         <Button className="rounded-full p-0 shadow-[0px_12px_24px_rgba(187,77,192,0.4)]" 
-                            variant="gradient" size="sm" onClick={scrollToTop}>
+                            variant="gradient" size="sm" onClick={scrollToTop} aria-label="Back to top">
                             <Icon icon={FaArrowUp} size="sm" avatar={true} variant="light"/>
                         </Button>
 

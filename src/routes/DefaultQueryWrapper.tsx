@@ -7,8 +7,8 @@ type DefaultQueryParams = {
 
 const DEFAULT_QUERY_PARAMS: DefaultQueryParams = {
     "/services": {
-        tab: "0",
-    },
+        tab: "0"
+    }
 };
 
 function DefaultQueryWrapper() {

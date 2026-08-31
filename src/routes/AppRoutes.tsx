@@ -9,24 +9,7 @@ import NoInternet from "@/pages/NoInternet";
 
 import { SuspenseLoader, DefaultQueryWrapper } from "./";
 
-const Home = lazy(() => import("@/pages/Home"));
-const Services = lazy(() => import("@/pages/Services"));
-
-// Company
-const Careers = lazy(() => import("@/pages/Careers"));
-
-// Services
-const ItServices = lazy(() => import("@/pages/ItServices"));
-const CloudSolutions = lazy(() => import("@/pages/CloudSolutions"));
-const SystemIntegration = lazy(() => import("@/pages/SystemIntegration"));
-const SupportAndMaintenance = lazy(() => import("@/pages/SupportAndMaintenance"));
-
-// Resources
-const CompanyPortfolio = lazy(() => import("@/pages/CompanyPortfolio"));
-const Faq = lazy(() => import("@/pages/Faq"));
-const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
-const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
-
+import { Pages } from "./Pages";
 
 // Error Page
 const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
@@ -79,23 +62,9 @@ function AppRoutes() {
                         </>
                     }>
 
-                    <Route path="/" element={<Home />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="/lets-start-here" element={<Home />} />
-                    <Route path="/careers" element={<Careers />} />
-                    
-                    {/*Services*/}
-                    <Route path="/it-services" element={<ItServices />} />
-                    <Route path="/cloud-solutions" element={<CloudSolutions />} />
-                    <Route path="/system-integration" element={<SystemIntegration />} />
-                    <Route path="/support-and-maintenance" element={<SupportAndMaintenance />} />
-
-                    {/*Resources*/}
-                    <Route path="/company-portfolio" element={<CompanyPortfolio />} />
-                    <Route path="/frequently-asked-questions" element={<Faq />} />
-                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                    <Route path="/terms-of-service" element={<TermsOfService />} />
+                    {Pages.map(({ path, element }) => (
+                        <Route key={path} path={path} element={element} />
+                    ))}
 
                 </Route>
 

@@ -27,14 +27,24 @@ export default function Navigation() {
             <div className="md:container md:mx-auto w-full md:py-4">
                 
                 <div className="flex items-center justify-center z-100 relative">
-                    <ul className={style.unOrderList}>
+                    <ul
+                        className={`
+                            ${style.unOrderList}
+                            flex w-full items-center
+                            md:bg-transparent
+                            bg-white
+                            md:p-0
+                            p-2
+                            rounded-full
+                            shadow-sm
+                            md:shadow-none
+                        `}>
 
-                        <div className="flex w-full items-center md:bg-transparent 
-                            bg-white md:p-0 p-2 rounded-full shadow-sm md:shadow-none">
-                        
                         {/* Logo */}
                         <li className="shrink-0 px-2">
-                            <a href="/" aria-label="Spark Info-Tech Enterprise | Homepage">
+                            <a
+                                href="/"
+                                aria-label="Spark Info-Tech Enterprise | Homepage">
                                 <SiteLogo size="md" />
                             </a>
                         </li>
@@ -44,7 +54,7 @@ export default function Navigation() {
                             const { id, title, path, icon: Icon } = tab;
 
                             return (
-                                <li 
+                                <li
                                     key={id}
                                     className="flex-1 md:flex-none">
                                     <motion.div
@@ -72,6 +82,7 @@ export default function Navigation() {
                                                                 ${isActive ? "opacity-100" : ""}
                                                             `}
                                                         />
+
                                                         <span>{title}</span>
                                                     </div>
 
@@ -86,7 +97,6 @@ export default function Navigation() {
                                 </li>
                             );
                         })}
-                        </div>
 
                         {/* Catalogue */}
                         <li className="shrink-0 px-2">

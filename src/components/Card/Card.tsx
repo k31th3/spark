@@ -1,4 +1,3 @@
-
 import {
     getCardBodyClassName,
     getCardClassName,
@@ -12,64 +11,52 @@ import type {
     CardSectionProps
 } from "./Card.types";
 
-function Card({
+const Card: CardComponent = ({
     children,
     className
-}: CardProps) {
+}: CardProps) => {
     return (
-        <div
-            className={getCardClassName(className)}>
+        <div className={getCardClassName(className)}>
             {children}
         </div>
     );
-}
+};
 
-function Header({
+const Header = ({
     children,
     className
-}: CardSectionProps) {
+}: CardSectionProps) => {
     return (
-        <div
-            className={getCardHeaderClassName(
-                className
-            )}>
+        <div className={getCardHeaderClassName(className)}>
             {children}
         </div>
     );
-}
+};
 
-function Body({
+const Body = ({
     children,
     className
-}: CardSectionProps) {
+}: CardSectionProps) => {
     return (
-        <div
-            className={getCardBodyClassName(
-                className
-            )}>
+        <div className={getCardBodyClassName(className)}>
             {children}
         </div>
     );
-}
+};
 
-function Footer({
+const Footer = ({
     children,
     className
-}: CardSectionProps) {
+}: CardSectionProps) => {
     return (
-        <div
-            className={getCardFooterClassName(
-                className
-            )}>
+        <div className={getCardFooterClassName(className)}>
             {children}
         </div>
     );
-}
+};
 
-const CardComponent = Card as CardComponent;
+Card.Header = Header;
+Card.Body = Body;
+Card.Footer = Footer;
 
-CardComponent.Header = Header;
-CardComponent.Body = Body;
-CardComponent.Footer = Footer;
-
-export default CardComponent;
+export default Card;
