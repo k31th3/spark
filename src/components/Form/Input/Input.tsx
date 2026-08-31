@@ -49,40 +49,68 @@ export default function Input({
         >
             {isFloating ? (
                 /*
-                 * Floating
-                 *
-                 * Input and label MUST be
-                 * direct siblings.
+                 * =================================
+                 * FLOATING INPUT
+                 * =================================
                  */
                 <div className="relative">
+
+                    {leftIcon && (
+                        <span
+                            className="
+                                pointer-events-none
+                                absolute
+                                left-0
+                                top-1/2
+                                z-10
+                                flex
+                                -translate-y-1/2
+                                items-center
+                                text-muted
+                            "
+                        >
+                            <Icon
+                                icon={leftIcon}
+                                size={size}
+                                color={variant}
+                            />
+                        </span>
+                    )}
 
                     <input
                         id={id}
                         required={required}
                         aria-invalid={!!error}
+
+                        /*
+                         * IMPORTANT
+                         *
+                         * This is required for:
+                         *
+                         * peer-placeholder-shown
+                         */
                         placeholder=" "
+
                         className={getInputClassName(
                             variant,
                             size,
                             !!error,
+
                             cn(
                                 "peer",
 
-                                /*
-                                 * Flowbite spacing
-                                 */
-                                "px-2.5",
-                                "pb-2.5",
-                                "pt-4",
+                                leftIcon &&
+                                    "pl-8",
 
-                                /*
-                                 * Flowbite
-                                 */
-                                "appearance-none",
+                                rightIcon &&
+                                    "pr-8",
 
                                 className
-                            )
+                            ),
+
+                            floating
                         )}
+
                         {...props}
                     />
 
@@ -91,26 +119,57 @@ export default function Input({
                         className={getFieldLabelClassName(
                             floating,
                             size,
-                            variant,
                             !!error
                         )}
                     >
                         {label}
 
                         {required && (
-                            <span className="ml-1 text-red-500">
+                            <span
+                                className="
+                                    ml-1
+                                    text-red-500
+                                "
+                            >
                                 *
                             </span>
                         )}
                     </label>
+
+                    {rightIcon && (
+                        <span
+                            className="
+                                pointer-events-none
+                                absolute
+                                right-0
+                                top-1/2
+                                z-10
+                                flex
+                                -translate-y-1/2
+                                items-center
+                                text-muted
+                            "
+                        >
+                            <Icon
+                                icon={rightIcon}
+                                size={size}
+                                color={variant}
+                            />
+                        </span>
+                    )}
                 </div>
             ) : (
+                /*
+                 * =================================
+                 * DEFAULT INPUT
+                 * =================================
+                 */
                 <>
                     {label && (
                         <label
                             htmlFor={id}
                             className="
-                                mb-2
+                                mb-2.5
                                 block
                                 text-sm
                                 font-medium
@@ -120,7 +179,12 @@ export default function Input({
                             {label}
 
                             {required && (
-                                <span className="ml-1 text-red-500">
+                                <span
+                                    className="
+                                        ml-1
+                                        text-red-500
+                                    "
+                                >
                                     *
                                 </span>
                             )}
@@ -136,6 +200,7 @@ export default function Input({
                         {leftIcon && (
                             <span
                                 className="
+                                    pointer-events-none
                                     absolute
                                     left-3
                                     z-10
@@ -169,6 +234,7 @@ export default function Input({
                         {rightIcon && (
                             <span
                                 className="
+                                    pointer-events-none
                                     absolute
                                     right-3
                                     z-10

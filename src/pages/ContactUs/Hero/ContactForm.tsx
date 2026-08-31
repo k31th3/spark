@@ -1,7 +1,5 @@
 
 import { Grid, Form } from "@/components";
-import { RiBuildingLine } from "react-icons/ri";
-import { MdOutlinePhone } from "react-icons/md";
 
 function ContactForm()
 {
@@ -18,8 +16,9 @@ function ContactForm()
                                 name="fullname"
                                 id="fullname"
                                 label="Full Name"
-                                variant="underlined"
-                                floating="top"/>
+                                floating="outlined"
+                                variant="ghost"
+                                />
                         </Grid.Item>
 
                         <Grid.Item span={{ base: 12, lg: 6 }}>
@@ -32,20 +31,22 @@ function ContactForm()
 
                         <Grid.Item span={{ base: 12, lg: 6 }}>
                             <Form.Input
-                                leftIcon={RiBuildingLine}
                                 name="company_name"
                                 id="companyName"
-                                placeholder="Company Name"/>
+                                label="Company Name"
+                                variant="underlined"
+                                floating="top"/>
                         </Grid.Item>
 
                         <Grid.Item span={{ base: 12, lg: 6 }}>
                             <Form.Input
-                                leftIcon={MdOutlinePhone}
                                 name="phone_number"
                                 id="phoneNumber"
-                                placeholder="Phone Number"/>
-
+                                label="Phone Number"
+                                variant="underlined"
+                                floating="top"/>
                         </Grid.Item>
+
                     </Grid>
                 </Grid.Item>
 

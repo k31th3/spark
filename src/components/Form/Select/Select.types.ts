@@ -2,17 +2,21 @@ import type {
     SelectHTMLAttributes,
 } from "react";
 
-import type {
-    FieldSize,
-    FieldVariant,
-    FieldFloating,
-} from "../Field/Field.types";
+export type SelectVariant =
+    | "default"
+    | "filled"
+    | "ghost"
+    | "underlined";
 
-export interface SelectOption {
-    label: string;
+export type SelectSize =
+    | "sm"
+    | "md"
+    | "lg";
 
-    value: string | number;
-}
+export type SelectFloating =
+    | "outlined"
+    | "standard"
+    | "top";
 
 export interface SelectProps
     extends Omit<
@@ -25,11 +29,9 @@ export interface SelectProps
 
     hint?: string;
 
-    variant?: FieldVariant;
+    variant?: SelectVariant;
 
-    size?: FieldSize;
+    size?: SelectSize;
 
-    floating?: FieldFloating;
-
-    options?: SelectOption[];
+    floating?: SelectFloating;
 }

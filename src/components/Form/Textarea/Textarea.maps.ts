@@ -1,10 +1,10 @@
 import type {
-    InputSize,
-    InputVariant,
-} from "./Input.types";
+    TextareaSize,
+    TextareaVariant,
+} from "./Textarea.types";
 
-export const INPUT_VARIANT_MAP: Record<
-    InputVariant,
+export const TEXTAREA_VARIANT_MAP: Record<
+    TextareaVariant,
     string
 > = {
     default:
@@ -27,8 +27,8 @@ export const INPUT_VARIANT_MAP: Record<
         "focus:border-primary",
 };
 
-export const INPUT_SIZE_MAP: Record<
-    InputSize,
+export const TEXTAREA_SIZE_MAP: Record<
+    TextareaSize,
     string
 > = {
     sm:

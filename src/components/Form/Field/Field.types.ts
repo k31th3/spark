@@ -3,8 +3,7 @@ import type { ReactNode } from "react";
 export type FieldVariant =
     | "default"
     | "filled"
-    | "ghost"
-    | "underlined";
+    | "ghost";
 
 export type FieldSize =
     | "sm"
@@ -12,13 +11,11 @@ export type FieldSize =
     | "lg";
 
 export type FieldFloating =
-    | "default"
-    | "top";
+    | "outlined"
+    | "standard";
 
 export interface FieldProps {
     error?: string;
-
     hint?: string;
-
     children: ReactNode;
 }

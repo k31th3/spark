@@ -1,72 +1,112 @@
 import { cn } from "@/lib/utils";
 
 import type {
-    FieldFloating,
-    FieldSize,
-    FieldVariant,
-} from "./Field.types";
+    InputFloating,
+    InputSize,
+} from "../Input/Input.types";
 
 export function getFieldLabelClassName(
-    floating: FieldFloating,
-    size: FieldSize,
-    variant: FieldVariant,
-    error = false
+    floating: InputFloating,
+    size: InputSize,
+    error: boolean
 ) {
     return cn(
         /*
-         * Base
+         * Common
          */
         "absolute",
-        "left-3",
-        "top-2",
-        "z-10",
-
-        /*
-         * Flowbite
-         */
-        "origin-[0]",
-        "transform",
-
-        "-translate-y-4",
-        "scale-75",
-
-        "px-2",
-
         "text-muted",
-
         "duration-300",
+        "transform",
+        "z-10",
+        "origin-[0]",
+        "pointer-events-none",
 
         /*
-         * Background
+         * =========================
+         * OUTLINED
+         * =========================
          */
-        variant === "underlined"
-            ? "bg-transparent"
-            : "bg-white",
+        floating === "outlined" && [
+            "start-1",
+            "left-3",
+            "top-2",
 
-        /*
-         * floating="default"
-         *
-         * EMPTY:
-         *
-         * label returns inside input
-         */
-        floating === "default" && [
+            "-translate-y-4",
+            "scale-75",
+
+            "bg-white",
+            "px-2",
+
+            /*
+             * Empty state
+             */
             "peer-placeholder-shown:scale-100",
             "peer-placeholder-shown:-translate-y-1/2",
             "peer-placeholder-shown:top-1/2",
+
+            /*
+             * Focus
+             */
+            "peer-focus:top-2",
+            "peer-focus:scale-75",
+            "peer-focus:-translate-y-4",
+
+            "peer-focus:text-primary",
         ],
 
         /*
-         * FOCUS
+         * =========================
+         * STANDARD
+         * =========================
          */
-        "peer-focus:top-2",
-        "peer-focus:scale-75",
-        "peer-focus:-translate-y-4",
+        floating === "standard" && [
+            "start-0",
+            "left-0",
+            "top-3",
+
+            "-translate-y-6",
+            "scale-75",
+
+            /*
+             * Empty state
+             */
+            "peer-placeholder-shown:scale-100",
+            "peer-placeholder-shown:translate-y-0",
+
+            /*
+             * Focus
+             */
+            "peer-focus:start-0",
+            "peer-focus:scale-75",
+            "peer-focus:-translate-y-6",
+
+            "peer-focus:text-primary",
+        ],
 
         /*
-         * Focus color
+         * =========================
+         * TOP
+         * =========================
+         *
+         * Label stays at the top.
+         *
+         * Phone Number
+         * ☎ +63...
+         * ─────────────
          */
-        "peer-focus:text-primary",
+        floating === "top" && [
+            "left-0",
+            "top-3",
+
+            "-translate-y-6",
+            "scale-75",
+
+            /*
+             * Always at top
+             */
+            "peer-focus:text-primary",
+        ],
 
         /*
          * Error
@@ -79,8 +119,13 @@ export function getFieldLabelClassName(
         /*
          * Size
          */
-        size === "sm" && "text-xs",
-        size === "md" && "text-sm",
-        size === "lg" && "text-base"
+        size === "sm" &&
+            "text-xs",
+
+        size === "md" &&
+            "text-sm",
+
+        size === "lg" &&
+            "text-base"
     );
 }

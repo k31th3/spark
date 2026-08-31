@@ -1,22 +1,22 @@
 import { cn } from "@/lib/utils";
 
 import {
-    INPUT_SIZE_MAP,
-    INPUT_VARIANT_MAP,
-} from "./Input.maps";
+    SELECT_SIZE_MAP,
+    SELECT_VARIANT_MAP
+} from "./Select.maps";
 
 import type {
-    InputFloating,
-    InputSize,
-    InputVariant,
-} from "./Input.types";
+    SelectFloating,
+    SelectSize,
+    SelectVariant
+} from "./Select.types";
 
-export function getInputClassName(
-    variant: InputVariant,
-    size: InputSize,
+export function getSelectClassName(
+    variant: SelectVariant,
+    size: SelectSize,
     error: boolean,
     className?: string,
-    floating?: InputFloating
+    floating?: SelectFloating
 ) {
     return cn(
         /*
@@ -27,6 +27,7 @@ export function getInputClassName(
         "text-foreground",
         "outline-none",
         "transition-colors",
+        "appearance-none",
 
         "disabled:cursor-not-allowed",
         "disabled:opacity-50",
@@ -34,7 +35,7 @@ export function getInputClassName(
         /*
          * Size
          */
-        INPUT_SIZE_MAP[size],
+        SELECT_SIZE_MAP[size],
 
         /*
          * =========================
@@ -45,19 +46,15 @@ export function getInputClassName(
             "px-3",
             "py-2.5",
 
-            INPUT_VARIANT_MAP[variant],
+            SELECT_VARIANT_MAP[variant],
+
+            "rounded-xl",
         ],
 
         /*
          * =========================
          * FLOATING OUTLINED
          * =========================
-         *
-         * Example:
-         *
-         * ┌─ First name ─────────┐
-         * │ John                 │
-         * └──────────────────────┘
          */
         floating === "outlined" && [
             "px-2.5",
@@ -79,12 +76,6 @@ export function getInputClassName(
          * =========================
          * FLOATING STANDARD
          * =========================
-         *
-         * Example:
-         *
-         * First name
-         * John
-         * ─────────────────
          */
         floating === "standard" && [
             "px-0",
@@ -106,12 +97,6 @@ export function getInputClassName(
          * =========================
          * FLOATING TOP
          * =========================
-         *
-         * Designed for:
-         *
-         * Phone Number
-         * ☎ +63 912 345 6789
-         * ─────────────────────
          */
         floating === "top" && [
             "px-0",
@@ -127,7 +112,7 @@ export function getInputClassName(
             "rounded-none",
 
             "focus:border-primary",
-            "focus:ring-0",
+            "focus:ring-0"
         ],
 
         /*
@@ -135,26 +120,9 @@ export function getInputClassName(
          */
         error && [
             "border-red-500",
-            "focus:border-red-500",
+            "focus:border-red-500"
         ],
 
         className
-    );
-}
-
-export function getInputWrapperClassName(
-    leftIcon = false,
-    rightIcon = false
-) {
-    return cn(
-        "relative",
-        "flex",
-        "items-center",
-
-        leftIcon &&
-            "[&>input]:pl-10",
-
-        rightIcon &&
-            "[&>input]:pr-10"
     );
 }

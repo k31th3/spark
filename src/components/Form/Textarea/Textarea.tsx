@@ -3,11 +3,15 @@ import { cn } from "@/lib/utils";
 import Field from "../Field";
 
 import {
-    getInputClassName
-} from "../Input/Input.helpers";
+    getFieldLabelClassName,
+} from "../Field/Field.helpers";
+
+import {
+    getTextareaClassName,
+} from "./Textarea.helpers";
 
 import type {
-    TextareaProps
+    TextareaProps,
 } from "./Textarea.types";
 
 export default function Textarea({
@@ -34,41 +38,97 @@ export default function Textarea({
 
     return (
         <Field
-            label={label}
             error={error}
             hint={hint}
-            variant={variant}
-            size={size}
-            floating={floating}
-            required={required}
-            id={id}
         >
-            <textarea
-                id={id}
-                required={required}
-                aria-invalid={!!error}
-                placeholder={
-                    isFloating
-                        ? " "
-                        : placeholder
-                }
-                className={getInputClassName(
-                    variant,
-                    size,
-                    !!error,
-                    cn(
-                        "min-h-32",
-                        "py-3",
-                        "resize-y",
+            {isFloating ? (
+                <div className="relative">
 
-                        isFloating &&
-                            "peer",
+                    <textarea
+                        id={id}
+                        required={required}
+                        aria-invalid={!!error}
+                        placeholder=" "
+                        className={getTextareaClassName(
+                            variant,
+                            size,
+                            !!error,
 
-                        className
-                    )
-                )}
-                {...props}
-            />
+                            cn(
+                                "peer",
+                                className
+                            ),
+
+                            floating
+                        )}
+                        {...props}
+                    />
+
+                    <label
+                        htmlFor={id}
+                        className={getFieldLabelClassName(
+                            floating,
+                            size,
+                            !!error
+                        )}
+                    >
+                        {label}
+
+                        {required && (
+                            <span
+                                className="
+                                    ml-1
+                                    text-red-500
+                                "
+                            >
+                                *
+                            </span>
+                        )}
+                    </label>
+                </div>
+            ) : (
+                <>
+                    {label && (
+                        <label
+                            htmlFor={id}
+                            className="
+                                mb-2.5
+                                block
+                                text-sm
+                                font-medium
+                                text-foreground
+                            "
+                        >
+                            {label}
+
+                            {required && (
+                                <span
+                                    className="
+                                        ml-1
+                                        text-red-500
+                                    "
+                                >
+                                    *
+                                </span>
+                            )}
+                        </label>
+                    )}
+
+                    <textarea
+                        id={id}
+                        required={required}
+                        aria-invalid={!!error}
+                        placeholder={placeholder}
+                        className={getTextareaClassName(
+                            variant,
+                            size,
+                            !!error,
+                            className
+                        )}
+                        {...props}
+                    />
+                </>
+            )}
         </Field>
     );
 }

@@ -3,10 +3,24 @@ import type {
 } from "react";
 
 import type {
-    FieldSize,
-    FieldVariant,
-    FieldFloating,
-} from "../Field/Field.types";
+    IconType,
+} from "react-icons";
+
+export type TextareaVariant =
+    | "default"
+    | "filled"
+    | "ghost"
+    | "underlined";
+
+export type TextareaSize =
+    | "sm"
+    | "md"
+    | "lg";
+
+export type TextareaFloating =
+    | "outlined"
+    | "standard"
+    | "top";
 
 export interface TextareaProps
     extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -16,9 +30,13 @@ export interface TextareaProps
 
     hint?: string;
 
-    variant?: FieldVariant;
+    variant?: TextareaVariant;
 
-    size?: FieldSize;
+    size?: TextareaSize;
 
-    floating?: FieldFloating;
+    floating?: TextareaFloating;
+
+    leftIcon?: IconType;
+
+    rightIcon?: IconType;
 }

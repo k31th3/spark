@@ -6,17 +6,21 @@ import type {
     IconType,
 } from "react-icons";
 
-import type {
-    FieldSize,
-    FieldVariant,
-    FieldFloating,
-} from "../Field/Field.types";
+export type InputVariant =
+    | "default"
+    | "filled"
+    | "ghost"
+    | "underlined";
 
-export type {
-    FieldSize as InputSize,
-    FieldVariant as InputVariant,
-    FieldFloating as InputFloating,
-} from "../Field/Field.types";
+export type InputSize =
+    | "sm"
+    | "md"
+    | "lg";
+
+export type InputFloating =
+    | "outlined"
+    | "standard"
+    | "top";
 
 export interface InputProps
     extends Omit<
@@ -29,11 +33,11 @@ export interface InputProps
 
     hint?: string;
 
-    variant?: FieldVariant;
+    variant?: InputVariant;
 
-    size?: FieldSize;
+    size?: InputSize;
 
-    floating?: FieldFloating;
+    floating?: InputFloating;
 
     leftIcon?: IconType;
 

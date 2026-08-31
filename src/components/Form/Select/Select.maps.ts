@@ -1,10 +1,10 @@
 import type {
-    InputSize,
-    InputVariant,
-} from "./Input.types";
+    SelectSize,
+    SelectVariant
+} from "./Select.types";
 
-export const INPUT_VARIANT_MAP: Record<
-    InputVariant,
+export const SELECT_VARIANT_MAP: Record<
+    SelectVariant,
     string
 > = {
     default:
@@ -24,11 +24,11 @@ export const INPUT_VARIANT_MAP: Record<
         "border-0 border-b-2 " +
         "border-gray-200 " +
         "rounded-none " +
-        "focus:border-primary",
+        "focus:border-primary"
 };
 
-export const INPUT_SIZE_MAP: Record<
-    InputSize,
+export const SELECT_SIZE_MAP: Record<
+    SelectSize,
     string
 > = {
     sm:
