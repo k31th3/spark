@@ -12,17 +12,17 @@ export default function Desktop() {
         {
             icon: FiMail,
             value: import.meta.env.VITE_CONTACT_EMAIL,
-            href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`,
+            href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`
         },
         {
             icon: MdOutlinePhone,
             value: import.meta.env.VITE_CONTACT_PHONE,
-            href: `tel:${import.meta.env.VITE_CONTACT_PHONE}`,
+            href: `tel:${import.meta.env.VITE_CONTACT_PHONE}`
         },
         {
             icon: LuMapPin,
             value: import.meta.env.VITE_CONTACT_ADDRESS,
-            href: "https://maps.app.goo.gl/Uosp84QvCXteTDsg8",
+            href: import.meta.env.VITE_CONTACT_GOOGLE_MAP
         }
     ];
 

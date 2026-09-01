@@ -46,9 +46,7 @@ export function getSelectClassName(
             "px-3",
             "py-2.5",
 
-            SELECT_VARIANT_MAP[variant],
-
-            "rounded-xl",
+            SELECT_VARIANT_MAP[variant]
         ],
 
         /*
@@ -66,10 +64,8 @@ export function getSelectClassName(
             "border",
             "border-gray-200",
 
-            "rounded-xl",
-
             "focus:border-primary",
-            "focus:ring-0",
+            "focus:ring-0"
         ],
 
         /*
@@ -90,7 +86,7 @@ export function getSelectClassName(
             "rounded-none",
 
             "focus:border-primary",
-            "focus:ring-0",
+            "focus:ring-0"
         ],
 
         /*

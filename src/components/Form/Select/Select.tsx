@@ -1,3 +1,4 @@
+import { Text } from "@/components";
 import { cn } from "@/lib/utils";
 
 import Field from "../Field";
@@ -76,14 +77,9 @@ export default function Select({
                         {label}
 
                         {required && (
-                            <span
-                                className="
-                                    ml-1
-                                    text-red-500
-                                "
-                            >
+                            <Text variant="label" color="danger">
                                 *
-                            </span>
+                            </Text>
                         )}
                     </label>
 
@@ -134,14 +130,9 @@ export default function Select({
                             {label}
 
                             {required && (
-                                <span
-                                    className="
-                                        ml-1
-                                        text-red-500
-                                    "
-                                >
+                                <Text variant="label" color="danger">
                                     *
-                                </span>
+                                </Text>
                             )}
                         </label>
                     )}

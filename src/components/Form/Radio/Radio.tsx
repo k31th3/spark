@@ -1,3 +1,4 @@
+import { Text } from "@/components";
 import type {
     RadioProps
 } from "./Radio.types";
@@ -38,9 +39,9 @@ export default function Radio({
             </label>
 
             {error && (
-                <p className="mt-1 text-sm text-red-500">
+                <Text variant="label" color="danger">
                     {error}
-                </p>
+                </Text>
             )}
         </div>
     );

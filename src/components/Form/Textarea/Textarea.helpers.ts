@@ -67,10 +67,8 @@ export function getTextareaClassName(
             "border",
             "border-gray-200",
 
-            "rounded-xl",
-
             "focus:border-primary",
-            "focus:ring-0",
+            "focus:ring-0"
         ],
 
         /*
@@ -94,7 +92,7 @@ export function getTextareaClassName(
             "rounded-none",
 
             "focus:border-primary",
-            "focus:ring-0",
+            "focus:ring-0"
         ],
 
         /*

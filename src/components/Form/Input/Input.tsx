@@ -1,4 +1,4 @@
-import { Icon } from "@/components";
+import { Icon, Text } from "@/components";
 
 import { cn } from "@/lib/utils";
 
@@ -125,14 +125,9 @@ export default function Input({
                         {label}
 
                         {required && (
-                            <span
-                                className="
-                                    ml-1
-                                    text-red-500
-                                "
-                            >
+                            <Text variant="label" color="danger">
                                 *
-                            </span>
+                            </Text>
                         )}
                     </label>
 

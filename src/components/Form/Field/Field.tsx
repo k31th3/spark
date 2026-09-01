@@ -1,3 +1,5 @@
+import { Text } from "@/components";
+
 import type {
     FieldProps,
 } from "./Field.types";
@@ -12,9 +14,9 @@ export default function Field({
             {children}
 
             {error && (
-                <p className="mt-1 text-sm text-red-500">
+                <Text variant="label" color="danger">
                     {error}
-                </p>
+                </Text>
             )}
 
             {!error && hint && (

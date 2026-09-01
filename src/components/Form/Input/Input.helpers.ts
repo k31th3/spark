@@ -69,10 +69,8 @@ export function getInputClassName(
             "border",
             "border-gray-200",
 
-            "rounded-xl",
-
             "focus:border-primary",
-            "focus:ring-0",
+            "focus:ring-0"
         ],
 
         /*

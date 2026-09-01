@@ -24,7 +24,7 @@ export const TEXT_VARIANT_MAP: Record<
 
     lead: "text-xl leading-8",
     caption: "text-[14px] leading-5",
-    label: "text-[11px]"
+    label: "text-[13px]"
 };
 
 export const TEXT_COLOR_MAP: Record<

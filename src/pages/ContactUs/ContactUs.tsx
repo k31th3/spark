@@ -1,7 +1,9 @@
 "use client";
 
 import { Wrapper, Grid } from "@/components";
-import { Hero } from  "./";
+import Hero from  "./Hero";
+import OurOffice from  "./OurOffice";
+
 
 function Contact() {
     return (
@@ -13,6 +15,7 @@ function Contact() {
                     <Grid.VStack gap={12}>
 
                         <Hero />
+                        <OurOffice />
 
                     </Grid.VStack>
                 </Wrapper.Body>
