@@ -13,6 +13,7 @@ interface FormField {
     placeholder?: string;
     inputType?: "text" | "email" | "number" | "tel" | "password";
     span: FieldSpan;
+    required: boolean;
 }
 
 export const FormFields: FormField[] = [
@@ -21,7 +22,8 @@ export const FormFields: FormField[] = [
         name: "full_name",
         id: "fullname",
         label: "Full Name",
-        span: { base: 12, lg: 6, md: 6, sm: 6 }
+        span: { base: 12, lg: 6, md: 6, sm: 6 },
+        required: true
     },
     {
         type: "input",
@@ -29,27 +31,31 @@ export const FormFields: FormField[] = [
         name: "email_address",
         id: "emailAddress",
         label: "Email Address",
-        span: { base: 12, lg: 6, md: 6, sm: 6 }
+        span: { base: 12, lg: 6, md: 6, sm: 6 },
+        required: true
     },
     {
         type: "input",
         name: "company_name",
         id: "companyName",
         label: "Company Name",
-        span: { base: 12, lg: 6, md: 6, sm: 6 }
+        span: { base: 12, lg: 6, md: 6, sm: 6 },
+        required: false
     },
     {
         type: "input",
         name: "phone_number",
         id: "phoneNumber",
         label: "Phone number",
-        span: { base: 12, lg: 6, md: 6, sm: 6 }
+        span: { base: 12, lg: 6, md: 6, sm: 6 },
+        required: false
     },
     {
         type: "textarea",
         name: "message",
         id: "message",
         placeholder: "Tell us about your project or inquiry...",
-        span: { base: 12 }
+        span: { base: 12 },
+        required: true
     }
 ];

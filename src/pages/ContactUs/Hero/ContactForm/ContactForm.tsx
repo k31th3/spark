@@ -28,7 +28,8 @@ function ContactForm()
                                 name={field.name}
                                 id={field.id}
                                 label={field.label}
-                                floating="outlined"
+                                required={field.required}
+                                floating="top"
                                 className="rounded-md"
                             />
                         )}

@@ -61,12 +61,15 @@ export function getFieldLabelClassName(
          * =========================
          */
         floating === "standard" && [
-            "start-0",
-            "left-0",
+            "start-1",
+            "left-2",
             "top-3",
 
-            "-translate-y-6",
+            "-translate-y-5.5",
             "scale-75",
+
+            "bg-white",
+            "px-2",
 
             /*
              * Empty state
@@ -77,7 +80,7 @@ export function getFieldLabelClassName(
             /*
              * Focus
              */
-            "peer-focus:start-0",
+            "peer-focus:start-2",
             "peer-focus:scale-75",
             "peer-focus:-translate-y-6",
 
@@ -96,11 +99,15 @@ export function getFieldLabelClassName(
          * ─────────────
          */
         floating === "top" && [
-            "left-0",
+            "start-2",
+            "left-2",
             "top-3",
 
-            "-translate-y-6",
+            "-translate-y-5.5",
             "scale-75",
+
+            "bg-white",
+            "px-2",
 
             /*
              * Always at top

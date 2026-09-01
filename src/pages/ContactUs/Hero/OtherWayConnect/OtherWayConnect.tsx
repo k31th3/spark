@@ -8,8 +8,8 @@ import { ContactItems } from "./ContactItems";
 function OtherWayConnect()
 {
     return (<Grid cols={{ base: 12 }} gap={8}>
-        {ContactItems.map((item) => (
-            <Grid.Item span={{ base: 12 }}>
+        {ContactItems.map((item, index) => (
+            <Grid.Item span={{ base: 12 }} key={`otherWayConnect${index}`}>
                 <Grid.HStack gap={4}>
                     <div>
                     <Icon

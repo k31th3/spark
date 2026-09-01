@@ -1,8 +1,10 @@
 
-import { TfiFacebook } from "react-icons/tfi";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
+// import { TfiFacebook } from "react-icons/tfi";
+// import { FaXTwitter } from "react-icons/fa6";
+// import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
+import { FaDiscord } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
 import { scrollToTop } from "@/utils";
 
@@ -12,29 +14,41 @@ import { Icon,
 export default function Social() {
 
     const socialLinks = [
+        // {
+        //     id: 1,
+        //     label: "Facebook",
+        //     icon: TfiFacebook,
+        //     href: "https://facebook.com/yourusername",
+        // },
+        // {
+        //     id: 2,
+        //     label: "X",
+        //     icon: FaXTwitter,
+        //     href: "https://x.com/yourusername",
+        // },
+        // {
+        //     id: 3,
+        //     label: "GitHub",
+        //     icon: FaGithub,
+        //     href: "https://github.com/yourusername",
+        // },
         {
             id: 1,
-            label: "Facebook",
-            icon: TfiFacebook,
-            href: "https://facebook.com/yourusername",
+            label: "LinkedIn",
+            icon: FaLinkedin,
+            href: "https://instagram.com/yourusername",
         },
         {
             id: 2,
-            label: "X",
-            icon: FaXTwitter,
-            href: "https://x.com/yourusername",
-        },
-        {
-            id: 3,
-            label: "GitHub",
-            icon: FaGithub,
-            href: "https://github.com/yourusername",
-        },
-        {
-            id: 4,
             label: "Instagram",
             icon: RiInstagramFill,
             href: "https://instagram.com/yourusername",
+        },
+        {
+            id: 3,
+            label: "Discord",
+            icon: FaDiscord,
+            href: "https://discord.com/yourusername",
         }
     ];
     

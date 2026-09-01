@@ -125,7 +125,7 @@ export default function Input({
                         {label}
 
                         {required && (
-                            <Text variant="label" color="danger">
+                            <Text variant="label" color="danger" className="ml-1">
                                 *
                             </Text>
                         )}

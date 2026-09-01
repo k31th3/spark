@@ -85,13 +85,12 @@ export function getInputClassName(
          * ─────────────────
          */
         floating === "standard" && [
-            "px-0",
-            "py-2.5",
+            "px-2.5",
+            "pt-3",
+            "pb-2.5",
 
             "bg-transparent",
-
-            "border-0",
-            "border-b-2",
+            "border",
             "border-gray-200",
 
             "rounded-none",
@@ -112,14 +111,13 @@ export function getInputClassName(
          * ─────────────────────
          */
         floating === "top" && [
-            "px-0",
-            "pt-4",
+            "px-2.5",
+            "pt-3",
             "pb-2.5",
 
             "bg-transparent",
 
-            "border-0",
-            "border-b-2",
+            "border",
             "border-gray-200",
 
             "rounded-none",
