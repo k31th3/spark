@@ -2,7 +2,7 @@
 import { Button, Icon, Text } from "@/components";
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { FiMail } from "react-icons/fi";
-import { MdOutlinePhone } from "react-icons/md";
+// import { MdOutlinePhone } from "react-icons/md";
 import { LuMapPin } from "react-icons/lu";
 import { FiArrowRight } from "react-icons/fi";
 
@@ -14,11 +14,11 @@ export default function Desktop() {
             value: import.meta.env.VITE_CONTACT_EMAIL,
             href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`
         },
-        {
-            icon: MdOutlinePhone,
-            value: import.meta.env.VITE_CONTACT_PHONE,
-            href: `tel:${import.meta.env.VITE_CONTACT_PHONE}`
-        },
+        // {
+        //     icon: MdOutlinePhone,
+        //     value: import.meta.env.VITE_CONTACT_PHONE,
+        //     href: `tel:${import.meta.env.VITE_CONTACT_PHONE}`
+        // },
         {
             icon: LuMapPin,
             value: import.meta.env.VITE_CONTACT_ADDRESS,

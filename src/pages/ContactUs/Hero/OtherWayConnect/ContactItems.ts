@@ -22,15 +22,15 @@ export const ContactItems: ContactItem[] = [
         href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`,
         color: "primary"
     },
-    {
-        title: "Call Us",
-        icon: FiPhone,
-        content: import.meta.env.VITE_CONTACT_PHONE,
-        description: null,
-        href: `tel:${import.meta.env.VITE_CONTACT_PHONE}`,
-        color: "pink"
+    // {
+    //     title: "Call Us",
+    //     icon: FiPhone,
+    //     content: import.meta.env.VITE_CONTACT_PHONE,
+    //     description: null,
+    //     href: `tel:${import.meta.env.VITE_CONTACT_PHONE}`,
+    //     color: "pink"
 
-    },
+    // },
     {
         title: "Visit Our Office",
         icon: FiMapPin,

@@ -1,8 +1,7 @@
 "use client";
 
 import { Wrapper, Grid } from "@/components";
-import { Hero, Industries,
-    WhySparkItServices, OurCoreItServices,
+import { Hero, WhySparkItServices, OurCoreItServices,
     Productivity, OurContent } from  "./";
 
 function ItServices() {
@@ -15,7 +14,7 @@ function ItServices() {
                     <Grid.VStack gap={12}>
 
                         <Hero />
-                        <Industries />
+                        {/*<Industries />*/}
                         <WhySparkItServices />
                         <OurCoreItServices />
                         <Productivity />
