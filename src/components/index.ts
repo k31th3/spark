@@ -21,9 +21,10 @@ export { default as Form } from "./Form";
 export { default as Toast } from "./Toast";
 export { default as ProgressIndicator } from "./ProgressIndicator";
 
+
 // for icon gradient
 export { default as IconGradient } from "./IconGradient";
-
+export { default as Turnstile } from "./Turnstile";
 
 
 

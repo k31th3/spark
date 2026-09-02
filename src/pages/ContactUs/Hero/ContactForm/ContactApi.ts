@@ -12,10 +12,11 @@ export interface ContactResponse {
 }
 
 const CONTACT_WEBHOOK_URL =
-    `${import.meta.env.VITE_CONTACT_WEBHOOK_URL}/sitLandingPageContactUs`;
+    `${import.meta.env.VITE_CONTACT_WEBHOOK_URL}/spark/ContactUs`;
 
 export async function submitContactForm(
-    formData: ContactFormData
+    formData: ContactFormData,
+    turnstileToken: string
 ): Promise<ContactResponse> {
     const response = await fetch(CONTACT_WEBHOOK_URL, {
         method: "POST",
@@ -28,7 +29,8 @@ export async function submitContactForm(
             companyName: formData.company_name,
             phoneNumber: formData.phone_number,
             message: formData.message,
-        }),
+            turnstileToken
+        })
     });
 
     let data: ContactResponse;

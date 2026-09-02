@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-import { Toast } from "@/components";
+import {
+    Toast,
+    type TurnstileRef,
+} from "@/components";
 
 import {
     submitContactForm,
@@ -22,8 +25,14 @@ const initialFormData: ContactFormData = {
 };
 
 export function useContactForm() {
+    const turnstileRef =
+        useRef<TurnstileRef>(null);
+
     const [formData, setFormData] =
         useState<ContactFormData>(initialFormData);
+
+    const [turnstileToken, setTurnstileToken] =
+        useState("");
 
     const [isSubmitting, setIsSubmitting] =
         useState(false);
@@ -51,19 +60,17 @@ export function useContactForm() {
         }));
     };
 
-    const handleSubmit = async (
-        e: React.FormEvent<HTMLFormElement>
+    const submitForm = async (
+        token: string
     ) => {
-        e.preventDefault();
-
-        if (isSubmitting) {
+        if (isSubmitting || !token) {
             return;
         }
 
         setIsSubmitting(true);
 
         try {
-            const payload = {
+            const payload: ContactFormData = {
                 ...formData,
                 phone_number: getCleanPhoneNumber(
                     formData.phone_number
@@ -73,17 +80,30 @@ export function useContactForm() {
                 ),
             };
 
-            const data = await submitContactForm(payload);
+            const data =
+                await submitContactForm(
+                    payload,
+                    token
+                );
 
             Toast.success(data.message);
 
             setFormData(initialFormData);
+            setTurnstileToken("");
+
+            turnstileRef.current?.reset();
+
         } catch (error) {
             Toast.error(
                 error instanceof Error
                     ? error.message
                     : "Unable to send your message. Please try again."
             );
+
+            // // Reset Turnstile if submission fails
+            // setTurnstileToken("");
+            // turnstileRef.current?.reset();
+
         } finally {
             setIsSubmitting(false);
         }
@@ -92,7 +112,10 @@ export function useContactForm() {
     return {
         formData,
         isSubmitting,
+        turnstileToken,
+        turnstileRef,
+        setTurnstileToken,
         handleChange,
-        handleSubmit
+        submitForm
     };
 }
