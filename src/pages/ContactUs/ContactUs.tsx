@@ -1,5 +1,6 @@
 "use client";
 
+import { ToastContainer } from "react-toastify";
 import { Wrapper, Grid } from "@/components";
 import Hero from  "./Hero";
 import OurOffice from  "./OurOffice";
@@ -8,7 +9,7 @@ import OurOffice from  "./OurOffice";
 function Contact() {
     return (
         <Wrapper title="Contact Us" path="contact-us">
-
+            <ToastContainer />
             <Wrapper.FullBleed className="relative">
 
                 <Wrapper.Body>

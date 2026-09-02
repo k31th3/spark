@@ -1,0 +1,33 @@
+
+.toast-fade-enter {
+    animation: toast-fade-in 200ms linear forwards !important;
+}
+
+.toast-fade-exit {
+    animation: toast-fade-out 200ms linear forwards !important;
+}
+
+@keyframes toast-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes toast-fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.Toastify__toast {
+    transform: none !important;
+}
+

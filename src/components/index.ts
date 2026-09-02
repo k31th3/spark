@@ -18,6 +18,7 @@ export { default as Image } from "./Image";
 export { default as Icon } from "./Icon";
 export { default as Text } from "./Text";
 export { default as Form } from "./Form";
+export { default as Toast } from "./Toast";
 export { default as ProgressIndicator } from "./ProgressIndicator";
 
 // for icon gradient
