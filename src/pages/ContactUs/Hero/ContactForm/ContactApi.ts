@@ -22,7 +22,13 @@ export async function submitContactForm(
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+            fullName: formData.full_name,
+            emailAddress: formData.email_address,
+            companyName: formData.company_name,
+            phoneNumber: formData.phone_number,
+            message: formData.message,
+        }),
     });
 
     let data: ContactResponse;
@@ -30,13 +36,24 @@ export async function submitContactForm(
     try {
         data = await response.json();
     } catch {
+        if (response.status === 429) {
+            throw new Error(
+                "Too many requests. Please try again later."
+            );
+        }
+
         throw new Error("Invalid response from server.");
-        
+    }
+
+    if (response.status === 429) {
+        throw new Error(
+            "Too many requests. Please try again later."
+        );
     }
 
     if (!response.ok || !data.success) {
         throw new Error(
-            data.message || "Something went wrong."
+            data.message || "Please check your information."
         );
     }
 
