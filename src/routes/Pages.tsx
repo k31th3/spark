@@ -8,6 +8,7 @@ const Careers = lazy(() => import("@/pages/Careers"));
 const ContactUs = lazy(() => import("@/pages/ContactUs"));
 
 // Services
+const WebDevelopment = lazy(() => import("@/pages/WebDevelopment"));
 const ItServices = lazy(() => import("@/pages/ItServices"));
 const CloudSolutions = lazy(() => import("@/pages/CloudSolutions"));
 const SystemIntegration = lazy(() => import("@/pages/SystemIntegration"));
@@ -27,6 +28,7 @@ export const Pages: RouteObject[] = [
     { path: "/careers", element: <Careers /> },
     { path: "/contact-us", element: <ContactUs /> },
 
+    { path: "/web-development", element: <WebDevelopment /> },
     { path: "/it-services", element: <ItServices /> },
     { path: "/cloud-solutions", element: <CloudSolutions /> },
     { path: "/system-integration", element: <SystemIntegration /> },
