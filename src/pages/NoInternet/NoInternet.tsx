@@ -1,63 +1,49 @@
-import { motion } from "motion/react";
-
 import { MdRefresh } from "react-icons/md";
 import noInternet from "@/assets/noInternet.webp";
+import { Button, Card, Text,
+    Grid, Icon, Image } from "@/components";
 
 function NoInternet() {
   	return (
-	    <div className="flex min-h-screen flex-col items-center justify-center px-6 py-12 lg:px-8">
-	    	<div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="max-w-[420px] m-auto">
+    	    <Grid cols={{ base: 12 }} className="min-h-dvh items-stretch">
+                <Grid.Item span={{ base: 12 }} className="w-full flex items-center 
+                    justify-center px-4 sm:px-6">
+                
+                    <Card className="shadow-none">
+                        <Card.Header className="border-0">
+                            <Image src={noInternet} />
+                        </Card.Header>
 
-	    		<div className="vstack gap-4">
-	    			
-	    			{/*modern illustration*/}
-		    		<div>
-		    		<img
-			            src={noInternet}
-			            alt="icon"
-			            className="w-full h-full object-cover"
-			            onContextMenu={(e) => e.preventDefault()}
-			        />
-			    	</div>
+                        <Card.Body className="text-center">
+                            
+                            <Grid.VStack gap={8} className="mb-8">
+                                <Text variant="h2" className="font-black">
+                                    Opps... Looks like
+                                    you're <span className="text-gradient">offline.</span>
+                                </Text>
 
-			    	{/*title*/}
-			    	<div className="text-center">
-			    		<p className="font-black text-[42px] text-dark/60%
-                                              mx-auto h-[100px] leading-none">
-			    			Opps... Looks like
-			    			<br/>
-			    			you're <span className="text-gradient">offline.</span>
-			    		</p>
-			    	</div>
+                                <Text variant="label" color="muted">
+                                    <p>Technology takes a coffee break sometimes ☕</p>
+                                    <span>Don't worry.</span>
+                                    We'll be here when your connection comes back.
+                                </Text>
+                            </Grid.VStack>
 
-			    	{/*body*/}
-			    	<div className="text-center text-[#5F6B76] text-[14px] mb-8">
-			    		<p>
-			    		Technology takes a coffee break sometimes ☕
-				    	</p>
-				    	<span>Don't worry.</span>
-				    	<p>
-				    	We'll be here when your connection comes back.
-				    	</p>
-			    	</div>
+                            <Button variant="gradient" 
+                                className="w-full gap-2 items-center"
+                                size="sm"
+                                onClick={() => window.location.reload()}>
+                                <Icon icon={MdRefresh} variant="light" />
+                                <span>Retry Connecting</span>
+                            </Button>
 
-			    	{/*footer*/}
-			    	<div className="w-[80%] mx-auto">
-			    		<motion.button
-			                type="button"
-			                whileHover={{ scale: 1.03 }}
-			                whileTap={{ scale: 0.98 }}
-			                onClick={() => window.location.reload()}
-			                className="sparkPrimaryBtn">
-			                <MdRefresh size={20}/>
-			                <span>Retry Connection</span>
-			            </motion.button>
-			    	</div>
+                        </Card.Body>
+                    </Card>    
 
-	    		</div>
-
-			</div>
-	    </div>
+                </Grid.Item>
+            </Grid>
+        </div>
   	);
 }
 
