@@ -35,6 +35,7 @@ function PrivacyPolicy() {
                             <Image
                                 src={privacyPolicy}
                                 alt="Frequently Asked Questions"
+                                loading="eager"
                                 className="w-full max-w-[480px] object-cover"/>
                         </div>
 

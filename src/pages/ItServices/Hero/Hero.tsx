@@ -34,6 +34,7 @@ function Hero()
                 <Image
                     src={HeroBgWebp}
                     alt="Hero background"
+                    loading="eager"
                     className="absolute -top-40 h-[580px] left-0 w-full object-cover -z-10 rounded-bl-[100%]" />
 
                 <div

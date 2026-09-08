@@ -38,6 +38,7 @@ function TermsOfService() {
                         <Image
                             src={HeroBackGround}
                             alt="section background"
+                            loading="eager"
                             className="absolute top-0 left-1/2 h-100 w-fit -translate-x-1/2 -z-0"
                         />
 

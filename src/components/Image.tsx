@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import type {
     ImgHTMLAttributes,
     ReactNode,
 } from "react";
-import { useState } from "react";
+
+import { cn } from "@/lib/utils";
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     placeholder?: ReactNode;
@@ -16,6 +18,7 @@ export default function Image({
     decoding = "async",
     draggable = false,
     fetchPriority = "auto",
+    loading = "lazy",
     placeholder,
     skeleton = true,
     wrapperClassName = "",
@@ -28,9 +31,18 @@ export default function Image({
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState(false);
 
+    useEffect(() => {
+        setLoaded(false);
+        setError(false);
+    }, [src]);
+
+    const isBreakout =
+        typeof props.className === "string" &&
+        /\b(?:absolute|fixed|sticky)\b/.test(props.className);
+
     return (
-        <div className={wrapperClassName}>
-            
+        <div className={cn(isBreakout ? "" : "relative", wrapperClassName)}>
+
             {/* Skeleton */}
             {skeleton && !loaded && !error && (
                 <div
@@ -52,6 +64,7 @@ export default function Image({
                 alt={alt}
                 decoding={decoding}
                 draggable={draggable}
+                loading={loading}
                 onLoad={(e) => {
                     setLoaded(true);
                     onLoad?.(e);

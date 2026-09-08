@@ -77,6 +77,7 @@ export default function LetStartHere(){
                     <Image
                         src={HereGrouping}
                         alt="Home"
+                        loading="eager"
                         className="block w-full h-auto"/>
                 </div>
             </div>

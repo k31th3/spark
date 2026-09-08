@@ -45,6 +45,7 @@ function Careers() {
                         <Image
                             src={career}
                             alt="Careers"
+                            loading="eager"
                             className="w-full max-w-[480px] object-cover"/>
                         </div>
                     </div>
