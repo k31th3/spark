@@ -2,6 +2,8 @@ import { Card, Grid,
     Text, Image, ProgressIndicator } from "@/components";
 
 import { StartWithSparkWebp } from "@/assets/Dashboard";
+import StartWithSpark480w from "@/assets/Dashboard/startWithSpark-480.webp";
+import StartWithSpark720w from "@/assets/Dashboard/startWithSpark-720.webp";
 
 export default function SitWithUs() 
 {
@@ -32,6 +34,8 @@ export default function SitWithUs()
                             <div>
                                 <Image
                                     src={StartWithSparkWebp}
+                                    srcSet={`${StartWithSpark480w} 480w, ${StartWithSpark720w} 720w, ${StartWithSparkWebp} 1536w`}
+                                    sizes="320px"
                                     alt="oncall"
                                     className="
                                         relative

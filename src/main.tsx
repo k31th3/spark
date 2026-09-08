@@ -13,8 +13,6 @@ import { ThemeProvider } from "@material-tailwind/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 
-import { initGA } from "./lib/analytics";
-
 let refreshing = false;
 const firstLoad = !navigator.serviceWorker?.controller;
 
@@ -33,8 +31,6 @@ const updateSW = registerSW({
         console.log("App is ready for offline use.");
     }
 });
-
-initGA();
 
 createRoot(document.getElementById("root")).render(
     <HelmetProvider>

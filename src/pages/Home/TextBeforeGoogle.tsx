@@ -2,6 +2,8 @@
 import { Grid, Image, Wrapper } from "@/components";
 
 import { HomeAskPng } from "@/assets/StartHere";
+import HomeAsk640w from "@/assets/StartHere/homeAsk-640.webp";
+import HomeAsk1100w from "@/assets/StartHere/homeAsk-1100.webp";
 import { Text } from "@/components";
 
 export default function TextBeforeGoogle() {
@@ -46,6 +48,8 @@ export default function TextBeforeGoogle() {
                     <Grid.Item span={{ base: 1 }} className="z-10">
                         <Image
                             src={HomeAskPng}
+                            srcSet={`${HomeAsk640w} 640w, ${HomeAsk1100w} 1100w, ${HomeAskPng} 1439w`}
+                            sizes="500px"
                             alt="We'll explain"
                             className="w-full max-w-[500px] object-cover mx-auto"/>
                     </Grid.Item>  

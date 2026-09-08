@@ -4,6 +4,8 @@ import React from "react";
 import { Text, Chip, 
     Grid, Image } from "@/components";
 import { HereGrouping } from "@/assets/StartHere";
+import HereGrouping640w from "@/assets/StartHere/hereGrouping-640.webp";
+import HereGrouping1100w from "@/assets/StartHere/hereGrouping-1100.webp";
 
 export default function LetStartHere(){
 
@@ -76,6 +78,8 @@ export default function LetStartHere(){
                     overflow-hidden rounded-[24px] shadow-sm">
                     <Image
                         src={HereGrouping}
+                        srcSet={`${HereGrouping640w} 640w, ${HereGrouping1100w} 1100w, ${HereGrouping} 1536w`}
+                        sizes="500px"
                         alt="Home"
                         loading="eager"
                         fetchPriority="high"
