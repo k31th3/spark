@@ -9,7 +9,7 @@ import { VscDownload } from "react-icons/vsc";
 import { FiDownload } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 
-import CatalogueFile from "@/assets/catalogue.png";
+import CatalogueFile from "@/assets/catalogue.webp";
 import style from "./Navigation.module.css";
 
 const Lightbox = lazy(() => import("yet-another-react-lightbox"));

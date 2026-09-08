@@ -1,1 +1,1 @@
-export { default as companyPortfolioPng } from "./companyPortfolio.png";
+export { default as companyPortfolioPng } from "./companyPortfolio.webp";

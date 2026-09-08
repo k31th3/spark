@@ -1,6 +1,6 @@
 import { Icon, Image, Text, Wrapper  } from "@/components";
 
-import privacyPolicy from "@/assets/privacyPolicy.png"
+import privacyPolicy from "@/assets/privacyPolicy.webp"
 import { Contents } from "./Contents";
 
 function PrivacyPolicy() {

@@ -4,7 +4,7 @@ import { PiAirplaneTiltDuotone } from "react-icons/pi";
 import { Wrapper, Text, Card,
     Image, Button, Icon, Grid } from "@/components";
 
-import career from "@/assets/career.png"
+import career from "@/assets/career.webp"
 
 import { Contents } from "./Contents";
 import { OpenPositions } from "./OpenPositions";
