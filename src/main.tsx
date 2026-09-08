@@ -10,6 +10,7 @@ import ErrorBoundary from "@/pages/ErrorBoundary";
 
 import { registerSW } from "virtual:pwa-register";
 import { ThemeProvider } from "@material-tailwind/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { initGA } from "./lib/analytics";
 
@@ -17,19 +18,19 @@ let refreshing = false;
 const firstLoad = !navigator.serviceWorker?.controller;
 
 const updateSW = registerSW({
-  onNeedRefresh() {
-    updateSW(true);
-  },
-  onRegisteredSW() {
-    navigator.serviceWorker?.addEventListener("controllerchange", () => {
-      if (firstLoad || refreshing) return;
-      refreshing = true;
-      window.location.reload();
-    });
-  },
-  onOfflineReady() {
-    console.log("App is ready for offline use.");
-  },
+    onNeedRefresh() {
+        updateSW(true);
+    },
+    onRegisteredSW() {
+        navigator.serviceWorker?.addEventListener("controllerchange", () => {
+            if (firstLoad || refreshing) return;
+            refreshing = true;
+            window.location.reload();
+        });
+    },
+    onOfflineReady() {
+        console.log("App is ready for offline use.");
+    }
 });
 
 initGA();
@@ -39,6 +40,7 @@ createRoot(document.getElementById("root")).render(
         <StrictMode>
             <ErrorBoundary>
                 <ThemeProvider value={{}}>
+                    <SpeedInsights />
                     <App />
                 </ThemeProvider>
             </ErrorBoundary>
