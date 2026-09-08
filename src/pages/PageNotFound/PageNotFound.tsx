@@ -13,7 +13,7 @@ const buttons = [
         label: "Go to Homepage",
         variant: "primary" as const,
         icon: PiHouseBold,
-        iconVariant: "light",
+        iconVariant: "light" as const,
         className: "gap-1 justify-center rounded-lg",
         href: "/"
     },

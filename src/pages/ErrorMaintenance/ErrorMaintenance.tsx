@@ -1,66 +1,57 @@
-
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaHeadset } from "react-icons/fa6";
 
+import { Button, Card, Text,
+    Grid, Icon, Image } from "@/components";
+
 function ErrorMaintenance() {
   	return (
-	    <div className="flex flex-col items-center justify-center px-6 lg:px-8 min-h-screen md:min-h-fit">
-	    	<div className="sm:mx-auto sm:w-full sm:max-w-sm">
+	    <div className="max-w-[420px] m-auto">
+            <Grid cols={{ base: 12 }} className="min-h-dvh items-stretch">
+                <Grid.Item span={{ base: 12 }} className="w-full flex items-center 
+                    justify-center px-4 sm:px-6">
+                
+                    <Card className="shadow-none">
+                        
+                        <Card.Header className="border-0">
+                            <Image src="/errorMaintenance.webp" />
+                        </Card.Header>
 
-	    		<div className="vstack gap-0">
-	    			
-	    			{/*modern illustration*/}
-		    		<div>
-		    		<img
-			            src="/errorMaintenance.webp"
-			            alt="icon"
-			            className="w-full h-full object-cover"
-			            onContextMenu={(e) => e.preventDefault()}
-			        />
-			    	</div>
+                        <Card.Body className="text-center">
+                            <Grid.VStack className="mb-8">
+                                <Text variant="h2" className="font-black mb-8">
+                                    We're making
+                                    <span className="text-gradient">things better.</span>
+                                </Text>
 
-			    	{/*title*/}
-			    	<div className="text-center">
-			    		<p className="font-black text-[38px] text-dark/60%
-                                              mx-auto h-[100px] leading-none">
-			    			We're making
-			    			<br/>
-			    			<span className="text-gradient">things better.</span>
-			    		</p>
-			    	</div>
+                                <Text variant="label" color="muted">
+                                    <p>Sometimes technology needs a quick tune-up.</p>
+                                    <span>We're currently improving this page so it'll be even</span>
+                                    better when you come back.
+                                </Text>
+                            </Grid.VStack>
 
-			    	{/*body*/}
-			    	<div className="text-center text-[#5F6B76] text-[12px] mb-8">
-			    		<p>
-			    		Sometimes technology needs a quick tune-up. 
-				    	</p>
-				    	<span>We're currently improving this page so it'll be even</span>
-				    	<p>
-				    	better when you come back.
-				    	</p>
-			    	</div>
-
-			    	{/*footer*/}
-			    	<div className="w-[80%] mx-auto">
-			    		<div className="hstack gap-4 items-center">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-pink-50">
-                                <FaHeadset size={24} style={{ fill: "url(#iconGradient)" }} />
+                            <div className="hstack gap-4 items-center">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-pink-50">
+                                    <FaHeadset size={24} style={{ fill: "url(#iconGradient)" }} />
+                                </div>
+                                <div className="vstack gap-0">
+                                    <ul>
+                                        <li className="font-medium text-[12px]">Need something urgent?</li>
+                                        <li className="text-purple-700 text-[16px] hstack gap-2 items-center cursor-pointer">
+                                            Contact Spark Support <Icon icon={FaLongArrowAltRight} />
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div className="vstack gap-0">
-                                <ul>
-                                    <li className="font-medium text-[12px]">Need something urgent?</li>
-                                    <li className="text-purple-700 text-[16px] hstack gap-2 items-center cursor-pointer">
-                                        Contact Spark Support <FaLongArrowAltRight />
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-			    	</div>
 
-	    		</div>
+                        </Card.Body>
 
-			</div>
-	    </div>
+                    </Card>
+
+                </Grid.Item>
+            </Grid>
+        </div>
   	);
 }
 

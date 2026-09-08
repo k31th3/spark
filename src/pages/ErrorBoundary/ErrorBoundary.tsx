@@ -1,9 +1,10 @@
 
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import { RiPokerHeartsFill } from "react-icons/ri";
 
 import { Component, type ReactNode } from "react";
+import { Button, Card, Text,
+    Grid, Icon, Image, IconGradient } from "@/components";
 
 type Props = {
     children: ReactNode;
@@ -27,66 +28,49 @@ class ErrorBoundary extends Component<Props, State> {
     render() {
         if (this.state.hasError) {
             return (
-                <div className="flex min-h-screen flex-col items-center justify-center px-6 py-12 lg:px-8">
-                    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="max-w-[420px] m-auto">
+                    <IconGradient />
+                    <Grid cols={{ base: 12 }} className="min-h-dvh items-stretch">
+                        <Grid.Item span={{ base: 12 }} className="w-full flex items-center 
+                            justify-center px-4 sm:px-6">
+                        
+                            <Card className="shadow-none">
+                                
+                                <Card.Header className="border-0">
+                                    <Image src="/errorBoundary.webp" />
+                                </Card.Header>
+                                
+                                <Card.Body className="text-center">
+                                    <Grid.VStack className="mb-4">
+                                        <Text variant="h2" className="font-black mb-4">
+                                            We're making <span className="text-gradient">things better.</span>
+                                        </Text>
 
-                        <div className="vstack gap-4">
+                                        <Text variant="label" color="muted">
+                                            <p>Sometimes technology needs a quick tune-up.</p>
+                                            <span>We're currently improving this page so it'll be even</span>
+                                            better when you come back.
+                                        </Text>
+                                    </Grid.VStack>
+
+                                    <Grid.HStack gap={4} align="center">
+                                        <Icon icon={PiHeadsetDuotone} size="lg" avatar={true} 
+                                            variant="gradient" />
+                                        <Grid.VStack gap={0} align="start">
+                                            <Text variant="label" color="muted">
+                                                Need something urgent?
+                                            </Text>
+                                            <Button variant="ghost" className="hover:bg-transparent gap-2 p-0 text-primary">
+                                                Contact Spark Support <Icon icon={FaLongArrowAltRight} variant="primary" />
+                                            </Button>
+                                        </Grid.VStack>
+                                    </Grid.HStack>
+
+                                </Card.Body>
+                            </Card>
                             
-                            {/*modern illustration*/}
-                            <div>
-                            <img
-                                src="/errorBoundary.webp"
-                                alt="icon"
-                                className="w-full h-full object-cover"
-                                onContextMenu={(e) => e.preventDefault()}
-                            />
-                            </div>
-
-                            {/*title*/}
-                            <div className="text-center">
-                                <p className="font-black text-[42px] text-gradient w-[300px]
-                                              mx-auto h-[100px] leading-none">
-                                    We're making
-                                    things better.
-                                </p>
-                            </div>
-
-                            {/*body*/}
-                            <div className="text-center text-[#5F6B76] text-[14px] mb-8 vstack gap-3">
-                                <p className="text-black/70 font-medium">
-                                Sometimes technology needs a quick tune-up
-                                </p>
-                                <span>
-                                    We're currently improving this page so it'll
-                                    be even better when you come back. 
-                                </span>
-                                <p>
-                                    <div className="hstack gap-1 items-center justify-center">
-                                        Thanks for your patience.<RiPokerHeartsFill className="text-purple-700"/>
-                                    </div>
-                                </p>
-                            </div>
-
-                            {/*footer*/}
-                            <div className="w-[80%] mx-auto">
-                                <div className="hstack gap-4 items-center">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FAF5FF]">
-                                        <PiHeadsetDuotone size={24} style={{ fill: "url(#iconGradient)" }} />
-                                    </div>
-                                    <div className="vstack gap-0">
-                                        <ul>
-                                            <li className="font-medium text-[12px]">Need something urgent?</li>
-                                            <li className="text-purple-700 text-[16px] hstack gap-2 items-center cursor-pointer">
-                                                Contact Spark Support <FaLongArrowAltRight />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
+                        </Grid.Item>
+                    </Grid>
                 </div>
             );
         }
