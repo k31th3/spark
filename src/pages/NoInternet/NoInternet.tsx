@@ -1,5 +1,4 @@
 import { MdRefresh } from "react-icons/md";
-import noInternet from "@/assets/noInternet.webp";
 import { Button, Card, Text,
     Grid, Icon, Image } from "@/components";
 
@@ -11,14 +10,15 @@ function NoInternet() {
                     justify-center px-4 sm:px-6">
                 
                     <Card className="shadow-none">
+                        
                         <Card.Header className="border-0">
-                            <Image src={noInternet} />
+                            <Image src="/noInternet.webp" />
                         </Card.Header>
 
                         <Card.Body className="text-center">
                             
-                            <Grid.VStack gap={8} className="mb-8">
-                                <Text variant="h2" className="font-black">
+                            <Grid.VStack className="mb-8">
+                                <Text variant="h2" className="font-black mb-8">
                                     Opps... Looks like
                                     you're <span className="text-gradient">offline.</span>
                                 </Text>

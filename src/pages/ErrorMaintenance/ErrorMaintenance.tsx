@@ -2,8 +2,6 @@
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaHeadset } from "react-icons/fa6";
 
-import errorMaintenance from "@/assets/errorMaintenance.webp";
-
 function ErrorMaintenance() {
   	return (
 	    <div className="flex flex-col items-center justify-center px-6 lg:px-8 min-h-screen md:min-h-fit">
@@ -14,7 +12,7 @@ function ErrorMaintenance() {
 	    			{/*modern illustration*/}
 		    		<div>
 		    		<img
-			            src={errorMaintenance}
+			            src="/errorMaintenance.webp"
 			            alt="icon"
 			            className="w-full h-full object-cover"
 			            onContextMenu={(e) => e.preventDefault()}

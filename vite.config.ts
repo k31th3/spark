@@ -25,9 +25,9 @@ export default defineConfig({
         "apple-touch-icon.png",
         "web-app-manifest-192x192.png",
         "web-app-manifest-512x512.png",
-        "src/assets/noInternet.webp",
-        "src/assets/errorBoundary.webp",
-        "src/assets/errorMaintenance.webp"
+        "noInternet.webp",
+        "errorBoundary.webp",
+        "errorMaintenance.webp"
       ],
 
       workbox: {

@@ -3,8 +3,6 @@ import { PiHeadsetDuotone } from "react-icons/pi";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { RiPokerHeartsFill } from "react-icons/ri";
 
-import errorBoundary from "@/assets/errorBoundary.webp";
-
 import { Component, type ReactNode } from "react";
 
 type Props = {
@@ -37,7 +35,7 @@ class ErrorBoundary extends Component<Props, State> {
                             {/*modern illustration*/}
                             <div>
                             <img
-                                src={errorBoundary}
+                                src="/errorBoundary.webp"
                                 alt="icon"
                                 className="w-full h-full object-cover"
                                 onContextMenu={(e) => e.preventDefault()}
