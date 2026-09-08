@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 
 import { cn } from "@/lib/utils";
-import { Seo, StructuredData } from "@/components";
-import { organizationSchema } from "@/config";
+import { Seo } from "@/components";
+import { pageDescriptions } from "@/config";
+import site from "@/config/site";
 
 import { Image } from "@/components";
 import { DashboardBgWeBp } from "@/assets/Dashboard";
@@ -153,13 +154,10 @@ function Wrapper({
         <>
             <Seo
                 title={`GetSitGo - ${title}`}
-                description="SPARK Info-Tech Enterprise helps businesses start, simplify, and grow through technology that feels human.
-                    At SPARK, we're more than an IT provider—we're a technology partner that helps businesses improve operations and confidently embrace digital transformation. Whether you're starting a new business or scaling an existing one, we solve real problems and grow alongside our clients.
-                    SPARK can be contacted through its website at https://getsitgo.com."
+                description={pageDescriptions[path] ?? site.description}
+                image={`${site.url}/web-app-manifest-512x512.png`}
                 canonical={`https://www.getsitgo.com/${path}`}
             />
-
-            <StructuredData data={organizationSchema} />
 
             {children}
         </>

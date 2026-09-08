@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Avoid duplicate content
+Disallow: /home
+
 Sitemap: https://www.getsitgo.com/sitemap.xml

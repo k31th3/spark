@@ -1,6 +1,7 @@
 "use client";
 
-import { Wrapper, Grid } from "@/components";
+import { Wrapper, Grid, StructuredData } from "@/components";
+import { aboutUsSchema } from "@/config";
 
 import { LetStartHere, 
 	WeSpeakHuman, TextBeforeGoogle, 
@@ -32,6 +33,8 @@ import { LetStartHere,
                         </Wrapper.Body>
 
                     </Wrapper.FullBleed>
+
+                    <StructuredData data={aboutUsSchema} />
                 </Wrapper>
 		    </>
 	    );	

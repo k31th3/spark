@@ -8,8 +8,9 @@ import { EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-import { Wrapper, BookCall } from "@/components";
+import { Wrapper, BookCall, StructuredData } from "@/components";
 import { tabs } from "./tabs";
+import { serviceSchema } from "@/config";
 
 import style from "./Services.module.css";
 
@@ -145,10 +146,12 @@ function Services() {
 
                         <BookCall />
                     </main>
-                    
+
                 </section>
             </Wrapper.Body>
-            
+
+            <StructuredData data={serviceSchema} />
+
         </Wrapper>
         </>
     );

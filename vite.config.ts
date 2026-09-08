@@ -101,12 +101,13 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-        return "vendor";
-      }
-          // if (id.includes("react-router")) return "router";
-          // if (id.includes("react-dom")) return "react-dom";
-          // if (id.includes("react")) return "react";
-          // if (id.includes("node_modules")) return "vendor";
+            if (id.includes("material-tailwind")) return "material-tailwind";
+            if (id.includes("react")) return "react-vendor";
+            if (id.includes("motion")) return "motion";
+            if (id.includes("swiper")) return "swiper";
+            if (id.includes("lenis")) return "lenis";
+            return "vendor";
+          }
         },
       },
     },
