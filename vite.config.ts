@@ -54,7 +54,7 @@ export default defineConfig({
           },
           {
             urlPattern: /\.(?:png|jpg|jpeg|webp|svg)$/i,
-            handler: "CacheFirst",
+            handler: "StaleWhileRevalidate",
             options: {
               cacheName: "images-cache",
               expiration: {
@@ -66,7 +66,7 @@ export default defineConfig({
 
           {
             urlPattern: /\.(?:mp4|webm)$/i,
-            handler: "CacheFirst",
+            handler: "StaleWhileRevalidate",
             options: {
               cacheName: "video-cache",
               expiration: {
