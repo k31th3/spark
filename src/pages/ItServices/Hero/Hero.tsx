@@ -35,6 +35,7 @@ function Hero()
                     src={HeroBgWebp}
                     alt="Hero background"
                     loading="eager"
+                    fetchPriority="high"
                     className="absolute -top-40 h-[580px] left-0 w-full object-cover -z-10 rounded-bl-[100%]" />
 
                 <div
@@ -45,13 +46,13 @@ function Hero()
                         sm:bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.45)_58%,transparent_80%)]
                     "/>
 
-                <Text variant="h6" color="primary" className="uppercase mb-6 font-bold">
+                <Text variant="h6" as="p" color="primary" className="uppercase mb-6 font-bold">
                     it services
                     <ProgressIndicator size="sm" />
                 </Text>
 
                 <Grid.VStack gap={4}>
-                    <Text variant="h2">
+                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
                         Technology That <span className="text-primary">Works</span>. <br />
                         <span className="text-gradient">Support</span> That <span className="text-gradient">Cares</span>.
                     </Text>

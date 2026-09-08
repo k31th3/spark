@@ -19,7 +19,7 @@ function OurOffice()
                 <Grid cols={{ base: 12 }}>
                     <Grid.Item span={{ base: 12, lg: 5, md: 5, sm: 5 }}>
                         <Grid.VStack gap={4}>
-                            <Text variant="h6" color="primary" className="uppercase font-bold">
+                            <Text variant="h6" as="p" color="primary" className="uppercase font-bold">
                                 we're here for you
                             </Text>
 

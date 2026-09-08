@@ -50,7 +50,7 @@ export default function LetStartHere(){
                     </Text>
 
                     <Text
-                        variant="h4"
+                        variant="h2"
                         className="text-xl sm:text-2xl lg:text-3xl font-semibold tracking-wide mb-4">
                         We <span className="text-gradient">start</span> things.
                     </Text>
@@ -78,6 +78,7 @@ export default function LetStartHere(){
                         src={HereGrouping}
                         alt="Home"
                         loading="eager"
+                        fetchPriority="high"
                         className="block w-full h-auto"/>
                 </div>
             </div>

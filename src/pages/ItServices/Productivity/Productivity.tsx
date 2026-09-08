@@ -23,7 +23,7 @@ function Productivity() {
                                     <Grid.VStack gap={2} align="center">
 
                                         <Icon icon={service.icon} size="md" variant={service.color} avatar={true}/>
-                                        <Text variant="h3" color={service.color}>
+                                        <Text variant="h3" as="p" color={service.color}>
                                             <Animated value={service.value}/>
                                         </Text>
 

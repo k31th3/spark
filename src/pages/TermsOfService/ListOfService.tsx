@@ -15,7 +15,7 @@ function ListOfService()
                         className="rounded-lg shadow-sm bg-white border border-mist-300">
                         
                         <Accordion.Header>
-                            <Text variant="h6">{item.title}</Text>
+                            <Text variant="h6" as="p">{item.title}</Text>
                         </Accordion.Header>
 
                         <Accordion.Body className="border-t border-mist-300 rounded-b-lg

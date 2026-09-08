@@ -12,9 +12,9 @@ export default function Company() {
 
 			<div className="vstack gap-4">
 				<SiteLogo size="sm"/>
-				<Text variant="h6">
-					The Spark Info-Tech Enterprise
-				</Text>
+<Text variant="body" className="text-base font-semibold">
+                    The Spark Info-Tech Enterprise
+                </Text>
 			</div>
 
 			<div className="border border-[#E9D5FF] rounded-[24px] 

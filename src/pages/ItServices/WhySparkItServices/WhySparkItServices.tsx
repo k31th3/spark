@@ -25,7 +25,7 @@ function WhySparkItServices()
                 </Grid.HStack>
 
                 <Grid.VStack gap={4}>
-                    <Text variant="h3" className="font-bold">
+                    <Text variant="h2" className="font-bold text-2xl tracking-tight sm:text-3xl lg:text-3xl">
                         We handle the technology behind your <span className="text-gradient">success</span>. 
                     </Text>
                     <Text variant="bodySmall" className="block leading-6 max-w-[400px]">                   

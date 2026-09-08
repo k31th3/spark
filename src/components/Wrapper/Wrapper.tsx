@@ -77,6 +77,7 @@ function WrapperBackground({
                 src={DashboardBgWeBp}
                 alt="section background"
                 loading="eager"
+                fetchPriority="high"
                 className={cn(
                     "absolute top-0 left-1/2 -z-15 h-[420px] w-fit -translate-x-1/2",
                     className

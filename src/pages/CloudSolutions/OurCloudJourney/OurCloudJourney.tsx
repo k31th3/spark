@@ -39,7 +39,7 @@ function OurCloudJourney()
                         </Text>
                         <ProgressIndicator size="xs" />
                     </Grid.HStack>
-                    <Text variant="h3" className="font-bold">
+                    <Text variant="h2" className="font-bold text-2xl tracking-tight sm:text-3xl lg:text-3xl">
                         Your success, Step by step. 
                     </Text>
                 </Grid.VStack>

@@ -36,6 +36,7 @@ function PrivacyPolicy() {
                                 src={privacyPolicy}
                                 alt="Frequently Asked Questions"
                                 loading="eager"
+                                fetchPriority="high"
                                 className="w-full max-w-[480px] object-cover"/>
                         </div>
 

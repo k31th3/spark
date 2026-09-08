@@ -40,7 +40,7 @@ function WeHelpYou()
                 <Grid.VStack gap={4}>
 
                     <Grid.HStack gap={2} align="center" justify="center">
-                        <Text variant="caption" className="text-pink-400 uppercase font-semibold">what we help you with </Text>
+                        <Text variant="caption" className="text-pink-700 uppercase font-semibold">what we help you with </Text>
                         <ProgressIndicator size="xs" />
                     </Grid.HStack>
 

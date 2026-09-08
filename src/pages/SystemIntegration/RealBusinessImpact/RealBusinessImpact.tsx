@@ -50,7 +50,7 @@ function SystemIntegration()
                                 <ProgressIndicator size="xs" />
                             </Grid.HStack>
                         
-                            <Text variant="h3" className="font-bold">
+                            <Text variant="h2" className="font-bold text-2xl tracking-tight sm:text-3xl lg:text-3xl">
                                 Integration That Drives. <br />
                                 Real Business <span className="text-gradient">Impact</span>. 
                             </Text>
@@ -83,7 +83,7 @@ function SystemIntegration()
                                             <div className="text-center">
                                                 <div className="h-[30px]">
                                                     {value && (
-                                                        <Text variant="h5" className="font-medium">
+                                                        <Text variant="h5" as="p" className="font-medium">
                                                             {value}
                                                         </Text>
                                                     )}

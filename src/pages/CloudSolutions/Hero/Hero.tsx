@@ -14,6 +14,7 @@ function Hero()
                     src={HeroBgWebp}
                     alt="Hero background"
                     loading="eager"
+                    fetchPriority="high"
                     className="absolute -top-40 h-[580px] left-0 w-full object-cover -z-10" />
 
                 <div
@@ -30,7 +31,7 @@ function Hero()
                 </Chip>
  
                 <Grid.VStack gap={4}>
-                    <Text variant="h2">
+                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
                         Elevate Your Business <br />
                         with the Power of <span className="text-gradient">Cloud</span>.
                     </Text>

@@ -41,7 +41,7 @@ function OurCoreItServices()
                     our core it services
                 </Text>
                 <Grid.VStack gap={2}>
-                    <Text variant="h4" className="font-bold">
+                    <Text variant="h2" className="font-bold text-xl sm:text-2xl lg:text-2xl tracking-tight">
                         End-to-end IT solutions for <span className="text-gradient">every business need</span>. 
                     </Text>
                     <ProgressIndicator size="sm" color="primary" />
@@ -56,7 +56,7 @@ function OurCoreItServices()
                                 <Grid.VStack gap={2}>
                                     <Grid.HStack gap={2} align="center">
                                         <Icon icon={service.icon} size="xs" avatar={true} />
-                                        <Text variant="h6">{service.title}</Text>
+                                        <Text variant="h6" as="p">{service.title}</Text>
                                     </Grid.HStack>
                                     <Text variant="label" className="block leading-4">
                                         {service.description}

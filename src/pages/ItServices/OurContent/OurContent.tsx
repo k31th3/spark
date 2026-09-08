@@ -56,7 +56,7 @@ function OurContent()
                         our approach
                     </Text>
                     <Grid.VStack gap={2}>
-                        <Text variant="h4" className="font-bold">
+                        <Text variant="h2" className="font-bold text-xl sm:text-2xl lg:text-2xl tracking-tight">
                             A proven approach. <span className="text-gradient">Real results</span>. 
                         </Text>
                         <Text variant="bodySmall" className="mb-4 block leading-6 max-w-[400px]">                   
@@ -75,7 +75,7 @@ function OurContent()
                                 <Grid.VStack gap={2}>
                                     <Grid.HStack gap={2} align="center">
                                         <Icon icon={step.icon} size="xs" variant={step.iconColor} avatar={true} />
-                                        <Text variant="h6">{step.title}</Text>
+                                        <Text variant="h6" as="p">{step.title}</Text>
                                     </Grid.HStack>
                                     <Text variant="label" className="block leading-4">
                                         {step.description}

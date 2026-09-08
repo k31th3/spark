@@ -4,9 +4,10 @@
   --default-font-family: "Inter Variable", sans-serif;
   --breakpoint-xs: 345px;
 
-
-  --color-muted: #6E7884;
-  --color-primary: #A855F7;
+  --color-background: #FFFFFF;
+  --color-foreground: #0F172A;
+  --color-muted: #5C6672;
+  --color-primary: #9333EA;
 }
 
 

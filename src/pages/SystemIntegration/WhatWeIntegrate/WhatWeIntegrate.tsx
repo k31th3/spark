@@ -17,7 +17,7 @@ function WhatWeIntegrate()
                         </Text>
                         <ProgressIndicator size="xs" />
                     </Grid.HStack>
-                    <Text variant="h3" className="font-bold mb-2">
+                    <Text variant="h2" className="font-bold mb-2 text-2xl tracking-tight sm:text-3xl lg:text-3xl">
                         Systems. Applications. <br /> 
                         People. All in <span className="text-gradient">Sync</span>. 
                     </Text>

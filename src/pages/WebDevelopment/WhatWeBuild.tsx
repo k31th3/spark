@@ -28,7 +28,7 @@ const highlights = [
 function WhatWeBuild() {
     return (
         <Grid.VStack gap={6}>
-            <Text variant="h4">
+            <Text variant="h2">
                 What We <span className="text-primary">Build</span>
             </Text>
 
@@ -37,7 +37,7 @@ function WhatWeBuild() {
                     <Grid.HStack key={title} gap={4} align="start" className="rounded-2xl border border-slate-200 p-6">
                         <Icon icon={icon} variant="pink" />
                         <Grid.VStack gap={1}>
-                            <Text variant="h6" className="font-bold">{title}</Text>
+                            <Text variant="h3" className="text-base font-bold">{title}</Text>
                             <Text variant="bodySmall" className="leading-6">{subtitle}</Text>
                         </Grid.VStack>
                     </Grid.HStack>

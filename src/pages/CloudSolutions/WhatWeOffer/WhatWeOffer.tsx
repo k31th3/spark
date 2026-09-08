@@ -17,7 +17,7 @@ function WhatWeOffer()
                         </Text>
                         <ProgressIndicator size="xs" />
                     </Grid.HStack>
-                    <Text variant="h3" className="font-bold mb-2">
+                    <Text variant="h2" className="font-bold mb-2 text-2xl tracking-tight sm:text-3xl lg:text-3xl">
                         Cloud Solutions <br /> 
                         Built for Your Business
                     </Text>

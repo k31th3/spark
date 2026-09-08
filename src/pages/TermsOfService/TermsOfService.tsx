@@ -39,6 +39,7 @@ function TermsOfService() {
                             src={HeroBackGround}
                             alt="section background"
                             loading="eager"
+                            fetchPriority="high"
                             className="absolute top-0 left-1/2 h-100 w-fit -translate-x-1/2 -z-0"
                         />
 

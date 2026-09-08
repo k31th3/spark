@@ -20,7 +20,7 @@ function Hero()
                         </Chip>
                     </div>
 
-                    <Text variant="h2">
+                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
                         Keep Your Technology Running Without the <span className="text-gradient">Worry</span>. 
                     </Text>
 

@@ -13,7 +13,7 @@ export const BUTTON_VARIANT_MAP: Record<ButtonVariant,string> = {
         "shadow-[inset_0_0_20px_rgba(255,255,255,0.8)]",
 
     secondary:
-        "bg-[#FAF5FF] text-[#A855F7] " +
+        "bg-[#FAF5FF] text-primary " +
         "border border-[#E9D5FF] hover:opacity-90",
 
     outline:

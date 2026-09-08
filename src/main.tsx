@@ -11,6 +11,7 @@ import ErrorBoundary from "@/pages/ErrorBoundary";
 import { registerSW } from "virtual:pwa-register";
 import { ThemeProvider } from "@material-tailwind/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 import { initGA } from "./lib/analytics";
 
@@ -41,6 +42,7 @@ createRoot(document.getElementById("root")).render(
             <ErrorBoundary>
                 <ThemeProvider value={{}}>
                     <SpeedInsights />
+                    <Analytics />
                     <App />
                 </ThemeProvider>
             </ErrorBoundary>

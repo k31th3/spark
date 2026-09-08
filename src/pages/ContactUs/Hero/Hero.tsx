@@ -13,12 +13,12 @@ function Hero()
                 
                 <Grid.VStack gap={4} >
 
-                    <Text variant="h6" color="primary" className="uppercase mb-6 font-bold">
+                    <Text variant="h6" as="p" color="primary" className="uppercase mb-6 font-bold">
                         send us a messages
                         <ProgressIndicator size="sm" />
                     </Text>
 
-                    <Text variant="h2">
+                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
                         How can we help you today?
                     </Text>
 

@@ -46,12 +46,13 @@ function Careers() {
                             src={career}
                             alt="Careers"
                             loading="eager"
+                            fetchPriority="high"
                             className="w-full max-w-[480px] object-cover"/>
                         </div>
                     </div>
 
                     <div className="text-center">
-                        <Text variant="h3">
+                        <Text variant="h2">
                             Why work with us?
                         </Text>
                         <Text variant="label" color="muted">
@@ -68,7 +69,7 @@ function Careers() {
                                 {/*Title*/}
                                 <Grid.VStack gap={2} className="items-center">
                                     <Icon icon={item.icon} size="xl" variant="gradient" />
-                                    <Text variant="h6" className="text-center">{item.title}</Text>
+                                    <Text variant="h3" className="text-center text-base font-semibold">{item.title}</Text>
                                 </Grid.VStack>
 
                                 {/*Subtitle*/}
@@ -87,7 +88,7 @@ function Careers() {
                     </Grid>
 
                     <div className="text-center">
-                        <Text variant="h3">
+                        <Text variant="h2">
                             Open Positions
                         </Text>
                         <Text variant="label" color="muted">
@@ -102,7 +103,7 @@ function Careers() {
                         <Card key={`${item.title}-${index}`}>
                             <Card.Body className="text-center vstack gap-4">
                                 {/*Title*/}
-                                <Text variant="h4">{item.title}</Text>
+                                <Text variant="h3" className="text-xl font-semibold">{item.title}</Text>
                                 {/*Subtitle*/}
                                 <Grid.VStack gap={4} className="justify-between">
 
@@ -140,7 +141,7 @@ function Careers() {
                                 
                                 <Grid.VStack gap={4}>
 
-                                    <Text variant="h4">
+                                    <Text variant="h3" className="text-xl font-semibold">
                                         Don't see the right role?
                                     </Text>
                                     <Text variant="label" color="muted" className="flex flex-col ">

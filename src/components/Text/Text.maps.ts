@@ -38,7 +38,7 @@ export const TEXT_COLOR_MAP: Record<
     white: "text-white",
     black: "text-black",
     gradient: "text-gradient",
-    green: "text-green-600",
+    green: "text-green-700",
     danger: "text-red-700",
     orange: "text-orange-500",
     pink: "text-pink-500"

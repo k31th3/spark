@@ -13,7 +13,7 @@ function Hero() {
                 </Chip>
 
                 <Grid.VStack gap={4}>
-                    <Text variant="h2">
+                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
                         Websites That Work <br />
                         as Hard as <span className="text-gradient">You Do</span>.
                     </Text>

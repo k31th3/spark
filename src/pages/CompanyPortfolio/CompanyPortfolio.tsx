@@ -102,7 +102,7 @@ function CompanyPortfolio() {
                                                     {project.category}
                                                 </Chip>
                                                 <div>
-                                                    <Text variant="h6" className="animate-pulse text-gray-800 bg-gray-800 
+                                                    <Text variant="h6" as="span" className="animate-pulse text-gray-800 bg-gray-800 
                                                         rounded-full p-0 text-[12px] mb-4">
                                                         {project.title}
                                                     </Text>
