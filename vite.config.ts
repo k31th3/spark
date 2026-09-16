@@ -101,8 +101,7 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("material-tailwind")) return "material-tailwind";
-            if (id.includes("react")) return "react-vendor";
+          if (id.includes("react")) return "react-vendor";
             if (id.includes("motion")) return "motion";
             if (id.includes("swiper")) return "swiper";
             if (id.includes("lenis")) return "lenis";

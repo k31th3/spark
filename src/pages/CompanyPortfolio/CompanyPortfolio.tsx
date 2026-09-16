@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Tabs } from "@material-tailwind/react";
+import { motion } from "motion/react";
 import { TbArrowNarrowRight } from "react-icons/tb";
 
 import { Wrapper, Text, Chip,
@@ -62,24 +62,33 @@ function CompanyPortfolio() {
                         <div className="w-full md:w-fit bg-white md:rounded-full shadow-md overflow-hidden absolute">
                             <div className="px-4 py-2 md:p-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
-                            <Tabs defaultValue="All Projects" value={activeTab} onValueChange={setActiveTab}>
-                                <Tabs.List className="gap-2">
+                            <div className="flex w-max gap-2">
                                     {tabs.map((tab) => (
-                                        <Tabs.Trigger key={tab} value={tab} className={`
-                                            whitespace-nowrap cursor-pointer h-10 px-4 
-                                            rounded-full text-xs ease-out z-10 transition-all duration-300 ease-in
-                                            shadow-sm 
-                                            ${
-                                                activeTab === tab
-                                                  ? "text-white"
-                                                  : "dark:text-black"
-                                            }`}>
-                                            {tab}
-                                        </Tabs.Trigger>
+                                        <Button
+                                            key={tab}
+                                            type="button"
+                                            onClick={() => setActiveTab(tab)}
+                                            variant="ghost"
+                                            size="sm"
+                                            className={`
+                                                relative whitespace-nowrap cursor-pointer h-10 px-4 
+                                                text-xs shadow-sm
+                                                ${
+                                                    activeTab === tab
+                                                      ? "text-white"
+                                                      : "text-dark hover:bg-gray-100 "
+                                                }`}>
+                                            {activeTab === tab && (
+                                                <motion.div
+                                                    layoutId="tab-indicator"
+                                                    className="absolute inset-0 rounded-full bg-gradient shadow-sm"
+                                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                                />
+                                            )}
+                                            <span className="relative z-10">{tab}</span>
+                                        </Button>
                                     ))}
-                                    <Tabs.TriggerIndicator className="rounded-full bg-gradient opacity-80 overflow-hidden"  />
-                                </Tabs.List>
-                            </Tabs>
+                                </div>
                             </div>
                         </div>
                     </div>

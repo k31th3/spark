@@ -24,7 +24,7 @@ export default function Navigation() {
     
     return (
         <>    
-            <div className="md:container md:mx-auto w-full md:py-4">
+            <div className="md:container md:mx-auto w-full p-4">
                 
                 <div className="flex items-center justify-center z-100 relative">
                     <ul

@@ -33,7 +33,11 @@ export default function Image({
 
     useEffect(() => {
         setLoaded(false);
-        setError(false);
+        if (!src) {
+            setError(true);
+        } else {
+            setError(false);
+        }
     }, [src]);
 
     const isBreakout =
@@ -58,39 +62,34 @@ export default function Image({
                 </div>
             )}
 
-            <img
-                {...props}
-                src={src}
-                alt={alt}
-                decoding={decoding}
-                draggable={draggable}
-                loading={loading}
-                onLoad={(e) => {
-                    setLoaded(true);
-                    onLoad?.(e);
-                }}
-                onError={(e) => {
-                    setError(true);
-                    onError?.(e);
-                }}
-                onContextMenu={(e) => {
-                    e.preventDefault();
-                    onContextMenu?.(e);
-                }}
-                style={{
-                    opacity: loaded ? 1 : 0,
-                    transition: "opacity 200ms ease",
-                    ...style,
-                }}
-                ref={(node) => {
-                    if (node) {
-                        node.setAttribute(
-                            "fetchpriority",
-                            fetchPriority
-                        );
-                    }
-                }}
-            />
+            {src && (
+                <img
+                    {...props}
+                    src={src}
+                    alt={alt}
+                    decoding={decoding}
+                    draggable={draggable}
+                    loading={loading}
+                    fetchpriority={fetchPriority}
+                    onLoad={(e) => {
+                        setLoaded(true);
+                        onLoad?.(e);
+                    }}
+                    onError={(e) => {
+                        setError(true);
+                        onError?.(e);
+                    }}
+                    onContextMenu={(e) => {
+                        e.preventDefault();
+                        onContextMenu?.(e);
+                    }}
+                    style={{
+                        opacity: loaded ? 1 : 0,
+                        transition: "opacity 200ms ease",
+                        ...style,
+                    }}
+                />
+            )}
 
             {error && (
                 <div className="absolute inset-0 flex items-center justify-center bg-gray-100">

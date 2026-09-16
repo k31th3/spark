@@ -9,7 +9,6 @@ import { HelmetProvider } from "react-helmet-async";
 import ErrorBoundary from "@/pages/ErrorBoundary";
 
 import { registerSW } from "virtual:pwa-register";
-import { ThemeProvider } from "@material-tailwind/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -36,11 +35,9 @@ createRoot(document.getElementById("root")).render(
     <HelmetProvider>
         <StrictMode>
             <ErrorBoundary>
-                <ThemeProvider value={{}}>
                     <SpeedInsights />
                     <Analytics />
                     <App />
-                </ThemeProvider>
             </ErrorBoundary>
         </StrictMode>
     </HelmetProvider>

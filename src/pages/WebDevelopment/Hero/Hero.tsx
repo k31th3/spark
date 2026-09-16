@@ -1,8 +1,7 @@
-import { FiArrowRight } from "react-icons/fi";
-import { BiMessageSquareDots } from "react-icons/bi";
 
-import { Grid, Text, Chip, Button, Icon, Image } from "@/components";
+import { Grid, Text, Chip, Image } from "@/components";
 import HelpButton from "./HelpButton";
+import FeatureHighlights from "./FeatureHighlights";
 
 import { HeroBgWebp } from "@/assets/WebDevelopment";
 
@@ -16,7 +15,7 @@ function Hero() {
                     alt="Hero background"
                     loading="eager"
                     fetchPriority="high"
-                    className="absolute -top-40 h-[580px] right-0 object-cover -z-10 rounded-bl-[100%]" />
+                    className="absolute -top-40 h-[580px] right-0 object-cover -z-10 rounded-bl-[100%] blur-md sm:blur-none" />
                 
                 <div
                     className="
@@ -32,14 +31,28 @@ function Hero() {
 
                 <Grid.VStack gap={4}>
                     <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
-                        Websites That Work <br />
-                        as Hard as <span className="text-gradient">You Do</span>.
+                        We Build Websites <br />
+                        That <span className="text-primary">Work</span> <br /> 
+                        Experiences That <span className="text-gradient">Connect</span>
                     </Text>
                     <Text variant="bodySmall" className="mb-4 block leading-6 max-w-[400px]">
-                        We design and build fast, secure, and SEO-ready websites and
-                        web applications that help your business grow online.
+                        Modern websites and web applications that are fast,
+                        secure, responsive and build to help your business grow online.
                     </Text>
-                    <HelpButton />
+
+                    <div className="hidden sm:flex mb-4">
+                        <Grid.HStack gap={2}>
+                            <HelpButton />
+                        </Grid.HStack>
+                    </div>
+
+                    <div className="sm:hidden mb-4">
+                        <Grid.VStack gap={2}>
+                            <HelpButton />
+                        </Grid.VStack>
+                    </div>
+
+                    <FeatureHighlights />
                 </Grid.VStack>
             </Grid.Item>
         </Grid>
