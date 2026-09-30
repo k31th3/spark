@@ -1,14 +1,19 @@
 
-import { Grid, Icon, Image } from "@/components";
-import { LateNightTechCollabWebp } from "@/assets/ItServices";
+import { Grid, Icon, 
+    Image, Text } from "@/components";
+
+import { LaptopWebp } from "@/assets/WebDevelopment";
 
 import {
-    LuServer,
-    LuMonitorCheck,
-    LuCloud,
-    LuShieldCheck,
-    LuHeadphones
-} from "react-icons/lu";
+  FaMobileAlt
+} from "react-icons/fa";
+
+import {
+  FiSearch,
+  FiShoppingCart,
+  FiFileText,
+  FiActivity
+} from "react-icons/fi";
 
 import type { IconType } from "react-icons";
 import { motion, type TargetAndTransition } from "motion/react";
@@ -31,9 +36,9 @@ interface ServiceItem {
 
 const Items: ServiceItem[]  = [
     {
-        title: "Managed IT",
+        title: "Responsive",
         position: "left-1/2 top-[10px] -translate-x-1/2",
-        icon: LuServer,
+        icon: FaMobileAlt,
         color: "primary",
         animate: {
             y: [-8, 8, -8]
@@ -41,9 +46,9 @@ const Items: ServiceItem[]  = [
         duration: 3
     },
     {
-        title: "System Monitoring",
-        position: "left-[calc(50%-190px)] top-1/2 -translate-y-1/2",
-        icon: LuMonitorCheck,
+        title: "SEO",
+        position: "left-[calc(50%-220px)] top-1/2 -translate-y-1/2",
+        icon: FiSearch,
         color: "orange",
         animate: {
             x: [-5, 5, -5],
@@ -52,9 +57,9 @@ const Items: ServiceItem[]  = [
         duration: 1.8
     },
     {
-        title: "Cloud & Infra",
-        position: "left-[calc(50%+160px)] top-1/3 -translate-y-1/2",
-        icon: LuCloud,
+        title: "E-Commerce",
+        position: "left-[calc(50%+150px)] top-1/3 -translate-y-1/2",
+        icon: FiShoppingCart,
         color: "pink",
         animate: {
             rotate: [-4, 4, -4],
@@ -63,9 +68,9 @@ const Items: ServiceItem[]  = [
         duration: 2
     },
     {
-        title: "Cybersecurity",
+        title: "CMS",
         position: "left-[calc(50%-155px)] bottom-[20px]",
-        icon: LuShieldCheck,
+        icon: FiFileText,
         color: "warning",
         animate: {
             y: [-6, 6, -6],
@@ -74,9 +79,9 @@ const Items: ServiceItem[]  = [
         duration: 3.5
     },
     {
-        title: "IT Support",
+        title: "Performance",
         position: "left-[calc(50%+105px)] bottom-[20px]",
-        icon: LuHeadphones,
+        icon: FiActivity,
         color: "danger",
         animate: {
             y: [-7, 7, -7],
@@ -95,48 +100,13 @@ function Services()
             <div className="absolute inset-0 -z-10 opacity-40 bg-[radial-gradient(#e9b8ff_1px,transparent_1px)] 
                 [background-size:18px_18px]"/>
 
-            {/* Animated White Circle */}
-            <motion.div
-                animate={{
-                    scale: [1, 1.025, 1],
-                    boxShadow: [
-                        "0 15px 50px rgba(80,40,120,0.10)",
-                        "0 20px 65px rgba(80,40,120,0.16)",
-                        "0 15px 50px rgba(80,40,120,0.10)"
-                    ]
-                }}
-                transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                className=" absolute left-1/2 top-1/2 h-[240px] w-[240px] 
-                -translate-x-1/2 -translate-y-1/2 rounded-full bg-white"/>
-
             {/* Center Image */}
-            <motion.div
-                animate={{
-                    scale: [1, 1.015, 1]
-                }}
-                transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                className="
-                    h-[200px] w-[200px]
-                    overflow-hidden
-                    rounded-full
-                    z-10
-                    bg-pink-100
-                ">
-                <Image
-                    src={LateNightTechCollabWebp}
-                    alt="Late Night Tech Collab"
-                    wrapperClassName="h-full w-full"
-                    className=" block h-full w-full object-cover object-center "/>
-            </motion.div>
-
+            <Image
+                src={LaptopWebp}
+                alt="Laptop"
+                wrapperClassName="bg-transparent"
+                className="block h-full w-full object-cover "/>
+            
             {/* Service Icons */}
             {Items.map((service, index) => (
                 <div
@@ -152,12 +122,15 @@ function Services()
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
-                        className="text-center text-xs font-semibold text-gray-800">
+                        className="flex flex-col items-center text-center text-gray-800 w-full">
                         <Icon
                             icon={service.icon}
                             variant={service.color}
                             avatar={true}
-                        />
+                            size="lg"/>
+                        <Text variant="label" className="text-[12px] font-medium">
+                            {service.title}
+                        </Text>
                     </motion.div>
                 </div>
             ))}
