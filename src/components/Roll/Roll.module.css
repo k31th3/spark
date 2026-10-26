@@ -1,0 +1,37 @@
+@reference "../../index.css";
+
+
+.roll {
+  @apply inline-flex overflow-hidden align-bottom;
+}
+
+.track {
+  @apply relative block transition-[translate] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
+}
+
+.line {
+  @apply block whitespace-nowrap leading-[1.2];
+}
+
+
+.clone {
+  @apply absolute left-0 top-full;
+}
+
+
+:global([data-roll]:focus-visible) .track {
+  translate: 0 -100%;
+}
+
+@media (hover: hover) {
+  :global([data-roll]:hover) .track {
+    translate: 0 -100%;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transition: none;
+  }
+}
