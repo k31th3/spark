@@ -318,7 +318,9 @@ export default function Navigation() {
                     })}
                 </div>
 
-                <CatalogueBtn />
+                <div className={style.dockCta}>
+                    <CatalogueBtn />
+                </div>
 
                 <button
                     type="button"

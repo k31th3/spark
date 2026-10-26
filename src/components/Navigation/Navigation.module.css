@@ -93,7 +93,7 @@
 }
 
 .link {
-  @apply relative py-2 pl-4 text-[15px] font-medium text-foreground transition-colors duration-300 hover:text-primary;
+  @apply whitespace-nowrap;
 }
 
 .link::before {
@@ -127,8 +127,10 @@
   @apply block h-0.5 w-7 rounded-full bg-foreground transition-all duration-300 ease-out;
 }
 
-.menuToggle:hover .menuLine {
-  @apply bg-primary;
+@media (hover: hover) {
+  .menuToggle:hover .menuLine {
+    @apply bg-primary;
+  }
 }
 
 .menuLineTopOpen {
@@ -165,6 +167,18 @@
 
 .dockLinks {
   @apply hidden items-center gap-6 md:flex;
+}
+
+.dockCta {
+  @apply shrink-0;
+}
+
+.dockCta button {
+  width: auto;
+  max-width: none;
+  min-height: 40px;
+  padding: 0 1.25rem;
+  white-space: nowrap;
 }
 
 .mobilePanel {

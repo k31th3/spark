@@ -40,7 +40,7 @@ function AppRoutes() {
                                     <Navigation />
                                 </header>
 
-                                <main className="pt-10 md:pt-40">
+                                <main className="pt-20 md:pt-40">
                                     <DefaultQueryWrapper />
                                 </main>
 
