@@ -8,7 +8,7 @@ export default function SitWithUs() {
         <div
               className="
                 relative overflow-hidden rounded-4xl
-                bg-[linear-gradient(90deg,_#FFEBFD_0%,_#FFE4D3_100%)]
+                bg-[linear-gradient(90deg,#FFEBFD_0%,#FFE4D3_100%)]
                 px-8 py-12
               ">
             <Grid cols={{ base: 1, md: 2 }} gap={{ base: 0, md: 10 }}>
@@ -55,9 +55,9 @@ export default function SitWithUs() {
                     className="
                       pointer-events-none absolute inset-0 z-0
                       bg-no-repeat opacity-70 md:opacity-100
-                      bg-[position:right_-80px_top_-50px] bg-[length:55%]
-                      md:bg-[position:right_-70px_center]
-                      md:bg-[length:55%]
+                      bg-position-[right_-80px_top_-50px] bg-size-[55%]
+                      md:bg-position-[right_-70px_center]
+                      md:bg-size-[55%]
                     "
                     style={{ backgroundImage: `url(${Jumboron})` }}/>
             </Grid>
