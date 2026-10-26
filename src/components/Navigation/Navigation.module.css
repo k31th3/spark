@@ -1,53 +1,239 @@
-@reference "tailwindcss";
+@reference "../../index.css";
 
 /*Navigation.tsx*/
 
-.unOrderList {
-  @apply
-    flex
-    md:w-fit
-    sm:w-[70%]
-    w-full
-    items-center
-    justify-center
-    
-    md:p-[8px]
-    p-4
+.header {
+  @apply fixed inset-x-0 top-0 z-50 origin-top;
 
-    gap-1
-    md:rounded-full 
-		md:bg-white
-    md:shadow-[0px_12px_40px_rgba(0,27,92,0.08)];
+  transition:
+    translate 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease,
+    visibility 0s linear 0s;
 }
 
-.navLink {
-  @apply
-    flex
-    h-12
-    w-full
-    items-center
-    justify-center
-    
-    rounded-full
+.headerHidden {
+  @apply invisible pointer-events-none -translate-y-4 scale-[0.96] opacity-0;
 
-    text-xs
-
-    transition-all
-    duration-300
-    ease-in-out
-
-    hover:text-[#7E22CE]
-
-    md:w-auto
-    md:px-4
-    md:text-sm;
+  transition:
+    translate 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease,
+    visibility 0s linear 500ms;
 }
 
-.navLink:global(.active) {
-	@apply
-		text-[#7E22CE]
+.headerHidden:focus-within {
+  @apply pointer-events-auto translate-y-0 scale-100 opacity-100;
 }
 
+.backdrop {
+  @apply absolute inset-0 -z-10 border-b border-transparent bg-white/0 backdrop-blur-none transition-[background-color,border-color,backdrop-filter] duration-300;
+}
+
+.headerScrolled .backdrop {
+  @apply border-neutral-200 bg-white/80 backdrop-blur-xl;
+}
+
+.row {
+  @apply relative mx-auto grid h-[72px] w-full max-w-7xl grid-cols-[1fr_auto] items-center gap-6 px-4 md:grid-cols-[1fr_auto_1fr] md:px-6;
+}
+
+.brand {
+  @apply flex items-center gap-3 justify-self-start;
+}
+
+.companyName {
+  @apply hidden items-center text-xl font-medium tracking-tight text-foreground sm:flex;
+}
+
+.rest {
+  @apply grid;
+
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.restClip {
+  @apply min-w-0 overflow-hidden;
+}
+
+.restText {
+  @apply block whitespace-nowrap pl-[0.3em] leading-[1.2] opacity-0;
+
+  translate: -40% 0;
+  transition:
+    translate 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease;
+}
+
+.brand:focus-visible .rest {
+  grid-template-columns: 1fr;
+}
+
+.brand:focus-visible .restText {
+  @apply opacity-100;
+
+  translate: 0 0;
+}
+
+@media (hover: hover) {
+  .brand:hover .rest {
+    grid-template-columns: 1fr;
+  }
+
+  .brand:hover .restText {
+    @apply opacity-100;
+
+    translate: 0 0;
+  }
+}
+
+.nav {
+  @apply hidden items-center gap-10 md:flex;
+}
+
+.link {
+  @apply relative py-2 pl-4 text-[15px] font-medium text-foreground transition-colors duration-300 hover:text-primary;
+}
+
+.link::before {
+  content: '';
+
+  @apply absolute left-0 top-1/2 size-1.5 -translate-y-1/2 scale-0 rounded-full bg-primary transition-transform duration-300 ease-out;
+}
+
+.link:hover::before,
+.linkActive::before {
+  @apply scale-100;
+}
+
+.linkActive {
+  @apply text-primary;
+}
+
+.actions {
+  @apply flex items-center gap-4 justify-self-end;
+}
+
+.headerCta {
+  @apply hidden md:block;
+}
+
+.menuToggle {
+  @apply flex size-11 flex-col items-end justify-center gap-2 md:hidden;
+}
+
+.menuLine {
+  @apply block h-0.5 w-7 rounded-full bg-foreground transition-all duration-300 ease-out;
+}
+
+.menuToggle:hover .menuLine {
+  @apply bg-primary;
+}
+
+.menuLineTopOpen {
+  @apply translate-y-[5px] rotate-45;
+}
+
+.menuLineBottomOpen {
+  @apply translate-y-[-5px] -rotate-45;
+}
+
+.dock {
+  @apply invisible fixed inset-x-0 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-50 mx-auto flex w-fit max-w-[calc(100%-2rem)] origin-bottom translate-y-6 scale-95 items-center gap-2 rounded-full border border-neutral-200 bg-white/80 p-2 opacity-0 shadow-[0_12px_40px_-8px_rgb(0_0_0/0.25)] backdrop-blur-xl md:gap-6 md:pl-3;
+
+  transition:
+    translate 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease,
+    visibility 0s linear 500ms;
+}
+
+.dockVisible {
+  @apply visible translate-y-0 scale-100 opacity-100;
+
+  transition:
+    translate 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease,
+    visibility 0s linear 0s;
+}
+
+.dockBrand {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-full;
+}
+
+.dockLinks {
+  @apply hidden items-center gap-6 md:flex;
+}
+
+.mobilePanel {
+  @apply fixed inset-0 z-40 flex flex-col bg-white px-6 pb-10 pt-28 md:hidden;
+
+  animation: menuIn 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mobileNav {
+  @apply flex flex-col;
+}
+
+.mobileLink {
+  @apply flex items-baseline gap-4 border-b border-neutral-200 py-5;
+}
+
+.mobileIndex {
+  @apply w-14 shrink-0 text-xs tabular-nums tracking-[0.08em] text-muted;
+}
+
+.mobileTitle {
+  @apply text-4xl font-medium leading-none tracking-tight text-foreground;
+}
+
+.mobileLinkActive .mobileTitle {
+  @apply text-primary;
+}
+
+.mobileCta {
+  @apply mt-auto;
+}
+
+.mobileCta button {
+  max-width: none;
+}
+
+.mobileCta button span {
+  display: flex;
+}
+
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .headerHidden,
+  .backdrop,
+  .link::before,
+  .menuLine,
+  .rest,
+  .restText,
+  .dock,
+  .dockVisible {
+    transition: none;
+  }
+
+  .mobilePanel {
+    animation: none;
+  }
+}
 
 /*CatalogueBtn.jsx*/
 

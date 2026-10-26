@@ -1,27 +1,13 @@
-
-import { MdDesignServices } from "react-icons/md";
-import { IoBookOutline } from "react-icons/io5";
-
-import { IconType } from "react-icons";
-
 export interface Tab {
-  title: string;
-  path?: string;
-  id: number;
-  icon?: IconType;
+    id: number;
+    title: string;
+    hash: string;
 }
 
 export const tabs: Tab[] = [
-  {
-    title: "Services",
-    path: "services?tab=0",
-    id: 2,
-    icon: MdDesignServices
-  },
-  {
-    title: "Company Portfolio",
-    path: "company-portfolio",
-    id: 3,
-    icon: IoBookOutline
-  }
+    { id: 1, title: "Work", hash: "work" },
+    { id: 2, title: "About", hash: "about" },
+    { id: 3, title: "Services", hash: "services" },
+    { id: 4, title: "Why Us", hash: "why-us" },
+    { id: 5, title: "FAQ", hash: "faq" },
 ];
