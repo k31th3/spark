@@ -4,7 +4,7 @@ import { Wrapper, Grid, StructuredData, HomeHero, Projects } from "@/components"
 import type { Project } from "@/components";
 import { aboutUsSchema } from "@/config";
 
-import { LetStartHere,
+import {
 	WeSpeakHuman, TextBeforeGoogle,
 	MoreThanMaintenance, SitWithUs
 } from "./";
@@ -16,6 +16,9 @@ import Cahel from "@/assets/SelectedWork/cahel_mockup.webp";
 import Finya from "@/assets/SelectedWork/finya_mockup.webp";
 import Ubas from "@/assets/SelectedWork/ubas_mockup.webp";
 import Placeholder1 from "@/assets/SelectedWork/services-branding.webp";
+
+import AboutVideo from "@/assets/Dashboard/dashboardPlayVid.mp4";
+import HomeAbout from "@/components/HomeAbout/HomeAbout";
 
 /* =========================================================
    PLACEHOLDER LINK (NO WORK PAGES EXIST YET)
@@ -50,6 +53,36 @@ const PROJECTS: Project[] = [
 	{ id: "work-4", title: "Project four", category: "Web design", year: "2025", image: Placeholder1, href: WORK_PAGE },
 ];
 
+/* =========================================================
+   ABOUT CONTENT (EMOJI ARE WRAPPED ARIA-HIDDEN BY THE COMPONENT)
+========================================================= */
+ 
+const ABOUT = {
+	eyebrow: "About Us",
+	label: "Spark Info-Tech Enterprise",
+	paragraphs: [
+		[
+			"We combine clean 👷 engineering, thoughtful 🎨 design, and a deep understanding 🧠 of modern web technology 💻 to help your business stand out.",
+		],
+		[
+			'Every IT company says they "provide solutions." We\'d rather start 🏃 things.',
+		],
+		[
+			"Because that's what a spark ✨ is.",
+			"Not a fire 🔥🔥🔥.",
+			"The beginning of one 🌌.",
+			"A tiny moment that starts something bigger.",
+			"A business. 💼",
+			"A crazy idea. 💡",
+			"A conversation. 💬",
+			"Confidence. 💪",
+			"Friendships. 👫",
+			"Possibilities. ♾️",
+		],
+	],
+	video: { src: AboutVideo, label: "Play the Spark Info-Tech video" },
+};
+
 	function Home()
 	{
 	  	return (
@@ -70,6 +103,8 @@ const PROJECTS: Project[] = [
                         viewAllHref={WORK_PAGE}
                     />
 
+                    <HomeAbout id="about" {...ABOUT} />
+
                     {/* ===== EXISTING SECTIONS (TO BE REPLACED ONE BY ONE) ===== */}
 
                     <Wrapper.FullBleed className="relative">
@@ -78,7 +113,6 @@ const PROJECTS: Project[] = [
 
                             <Grid.VStack gap={12}>
 
-                                <LetStartHere />
                                 <WeSpeakHuman />
                                 <TextBeforeGoogle />
                                 <MoreThanMaintenance />

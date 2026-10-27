@@ -1,0 +1,134 @@
+@reference "../../index.css";
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+  @apply relative bg-background;
+
+  padding-block: clamp(5rem, 9vw, 8rem);
+}
+
+.container {
+  @apply w-full max-w-7xl;
+}
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story {
+  @apply grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-x-8;
+}
+
+.rail {
+  @apply lg:sticky lg:col-span-3 lg:self-start;
+
+  top: 7rem;
+}
+
+.eyebrow {
+  @apply text-[13px] font-normal text-muted;
+
+  font-family: var(--font-sans);
+}
+
+.content {
+  @apply lg:col-span-9;
+}
+
+.label {
+  @apply mb-6 block sm:mb-8;
+}
+
+.paragraphs {
+  @apply flex max-w-5xl flex-col gap-10 sm:gap-14;
+
+  --progress: 0;
+  --dim: 0.04;
+  --span: 6;
+}
+
+.paragraph {
+  @apply text-pretty font-medium text-foreground;
+
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.2vw, 4.5rem);
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+}
+
+.word {
+  opacity: calc(
+    var(--dim) + (1 - var(--dim)) * clamp(
+      0,
+      calc((var(--progress) * (var(--total) + var(--span)) - var(--i)) / var(--span)),
+      1
+    )
+  );
+  transition: opacity 150ms linear;
+}
+
+.emoji {
+  @apply inline-block;
+
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.emojiImage {
+  @apply inline-block;
+
+  width: 1.12em;
+  height: 1.12em;
+  vertical-align: -0.2em;
+  margin-inline: 0.04em;
+}
+
+/* =========================================================
+   BENTO (ONE VIDEO CARD FOR NOW)
+========================================================= */
+
+.bento {
+  @apply mt-16 grid grid-cols-1 gap-4 sm:mt-24;
+}
+
+.videoCard {
+  @apply relative w-full overflow-hidden rounded-3xl bg-neutral-100;
+
+  aspect-ratio: var(--video-aspect, 16 / 9);
+}
+
+.video {
+  @apply absolute inset-0 size-full object-cover;
+}
+
+.play {
+  @apply absolute left-1/2 top-1/2 flex size-14 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white text-foreground shadow-lg transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:size-[4.5rem];
+}
+
+@media (hover: hover) {
+  .play:hover {
+    @apply scale-110;
+  }
+}
+
+.playIcon {
+  @apply ml-0.5 size-5 sm:size-6;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    opacity: 1;
+    transition: none;
+  }
+
+  .play {
+    transition: none;
+  }
+}
