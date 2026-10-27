@@ -1,6 +1,7 @@
 "use client";
 
-import { Wrapper, Grid, StructuredData, HomeHero } from "@/components";
+import { Wrapper, Grid, StructuredData, HomeHero, Projects } from "@/components";
+import type { Project } from "@/components";
 import { aboutUsSchema } from "@/config";
 
 import { LetStartHere,
@@ -11,8 +12,19 @@ import { LetStartHere,
 import SitAnimation from "@/assets/Hero/sit-animation.webm";
 import WordmarkLogo from "@/assets/Hero/logo-transparent.webp";
 
+import Cahel from "@/assets/SelectedWork/cahel_mockup.webp";
+import Finya from "@/assets/SelectedWork/finya_mockup.webp";
+import Ubas from "@/assets/SelectedWork/ubas_mockup.webp";
+import Placeholder1 from "@/assets/SelectedWork/services-branding.webp";
+
 /* =========================================================
-   HERO CONTENT (PLACEHOLDER COPY FROM THE EDITORIAL TEMPLATE)
+   PLACEHOLDER LINK (NO WORK PAGES EXIST YET)
+========================================================= */
+
+const WORK_PAGE = "/404";
+
+/* =========================================================
+   HERO CONTENT
 ========================================================= */
 
 const HERO = {
@@ -22,10 +34,21 @@ const HERO = {
 		"Whether you need a modern web presence, a mobile app, or a scalable digital product, we've got you covered. Simple, effective, and built to grow with you.",
 	ctaLabel: "Let's Get Started",
 	ctaHref: "/contact",
-	scrollTargetId: "home-content",
+	scrollTargetId: "work",
 	wordmarkImage: WordmarkLogo,
 	video: { src: SitAnimation },
 };
+
+/* =========================================================
+   WORK CONTENT 
+========================================================= */
+
+const PROJECTS: Project[] = [
+	{ id: "work-1", title: "Project one", category: "Web design", year: "2026", image: Cahel, href: WORK_PAGE },
+	{ id: "work-2", title: "Project two", category: "App development", year: "2026", image: Finya, href: WORK_PAGE },
+	{ id: "work-3", title: "Project three", category: "Branding", year: "2025", image: Ubas, href: WORK_PAGE },
+	{ id: "work-4", title: "Project four", category: "Web design", year: "2025", image: Placeholder1, href: WORK_PAGE },
+];
 
 	function Home()
 	{
@@ -37,29 +60,35 @@ const HERO = {
 
                     <HomeHero {...HERO} />
 
-                    {/* ===== SCROLL TARGET FOR THE HERO'S "SCROLL DOWN" ===== */}
+                    {/* ===== WORK (ANCHOR: #work) ===== */}
 
-                    <div id="home-content">
+                    <Projects
+                        id="work"
+                        eyebrow="Work"
+                        title="Selected work"
+                        projects={PROJECTS}
+                        viewAllHref={WORK_PAGE}
+                    />
 
-                        <Wrapper.FullBleed className="relative">
+                    {/* ===== EXISTING SECTIONS (TO BE REPLACED ONE BY ONE) ===== */}
 
-                            <Wrapper.Body>
+                    <Wrapper.FullBleed className="relative">
 
-                                <Grid.VStack gap={12}>
+                        <Wrapper.Body>
 
-                                    <LetStartHere />
-                                    <WeSpeakHuman />
-                                    <TextBeforeGoogle />
-                                    <MoreThanMaintenance />
-                                    <SitWithUs />
+                            <Grid.VStack gap={12}>
 
-                                </Grid.VStack>
+                                <LetStartHere />
+                                <WeSpeakHuman />
+                                <TextBeforeGoogle />
+                                <MoreThanMaintenance />
+                                <SitWithUs />
 
-                            </Wrapper.Body>
+                            </Grid.VStack>
 
-                        </Wrapper.FullBleed>
+                        </Wrapper.Body>
 
-                    </div>
+                    </Wrapper.FullBleed>
 
                     <StructuredData data={aboutUsSchema} />
                 </Wrapper>

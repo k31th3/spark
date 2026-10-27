@@ -20,10 +20,11 @@ export { default as Text } from "./Text";
 export { default as Form } from "./Form";
 export { default as Toast } from "./Toast";
 export { default as ProgressIndicator } from "./ProgressIndicator";
-export * from './Reveal';
-export * from './Roll';
-export * from './Section';
+export * from "./Reveal";
+export * from "./Roll";
+export * from "./Section";
 export * from "./HomeHero";
+export * from "./Projects";
 
 
 // for icon gradient
