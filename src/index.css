@@ -73,6 +73,12 @@
   --color-muted: #5C6672;
   --color-primary: #9333EA;
 
+  /* ADD THESE ACCENT TOKENS TO FIX THE ERROR */
+  --color-accent-400: #ff528f;
+  --color-accent-500: #e62e6e;
+  --color-accent-600: #c21a53;
+  --color-accent-700: #99103f;
+
   --shadow-glow: inset 0 0 20px rgb(255 255 255 / 0.8);
 }
 

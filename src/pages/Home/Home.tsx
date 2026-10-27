@@ -9,6 +9,7 @@ import { LetStartHere,
 } from "./";
 
 import SitAnimation from "@/assets/Hero/sit-animation.webm";
+import WordmarkLogo from "@/assets/Hero/logo-transparent.webp";
 
 /* =========================================================
    HERO CONTENT (PLACEHOLDER COPY FROM THE EDITORIAL TEMPLATE)
@@ -20,9 +21,9 @@ const HERO = {
 	subtitle:
 		"Whether you need a modern web presence, a mobile app, or a scalable digital product, we've got you covered. Simple, effective, and built to grow with you.",
 	ctaLabel: "Let's Get Started",
-	ctaHref: "/contact", // TODO: set to your real contact route
+	ctaHref: "/contact",
 	scrollTargetId: "home-content",
-	// wordmarkImage: WordmarkLogo, // add once the logo asset is in the company site
+	wordmarkImage: WordmarkLogo,
 	video: { src: SitAnimation },
 };
 
@@ -35,8 +36,6 @@ const HERO = {
                     {/* ===== HERO (FULL WIDTH, OUTSIDE THE BODY CONTAINER) ===== */}
 
                     <HomeHero {...HERO} />
-
-                    <Wrapper.Background/>
 
                     {/* ===== SCROLL TARGET FOR THE HERO'S "SCROLL DOWN" ===== */}
 

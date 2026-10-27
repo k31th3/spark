@@ -8,7 +8,6 @@ import type { HomeHeroProps, HomeHeroVideo } from './HomeHero.types'
 
 /* =========================================================
    LAZY BACKDROP
-   (keeps the WebGL bundle out of the initial download)
 ========================================================= */
 
 const GradientBackdrop = lazy(() => import('./GradientBackdrop'))
@@ -38,12 +37,6 @@ const smoothstep = (t: number) => t * t * (3 - 2 * t)
 function HomeHeroMedia({ video }: { video: HomeHeroVideo }) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  /* =======================================================
-     PLAY ONLY WHILE VISIBLE
-     (React doesn't reliably set the muted attribute, and
-     autoplay needs it, so it is set on the element directly)
-  ======================================================= */
-
   useEffect(() => {
     const element = videoRef.current
 
@@ -55,7 +48,6 @@ function HomeHeroMedia({ video }: { video: HomeHeroVideo }) {
       '(prefers-reduced-motion: reduce)'
     ).matches
 
-    /* Reduced motion: never play, the poster/first frame stays */
     if (reduceMotion) return
 
     const observer = new IntersectionObserver(
@@ -81,9 +73,10 @@ function HomeHeroMedia({ video }: { video: HomeHeroVideo }) {
         className={styles.video}
         poster={video.poster}
         muted
+        autoPlay
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         aria-hidden="true"
         tabIndex={-1}
         disablePictureInPicture
@@ -124,7 +117,7 @@ function HomeHero({
   const lastWords = otherWords.join(' ')
 
   /* =======================================================
-     SCROLL-LINKED MINIFY
+     SCROLL-LINKED MINIFY + BACKDROP VISIBILITY TOGGLE
   ======================================================= */
 
   useEffect(() => {
@@ -151,6 +144,12 @@ function HomeHero({
       const minify = smoothstep(clamp(progress / MINIFY_END))
 
       stage.style.setProperty('--minify', minify.toFixed(4))
+
+      // Completely hide WebGL canvas via visibility when at the top to prevent leaks
+      const backdropEl = stage.querySelector(`.${styles.backdrop}`) as HTMLElement
+      if (backdropEl) {
+        backdropEl.style.visibility = minify > 0.001 ? 'visible' : 'hidden'
+      }
     }
 
     const onScroll = () => {
@@ -169,10 +168,6 @@ function HomeHero({
       window.removeEventListener('resize', onScroll)
     }
   }, [])
-
-  /* =======================================================
-     SCROLL TO TARGET
-  ======================================================= */
 
   const handleScroll = () => {
     if (!scrollTargetId) return
