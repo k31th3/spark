@@ -1,0 +1,185 @@
+@reference "../../index.css";
+
+/* =========================================================
+   STAGE (TALLER THAN THE VIEWPORT SO THE STICKY CARD HAS
+   SOMETHING TO SCROLL AGAINST)
+========================================================= */
+
+.stage {
+  @apply relative w-full;
+
+  --minify: 0;
+  --hero-min-scale: 0.68;
+  --hero-scroll: 45svh;
+  --hero-height: max(100svh, 44rem);
+
+  height: calc(var(--hero-height) + var(--hero-scroll));
+}
+
+@media (max-width: 767px) {
+  .stage {
+    --hero-scroll: 30svh;
+  }
+}
+
+.sticky {
+  @apply sticky top-0 w-full overflow-hidden;
+
+  height: var(--hero-height);
+}
+
+/* =========================================================
+   BACKDROP (REVEALED AS THE CARD SHRINKS)
+========================================================= */
+
+.backdrop {
+  @apply absolute inset-0 z-0 bg-black;
+
+  opacity: var(--minify);
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+  @apply relative z-10 flex h-full w-full flex-col overflow-hidden bg-background pb-16 pt-28 will-change-transform sm:pb-24 sm:pt-36;
+
+  transform: scale(calc(1 - var(--minify) * (1 - var(--hero-min-scale))));
+  border-radius: calc(var(--minify) * 2rem);
+  box-shadow: 0 2rem 6rem rgb(0 0 0 / calc(var(--minify) * 0.35));
+}
+
+/* wins over Wrapper.Body's max-w-5xl because module CSS is unlayered */
+.wrapper {
+  @apply relative flex w-full max-w-7xl flex-none flex-col;
+}
+
+/* =========================================================
+   META ROW
+========================================================= */
+
+.meta {
+  @apply flex items-center justify-between gap-6;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2;
+}
+
+.eyebrowDot {
+  @apply size-2 rounded-full bg-primary;
+}
+
+.scrollButton {
+  @apply hidden cursor-pointer items-center gap-2 sm:inline-flex;
+}
+
+.scrollLabel {
+  @apply transition-colors duration-200;
+}
+
+.scrollButton:hover .scrollLabel {
+  @apply text-foreground;
+}
+
+.scrollArrow {
+  @apply text-muted transition-transform duration-200;
+}
+
+.scrollButton:hover .scrollArrow {
+  @apply translate-y-0.5 text-foreground;
+}
+
+/* =========================================================
+   HEADLINE (WORDMARK)
+========================================================= */
+
+.headline {
+  @apply mt-10 flex items-center justify-between whitespace-nowrap pb-[0.12em] font-medium text-foreground sm:mt-16;
+
+  font-size: clamp(3rem, 9.6vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.headlineLogo {
+  @apply h-[0.72em] w-auto shrink-0 select-none object-contain;
+}
+
+@media (max-width: 639px) {
+  .headline {
+    @apply flex-wrap justify-start whitespace-normal;
+
+    column-gap: 0.18em;
+    row-gap: 0;
+    font-size: clamp(3rem, 17vw, 5rem);
+    line-height: 0.95;
+  }
+
+  .headlineLogo {
+    height: 0.72em;
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   SUBTITLE + CTA
+========================================================= */
+
+.bottomRow {
+  @apply mt-8 grid items-end gap-8 sm:mt-12 md:grid-cols-[minmax(0,32rem)_auto] md:justify-between;
+}
+
+.subtitle {
+  @apply max-w-lg;
+}
+
+/* =========================================================
+   VIDEO (FILLS WHATEVER HEIGHT IS LEFT IN THE CARD, THE
+   CARD CLIPS THE REST)
+========================================================= */
+
+.mediaReveal {
+  @apply mx-auto mt-10 flex min-h-0 w-full max-w-7xl flex-1 flex-col sm:mt-14;
+}
+
+.media {
+  @apply relative min-h-40 flex-1 overflow-hidden rounded-3xl bg-neutral-100 sm:min-h-48;
+}
+
+.video {
+  @apply absolute inset-0 size-full object-cover;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .stage {
+    height: auto;
+  }
+
+  .sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .backdrop {
+    display: none;
+  }
+
+  .card {
+    height: auto;
+    transform: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .scrollArrow,
+  .scrollLabel {
+    transition: none;
+  }
+}

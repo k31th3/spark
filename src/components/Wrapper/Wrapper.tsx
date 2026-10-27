@@ -86,11 +86,11 @@ function WrapperBackground({
 
             {topBlur && (
                     <div
-                        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-white via-white/80 to-transparent "/>
+                        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-linear-to-b from-white via-white/80 to-transparent "/>
             )}
 
             {bottomBlur && (
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-white/90 to-transparent backdrop-blur-sm" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-linear-to-t from-white/90 to-transparent backdrop-blur-sm" />
             )}
         </>
     );
@@ -110,7 +110,7 @@ function WrapperMask({
     return (
         <div
             className={cn(
-                "absolute w-full h-full left-0 right-0 z-[1] bg-white pointer-events-none",
+                "absolute w-full h-full left-0 right-0 z-1 bg-white pointer-events-none",
                 isTop ? "top-0" : "bottom-0",
                 className
             )}

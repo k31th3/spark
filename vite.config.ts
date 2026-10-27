@@ -5,6 +5,9 @@ import { VitePWA }      from "vite-plugin-pwa";
 import path             from "path";
 import { visualizer }   from "rollup-plugin-visualizer";
 
+const SHADER_PACKAGES =
+  /[\\/]node_modules[\\/](@shadergradient|@react-three|three|react-reconciler|its-fine|react-use-measure|suspend-react|zustand|buffer|base64-js)[\\/]/;
+
 export default defineConfig({
   plugins: [
     react(),
@@ -69,6 +72,8 @@ export default defineConfig({
             handler: "StaleWhileRevalidate",
             options: {
               cacheName: "video-cache",
+              rangeRequests: true,
+
               expiration: {
                 maxEntries: 5,
                 maxAgeSeconds: 60 * 60 * 24 * 7
@@ -101,6 +106,9 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
+
+            if (SHADER_PACKAGES.test(id)) return "shader";
+
           if (id.includes("react")) return "react-vendor";
             if (id.includes("motion")) return "motion";
             if (id.includes("swiper")) return "swiper";
