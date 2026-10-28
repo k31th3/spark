@@ -1,7 +1,7 @@
 import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
-import { Navigation, IconGradient, 
+import { Navigation, IconGradient,
          ScrollToTop, Footer } from "@/components";
 
 import useOnlineStatus from "@/hooks/useOnlineStatus";
@@ -17,14 +17,19 @@ const PageNotFound = lazy(() => import("@/pages/PageNotFound"));
 
 function AppRoutes() {
     const isOnline = useOnlineStatus();
-    
+    const { pathname } = useLocation();
+
+    /* ===== HOME HAS A FULL-BLEED HERO: NO TOP PADDING SO IT STARTS AT THE EDGE ===== */
+
+    const isHome = pathname === "/";
+
     if (import.meta.env.PROD && !isOnline) {
         return <NoInternet />;
     }
-    
+
     return (
         <SuspenseLoader>
-            
+
             <Routes>
                 <Route
                     element={
@@ -40,7 +45,7 @@ function AppRoutes() {
                                     <Navigation />
                                 </header>
 
-                                <main className="pt-20 md:pt-40">
+                                <main className={isHome ? undefined : "pt-20 md:pt-40"}>
                                     <DefaultQueryWrapper />
                                 </main>
 
@@ -70,11 +75,11 @@ function AppRoutes() {
 
                 {/* Outside the layout */}
                 <Route path="*" element={<PageNotFound />} />
-                
+
             </Routes>
         </SuspenseLoader>
     );
-  
+
 }
 
 export default AppRoutes;

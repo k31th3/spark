@@ -1,0 +1,126 @@
+@reference "../../index.css";
+
+.cursor {
+  @apply pointer-events-none fixed left-0 top-0 z-10000 will-change-transform;
+
+  mix-blend-mode: difference;
+
+  --cursor-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --cursor-size: 12px;
+  --cursor-fill: #ffffff;
+  --cursor-press: 1;
+  --cursor-label-opacity: 0;
+
+  transition: opacity 150ms ease;
+}
+
+.dot {
+  @apply absolute left-0 top-0 box-border grid place-items-center rounded-full;
+
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  background-color: var(--cursor-fill);
+  transform: translate(-50%, -50%) scale(var(--cursor-press));
+  transition:
+    width 300ms var(--cursor-ease),
+    height 300ms var(--cursor-ease),
+    background-color 200ms ease,
+    transform 150ms ease;
+}
+
+.label {
+  @apply font-sans text-xs font-bold uppercase leading-none tracking-widest whitespace-nowrap;
+  color: #000000;
+  opacity: var(--cursor-label-opacity);
+  transition: opacity 150ms ease;
+}
+
+.cursor[data-state='hover'] {
+  --cursor-size: 44px;
+  --cursor-fill: #ffffff;
+}
+
+.cursor[data-state='label'] {
+  --cursor-size: 88px;
+  --cursor-fill: #ffffff;
+  --cursor-label-opacity: 1;
+}
+
+.cursor[data-state='label'] .label {
+  transition-delay: 100ms;
+}
+
+.cursor[data-state='hidden'] {
+  --cursor-size: 0px;
+  opacity: 0;
+}
+
+.cursor[data-pressed='true'] {
+  --cursor-press: 0.82;
+}
+
+.follower {
+  @apply pointer-events-none fixed left-0 top-0 z-9999 will-change-transform;
+
+  --follower-size: 36px;
+
+  transition: opacity 150ms ease;
+}
+
+.follower[data-state='hidden'] {
+  opacity: 0;
+}
+
+.followerBody {
+  @apply absolute left-0 top-0 will-change-transform;
+
+  width: var(--follower-size);
+  height: var(--follower-size);
+  margin-left: calc(var(--follower-size) / -2);
+  margin-top: calc(var(--follower-size) / -2);
+  transform-origin: 50% 50%;
+}
+
+.followerBody > * {
+  @apply block h-full w-full;
+}
+
+:global(html.has-custom-cursor),
+:global(html.has-custom-cursor) * {
+  cursor: none !important;
+}
+
+:global(html.has-custom-cursor)
+  :is(
+    textarea,
+    [contenteditable='true'],
+    input:not(
+      [type='checkbox'],
+      [type='radio'],
+      [type='submit'],
+      [type='button'],
+      [type='range'],
+      [type='file'],
+      [type='color']
+    )
+  ) {
+  cursor: text !important;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .follower {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .dot,
+  .label {
+    transition: none;
+  }
+
+  .follower {
+    display: none;
+  }
+}

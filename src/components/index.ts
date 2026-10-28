@@ -25,6 +25,7 @@ export * from "./Roll";
 export * from "./Section";
 export * from "./HomeHero";
 export * from "./Projects";
+export * from "./Cursor";
 
 
 // for icon gradient
