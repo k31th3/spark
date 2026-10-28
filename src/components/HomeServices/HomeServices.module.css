@@ -1,0 +1,291 @@
+@reference "../../index.css";
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+  @apply relative bg-background;
+
+  padding-block: clamp(5rem, 9vw, 8rem);
+}
+
+.container {
+  @apply w-full max-w-7xl;
+}
+
+.title {
+  @apply mt-8 max-w-5xl text-balance font-medium text-foreground sm:mt-10;
+
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.layout {
+  --stack-top: 6rem;
+  --stack-gap: 26svh;
+  --card-h: clamp(24rem, calc(100svh - 12rem), 40rem);
+
+  @apply mt-16 grid grid-cols-1 gap-10 sm:mt-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:gap-12;
+}
+
+/* =========================================================
+   RAIL
+========================================================= */
+
+.rail {
+  @apply hidden lg:block;
+}
+
+.railInner {
+  @apply sticky;
+
+  top: var(--stack-top);
+}
+
+.railTrack {
+  @apply relative mt-6 border-l border-neutral-200 pl-6;
+}
+
+.railFill {
+  @apply absolute -left-px top-0 h-0 w-px bg-primary;
+}
+
+.railFill::after {
+  content: '';
+
+  @apply absolute -bottom-1 left-[2.5px] size-1.5 rounded-full bg-primary;
+}
+
+.railList {
+  @apply flex flex-col;
+}
+
+.railItem {
+  @apply flex h-14 w-full cursor-pointer items-center text-left font-display text-2xl text-muted transition-all duration-300;
+
+  letter-spacing: -0.02em;
+}
+
+.railItem:hover {
+  @apply text-foreground;
+}
+
+.railItem:focus-visible {
+  @apply rounded-md outline-2 outline-offset-4 outline-primary;
+}
+
+.railItemActive {
+  @apply translate-x-2 font-medium text-foreground;
+}
+
+/* =========================================================
+   STACK
+========================================================= */
+
+.stack {
+  @apply flex min-w-0 flex-col;
+
+  row-gap: var(--stack-gap);
+}
+
+.slot {
+  @apply sticky min-w-0;
+
+  top: var(--stack-top);
+  height: var(--card-h);
+}
+
+.tail {
+  height: 0;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+  @apply relative size-full min-w-0 overflow-hidden rounded-3xl bg-foreground text-white shadow-[0_-20px_60px_-20px_rgb(0_0_0/0.4)] will-change-transform;
+
+  scale: calc(1 - var(--depth, 0) * 0.08);
+}
+
+.card[data-covered='true'] {
+  visibility: hidden;
+}
+
+.cardPlain {
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgb(223 79 255 / 0.55), transparent 60%),
+    radial-gradient(100% 80% at 0% 100%, rgb(147 51 234 / 0.6), transparent 60%),
+    #0f172a;
+}
+
+.slot:nth-child(even) .cardPlain {
+  background:
+    radial-gradient(120% 90% at 15% 0%, rgb(255 146 92 / 0.45), transparent 60%),
+    radial-gradient(100% 80% at 100% 100%, rgb(147 51 234 / 0.6), transparent 60%),
+    #0f172a;
+}
+
+.image {
+  @apply absolute inset-0 size-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)];
+}
+
+@media (hover: hover) {
+  .card:hover .image {
+    @apply scale-[1.04];
+  }
+}
+
+.veil {
+  @apply absolute inset-0 bg-linear-to-t from-black/75 via-black/15 to-black/35;
+}
+
+.dim {
+  @apply pointer-events-none absolute inset-0 bg-black;
+
+  opacity: calc(var(--depth, 0) * 0.6);
+}
+
+.content {
+  @apply relative z-10 flex h-full min-w-0 flex-col justify-between p-5 sm:p-10;
+}
+
+.top {
+  @apply flex min-w-0 items-start justify-between gap-4;
+}
+
+.index {
+  @apply inline-flex shrink-0 items-center gap-2 text-white/80;
+}
+
+.indexDot {
+  @apply size-2 shrink-0 rounded-full bg-primary;
+}
+
+.tags {
+  @apply hidden flex-wrap justify-end gap-2 sm:flex;
+}
+
+.tag {
+  @apply inline-flex h-8 items-center rounded-full border border-white/25 bg-white/10 px-3.5 text-xs font-medium text-white backdrop-blur-md;
+}
+
+.bottom {
+  @apply flex min-w-0 flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-10;
+}
+
+.itemTitle {
+  @apply max-w-xl text-balance font-medium text-white;
+
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.details {
+  @apply flex min-w-0 flex-col items-start gap-5 md:max-w-sm;
+}
+
+.description {
+  @apply max-w-xl text-sm leading-relaxed text-white/80 sm:text-base;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .title {
+    @apply mt-6;
+  }
+
+  .layout {
+    --stack-top: 1.25rem;
+    --stack-gap: 10rem;
+    --card-h: clamp(27rem, calc(100dvh - 8.5rem), 34rem);
+
+    @apply mt-12 gap-6;
+  }
+
+  .card {
+    @apply rounded-2xl;
+  }
+
+  .content {
+    @apply p-5;
+  }
+
+  .top {
+    @apply gap-3;
+  }
+
+  .bottom {
+    @apply gap-6;
+  }
+
+  .itemTitle {
+    @apply max-w-full;
+  }
+
+  .details {
+    @apply max-w-full gap-4;
+  }
+
+  .description {
+    @apply max-w-full;
+  }
+}
+
+@media (max-width: 380px) {
+  .layout {
+    --stack-gap: 8rem;
+    --card-h: 30rem;
+  }
+
+  .content {
+    @apply p-4;
+  }
+
+  .bottom {
+    @apply gap-4;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION: PLAIN VERTICAL LIST, NO STACKING
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .rail {
+    display: none;
+  }
+
+  .stack {
+    row-gap: 1.5rem;
+  }
+
+  .slot {
+    position: relative;
+    top: auto;
+  }
+
+  .card {
+    scale: 1;
+  }
+
+  .dim {
+    display: none;
+  }
+
+  .image,
+  .railItem {
+    transition: none;
+  }
+}

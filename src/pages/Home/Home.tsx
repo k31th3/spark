@@ -9,16 +9,16 @@ import {
 	MoreThanMaintenance, SitWithUs
 } from "./";
 
-import SitAnimation from "@/assets/Hero/sit-animation.webm";
-import WordmarkLogo from "@/assets/Hero/logo-transparent.webp";
-
-import Cahel from "@/assets/SelectedWork/cahel_mockup.webp";
-import Finya from "@/assets/SelectedWork/finya_mockup.webp";
-import Ubas from "@/assets/SelectedWork/ubas_mockup.webp";
-import Placeholder1 from "@/assets/SelectedWork/services-branding.webp";
-
-import AboutVideo from "@/assets/Dashboard/dashboardPlayVid.mp4";
 import HomeAbout from "@/components/HomeAbout/HomeAbout";
+import HomeServices from "@/components/HomeServices/HomeServices";
+import type { HomeServiceItem } from "@/components/HomeServices/HomeServices.types";
+
+import {
+	SitAnimation, Cahel, LogoTransparent, Hardware, Software,
+	Security, Applications , Finya, Ubas, Placeholder1, AboutVideo, 
+} from "@/assets";
+
+
 
 /* =========================================================
    PLACEHOLDER LINK (NO WORK PAGES EXIST YET)
@@ -38,12 +38,12 @@ const HERO = {
 	ctaLabel: "Let's Get Started",
 	ctaHref: "/contact",
 	scrollTargetId: "work",
-	wordmarkImage: WordmarkLogo,
+	wordmarkImage: LogoTransparent,
 	video: { src: SitAnimation },
 };
 
 /* =========================================================
-   WORK CONTENT 
+   WORK CONTENT
 ========================================================= */
 
 const PROJECTS: Project[] = [
@@ -54,9 +54,9 @@ const PROJECTS: Project[] = [
 ];
 
 /* =========================================================
-   ABOUT CONTENT (EMOJI ARE WRAPPED ARIA-HIDDEN BY THE COMPONENT)
+   ABOUT CONTENT
 ========================================================= */
- 
+
 const ABOUT = {
 	eyebrow: "About Us",
 	label: "Spark Info-Tech Enterprise",
@@ -83,7 +83,54 @@ const ABOUT = {
 	video: { src: AboutVideo, label: "Play the Spark Info-Tech video" },
 };
 
-	function Home()
+/* =========================================================
+   SERVICES CONTENT (PLACEHOLDER COPY, NO PHOTOS YET)
+========================================================= */
+
+const SERVICES_PAGE = "/services";
+
+const SERVICES: { items: HomeServiceItem[] } = {
+	items: [
+		{
+			id: "hardware",
+			title: "Hardware",
+			image: Hardware,
+			description:
+				"Reliable equipment, set up and supported, so your team spends less time on broken devices.",
+			href: `${SERVICES_PAGE}?tab=0`,
+			tags: ["Devices", "Networking", "Setup"],
+		},
+		{
+			id: "software",
+			title: "Software",
+			image: Software,
+			description:
+				"Custom and off-the-shelf software chosen and built around how your business actually works.",
+			href: `${SERVICES_PAGE}?tab=1`,
+			tags: ["Custom builds", "Integrations", "Support"],
+		},
+		{
+			id: "security",
+			title: "Security",
+			image: Security,
+			description:
+				"Practical protection for your data, devices and people, without slowing the work down.",
+			href: `${SERVICES_PAGE}?tab=2`,
+			tags: ["Data protection", "Access control", "Monitoring"],
+		},
+		{
+			id: "applications",
+			title: "Applications",
+			image: Applications,
+			description:
+				"Web and mobile apps designed, built and maintained to grow with you.",
+			href: `${SERVICES_PAGE}?tab=3`,
+			tags: ["Web apps", "Mobile apps", "Maintenance"],
+		},
+	],
+};
+
+function Home()
 	{
 	  	return (
 		    <>
@@ -103,9 +150,17 @@ const ABOUT = {
                         viewAllHref={WORK_PAGE}
                     />
 
+                    {/* ===== ABOUT (ANCHOR: #about) ===== */}
+
                     <HomeAbout id="about" {...ABOUT} />
 
-                    {/* ===== EXISTING SECTIONS (TO BE REPLACED ONE BY ONE) ===== */}
+                    {/* ===== SERVICES (ANCHOR: #services) ===== */}
+
+                    <HomeServices
+                        id="services"
+                        title="Hardware, software, security and applications: everything your business runs on."
+                        {...SERVICES}
+                    />
 
                     <Wrapper.FullBleed className="relative">
 
