@@ -133,7 +133,7 @@ function Faq() {
                                 }
                             }}
                             placeholder="Looking for something?"
-                            className="block min-w-0 grow py-3 pr-3 pl-2 text-base focus:outline-none text-sm bg-white"/>
+                            className="block min-w-0 grow py-3 pr-3 pl-2 focus:outline-none text-sm bg-white"/>
                         <div className="grid shrink-0 grid-cols-1 focus-within:relative">
                             <AnimatePresence mode="wait" initial={false}>
                                 {search ? (
@@ -204,7 +204,7 @@ function Faq() {
                                             }}
                                             aria-expanded={open === id}
                                             aria-controls={`faq-${id}`}
-                                            className={`p-4 cursor-pointer border-1 w-full shadow-sm border-[#E7E8EA] bg-white
+                                            className={`p-4 cursor-pointer border w-full shadow-sm border-[#E7E8EA] bg-white
                                                 ${index === 0 ? "rounded-t-xl" : ""}
                                                 ${index === menu.frequently.length - 1 ? "rounded-b-xl" : ""}
                                                 ${index !== menu.frequently.length - 1 ? "border-b-0" : ""}

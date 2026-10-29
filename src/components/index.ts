@@ -27,7 +27,7 @@ export * from "./HomeHero";
 export * from "./Projects";
 export * from "./Cursor";
 export * from "./RevealCard"
-
+export * from "./HomeFaq";
 
 
 // for icon gradient

@@ -38,10 +38,14 @@ function AppRoutes() {
                             <ScrollToTop />
                             <div>
                                 <header className="fixed top-0 left-0 right-0 z-50 hidden md:flex justify-center py-5">
-                                    <div className="absolute w-full h-full top-0 left-0 right-0 z-10 sm:bg-white"  style={{
-                                        maskImage: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))"
-                                    }}>
-                                    </div>
+                                    {/* ===== WHITE FADE BEHIND THE NAVBAR (SKIPPED ON HOME: IT SHOWS AS A WHITE BAND OVER THE DARK SECTIONS) ===== */}
+
+                                    {!isHome && (
+                                        <div className="absolute w-full h-full top-0 left-0 right-0 z-10 sm:bg-white"  style={{
+                                            maskImage: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))"
+                                        }}>
+                                        </div>
+                                    )}
                                     <Navigation />
                                 </header>
 

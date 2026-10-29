@@ -13,10 +13,13 @@ import type { HomeServiceItem } from "@/components/HomeServices/HomeServices.typ
 import HomeWhyUs from "@/components/HomeWhyUs/HomeWhyUs";
 import type { HomeWhyUsItem } from "@/components/HomeWhyUs/HomeWhyUs.types";
 
+import HomeFAQ from "@/components/HomeFaq/HomeFaq";
+import type { HomeFAQItem } from "@/components/HomeFaq/HomeFaq.types";
+
 import {
 	SitAnimation, Cahel, LogoTransparent, Hardware, Software,Security, Applications, 
 	Finya, Ubas, Placeholder1, AboutVideo, TextBeforeGoogle, Human, WeKeepItSimple,
-	MoreThanMaintenance
+	MoreThanMaintenance, FaqImg
 } from "@/assets";
 
 
@@ -199,6 +202,51 @@ const WHY_US: { items: HomeWhyUsItem[] } = {
 	],
 };
 
+	/* =========================================================
+	FAQ CONTENT 
+	========================================================= */
+	
+	const FAQ_PAGE = "/frequently-asked-questions";
+	
+	const FAQS: HomeFAQItem[] = [
+		{
+			id: "services",
+			question: "What services do you offer?",
+			answer:
+				"We offer web development, mobile app development, branding, and UI/UX design services tailored to your business needs.",
+		},
+		{
+			id: "timeline",
+			question: "How long does a typical project take?",
+			answer:
+				"Timelines vary by scope, but most projects range from 4 to 12 weeks from kickoff to launch.",
+		},
+		{
+			id: "support",
+			question: "Do you offer ongoing support after launch?",
+			answer:
+				"Yes, we offer maintenance and support packages to keep your product running smoothly after launch.",
+		},
+		{
+			id: "cost",
+			question: "How much does a project cost?",
+			answer:
+				"It depends on scope and complexity. After a short discovery call we send a clear, itemized quote with no hidden fees.",
+		},
+		{
+			id: "ownership",
+			question: "Do I own the code and designs?",
+			answer:
+				"Yes. Once the project is paid for, all source code, designs and assets are fully yours.",
+		},
+		{
+			id: "hardware",
+			question: "Can you work on hardware projects too?",
+			answer:
+				"Yes. We handle software and hardware projects, including system integration and device-connected apps.",
+		},
+	];
+
 function Home()
 	{
 	  	return (
@@ -232,6 +280,15 @@ function Home()
                     />
 
 					<HomeWhyUs id="why-us" {...WHY_US} />
+
+					<HomeFAQ
+                        id="faq"
+                        items={FAQS}
+						image={FaqImg}
+                        ctaTitle="Still have questions?"
+                        ctaLabel="See all FAQs"
+                        ctaHref={FAQ_PAGE}
+                    />
 
                     <Wrapper.FullBleed className="relative">
 

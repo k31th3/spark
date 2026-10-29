@@ -1,0 +1,1 @@
+export { default as FaqImg } from "./Faq-graphics.webp"

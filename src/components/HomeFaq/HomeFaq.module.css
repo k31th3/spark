@@ -1,0 +1,228 @@
+@reference "../../index.css";
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+  @apply relative bg-background;
+
+  padding-block: clamp(5rem, 9vw, 8rem);
+}
+
+.container {
+  @apply w-full max-w-7xl;
+}
+
+.layout {
+  @apply grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-stretch lg:gap-x-16;
+}
+
+/* =========================================================
+   LEFT: GRAPHIC CARD
+========================================================= */
+
+.aside {
+  @apply flex min-w-0 flex-col gap-6;
+}
+
+.graphicReveal {
+  @apply lg:min-h-0 lg:flex-1;
+}
+
+.graphic {
+  @apply relative isolate aspect-square w-full overflow-hidden rounded-3xl lg:aspect-auto lg:h-full lg:min-h-80;
+
+  background-image:
+    radial-gradient(
+      60% 50% at 80% 85%,
+      rgb(223 79 255 / 0.55),
+      transparent 70%
+    ),
+    linear-gradient(
+      90deg,
+      rgb(0 0 0 / 0.2) 50%,
+      rgb(240 140 9 / 0.2) 100%
+    ),
+    linear-gradient(
+      250.08deg,
+      #000000 39.94%,
+      #471361 85.58%
+    );
+}
+
+.dots {
+  @apply pointer-events-none absolute inset-0;
+
+  background-image: radial-gradient(
+    rgb(255 255 255 / 0.22) 1.2px,
+    transparent 1.5px
+  );
+  background-size: 14px 14px;
+  mask-image: radial-gradient(circle at 50% 100%, black, transparent 65%);
+}
+
+.mark {
+  @apply pointer-events-none absolute inset-0 flex select-none items-center justify-center font-display font-medium leading-none;
+
+  font-size: clamp(10rem, 24vw, 22rem);
+  background-image: linear-gradient(
+    160deg,
+    #fff 30%,
+    #df4fff 75%,
+    #ff925c 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.image {
+  @apply absolute inset-0 size-full object-cover;
+}
+
+.imageContain {
+  @apply object-contain p-12;
+}
+
+/* =========================================================
+   RIGHT: HEADING + QUESTIONS
+========================================================= */
+
+.body {
+  @apply flex min-w-0 flex-col;
+}
+
+.title {
+  @apply max-w-xl text-balance font-medium text-foreground;
+
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  @apply mt-4 max-w-md text-muted;
+}
+
+.list {
+  @apply mt-10 flex flex-col gap-3 sm:mt-12;
+}
+
+.item {
+  @apply rounded-2xl bg-neutral-100 transition-colors duration-300;
+}
+
+.heading {
+  @apply m-0;
+}
+
+.trigger {
+  @apply grid w-full cursor-pointer grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-x-3 px-5 py-5 text-left sm:px-6;
+}
+
+.trigger:focus-visible {
+  @apply rounded-2xl outline-2 -outline-offset-4 outline-primary;
+}
+
+.index {
+  @apply text-muted transition-colors duration-300;
+}
+
+.itemOpen .index {
+  @apply text-primary;
+}
+
+.question {
+  @apply font-display text-lg font-medium text-foreground transition-[translate] duration-300 ease-out sm:text-xl;
+
+  letter-spacing: -0.01em;
+}
+
+@media (hover: hover) {
+  .trigger:hover .question {
+    @apply translate-x-1;
+  }
+}
+
+.toggle {
+  @apply relative flex size-8 shrink-0 items-center justify-center rounded-full border border-primary transition-colors duration-300;
+}
+
+.toggle::before,
+.toggle::after {
+  content: '';
+
+  @apply absolute h-px w-3 bg-primary transition-[rotate,background-color] duration-300 ease-out;
+}
+
+.toggle::after {
+  @apply rotate-90;
+}
+
+.itemOpen .toggle {
+  @apply bg-primary;
+}
+
+.itemOpen .toggle::before,
+.itemOpen .toggle::after {
+  @apply bg-white;
+}
+
+.itemOpen .toggle::after {
+  @apply rotate-0;
+}
+
+.panel {
+  @apply invisible grid grid-rows-[0fr];
+
+  transition:
+    grid-template-rows 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 400ms;
+}
+
+.panelOpen {
+  @apply visible grid-rows-[1fr];
+
+  transition:
+    grid-template-rows 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
+}
+
+.panelInner {
+  @apply min-h-0 overflow-hidden;
+}
+
+.answer {
+  @apply max-w-xl px-5 pb-6 text-sm leading-relaxed text-muted sm:pl-[4.25rem] sm:pr-6 sm:text-base;
+}
+
+/* =========================================================
+   "SEE ALL" ROW
+========================================================= */
+
+.prompt {
+  @apply mt-10 flex flex-col items-start gap-5 sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:gap-8;
+}
+
+.promptTitle {
+  @apply max-w-xs text-lg font-medium text-foreground;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .panel,
+  .panelOpen,
+  .toggle,
+  .toggle::before,
+  .toggle::after,
+  .question,
+  .index {
+    transition: none;
+  }
+}
