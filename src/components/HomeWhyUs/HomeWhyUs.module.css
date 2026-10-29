@@ -1,0 +1,42 @@
+@reference "../../index.css";
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+  @apply relative bg-black;
+
+  padding-block: clamp(5rem, 9vw, 8rem);
+  background-image:
+    linear-gradient(90deg, rgb(0 0 0 / 0.2) 50%, rgb(240 140 9 / 0.2) 100%),
+    linear-gradient(250.08deg, #000000 39.94%, #471361 85.58%);
+}
+
+.container {
+  @apply w-full max-w-7xl;
+}
+
+.eyebrow {
+  @apply block text-white/60;
+}
+
+.title {
+  @apply mt-8 max-w-4xl text-balance font-medium text-white sm:mt-10;
+
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.grid {
+  @apply mt-12 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-6;
+}
+
+.item {
+  @apply min-w-0;
+}

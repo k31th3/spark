@@ -4,18 +4,19 @@ import { Wrapper, Grid, StructuredData, HomeHero, Projects } from "@/components"
 import type { Project } from "@/components";
 import { aboutUsSchema } from "@/config";
 
-import {
-	WeSpeakHuman, TextBeforeGoogle,
-	MoreThanMaintenance, SitWithUs
-} from "./";
+import { SitWithUs } from "./";
 
 import HomeAbout from "@/components/HomeAbout/HomeAbout";
 import HomeServices from "@/components/HomeServices/HomeServices";
 import type { HomeServiceItem } from "@/components/HomeServices/HomeServices.types";
 
+import HomeWhyUs from "@/components/HomeWhyUs/HomeWhyUs";
+import type { HomeWhyUsItem } from "@/components/HomeWhyUs/HomeWhyUs.types";
+
 import {
-	SitAnimation, Cahel, LogoTransparent, Hardware, Software,
-	Security, Applications , Finya, Ubas, Placeholder1, AboutVideo, 
+	SitAnimation, Cahel, LogoTransparent, Hardware, Software,Security, Applications, 
+	Finya, Ubas, Placeholder1, AboutVideo, TextBeforeGoogle, Human, WeKeepItSimple,
+	MoreThanMaintenance
 } from "@/assets";
 
 
@@ -84,7 +85,7 @@ const ABOUT = {
 };
 
 /* =========================================================
-   SERVICES CONTENT (PLACEHOLDER COPY, NO PHOTOS YET)
+   SERVICES CONTENT
 ========================================================= */
 
 const SERVICES_PAGE = "/services";
@@ -130,6 +131,74 @@ const SERVICES: { items: HomeServiceItem[] } = {
 	],
 };
 
+/* =========================================================
+   WHY US CONTENT
+========================================================= */
+ 
+const WHY_US: { items: HomeWhyUsItem[] } = {
+	items: [
+		{
+			id: "speak-human",
+			title: "We Speak Human.",
+			image: Human,
+			lines: [
+				{ text: "Technology should feel like talking to your smartest friend…\n…not reading an instruction manual.", tone: "strong" },
+				"If you don't know what RAM, DNS, VLAN, or RAID means...",
+				"Good.",
+				"That's what we're here for.",
+				"We'll explain Wi-Fi in a way that actually makes sense.",
+				'We\'ll answer your "stupid questions" because we don\'t believe they exist.',
+				"We'll sketch ideas on tissue paper if that's what makes it click.",
+				"Because understanding technology shouldn't require learning another language. Around here...",
+				{ text: "We don't speak IT.\nWe speak people.", tone: "strong" },
+			],
+		},
+		{
+			id: "text-before-google",
+			title: "We're Who You'll Text Before You Google.",
+			image: TextBeforeGoogle,
+			lines: [
+				{ text: "The people who get excited about your next move…\nand remind you to back up your files because... let's be honest...\nyou probably forgot.", tone: "strong" },
+				"We're not here to make technology less scary.",
+				"We're here to make it feel easy.",
+				"Maybe even a little fun.",
+			],
+		},
+		{
+			id: "more-than-maintenance",
+			title: "More Than Maintenance",
+			image: MoreThanMaintenance,
+			lines: [
+				"We weren't built to be a silent supplier.",
+				"You deserve more than hearing from us only when something breaks.",
+				"We don't Deploy. We Set You Up.",
+				"We don't do Maintenance. We Check In.",
+				"We don't close tickets. We keep conversations going.",
+				"Because you're more than a ticket number.\nAnd yes...",
+				{ text: "We'll probably become friends.", tone: "accent" },
+			],
+		},
+		{
+			id: "keep-it-simple",
+			title: "We Keep It Simple.",
+			image: WeKeepItSimple,
+			lines: [
+				"Technology doesn't have to be complicated.",
+				"People do a pretty good job of that already.",
+				"Technology shouldn't make people feel stupid.",
+				"It shouldn't require a translator.",
+				"It shouldn't be intimidating.",
+				"It shouldn't get in the way of what you're building.",
+				"Life's already complicated.",
+				{ text: "Technology should feel like a teammate.", tone: "strong" },
+				"Not another problem.",
+				"It should help you move faster.\nBuild better.",
+				{ text: "Dream bigger.", tone: "accent" },
+			],
+		},
+	],
+};
+
 function Home()
 	{
 	  	return (
@@ -162,15 +231,14 @@ function Home()
                         {...SERVICES}
                     />
 
+					<HomeWhyUs id="why-us" {...WHY_US} />
+
                     <Wrapper.FullBleed className="relative">
 
                         <Wrapper.Body>
 
                             <Grid.VStack gap={12}>
 
-                                <WeSpeakHuman />
-                                <TextBeforeGoogle />
-                                <MoreThanMaintenance />
                                 <SitWithUs />
 
                             </Grid.VStack>
