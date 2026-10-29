@@ -1,10 +1,8 @@
 "use client";
 
-import { Wrapper, Grid, StructuredData, HomeHero, Projects } from "@/components";
+import { Wrapper, StructuredData, HomeHero, Projects } from "@/components";
 import type { Project } from "@/components";
 import { aboutUsSchema } from "@/config";
-
-import { SitWithUs } from "./";
 
 import HomeAbout from "@/components/HomeAbout/HomeAbout";
 import HomeServices from "@/components/HomeServices/HomeServices";
@@ -17,7 +15,7 @@ import HomeFAQ from "@/components/HomeFaq/HomeFaq";
 import type { HomeFAQItem } from "@/components/HomeFaq/HomeFaq.types";
 
 import {
-	SitAnimation, Cahel, LogoTransparent, Hardware, Software,Security, Applications, 
+	SitAnimation, Cahel, LogoTransparent, Hardware, Software,Security, Applications,
 	Finya, Ubas, Placeholder1, AboutVideo, TextBeforeGoogle, Human, WeKeepItSimple,
 	MoreThanMaintenance, FaqImg
 } from "@/assets";
@@ -40,7 +38,7 @@ const HERO = {
 	subtitle:
 		"Whether you need a modern web presence, a mobile app, or a scalable digital product, we've got you covered. Simple, effective, and built to grow with you.",
 	ctaLabel: "Let's Get Started",
-	ctaHref: "/contact",
+	ctaHref: "/contact-us",
 	scrollTargetId: "work",
 	wordmarkImage: LogoTransparent,
 	video: { src: SitAnimation },
@@ -137,7 +135,7 @@ const SERVICES: { items: HomeServiceItem[] } = {
 /* =========================================================
    WHY US CONTENT
 ========================================================= */
- 
+
 const WHY_US: { items: HomeWhyUsItem[] } = {
 	items: [
 		{
@@ -203,11 +201,11 @@ const WHY_US: { items: HomeWhyUsItem[] } = {
 };
 
 	/* =========================================================
-	FAQ CONTENT 
+	FAQ CONTENT
 	========================================================= */
-	
+
 	const FAQ_PAGE = "/frequently-asked-questions";
-	
+
 	const FAQS: HomeFAQItem[] = [
 		{
 			id: "services",
@@ -279,30 +277,20 @@ function Home()
                         {...SERVICES}
                     />
 
-					<HomeWhyUs id="why-us" {...WHY_US} />
+                    {/* ===== WHY US (ANCHOR: #why-us) ===== */}
 
-					<HomeFAQ
+                    <HomeWhyUs id="why-us" {...WHY_US} />
+
+                    {/* ===== FAQ (ANCHOR: #faq) ===== */}
+
+                    <HomeFAQ
                         id="faq"
                         items={FAQS}
-						image={FaqImg}
+                        image={FaqImg}
                         ctaTitle="Still have questions?"
                         ctaLabel="See all FAQs"
                         ctaHref={FAQ_PAGE}
                     />
-
-                    <Wrapper.FullBleed className="relative">
-
-                        <Wrapper.Body>
-
-                            <Grid.VStack gap={12}>
-
-                                <SitWithUs />
-
-                            </Grid.VStack>
-
-                        </Wrapper.Body>
-
-                    </Wrapper.FullBleed>
 
                     <StructuredData data={aboutUsSchema} />
                 </Wrapper>

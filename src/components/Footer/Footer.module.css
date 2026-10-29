@@ -1,0 +1,267 @@
+@reference "../../index.css";
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  --logo-size: clamp(14rem, 34vw, 30rem);
+  --footer-bg: #101010;
+
+  @apply relative overflow-hidden text-white;
+
+  background-color: var(--footer-bg);
+}
+
+.container {
+  @apply w-full max-w-6xl;
+}
+
+/* =========================================================
+   TOP: CTA OVER THE GRADIENT
+========================================================= */
+.top {
+  @apply relative isolate overflow-hidden;
+
+  background:
+    radial-gradient(70% 80% at 90% 100%, rgb(255 146 92 / 0.95), transparent 64%),
+    radial-gradient(60% 75% at 52% 108%, rgb(223 79 255 / 0.95), transparent 68%),
+    radial-gradient(80% 95% at 6% 100%, rgb(104 25 160 / 0.95), transparent 68%),
+    #050505;
+}
+
+.backdrop {
+  @apply pointer-events-none absolute inset-0 -z-10 overflow-hidden;
+
+  background-color: var(--footer-bg);
+}
+
+.backdropImage {
+  @apply size-full object-cover object-bottom;
+}
+
+.cta {
+  @apply flex flex-col items-center gap-6 pt-20 text-center md:pt-28;
+}
+
+.ctaTitle {
+  @apply max-w-3xl text-balance font-medium text-white;
+
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.ctaHighlight {
+  color: #a855f7;
+}
+
+.ctaSubtitle {
+  @apply max-w-md text-sm text-neutral-300 sm:text-base;
+}
+
+/* =========================================================
+   LOGO GRAPHIC
+========================================================= */
+
+.graphic {
+  @apply pointer-events-none relative mx-auto mt-16 select-none overflow-hidden;
+
+  width: var(--logo-size);
+  height: calc(var(--logo-size) * 0.6);
+}
+
+.graphicGlyph {
+  @apply block h-auto w-full;
+}
+
+/* =========================================================
+   LOWER: DETAILS, LINKS, BRAND, SOCIALS
+========================================================= */
+
+.lower {
+  @apply relative border-t border-white/10;
+}
+
+.reflection {
+  @apply pointer-events-none absolute inset-x-0 top-0 z-0 select-none overflow-hidden;
+
+  height: calc(var(--logo-size) * 0.4);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.reflectionGlyph {
+  @apply absolute left-1/2 -translate-x-1/2 opacity-50 blur-[10px];
+
+  top: calc(var(--logo-size) * -0.6);
+  width: var(--logo-size);
+  height: auto;
+}
+
+.wrapper {
+  @apply relative z-10 pb-28 pt-12;
+}
+
+.main {
+  @apply grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start;
+}
+
+.details {
+  @apply flex flex-col gap-6;
+}
+
+.detail {
+  @apply flex flex-col gap-1.5;
+}
+
+.detailLabel {
+  @apply text-[10px] text-neutral-400;
+}
+
+.detailValue {
+  @apply max-w-sm wrap-break-word text-lg leading-snug text-white sm:text-xl;
+}
+
+.detailValue a {
+  @apply hover:text-purple-400;
+}
+
+.columns {
+  @apply grid grid-cols-2 gap-x-10 gap-y-10 sm:grid-cols-3 lg:justify-self-end lg:gap-x-14;
+}
+
+.column {
+  @apply min-w-0;
+}
+
+.columnHeading {
+  @apply mb-5 text-sm font-bold text-white;
+}
+
+.links {
+  @apply flex flex-col gap-3.5;
+}
+
+.link {
+  @apply inline-flex w-fit items-center gap-2 text-xs text-white hover:text-purple-400;
+}
+
+.chevron {
+  @apply inline-block text-sm leading-none;
+
+  transition: translate 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link:hover .chevron,
+.link:focus-visible .chevron {
+  translate: 4px 0;
+}
+
+/* =========================================================
+   BRAND ROW
+========================================================= */
+
+.brandRow {
+  @apply mt-14 flex items-center justify-between gap-6 border-t border-white/10 pt-8;
+}
+
+.brand {
+  @apply flex items-center gap-3;
+}
+
+.logo {
+  @apply size-10 shrink-0;
+}
+
+.companyName {
+  @apply max-w-44 text-base leading-snug text-white;
+}
+
+/* =========================================================
+   BOTTOM ROW
+========================================================= */
+
+.bottom {
+  @apply mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.copyright {
+  @apply text-[11px] text-neutral-400;
+}
+
+.socialLinks {
+  @apply flex shrink-0 items-center gap-5;
+}
+
+.socialLink {
+  @apply flex size-6 items-center justify-center text-white transition-[color,opacity] duration-200 hover:text-purple-400 hover:opacity-70;
+}
+
+.socialLink:focus-visible,
+.link:focus-visible,
+.detailValue a:focus-visible {
+  @apply rounded-sm outline-2 outline-offset-4 outline-white;
+}
+
+.link,
+.detailValue a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+
+  transition:
+    background-size 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 200ms ease;
+}
+
+.link:hover,
+.link:focus-visible,
+.detailValue a:hover,
+.detailValue a:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.backToTop {
+  @apply relative isolate h-10 overflow-hidden px-5 text-xs transition-[color,box-shadow] duration-500;
+}
+
+.backToTop::before {
+  content: '';
+
+  @apply absolute inset-0 -z-10 bg-primary;
+
+  transform: translateY(101%);
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.backToTop:hover,
+.backToTop:focus-visible {
+  @apply text-white shadow-glow;
+}
+
+.backToTop:hover::before,
+.backToTop:focus-visible::before {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .detailValue a,
+  .chevron,
+  .socialLink,
+  .backToTop,
+  .backToTop::before {
+    transition: none;
+  }
+}
