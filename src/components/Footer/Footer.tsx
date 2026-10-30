@@ -6,6 +6,7 @@ import FooterGlyph from './FooterGlyph'
 import { getCurrentYear, scrollToPageTop } from './Footer.helpers'
 import {
   COMPANY_NAME,
+  FOOTER_BACKDROP,
   FOOTER_COLUMNS,
   FOOTER_CTA,
   FOOTER_DETAILS,
@@ -20,9 +21,6 @@ import styles from './Footer.module.css'
 ========================================================= */
 
 const isExternal = (href: string) => /^https?:\/\//.test(href)
-
-/* Internal links use the router (no full page reload).
-   Clicking a link to the page you are already on scrolls to the top. */
 
 function FooterNavLink({ link }: { link: FooterLink }) {
   const { pathname } = useLocation()
@@ -76,7 +74,7 @@ function FooterNavLink({ link }: { link: FooterLink }) {
 ========================================================= */
 
 function Footer({
-  backdrop,
+  backdrop = FOOTER_BACKDROP,
   companyName = COMPANY_NAME,
   cta = FOOTER_CTA,
   details = FOOTER_DETAILS,
@@ -110,6 +108,7 @@ function Footer({
             <img
               src={backdrop}
               alt=""
+              loading="lazy"
               decoding="async"
               draggable={false}
               className={styles.backdropImage}

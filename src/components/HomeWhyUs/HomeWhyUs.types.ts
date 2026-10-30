@@ -27,5 +27,6 @@ export type HomeWhyUsItem = {
 export type HomeWhyUsProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
   eyebrow?: string
   title?: string
+  subtitle?: string
   items: HomeWhyUsItem[]
 }

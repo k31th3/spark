@@ -1,12 +1,20 @@
 import { FaDiscord, FaLinkedin } from 'react-icons/fa6'
 import { RiInstagramFill } from 'react-icons/ri'
 
+import FooterBackdrop from '@/assets/Footer/footer-backdrop.webp'
+
 import type {
   FooterColumn,
   FooterCta,
   FooterDetail,
   SocialLink,
 } from './Footer.types'
+
+/* =========================================================
+   BACKDROP IMAGE (BEHIND THE CTA)
+========================================================= */
+
+export const FOOTER_BACKDROP: string | undefined = FooterBackdrop
 
 /* =========================================================
    COMPANY NAME
@@ -54,7 +62,7 @@ export const FOOTER_DETAILS: FooterDetail[] = [
 ]
 
 /* =========================================================
-   LINK COLUMNS
+   LINK COLUMNS (SAME LINKS AS THE OLD FOOTER NAVIGATION)
 ========================================================= */
 
 export const FOOTER_COLUMNS: FooterColumn[] = [
@@ -89,7 +97,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
 ]
 
 /* =========================================================
-   SOCIAL LINKS (Needs the correct links)
+   SOCIAL LINKS
 ========================================================= */
 
 export const FOOTER_SOCIAL_LINKS: SocialLink[] = [

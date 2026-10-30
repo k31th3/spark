@@ -5,12 +5,13 @@ import styles from './HomeWhyUs.module.css'
 import type { HomeWhyUsProps } from './HomeWhyUs.types'
 
 /* =========================================================
-    WHY US
+   HOME WHY US
 ========================================================= */
 
 function HomeWhyUs({
   eyebrow = 'Why Choose Us',
-  title = 'Why people choose Spark Info-Tech.',
+  title = 'What Makes Us Different',
+  subtitle = 'We combine clean engineering, thoughtful design, and hands-on collaboration to build products that actually move your business forward.',
   items,
   className = '',
   ...props
@@ -34,27 +35,42 @@ function HomeWhyUs({
             HEADER
         ================================================= */}
 
-        <Reveal variant="fade">
-          <Text
-            as="span"
-            variant="label"
-            className={styles.eyebrow}
-          >
-            ({eyebrow})
-          </Text>
-        </Reveal>
+        <header className={styles.header}>
+          <Reveal variant="fade">
+            <Text
+              as="span"
+              variant="label"
+              className={styles.eyebrow}
+            >
+              ({eyebrow})
+            </Text>
+          </Reveal>
 
-        <Reveal
-          variant="slide"
-          delay={100}
-        >
-          <h2
-            id="why-us-heading"
-            className={styles.title}
-          >
-            {title}
-          </h2>
-        </Reveal>
+          <div className={styles.headline}>
+            <Reveal
+              variant="slide"
+              delay={100}
+            >
+              <h2
+                id="why-us-heading"
+                className={styles.title}
+              >
+                {title}
+              </h2>
+            </Reveal>
+
+            {subtitle && (
+              <Reveal
+                variant="slide"
+                delay={200}
+              >
+                <p className={styles.subtitle}>
+                  {subtitle}
+                </p>
+              </Reveal>
+            )}
+          </div>
+        </header>
 
         {/* =================================================
             CARDS
@@ -76,7 +92,6 @@ function HomeWhyUs({
               >
                 <RevealCard
                   title={item.title}
-                  index={index + 1}
                   lines={item.lines}
                   image={item.image}
                   imageAlt={item.imageAlt}

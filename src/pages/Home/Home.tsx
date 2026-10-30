@@ -15,7 +15,7 @@ import HomeFAQ from "@/components/HomeFaq/HomeFaq";
 import type { HomeFAQItem } from "@/components/HomeFaq/HomeFaq.types";
 
 import {
-	SitAnimation, Cahel, LogoTransparent, Hardware, Software,Security, Applications,
+	SitAnimation, Cahel, Logo, Hardware, Software, Security, Applications,
 	Finya, Ubas, Placeholder1, AboutVideo, TextBeforeGoogle, Human, WeKeepItSimple,
 	MoreThanMaintenance, FaqImg
 } from "@/assets";
@@ -40,7 +40,7 @@ const HERO = {
 	ctaLabel: "Let's Get Started",
 	ctaHref: "/contact-us",
 	scrollTargetId: "work",
-	wordmarkImage: LogoTransparent,
+	wordmarkImage: Logo,
 	video: { src: SitAnimation },
 };
 
@@ -49,10 +49,10 @@ const HERO = {
 ========================================================= */
 
 const PROJECTS: Project[] = [
-	{ id: "work-1", title: "Project one", category: "Web design", year: "2026", image: Cahel, href: WORK_PAGE },
-	{ id: "work-2", title: "Project two", category: "App development", year: "2026", image: Finya, href: WORK_PAGE },
-	{ id: "work-3", title: "Project three", category: "Branding", year: "2025", image: Ubas, href: WORK_PAGE },
-	{ id: "work-4", title: "Project four", category: "Web design", year: "2025", image: Placeholder1, href: WORK_PAGE },
+	{ id: "work-1", title: "Cahel", category: "Web design", year: "2026", image: Cahel, href: WORK_PAGE },
+	{ id: "work-2", title: "Finya", category: "App development", year: "2026", image: Finya, href: WORK_PAGE },
+	{ id: "work-3", title: "Ubas", category: "Branding", year: "2025", image: Ubas, href: WORK_PAGE },
+	{ id: "work-4", title: "Queuing System", category: "Web design", year: "2025", image: Placeholder1, href: WORK_PAGE },
 ];
 
 /* =========================================================

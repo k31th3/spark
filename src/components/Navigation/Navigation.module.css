@@ -42,6 +42,10 @@
   @apply flex items-center gap-3 justify-self-start;
 }
 
+.brandLogo {
+  @apply h-12 w-auto shrink-0 object-contain;
+}
+
 .companyName {
   @apply hidden items-center text-xl font-medium tracking-tight text-foreground sm:flex;
 }
@@ -179,6 +183,10 @@
   min-height: 40px;
   padding: 0 1.25rem;
   white-space: nowrap;
+}
+
+.dockLogo {
+  @apply h-12 w-auto object-contain;
 }
 
 .mobilePanel {

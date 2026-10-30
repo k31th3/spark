@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import style from "./Navigation.module.css";
 
 import { tabs } from "./tabs";
-import { SiteLogo } from "@/components";
+import { Logo } from "@/assets";
 import { Roll } from "@/components/Roll";
 import { scrollToTop } from "@/utils";
 import { cn } from "@/lib/utils";
@@ -121,8 +121,6 @@ export default function Navigation() {
 
         closeMenu();
 
-        /* On another page: go Home, then useHashScroll scrolls to the section */
-
         if (!onHome) {
             event.preventDefault();
             navigate({ pathname: "/", hash: `#${hash}` });
@@ -134,8 +132,6 @@ export default function Navigation() {
         if (!target) return;
 
         event.preventDefault();
-
-        /* Wait for the mobile menu's scroll lock to release */
 
         window.setTimeout(
             () => target.scrollIntoView({ behavior: "smooth" }),
@@ -198,28 +194,35 @@ export default function Navigation() {
 
                     {/* BRAND */}
 
-                    <Link
-                        to="/"
-                        data-roll
-                        onClick={goHome}
-                        className={style.brand}
-                        aria-label={`${site.companyName} | Homepage`}>
-                        <SiteLogo size="md" />
+                        <Link
+                            to="/"
+                            data-roll
+                            onClick={goHome}
+                            className={style.brand}
+                            aria-label={`${site.companyName} | Homepage`}>
 
-                        <span className={style.companyName}>
-                            <Roll>{brand.start}</Roll>
+                            <img
+                                src={Logo}
+                                alt=""
+                                aria-hidden="true"
+                                draggable={false}
+                                className={style.brandLogo}
+                            />
 
-                            {brand.rest && (
-                                <span aria-hidden="true" className={style.rest}>
-                                    <span className={style.restClip}>
-                                        <span className={style.restText}>
-                                            {brand.rest}
+                            <span className={style.companyName}>
+                                <Roll>{brand.start}</Roll>
+
+                                {brand.rest && (
+                                    <span aria-hidden="true" className={style.rest}>
+                                        <span className={style.restClip}>
+                                            <span className={style.restText}>
+                                                {brand.rest}
+                                            </span>
                                         </span>
                                     </span>
-                                </span>
-                            )}
-                        </span>
-                    </Link>
+                                )}
+                            </span>
+                        </Link>
 
                     {/* DESKTOP LINKS */}
 
@@ -295,7 +298,14 @@ export default function Navigation() {
                     onClick={goHome}
                     className={style.dockBrand}
                     aria-label={`${site.companyName} | Homepage`}>
-                    <SiteLogo size="md" />
+
+                    <img
+                        src={Logo}
+                        alt=""
+                        aria-hidden="true"
+                        draggable={false}
+                        className={style.dockLogo}
+                    />
                 </Link>
 
                 <div className={style.dockLinks}>

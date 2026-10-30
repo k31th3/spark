@@ -14,16 +14,32 @@
   @apply w-full max-w-7xl;
 }
 
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  @apply grid gap-8 md:grid-cols-[1fr_2fr] md:gap-12;
+}
+
 .eyebrow {
   @apply block text-white/60;
 }
 
+.headline {
+  @apply flex flex-col gap-6;
+}
+
 .title {
-  @apply mt-8 max-w-4xl text-balance font-medium text-white sm:mt-10;
+  @apply m-0 text-balance font-medium text-white;
 
   font-size: clamp(2.25rem, 5.5vw, 4.5rem);
   line-height: 1.05;
   letter-spacing: -0.035em;
+}
+
+.subtitle {
+  @apply m-0 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg;
 }
 
 /* =========================================================
@@ -31,7 +47,7 @@
 ========================================================= */
 
 .grid {
-  @apply mt-12 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-6;
+  @apply mt-12 grid grid-cols-1 gap-3 sm:mt-16 sm:grid-cols-2;
 }
 
 .item {

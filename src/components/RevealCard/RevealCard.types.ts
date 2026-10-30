@@ -12,13 +12,9 @@ export type RevealCardLine =
 
 export type RevealCardProps = {
   title: string
-
-  index?: number
-
   lines: RevealCardLine[]
 
   image?: string
-
   imageAlt?: string
 
   tone?: 'violet' | 'sunset'

@@ -5,15 +5,17 @@
 ========================================================= */
 
 .card {
-  @apply relative isolate overflow-hidden rounded-3xl bg-foreground text-white ring-1 ring-inset ring-white/10;
+  --blur-height: 9rem;
 
-  min-height: clamp(30rem, 72svh, 36rem);
+  @apply relative isolate overflow-hidden rounded-2xl bg-foreground text-white ring-1 ring-inset ring-white/10;
+
+  min-height: clamp(24rem, 62svh, 30rem);
 }
 
 @media (min-width: 640px) {
   .card {
-    min-height: 26rem;
-    aspect-ratio: 5 / 4;
+    min-height: 22rem;
+    aspect-ratio: 3 / 2;
   }
 }
 
@@ -32,114 +34,183 @@
 }
 
 .image {
-  @apply absolute inset-0 -z-10 size-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)];
+  @apply absolute inset-0 size-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)];
 }
 
 .card[data-open='true'] .image {
   @apply scale-105;
 }
 
-.veil {
-  @apply absolute inset-0 -z-10 bg-linear-to-t from-black/60 via-black/10 to-transparent;
-}
-
 /* =========================================================
-   GLASS
+   PANEL
 ========================================================= */
 
-.glass {
-  @apply absolute inset-x-3 bottom-3 z-10 flex flex-col overflow-hidden rounded-2xl border border-white/25 sm:inset-x-4 sm:bottom-4;
+.panel {
+  @apply absolute inset-0 z-10;
 
-  max-height: calc(100% - 1.5rem);
-  background-color: rgb(15 23 42 / 0.45);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  backdrop-filter: blur(18px) saturate(140%);
-  transition: background-color 400ms ease;
+  transform: translateY(calc(100% - var(--blur-height)));
+  transition: transform 700ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.card[data-open='true'] .glass {
-  background-color: rgb(15 23 42 / 0.74);
+.card[data-open='true'] .panel {
+  transform: translateY(0);
+}
+
+.blur {
+  @apply pointer-events-none absolute inset-0;
+}
+
+.blurLayer {
+  @apply absolute inset-0;
+
+  --step: calc(var(--blur-height) / var(--count));
+
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--i) * var(--step)),
+    #000 calc((var(--i) + 1) * var(--step)),
+    #000 calc((var(--i) + 2) * var(--step)),
+    transparent calc((var(--i) + 3) * var(--step))
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--i) * var(--step)),
+    #000 calc((var(--i) + 1) * var(--step)),
+    #000 calc((var(--i) + 2) * var(--step)),
+    transparent calc((var(--i) + 3) * var(--step))
+  );
+}
+
+.blurLayer:last-child {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--i) * var(--step)),
+    #000 calc((var(--i) + 1) * var(--step))
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--i) * var(--step)),
+    #000 calc((var(--i) + 1) * var(--step))
+  );
+}
+
+.panel::before {
+  content: '';
+
+  @apply pointer-events-none absolute inset-0;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(0 0 0 / 0.65) var(--blur-height)
+  );
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass {
-    background-color: rgb(15 23 42 / 0.88);
+  .blurLayer {
+    display: none;
   }
+
+  .panel::before {
+    background: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgb(0 0 0 / 0.85) var(--blur-height)
+    );
+  }
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+  @apply absolute inset-0 flex min-h-0 flex-col px-5 pb-4 pt-4 sm:px-7;
+
+  --head-h: 5.5rem;
 }
 
 .heading {
   @apply m-0 shrink-0;
+
+  height: var(--head-h);
+  transform: translateY(calc(var(--blur-height) - var(--head-h) - 2rem));
+  transition: transform 700ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.card[data-open='true'] .heading {
+  transform: translateY(0);
 }
 
 .trigger {
-  @apply flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left sm:p-5;
+  @apply relative flex h-full w-max max-w-full cursor-pointer items-center gap-3 border-0 bg-transparent px-0 text-left text-white;
+
+  left: 50%;
+  translate: -50% 0;
+  transition:
+    left 700ms cubic-bezier(0.65, 0, 0.35, 1),
+    translate 700ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.card[data-open='true'] .trigger {
+  left: 0;
+  translate: 0 0;
 }
 
 .trigger:focus-visible {
-  @apply rounded-2xl outline-2 -outline-offset-4 outline-white;
-}
-
-.triggerText {
-  @apply flex min-w-0 flex-col gap-2;
-}
-
-.index {
-  @apply text-white/80;
+  @apply rounded-xl outline-2 outline-offset-4 outline-white;
 }
 
 .titleText {
-  @apply font-display font-medium text-white;
+  @apply font-display text-2xl font-medium text-white sm:text-3xl;
 
-  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
-.icon {
-  @apply grid size-11 shrink-0 place-items-center rounded-full bg-white text-foreground transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
+.chevron {
+  @apply grid size-8 shrink-0 place-items-center rounded-full bg-white/20 text-white transition-[rotate,background-color] duration-700 ease-[cubic-bezier(0.65,0,0.35,1)];
 }
 
-.card[data-open='true'] .icon {
-  rotate: 45deg;
+.card[data-open='true'] .chevron {
+  rotate: 180deg;
 }
 
 @media (hover: hover) {
-  .trigger:hover .icon {
-    @apply scale-110;
+  .trigger:hover .chevron {
+    @apply bg-white/35;
   }
 }
 
-.reveal {
-  @apply grid min-h-0;
+/* =========================================================
+   TEXT
+========================================================= */
 
-  grid-template-rows: 0fr;
+.reveal {
+  @apply flex min-h-0 flex-1 flex-col;
+
   visibility: hidden;
-  transition:
-    grid-template-rows 500ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 500ms;
+  transition: visibility 0s linear 700ms;
 }
 
 .card[data-open='true'] .reveal {
-  grid-template-rows: 1fr;
   visibility: visible;
-  transition:
-    grid-template-rows 500ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s;
+  transition: visibility 0s;
 }
 
 .scroller {
-  @apply min-h-0 overflow-y-auto overscroll-contain px-4 sm:px-5;
+  @apply min-h-0 flex-1 overflow-y-auto overscroll-contain pr-2;
 }
 
 .scroller:focus-visible {
   @apply outline-2 -outline-offset-2 outline-white;
 }
 
-/* ===== SCROLLBAR INSIDE THE GLASS ===== */
-
 .scroller::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 .scroller::-webkit-scrollbar-track,
@@ -154,25 +225,25 @@
 }
 
 .scroller::-webkit-scrollbar-thumb {
-  border: 4px solid transparent;
+  border: 3px solid transparent;
   border-radius: 999px;
-  background-color: rgb(255 255 255 / 0.45);
+  background-color: rgb(255 255 255 / 0.5);
   background-clip: padding-box;
 }
 
 .scroller::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(255 255 255 / 0.75);
+  background-color: rgb(255 255 255 / 0.8);
 }
 
 @supports (-moz-appearance: none) {
   .scroller {
     scrollbar-width: thin;
-    scrollbar-color: rgb(255 255 255 / 0.5) transparent;
+    scrollbar-color: rgb(255 255 255 / 0.55) transparent;
   }
 }
 
 .lines {
-  @apply flex flex-col gap-3 pb-5 pt-1;
+  @apply flex flex-col gap-3 pb-3 pt-2;
 }
 
 .line {
@@ -195,8 +266,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .image,
-  .icon,
-  .glass,
+  .panel,
+  .heading,
+  .trigger,
+  .chevron,
   .reveal,
   .card[data-open='true'] .reveal {
     transition: none;
