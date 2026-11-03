@@ -83,6 +83,7 @@ function Footer({
   className = '',
   ...props
 }: FooterProps) {
+  const { pathname } = useLocation()
   const year = getCurrentYear()
 
   return (
@@ -143,7 +144,7 @@ function Footer({
               </Reveal>
             )}
 
-            {cta.ctaHref && (
+            {cta.ctaHref && cta.ctaHref !== pathname && (
               <Reveal
                 variant="fade"
                 delay={200}

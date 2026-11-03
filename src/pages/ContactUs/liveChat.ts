@@ -1,0 +1,1 @@
+export const LIVE_CHAT_HREF = "/live-chat";

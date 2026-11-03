@@ -24,6 +24,10 @@ export const BUTTON_VARIANT_MAP: Record<ButtonVariant, string> = {
     outlineDark:
         "border border-neutral-950 text-neutral-950 transition-colors duration-300 " +
         "hover:bg-neutral-950 hover:text-white",
+    brand:
+        "bg-brand-gradient text-white shadow-glow " +
+        "transition-[background-position] duration-500 ease-out " +
+        "motion-reduce:transition-none",
 };
 
 export const BUTTON_SIZE_MAP: Record<ButtonSize, string> = {

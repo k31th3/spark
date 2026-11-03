@@ -1,0 +1,246 @@
+@reference "../../index.css";
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+  @apply relative bg-background;
+
+  padding-bottom: clamp(5rem, 9vw, 8rem);
+}
+
+.container {
+  @apply w-full max-w-7xl;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  @apply grid gap-8 md:grid-cols-[1fr_2fr] md:gap-12;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 self-start text-sm text-muted;
+}
+
+.eyebrowDot {
+  @apply size-2 rounded-full bg-primary;
+}
+
+.headline {
+  @apply flex flex-col gap-6;
+}
+
+.title {
+  @apply m-0 text-balance font-medium text-foreground;
+
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.subtitle {
+  @apply m-0 max-w-xl text-base leading-relaxed text-muted sm:text-lg;
+}
+
+/* =========================================================
+   BODY: DETAILS + FORM
+========================================================= */
+
+.body {
+  @apply mt-12 grid gap-12 sm:mt-16 md:grid-cols-[1fr_2fr] md:items-start;
+}
+
+.formCol {
+  @apply order-1 min-w-0 md:order-2;
+}
+
+.detailsCol {
+  @apply order-2 min-w-0 md:order-1;
+}
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details {
+  @apply flex flex-col gap-8;
+}
+
+.detailList {
+  @apply m-0 flex list-none flex-col gap-8 p-0;
+}
+
+.detailRow {
+  @apply flex items-start gap-4;
+}
+
+.detailIndent {
+  @apply pl-13;
+}
+
+.detail {
+  @apply flex flex-col gap-1.5;
+}
+
+.detailLabel {
+  @apply m-0 text-[10px] text-muted;
+}
+
+.detailValue {
+  @apply m-0 max-w-sm wrap-break-word text-lg leading-snug text-foreground sm:text-xl;
+}
+
+.detailValue a {
+  @apply hover:text-primary;
+
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+
+  transition:
+    background-size 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 200ms ease;
+}
+
+.detailValue a:hover,
+.detailValue a:focus-visible {
+  background-size: 100% 1px;
+}
+
+.detailValue a:focus-visible,
+.socialLink:focus-visible {
+  @apply rounded-sm outline-2 outline-offset-4 outline-foreground;
+}
+
+.chatBtn {
+  @apply mt-1 w-fit cursor-pointer text-sm font-medium text-primary transition-opacity duration-200 hover:opacity-70;
+}
+
+.chatBtn:focus-visible {
+  @apply rounded-sm outline-2 outline-offset-4 outline-foreground;
+}
+
+.socials {
+  @apply m-0 flex list-none items-center gap-5 p-0;
+}
+
+.socialLink {
+  @apply flex size-6 items-center justify-center transition-opacity duration-200 hover:opacity-70;
+}
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.card {
+  @apply flex flex-col gap-8 rounded-3xl border border-neutral-200 bg-neutral-50 p-6 sm:p-10;
+}
+
+.fields {
+  @apply grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2;
+}
+
+.fieldFull {
+  @apply sm:col-span-2;
+}
+
+.footerRow {
+  @apply flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.submit {
+  @apply w-full shrink-0 sm:w-fit;
+}
+
+.spinner {
+  @apply mr-2 size-4 animate-spin rounded-full border-2 border-white/30 border-t-white;
+}
+
+.privacy {
+  @apply m-0 flex items-center gap-2 text-xs text-muted;
+}
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.map {
+  @apply mt-20 sm:mt-28;
+}
+
+.mapBar {
+  @apply mb-6 flex flex-col gap-5 sm:mb-8 sm:flex-row sm:items-end sm:justify-between;
+}
+
+.mapTitle {
+  @apply m-0 font-medium text-foreground;
+
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.mapWrap {
+  @apply relative;
+}
+
+.mapFrame {
+  @apply relative h-80 overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-100 sm:h-112;
+}
+
+.mapIframe {
+  @apply absolute inset-0 size-full border-0 grayscale;
+
+  transition: filter 500ms ease;
+}
+
+.mapWrap:hover .mapIframe,
+.mapWrap:focus-within .mapIframe {
+  filter: grayscale(0);
+}
+
+.officeCard {
+  @apply mt-4 flex w-full flex-col gap-4 rounded-2xl border border-neutral-200 bg-white p-5 not-italic sm:absolute sm:bottom-6 sm:left-6 sm:mt-0 sm:max-w-72;
+}
+
+.officeHead {
+  @apply flex items-center gap-3 border-b border-neutral-200 pb-4;
+}
+
+.officeIcon {
+  @apply flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary;
+}
+
+.officeCountry {
+  @apply m-0 text-sm font-medium text-foreground;
+}
+
+.officeTag {
+  @apply m-0 text-xs font-medium text-primary;
+}
+
+.officeAddress {
+  @apply m-0 text-sm leading-relaxed text-foreground;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .detailValue a,
+  .socialLink,
+  .mapIframe {
+    transition: none;
+  }
+
+  .spinner {
+    animation: none;
+  }
+}

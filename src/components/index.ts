@@ -33,7 +33,4 @@ export * from "./HomeFaq";
 // for icon gradient
 export { default as IconGradient } from "./IconGradient";
 export { default as Turnstile } from "./Turnstile";
-
-
-
-
+export type { TurnstileRef } from "./Turnstile";

@@ -10,7 +10,8 @@ export type ButtonVariant =
     | "destructive"
     | "dark"
     | "light"
-    | "outlineDark";
+    | "outlineDark"
+    | "brand";
 
 export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl" | "nav" | "hero";
 
