@@ -8,7 +8,7 @@ import {
 import {
     submitContactForm,
     type ContactFormData
-} from "./ContactApi";
+} from "../../ContactApi";
 
 import {
     formatPhoneNumber,

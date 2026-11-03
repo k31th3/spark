@@ -1,0 +1,77 @@
+@reference "../../../index.css";
+
+/* =========================================================
+   TINT
+========================================================= */
+
+.tint {
+  @apply pointer-events-none absolute inset-0;
+
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(0 0 0 / 0.65) 100%
+  );
+}
+
+/* =========================================================
+   BLUR STACK
+========================================================= */
+
+.blur {
+  @apply pointer-events-none absolute inset-0;
+
+  border-radius: inherit;
+}
+
+.layer {
+  @apply absolute inset-0;
+
+  --step: calc(100% / var(--count));
+
+  border-radius: inherit;
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--i) * var(--step)),
+    #000 calc((var(--i) + 1) * var(--step)),
+    #000 calc((var(--i) + 2) * var(--step)),
+    transparent calc((var(--i) + 3) * var(--step))
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--i) * var(--step)),
+    #000 calc((var(--i) + 1) * var(--step)),
+    #000 calc((var(--i) + 2) * var(--step)),
+    transparent calc((var(--i) + 3) * var(--step))
+  );
+}
+
+.layer:last-child {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--i) * var(--step)),
+    #000 calc((var(--i) + 1) * var(--step))
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--i) * var(--step)),
+    #000 calc((var(--i) + 1) * var(--step))
+  );
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .layer {
+    display: none;
+  }
+
+  .tint {
+    background: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgb(0 0 0 / 0.85) 100%
+    );
+  }
+}

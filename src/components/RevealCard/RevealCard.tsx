@@ -1,13 +1,9 @@
-import { useId, type CSSProperties } from 'react'
+import { useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import ProgressiveBlur from '@/components/HomeWhyUs/ProgressiveBlur'
+import RevealStory from './RevealStory'
 import styles from './RevealCard.module.css'
 import type { RevealCardProps } from './RevealCard.types'
-
-/* =========================================================
-   PROGRESSIVE BLUR
-========================================================= */
-
-const BLUR_STEPS = [1, 2, 4, 8, 16, 32, 64]
 
 /* =========================================================
    REVEAL CARD
@@ -23,11 +19,17 @@ function RevealCard({
   onOpenChange,
   className = '',
 }: RevealCardProps) {
-  const panelId = useId()
+  const zoneRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+
+  /* The story's veil takes over the card's blur while it is open */
+
+  const [covered, setCovered] = useState(false)
 
   return (
     <article
       data-open={open}
+      data-covered={covered}
       data-tone={tone}
       className={cn(styles.card, !image && styles.plain, className)}
     >
@@ -42,37 +44,22 @@ function RevealCard({
         />
       )}
 
-      {/* ===== PANEL: BLUR + HEADLINE + TEXT SLIDE UP TOGETHER ===== */}
+      {/* ===== PANEL: THE 9REM BLUR ZONE AT THE BOTTOM ===== */}
 
-      <div className={styles.panel}>
+      <div ref={zoneRef} className={styles.panel}>
 
-        <div
-          aria-hidden="true"
-          className={styles.blur}
-          style={{ '--count': BLUR_STEPS.length } as CSSProperties}
-        >
-          {BLUR_STEPS.map((blur, index) => (
-            <span
-              key={blur}
-              className={styles.blurLayer}
-              style={
-                {
-                  '--i': index,
-                  '--blur': `${blur}px`,
-                } as CSSProperties
-              }
-            />
-          ))}
+        <div className={styles.blurHost}>
+          <ProgressiveBlur />
         </div>
 
         <div className={styles.content}>
-
           <h3 className={styles.heading}>
             <button
+              ref={triggerRef}
               type="button"
+              aria-haspopup="dialog"
               aria-expanded={open}
-              aria-controls={panelId}
-              onClick={() => onOpenChange(!open)}
+              onClick={() => onOpenChange(true)}
               className={styles.trigger}
             >
               <span className={styles.titleText}>
@@ -98,43 +85,19 @@ function RevealCard({
               </span>
             </button>
           </h3>
-
-          <div
-            id={panelId}
-            className={styles.reveal}
-          >
-
-            <div
-              role="region"
-              aria-label={title}
-              tabIndex={open ? 0 : -1}
-              data-lenis-prevent
-              className={styles.scroller}
-            >
-              <div className={styles.lines}>
-                {lines.map((line, lineIndex) => {
-                  const text = typeof line === 'string' ? line : line.text
-                  const lineTone = typeof line === 'string' ? undefined : line.tone
-
-                  return (
-                    <p
-                      key={lineIndex}
-                      className={cn(
-                        styles.line,
-                        lineTone === 'strong' && styles.lineStrong,
-                        lineTone === 'accent' && styles.lineAccent
-                      )}
-                    >
-                      {text}
-                    </p>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
+
+      <RevealStory
+        open={open}
+        onOpenChange={onOpenChange}
+        title={title}
+        lines={lines}
+        tone={tone}
+        originRef={zoneRef}
+        returnFocusRef={triggerRef}
+        onCoveredChange={setCovered}
+      />
     </article>
   )
 }

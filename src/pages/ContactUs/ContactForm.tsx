@@ -2,7 +2,7 @@ import { LuShieldCheck } from "react-icons/lu";
 
 import { Button, Form, Toast, Turnstile } from "@/components";
 
-import type { ContactFormData } from "./Hero/ContactForm/ContactApi";
+import type { ContactFormData } from "./ContactApi";
 import { FormFields } from "./Hero/ContactForm/FormFields";
 import { useContactForm } from "./Hero/ContactForm/useContactForm";
 

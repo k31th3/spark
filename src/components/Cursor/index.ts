@@ -1,3 +1,3 @@
 export { Cursor } from './Cursor'
-export { PixelCatAsset } from './PixelCatAsset'
+export { AnimatedPixelCat } from './AnimatedPixelCat'
 export type { CursorProps } from './Cursor.types'

@@ -37,34 +37,12 @@ function AppRoutes() {
                             <IconGradient />
                             <ScrollToTop />
                             <div>
-                                <header className="fixed top-0 left-0 right-0 z-50 hidden md:flex justify-center py-5">
-                                    {/* ===== WHITE FADE BEHIND THE NAVBAR (SKIPPED ON HOME: IT SHOWS AS A WHITE BAND OVER THE DARK SECTIONS) ===== */}
-
-                                    {!isHome && (
-                                        <div className="absolute w-full h-full top-0 left-0 right-0 z-10 sm:bg-white"  style={{
-                                            maskImage: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))"
-                                        }}>
-                                        </div>
-                                    )}
-                                    <Navigation />
-                                </header>
+                                {/* Navigation renders its own header, floating dock and mobile panel */}
+                                <Navigation />
 
                                 <main className={isHome ? undefined : "pt-20 md:pt-40"}>
                                     <DefaultQueryWrapper />
                                 </main>
-
-                                <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-                                    <Navigation />
-                                    <div
-                                        className="absolute w-full h-full top-0 left-0 right-0 z-10 inset-0 bg-white"
-                                        style={{
-                                            WebkitMaskImage:
-                                                "linear-gradient(to bottom, transparent, black)",
-                                            maskImage:
-                                                "linear-gradient(to bottom, transparent, black)",
-                                        }}
-                                    />
-                                </nav>
 
                                 <Footer />
                             </div>

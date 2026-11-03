@@ -63,12 +63,22 @@
   @apply pointer-events-none fixed left-0 top-0 z-9999 will-change-transform;
 
   --follower-size: 36px;
+  --follower-scale: 1;
+  --follower-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   transition: opacity 150ms ease;
 }
 
 .follower[data-state='hidden'] {
   opacity: 0;
+}
+
+.follower[data-state='hover'] {
+  --follower-scale: 1.15;
+}
+
+.follower[data-state='label'] {
+  --follower-scale: 1.25;
 }
 
 .followerBody {
@@ -83,6 +93,10 @@
 
 .followerBody > * {
   @apply block h-full w-full;
+
+  transform: scale(var(--follower-scale));
+  transform-origin: 50% 50%;
+  transition: transform 300ms var(--follower-ease);
 }
 
 :global(html.has-custom-cursor),

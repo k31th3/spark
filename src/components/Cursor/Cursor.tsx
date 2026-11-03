@@ -41,14 +41,11 @@ interface ResolvedCursor {
   label?: string
 }
 
-/* ===== FOLLOWER RESTS THIS FAR (PX) DOWN-RIGHT OF THE POINTER,
-        BIGGER WHEN THE MAIN POINTER GROWS SO IT NEVER SITS UNDER THE LABEL ===== */
-
 const FOLLOWER_OFFSET: Record<CursorState, number> = {
-  default: 22,
-  hover: 36,
-  label: 62,
-  hidden: 22,
+  default: 32,
+  hover: 46,
+  label: 72,
+  hidden: 32,
 }
 
 const MAX_LEAN_DEG = 18
@@ -146,7 +143,8 @@ export function Cursor({
     const paintFollower = () => {
       if (!useFollower) return
 
-      followerEl.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`
+      followerEl.style.transform =
+        `translate3d(${Math.round(followerX)}px, ${Math.round(followerY)}px, 0)`
 
       followerBody.style.transform =
         `rotate(${lean}deg) scaleX(${followerFlip ? facing : 1})`

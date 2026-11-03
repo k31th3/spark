@@ -97,13 +97,13 @@
 }
 
 .link {
-  @apply whitespace-nowrap;
+  @apply relative whitespace-nowrap;
 }
 
 .link::before {
   content: '';
 
-  @apply absolute left-0 top-1/2 size-1.5 -translate-y-1/2 scale-0 rounded-full bg-primary transition-transform duration-300 ease-out;
+  @apply absolute -left-3 top-1/2 size-1.5 -translate-y-1/2 scale-0 rounded-full bg-primary transition-transform duration-300 ease-out;
 }
 
 .link:hover::before,

@@ -1,0 +1,205 @@
+@reference "../../../index.css";
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+.root {
+  @apply pointer-events-none fixed inset-0;
+
+  z-index: 9000;
+}
+
+/* =========================================================
+   VEIL
+========================================================= */
+
+.veil {
+  @apply pointer-events-auto fixed overflow-hidden;
+
+  transition-property: top, right, bottom, left, border-radius;
+  transition-duration: 750ms;
+  transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.wash {
+  @apply absolute inset-0 opacity-0;
+
+  border-radius: inherit;
+  -webkit-backdrop-filter: blur(28px);
+  backdrop-filter: blur(28px);
+  transition: opacity 750ms ease;
+}
+
+.root[data-tone='violet'] .wash {
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgb(223 79 255 / 0.35), transparent 60%),
+    radial-gradient(100% 80% at 0% 100%, rgb(147 51 234 / 0.45), transparent 60%),
+    rgb(8 6 20 / 0.9);
+}
+
+.root[data-tone='sunset'] .wash {
+  background:
+    radial-gradient(120% 90% at 15% 0%, rgb(255 146 92 / 0.32), transparent 60%),
+    radial-gradient(100% 80% at 100% 100%, rgb(147 51 234 / 0.45), transparent 60%),
+    rgb(8 6 20 / 0.9);
+}
+
+.root[data-expanded='true'] .wash {
+  @apply opacity-100;
+}
+
+.stage {
+  @apply pointer-events-none invisible fixed inset-0 flex flex-col text-white opacity-0 outline-none;
+
+  padding-top: max(1.25rem, env(safe-area-inset-top));
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  transition:
+    opacity 300ms ease,
+    visibility 0s linear 300ms;
+}
+
+.stage[data-visible='true'] {
+  @apply pointer-events-auto visible opacity-100;
+
+  transition:
+    opacity 450ms ease,
+    visibility 0s;
+}
+
+.top {
+  @apply mx-auto flex w-full max-w-7xl flex-col gap-4 px-6;
+}
+
+.segments {
+  @apply flex gap-1.5;
+}
+
+.segment {
+  @apply relative h-0.5 flex-1 overflow-hidden rounded-full bg-white/20;
+}
+
+.fill {
+  @apply absolute inset-0 bg-white;
+
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.segment[data-state='done'] .fill {
+  transform: scaleX(1);
+}
+
+.segment[data-state='active'] .fill {
+  animation: fill var(--dur) linear forwards;
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.meta {
+  @apply flex items-center justify-between gap-4;
+}
+
+.label {
+  @apply text-[13px] text-white/60;
+}
+
+.skip {
+  @apply inline-flex h-11 cursor-pointer items-center justify-center rounded-full border-0 bg-white px-6 text-sm font-medium text-neutral-950 transition-colors duration-300 hover:bg-primary hover:text-white;
+}
+
+.skip:focus-visible {
+  @apply outline-2 outline-offset-4 outline-white;
+}
+
+.body {
+  @apply mx-auto flex min-h-0 w-full max-w-7xl flex-1 items-center px-6;
+}
+
+.slide {
+  @apply max-w-5xl;
+
+  animation: slideIn 420ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  transition: opacity 320ms ease;
+}
+
+.slide[data-exiting='true'] {
+  @apply opacity-0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+.text {
+  @apply m-0 text-pretty font-medium text-white;
+
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.2vw, 4.5rem);
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+}
+
+.strong {
+  @apply font-bold;
+}
+
+.accent {
+  @apply text-fuchsia-300;
+}
+
+.word {
+  opacity: 0.14;
+  animation: wordIn 300ms ease forwards;
+  animation-delay: calc(var(--i) * var(--word-ms) + var(--lead));
+}
+
+@keyframes wordIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.sr {
+  @apply sr-only;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .veil,
+  .wash,
+  .stage,
+  .stage[data-visible='true'],
+  .slide,
+  .skip {
+    transition: none;
+  }
+
+  .slide {
+    animation: none;
+  }
+
+  .word {
+    opacity: 1;
+    animation: none;
+  }
+
+  .segment[data-state='active'] .fill {
+    animation: none;
+    transform: scaleX(1);
+  }
+}

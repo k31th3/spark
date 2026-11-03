@@ -28,7 +28,8 @@ export * from "./Projects";
 export * from "./Cursor";
 export * from "./RevealCard"
 export * from "./HomeFaq";
-
+export * from "./HomeWhyUs";
+export * from "./HomeAbout";
 
 // for icon gradient
 export { default as IconGradient } from "./IconGradient";
