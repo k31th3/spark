@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import { Button, Reveal, Section, Text, Wrapper } from '@/components'
 import { cn } from '@/lib/utils'
-import styles from './HomeFAQ.module.css'
+import styles from './HomeFaq.module.css'
 import type { HomeFAQProps } from './HomeFaq.types'
 
 /* =========================================================

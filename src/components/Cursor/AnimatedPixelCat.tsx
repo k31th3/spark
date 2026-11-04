@@ -5,69 +5,57 @@ import { useEffect, useState } from 'react'
 ========================================================= */
 
 const PALETTE: Record<string, string> = {
-  o: '#1E0B36', // outline (also eyes, nose + smile)
   b: '#9333EA', // body (brand primary)
-  s: '#7E22CE', // shade (left arm)
-  p: '#F472B6', // ears, cheeks, collar, paw pads, feet
-  m: '#C026D3', // bib
-  c: '#FACC15', // gold: bell + coin (koban)
-  d: '#CA8A04', // dark gold: bell dot + coin checker
+  s: '#7E22CE', // shade (resting paw)
+  p: '#F472B6', // ears, paw pads, nose, feet
+  l: '#F5E9FF', // bell
+  e: '#1E0B36', // eyes
+  c: '#FACC15', // gold: collar + coin (koban)
+  d: '#CA8A04', // coin hole
 }
 
-// Frame 1: paw leans back toward the head
+// Frame 1: paw raised
 const GRID_FRAME_1 = [
-  '....ooo.....ooo.........',
-  '...obpbo...obpbo........',
-  '...obbbooooobbbo........',
-  '...obbbbbbbbbbbo........',
-  '...obbbbbbbbbbbo........',
-  '...obbobbbbbobbo........',
-  '...obobobbbobobo..ooo...',
-  '...oppbbbobbbppo.obbbo..',
-  '...obbbobbbobbbo.obpbo..',
-  '....obbbooobbbo..obbbo..',
-  '....opppppppppooooobbbo.',
-  '...obbmmcccmmbbbbbbbbbo.',
-  '...obbbmcccmbbbbbbbbbbo.',
-  '...obbbbmdmbbbbbboooooo.',
-  '..osbbbbbbbbbbbbbo......',
-  '..osbobbooooobbbbo......',
-  '..osbobocdcdcobbbo......',
-  '..osbooodcdcdobbbo......',
-  '..osbbbocdcdcobbbo......',
-  '..osppbodcdcdobbbo......',
-  '..ooooooooooobbbbo......',
-  '...obbbbbbbbbbbbbo......',
-  '...obppbo...obppbo......',
-  '...oooooo...oooooo......',
+  '..................',
+  '....b......b......',
+  '...bpb....bpb.....',
+  '...bbbbbbbbbb.....',
+  '...bbbbbbbbbb.....',
+  '...bbebbbbebb..bb.',
+  '...bebebbebeb.bbbb',
+  '...bpbbppbbpb.bppb',
+  '....bbbbbbbb..bbbb',
+  '....cccccccc..bbb.',
+  '..bbbbbllbbbbbbbb.',
+  '..bbbbbbbbbbbsbbb.',
+  '..bssbbccbbbbsbb..',
+  '..bspscddcbbbb....',
+  '..bssscddcbbbb....',
+  '..bbbbbccbbbbb....',
+  '..bppb....bppb....',
+  '..................',
 ]
 
-// Frame 2: paw leans out (the wave)
+// Frame 2: paw one pixel lower (the wave)
 const GRID_FRAME_2 = [
-  '....ooo.....ooo.........',
-  '...obpbo...obpbo........',
-  '...obbbooooobbbo........',
-  '...obbbbbbbbbbbo........',
-  '...obbbbbbbbbbbo........',
-  '...obbobbbbbobbo........',
-  '...obobobbbobobo....ooo.',
-  '...oppbbbobbbppo...obbbo',
-  '...obbbobbbobbbo...obpbo',
-  '....obbbooobbbo....obbbo',
-  '....opppppppppooooobbbo.',
-  '...obbmmcccmmbbbbbbbbbo.',
-  '...obbbmcccmbbbbbbbbbbo.',
-  '...obbbbmdmbbbbbboooooo.',
-  '..osbbbbbbbbbbbbbo......',
-  '..osbobbooooobbbbo......',
-  '..osbobocdcdcobbbo......',
-  '..osbooodcdcdobbbo......',
-  '..osbbbocdcdcobbbo......',
-  '..osppbodcdcdobbbo......',
-  '..ooooooooooobbbbo......',
-  '...obbbbbbbbbbbbbo......',
-  '...obppbo...obppbo......',
-  '...oooooo...oooooo......',
+  '..................',
+  '....b......b......',
+  '...bpb....bpb.....',
+  '...bbbbbbbbbb.....',
+  '...bbbbbbbbbb.....',
+  '...bbebbbbebb.....',
+  '...bebebbebeb..bb.',
+  '...bpbbppbbpb.bbbb',
+  '....bbbbbbbb..bppb',
+  '....cccccccc..bbbb',
+  '..bbbbbllbbbbbbbb.',
+  '..bbbbbbbbbbbsbbb.',
+  '..bssbbccbbbbsbb..',
+  '..bspscddcbbbb....',
+  '..bssscddcbbbb....',
+  '..bbbbbccbbbbb....',
+  '..bppb....bppb....',
+  '..................',
 ]
 
 /* =======================================================
@@ -134,7 +122,7 @@ export function AnimatedPixelCat({ intervalMs = 380 }: { intervalMs?: number }) 
 
   return (
     <svg
-      viewBox="0 0 24 24"
+      viewBox="0 0 18 18"
       width="100%"
       height="100%"
       shapeRendering="crispEdges"
@@ -148,4 +136,4 @@ export function AnimatedPixelCat({ intervalMs = 380 }: { intervalMs?: number }) 
   )
 }
 
-export default AnimatedPixelCat;
+export default AnimatedPixelCat; 
