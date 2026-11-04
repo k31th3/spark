@@ -1,0 +1,1 @@
+export { default as CareerCTA } from "./SIT-CTA-wallpaper.webp"

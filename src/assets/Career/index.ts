@@ -1,0 +1,6 @@
+export { default as Career1 } from "./career-graphics-1.webp"
+export { default as Career2 } from "./career-graphics-2.webp"
+export { default as Career3 } from "./career-graphics-3.webp"
+export { default as Career4 } from "./career-graphics-4.webp"
+export { default as Career5 } from "./career-graphics-5.webp"
+export { default as WhyWork } from "./why-work-with-us.webp"

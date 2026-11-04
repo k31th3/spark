@@ -29,6 +29,7 @@ export default function Button({
     block = false,
     className,
     children,
+    icon,
     ...props
 }: ButtonProps) {
     const classes = cn(
@@ -44,7 +45,14 @@ export default function Button({
         <>
             {roll ? <Roll>{children}</Roll> : children}
 
+            {icon && (
+                <span aria-hidden="true" className="inline-flex shrink-0">
+                    {icon}
+                </span>
+            )}  
+
             {arrowKey && (
+
                 <span
                     aria-hidden="true"
                     className={cn(

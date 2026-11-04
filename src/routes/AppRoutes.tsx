@@ -4,6 +4,9 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Navigation, IconGradient,
          ScrollToTop, Footer } from "@/components";
 
+/* ===== APPLICANT FOOTER: IMPORTED BY PATH TO AVOID A CIRCULAR IMPORT WITH "@/components" ===== */
+import FooterMinimal from "@/pages/Careers/CareerFooter/FooterMinimal";
+
 import useOnlineStatus from "@/hooks/useOnlineStatus";
 import NoInternet from "@/pages/NoInternet";
 
@@ -22,6 +25,10 @@ function AppRoutes() {
     /* ===== HOME HAS A FULL-BLEED HERO: NO TOP PADDING SO IT STARTS AT THE EDGE ===== */
 
     const isHome = pathname === "/";
+
+    /* ===== CAREERS IS FOR APPLICANTS: IT GETS ITS OWN FOOTER ===== */
+
+    const isCareers = pathname === "/careers" || pathname.startsWith("/careers/");
 
     if (import.meta.env.PROD && !isOnline) {
         return <NoInternet />;
@@ -44,7 +51,8 @@ function AppRoutes() {
                                     <DefaultQueryWrapper />
                                 </main>
 
-                                <Footer />
+                                {/* ===== FOOTER: CLIENT OR APPLICANT, NEVER BOTH ===== */}
+                                {isCareers ? <FooterMinimal /> : <Footer />}
                             </div>
                         </>
                     }>

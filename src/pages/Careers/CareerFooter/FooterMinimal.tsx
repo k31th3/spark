@@ -1,0 +1,232 @@
+import { Link, useLocation } from 'react-router-dom'
+import { Button, Section, Wrapper } from '@/components'
+import { cn } from '@/lib/utils'
+
+import FooterGlyph from '@/components/Footer/FooterGlyph'
+import { getCurrentYear, scrollToPageTop } from '@/components/Footer/Footer.helpers'
+import {
+  COMPANY_NAME,
+  FOOTER_COLUMNS,
+  FOOTER_DETAILS,
+  FOOTER_SOCIAL_LINKS,
+} from '@/components/Footer/Footer.config'
+import type { FooterLink, FooterProps } from '@/components/Footer/Footer.types'
+
+import styles from '@/components/Footer/Footer.module.css'
+import minimal from './FooterMinimal.module.css'
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+type FooterMinimalProps = Omit<FooterProps, 'backdrop' | 'cta'>
+
+const isExternal = (href: string) => /^https?:\/\//.test(href)
+
+/* =========================================================
+   LINK RENDERER
+========================================================= */
+
+function FooterNavLink({ link }: { link: FooterLink }) {
+  const { pathname } = useLocation()
+
+  const content = (
+    <>
+      {link.label}
+
+      {link.chevron && (
+        <span
+          aria-hidden="true"
+          className={styles.chevron}
+        >
+          ›
+        </span>
+      )}
+    </>
+  )
+
+  if (isExternal(link.href)) {
+    return (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.link}
+      >
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <Link
+      to={link.href}
+      className={styles.link}
+      onClick={(event) => {
+        if (link.href === pathname) {
+          event.preventDefault()
+          scrollToPageTop()
+        }
+      }}
+    >
+      {content}
+    </Link>
+  )
+}
+
+/* =========================================================
+   FOOTER MINIMAL
+========================================================= */
+
+function FooterMinimal({
+  companyName = COMPANY_NAME,
+  details = FOOTER_DETAILS,
+  columns = FOOTER_COLUMNS,
+  socialLinks = FOOTER_SOCIAL_LINKS,
+  className = '',
+  ...props
+}: FooterMinimalProps) {
+  const year = getCurrentYear()
+
+  return (
+    <Section
+      as="footer"
+      id="contact"
+      spacing="none"
+      className={cn(styles.footer, className)}
+      {...props}
+    >
+      <Wrapper.Body className={cn(minimal.container, styles.wrapper)}>
+
+        {/* ===== MAIN: DETAILS + LINK COLUMNS ===== */}
+
+        <div className={styles.main}>
+
+          {details.length > 0 && (
+            <dl className={styles.details}>
+              {details.map((detail) => (
+                <div
+                  key={detail.label}
+                  className={styles.detail}
+                >
+                  <dt className={styles.detailLabel}>
+                    ({detail.label})
+                  </dt>
+
+                  <dd className={styles.detailValue}>
+                    {detail.href ? (
+                      <a
+                        href={detail.href}
+                        {...(isExternal(detail.href)
+                          ? { target: '_blank', rel: 'noopener noreferrer' }
+                          : {})}
+                      >
+                        {detail.value}
+                      </a>
+                    ) : (
+                      detail.value
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
+
+          {columns.length > 0 && (
+            <div className={styles.columns}>
+              {columns.map((column) => (
+                <nav
+                  key={column.heading}
+                  aria-label={column.heading}
+                  className={styles.column}
+                >
+                  <h3 className={styles.columnHeading}>
+                    {column.heading}
+                  </h3>
+
+                  <ul
+                    role="list"
+                    className={styles.links}
+                  >
+                    {column.links.map((link) => (
+                      <li key={`${link.href}-${link.label}`}>
+                        <FooterNavLink link={link} />
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ))}
+            </div>
+          )}
+
+        </div>
+
+        {/* ===== BRAND ROW ===== */}
+
+        <div className={styles.brandRow}>
+          <div className={styles.brand}>
+            <FooterGlyph
+              variant="solid"
+              className={styles.logo}
+            />
+
+            <p className={styles.companyName}>
+              {companyName}
+            </p>
+          </div>
+
+          <Button
+            variant="light"
+            size="sm"
+            roll
+            arrow="up"
+            className={styles.backToTop}
+            onClick={scrollToPageTop}
+          >
+            Back to top
+          </Button>
+        </div>
+
+        {/* ===== BOTTOM ROW ===== */}
+
+        <div className={styles.bottom}>
+
+          <p className={styles.copyright}>
+            ©{year} {companyName}. All rights reserved.
+          </p>
+
+          {socialLinks.length > 0 && (
+            <ul
+              role="list"
+              className={styles.socialLinks}
+            >
+              {socialLinks.map((link) => {
+                const SocialIcon = link.icon
+
+                return (
+                  <li key={`${link.href}-${link.label}`}>
+                    <a
+                      href={link.href}
+                      aria-label={link.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.socialLink}
+                    >
+                      <SocialIcon
+                        aria-hidden="true"
+                        size={20}
+                      />
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+
+        </div>
+      </Wrapper.Body>
+    </Section>
+  )
+}
+
+export default FooterMinimal;

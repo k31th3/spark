@@ -23,6 +23,7 @@ type BaseProps = {
     glow?: boolean;
     block?: boolean;
     children?: ReactNode;
+    icon?: ReactNode;
 };
 
 type AsButton = Omit<HTMLMotionProps<"button">, "children"> &
