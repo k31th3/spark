@@ -51,10 +51,6 @@
   @apply pointer-events-none absolute inset-0;
 }
 
-.card[data-covered='true'] .blurHost {
-  visibility: hidden;
-}
-
 /* =========================================================
    CONTENT
 ========================================================= */

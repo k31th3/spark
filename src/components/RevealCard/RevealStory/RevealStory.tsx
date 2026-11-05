@@ -13,7 +13,6 @@ import { useLenis } from 'lenis/react'
 import { useScrollLock } from '@/hooks/useScrollLock'
 import { cn } from '@/lib/utils'
 
-import ProgressiveBlur from '@/components/HomeWhyUs/ProgressiveBlur'
 import type { RevealCardLine } from '@/components/RevealCard/RevealCard.types'
 
 import styles from './RevealStory.module.css'
@@ -29,6 +28,15 @@ const LEAD_MS = 250
 const WORD_MS = 140
 const HOLD_BASE = 800
 const HOLD_PER_WORD = 35
+
+/* =========================================================
+   CLIP SHAPES
+========================================================= */
+
+const CLIP_OPEN = 'inset(0px 0px 0px 0px round 0px 0px 0px 0px)'
+
+const clipClosed = (zone: Zone) =>
+  `inset(${zone.top}px ${zone.right}px ${zone.bottom}px ${zone.left}px round 0px 0px 1rem 1rem)`
 
 /* =========================================================
    TYPES
@@ -122,7 +130,6 @@ function RevealStory({
 
   const slides = useMemo(() => buildSlides(lines), [lines])
   const last = slides.length - 1
-
 
   const mountedRef = useRef(false)
   const onOpenChangeRef = useRef(onOpenChange)
@@ -338,33 +345,25 @@ function RevealStory({
 
   const slide = slides[index]
 
-  const veilStyle: CSSProperties = expanded
-    ? { top: 0, right: 0, bottom: 0, left: 0, borderRadius: 0 }
-    : {
-        top: zone.top,
-        right: zone.right,
-        bottom: zone.bottom,
-        left: zone.left,
-        borderRadius: '0 0 1rem 1rem',
-      }
+  const washStyle: CSSProperties = {
+    clipPath: expanded ? CLIP_OPEN : clipClosed(zone),
+  }
 
   return createPortal(
     <div
       className={styles.root}
       data-tone={tone}
       data-expanded={expanded}
+      style={{ '--expand-ms': `${EXPAND_MS}ms` } as CSSProperties}
     >
 
-      {/* ===== VEIL: THE PROGRESSIVE BLUR THAT EATS THE SCREEN ===== */}
+      {/* ===== WASH: BLUR + TINT, REVEALED BY CLIP-PATH ===== */}
 
       <div
         aria-hidden="true"
-        className={styles.veil}
-        style={veilStyle}
-      >
-        <ProgressiveBlur />
-        <div className={styles.wash} />
-      </div>
+        className={styles.wash}
+        style={washStyle}
+      />
 
       {/* ===== STORY ===== */}
 
