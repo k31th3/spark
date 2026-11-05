@@ -197,12 +197,22 @@
   @apply flex flex-col gap-4;
 }
 
+.positionsContainer {
+  container-type: inline-size;
+}
+
 .chips {
-  @apply flex flex-wrap gap-2;
+  @apply flex flex-wrap gap-2.5;
+}
+
+@media (min-width: 1024px) {
+  .chips {
+    max-width: 41cqw;
+  }
 }
 
 .chip {
-  @apply h-9 cursor-pointer rounded-full border border-neutral-200 bg-transparent px-4 text-sm text-foreground transition-colors duration-200 hover:border-neutral-400;
+  @apply h-8.5 cursor-pointer rounded-full border border-neutral-200 bg-transparent px-4 text-[13px] text-foreground transition-colors duration-200 hover:border-neutral-400;
 }
 
 .chip[aria-pressed='true'] {
@@ -217,10 +227,11 @@
 
 .scroller {
   @apply mt-10 snap-x snap-mandatory overflow-x-auto overscroll-x-contain sm:mt-14;
+  --bleed: calc(50vw - 50cqw);
 
-  margin-inline: calc(50% - 50vw);
-  padding-inline: calc(50vw - 50%);
-  scroll-padding-inline: calc(50vw - 50%);
+  margin-inline: calc(var(--bleed) * -1);
+  padding-inline: var(--bleed);
+  scroll-padding-inline: var(--bleed);
   scrollbar-width: none;
 }
 
@@ -233,17 +244,17 @@
 }
 
 .job {
-  @apply flex shrink-0 snap-start flex-col justify-between gap-10 rounded-2xl bg-[#121212] p-5 text-white sm:p-6;
-
-  width: clamp(19rem, 42vw, 34rem);
+  @apply flex shrink-0 snap-start flex-col justify-center gap-9 rounded-2xl bg-[#121212] p-6 text-white;
+  width: clamp(18rem, calc((100cqw - 1rem) / 2), 40rem);
+  min-height: 10rem;
 }
 
 .jobTop {
-  @apply flex flex-wrap items-center gap-x-4 gap-y-4;
+  @apply flex flex-wrap items-center gap-x-3 gap-y-4;
 }
 
 .jobIcon {
-  @apply grid size-14 shrink-0 place-items-center rounded-xl bg-white text-primary;
+  @apply grid size-13 shrink-0 place-items-center rounded-xl bg-[#FDF2FF] text-[#D129DD];
 }
 
 .jobInfo {
@@ -262,7 +273,7 @@
 }
 
 .apply {
-  @apply ml-auto shrink-0;
+  @apply ml-auto h-9 shrink-0 px-5 py-0 text-[13px];
 }
 
 .salary {
@@ -270,11 +281,11 @@
 }
 
 .arrows {
-  @apply mt-8 flex justify-end gap-2;
+  @apply mt-15 flex justify-end gap-3;
 }
 
 .arrow {
-  @apply grid size-11 cursor-pointer place-items-center rounded-full border border-neutral-200 bg-transparent text-foreground transition-colors duration-200 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white disabled:pointer-events-none disabled:opacity-40;
+  @apply grid size-10.5 cursor-pointer place-items-center rounded-full border border-neutral-200 bg-transparent text-neutral-500 transition-colors duration-200 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white disabled:pointer-events-none disabled:opacity-40;
 }
 
 .empty {

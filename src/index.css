@@ -104,6 +104,11 @@ html, body {
   }
 }
 
+html,
+body {
+  background-color: var(--color-background);
+}
+
 /*html {
   scrollbar-gutter: stable;
 }*/
