@@ -18,8 +18,9 @@ export type HomeAboutVideo = {
 export type HomeAboutProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
   eyebrow?: string
   label?: string
-  
+
   paragraphs: string[][]
+  finale?: string
 
   video?: HomeAboutVideo
 }

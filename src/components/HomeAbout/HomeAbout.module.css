@@ -20,6 +20,8 @@
 
 .story {
   @apply grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-x-8;
+
+  --fade: 0;
 }
 
 .rail {
@@ -32,22 +34,26 @@
   @apply text-[13px] font-normal text-muted;
 
   font-family: var(--font-sans);
+  opacity: clamp(0, calc(1 - var(--fade) * 5), 1);
 }
 
 .content {
   @apply lg:col-span-9;
+
+  --progress: 0;
+  --dim: 0.04;
+
+  --wipe: clamp(0, calc(var(--fade) / 0.75), 1);
 }
 
 .label {
   @apply mb-6 block sm:mb-8;
+
+  opacity: clamp(0, calc(1 - var(--fade) * 5), 1);
 }
 
 .paragraphs {
   @apply flex max-w-5xl flex-col gap-10 sm:gap-14;
-
-  --progress: 0;
-  --dim: 0.04;
-  --span: 6;
 }
 
 .paragraph {
@@ -59,15 +65,49 @@
   letter-spacing: -0.025em;
 }
 
+/* =========================================================
+   WORDS
+========================================================= */
+
 .word {
-  opacity: calc(
-    var(--dim) + (1 - var(--dim)) * clamp(
-      0,
-      calc((var(--progress) * (var(--total) + var(--span)) - var(--i)) / var(--span)),
-      1
-    )
+  --shown: clamp(
+    0,
+    calc((var(--progress) * (var(--total) + var(--span)) - var(--i)) / var(--span)),
+    1
   );
+  --erased: clamp(
+    0,
+    calc((var(--wipe) * (var(--total) + var(--span)) - var(--i)) / var(--span)),
+    1
+  );
+
+  opacity: calc((var(--dim) + (1 - var(--dim)) * var(--shown)) * (1 - var(--erased)));
   transition: opacity 150ms linear;
+}
+
+/* =========================================================
+   LEAD DOTS
+========================================================= */
+
+.dot {
+  --tail: clamp(
+    0,
+    calc((var(--progress) - var(--lead-from)) / (1 - var(--lead-from))),
+    1
+  );
+  --shown: clamp(0, calc(var(--tail) * 2 - var(--n)), 1);
+  --erased: clamp(
+    0,
+    calc((var(--wipe) * (var(--total) + var(--span)) - var(--i)) / var(--span)),
+    1
+  );
+
+  display: inline-block;
+  opacity: calc(var(--shown) * (1 - var(--erased)));
+  transform: translateY(calc((1 - var(--shown)) * 0.6em));
+  transition:
+    opacity 150ms linear,
+    transform 150ms linear;
 }
 
 .emoji {
@@ -87,7 +127,53 @@
 }
 
 /* =========================================================
-   BENTO (ONE VIDEO CARD FOR NOW)
+   FINALE
+========================================================= */
+.finaleRunway {
+  @apply col-span-full pointer-events-none;
+
+  --gradient: 0;
+
+  margin-top: var(--overlap, 0px);
+
+  margin-bottom: calc(-50svh + 3rem);
+  height: calc(100svh + 60vh);
+}
+
+.finale {
+  @apply sticky top-0 flex items-center justify-center text-center font-medium text-foreground;
+
+  height: 100svh;
+  font-family: var(--font-display);
+  font-size: min(120px, 14vw);
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  opacity: clamp(0, calc((var(--fade) - 0.85) / 0.15), 1);
+}
+
+.finaleWord {
+  @apply relative inline-block;
+}
+
+.finaleLayer {
+  @apply pointer-events-none absolute inset-0;
+
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0,
+    #000 calc(var(--gradient) * 130% - 30%),
+    transparent calc(var(--gradient) * 130%)
+  );
+  mask-image: linear-gradient(
+    90deg,
+    #000 0,
+    #000 calc(var(--gradient) * 130% - 30%),
+    transparent calc(var(--gradient) * 130%)
+  );
+}
+
+/* =========================================================
+   BENTO
 ========================================================= */
 
 .bento {
@@ -128,7 +214,25 @@
     transition: none;
   }
 
+  .dot {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .play {
     transition: none;
+  }
+
+  .finaleRunway {
+    height: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .finale {
+    position: static;
+    height: auto;
+    opacity: 1;
   }
 }

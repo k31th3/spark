@@ -9,9 +9,18 @@ import styles from './HomeAbout.module.css'
 /* =========================================================
    CONSTANTS
 ========================================================= */
-
 const READ_START = 0.7
-const READ_END = 0.4
+const READ_END = 0.6
+
+const FADE_SPAN = 0.4
+
+const FINALE_OVERLAP = `${((FADE_SPAN - READ_END) * 100).toFixed(2)}vh`
+
+const WORD_SPAN = 6
+
+const LEAD_EXTRA_DOTS = 2
+
+const TRAILING_DOTS = /[.…]+$/u
 
 /* =========================================================
    HELPERS
@@ -19,6 +28,9 @@ const READ_END = 0.4
 
 const clamp = (value: number, min = 0, max = 1) =>
   Math.min(max, Math.max(min, value))
+
+const normalize = (text: string) =>
+  text.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '')
 
 /* =========================================================
    VIDEO CARD
@@ -148,29 +160,76 @@ function HomeAbout({
   eyebrow = 'About Us',
   label,
   paragraphs,
+  finale: finaleWord = 'Possibilities',
   video,
   className = '',
   ...props
 }: HomeAboutProps) {
+  const rootRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const storyRef = useRef<HTMLDivElement>(null)
+  const runwayRef = useRef<HTMLDivElement>(null)
+  const stageRef = useRef<HTMLDivElement>(null)
 
   const story = useMemo(() => buildStory(paragraphs), [paragraphs])
 
   /* =======================================================
-     SCROLL-LINKED HIGHLIGHT
+     FINALE
+  ======================================================= */
+
+  const finale = useMemo(() => {
+    const words = story.paragraphs
+      .flat(2)
+      .filter((token) => token.kind === 'word')
+
+    if (words.length === 0) return null
+
+    const wanted = normalize(finaleWord)
+
+    const match = [...words]
+      .reverse()
+      .find((token) => normalize(token.text) === wanted)
+
+    const startIndex = match
+      ? match.index
+      : words[words.length - 1].index
+
+    const lead = words.find((token) => token.index === startIndex - 1)
+
+    return {
+      startIndex,
+      words: words.filter((token) => token.index >= startIndex),
+      leadDots: Boolean(lead && TRAILING_DOTS.test(lead.text)),
+    }
+  }, [story, finaleWord])
+
+  const total = finale
+    ? finale.startIndex + (finale.leadDots ? LEAD_EXTRA_DOTS : 0)
+    : story.total
+
+  const leadFrom = finale
+    ? clamp((finale.startIndex - 1 + WORD_SPAN) / (total + WORD_SPAN))
+    : 1
+
+  /* =======================================================
+     SCROLL-LINKED: HIGHLIGHT, FADE, GRADIENT
   ======================================================= */
 
   useEffect(() => {
-    const element = storyRef.current
+    const root = rootRef.current
+    const content = contentRef.current
+    const story = storyRef.current
 
-    if (!element) return
+    if (!root || !content || !story) return
 
     const reduceMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches
 
     if (reduceMotion) {
-      element.style.setProperty('--progress', '1')
+      content.style.setProperty('--progress', '1')
+      root.style.setProperty('--fade', '0')
+      runwayRef.current?.style.setProperty('--gradient', '1')
       return
     }
 
@@ -179,15 +238,32 @@ function HomeAbout({
     const update = () => {
       frame = 0
 
-      const { top, height } = element.getBoundingClientRect()
       const viewport = window.innerHeight
+
+      const { top, height } = story.getBoundingClientRect()
 
       const start = viewport * READ_START
       const end = viewport * READ_END
 
       const progress = clamp((start - top) / (height + start - end))
 
-      element.style.setProperty('--progress', progress.toFixed(4))
+      content.style.setProperty('--progress', progress.toFixed(4))
+
+      const bottom = top + height
+      const fade = clamp((end - bottom) / (viewport * FADE_SPAN))
+
+      root.style.setProperty('--fade', fade.toFixed(4))
+
+      const runway = runwayRef.current
+      const stage = stageRef.current
+
+      if (!runway || !stage) return
+
+      const rect = runway.getBoundingClientRect()
+      const travel = rect.height - stage.offsetHeight
+      const gradient = travel > 0 ? clamp(-rect.top / travel) : 1
+
+      runway.style.setProperty('--gradient', gradient.toFixed(4))
     }
 
     const onScroll = () => {
@@ -220,7 +296,7 @@ function HomeAbout({
             STORY (LEFT STICKS, RIGHT SCROLLS)
         ================================================= */}
 
-        <div className={styles.story}>
+        <div ref={rootRef} className={styles.story}>
 
           <div className={styles.rail}>
             <Reveal variant="fade">
@@ -233,7 +309,17 @@ function HomeAbout({
             </Reveal>
           </div>
 
-          <div className={styles.content}>
+          <div
+            ref={contentRef}
+            className={styles.content}
+            style={
+              {
+                '--total': total,
+                '--span': WORD_SPAN,
+                '--lead-from': leadFrom.toFixed(4),
+              } as CSSProperties
+            }
+          >
             {label && (
               <Reveal variant="fade">
                 <Text
@@ -250,46 +336,129 @@ function HomeAbout({
             <div
               ref={storyRef}
               className={styles.paragraphs}
-              style={{ '--total': story.total } as CSSProperties}
             >
-              {story.paragraphs.map((lines, paragraphIndex) => (
-                <p
-                  key={paragraphIndex}
-                  className={styles.paragraph}
-                >
-                  {lines.map((tokens, lineIndex) => (
-                    <Fragment key={lineIndex}>
-                      {tokens.map((token, tokenIndex) =>
-                        token.kind === 'space' ? (
-                          token.text
-                        ) : (
-                          <span
-                            key={tokenIndex}
-                            className={styles.word}
-                            style={
-                              { '--i': token.index } as CSSProperties
-                            }
-                          >
-                            {renderWithEmoji(token.text, {
-                              emoji: styles.emoji,
-                              image: styles.emojiImage,
-                            })}
-                          </span>
-                        )
-                      )}
+              {story.paragraphs.map((lines, paragraphIndex) => {
+                const visible = (token: (typeof lines)[number][number]) =>
+                  token.kind !== 'word' ||
+                  !finale ||
+                  token.index < finale.startIndex
 
-                      {lineIndex < lines.length - 1 && <br />}
-                    </Fragment>
-                  ))}
-                </p>
-              ))}
+                if (!lines.some((tokens) => tokens.some((t) => t.kind === 'word' && visible(t)))) {
+                  return null
+                }
+
+                return (
+                  <p
+                    key={paragraphIndex}
+                    className={styles.paragraph}
+                  >
+                    {lines.map((tokens, lineIndex) => (
+                      <Fragment key={lineIndex}>
+                        {tokens.map((token, tokenIndex) => {
+                          if (!visible(token)) return null
+
+                          if (token.kind === 'space') return token.text
+
+                          const isLead =
+                            finale?.leadDots &&
+                            token.index === finale.startIndex - 1
+
+                          return (
+                            <Fragment key={tokenIndex}>
+                              <span
+                                className={styles.word}
+                                style={
+                                  { '--i': token.index } as CSSProperties
+                                }
+                              >
+                                {renderWithEmoji(
+                                  isLead
+                                    ? token.text.replace(TRAILING_DOTS, '')
+                                    : token.text,
+                                  {
+                                    emoji: styles.emoji,
+                                    image: styles.emojiImage,
+                                  }
+                                )}
+                                {isLead && '.'}
+                              </span>
+
+                              {isLead &&
+                                Array.from({ length: LEAD_EXTRA_DOTS }, (_, n) => (
+                                  <span
+                                    key={n}
+                                    aria-hidden="true"
+                                    className={styles.dot}
+                                    style={
+                                      {
+                                        '--i': finale.startIndex + n,
+                                        '--n': n,
+                                      } as CSSProperties
+                                    }
+                                  >
+                                    .
+                                  </span>
+                                ))}
+                            </Fragment>
+                          )
+                        })}
+
+                        {lineIndex < lines.length - 1 && <br />}
+                      </Fragment>
+                    ))}
+                  </p>
+                )
+              })}
             </div>
           </div>
+
+          {/* ===============================================
+              FINALE
+          =============================================== */}
+
+          {finale && (
+            <div
+              ref={runwayRef}
+              className={styles.finaleRunway}
+              style={{ '--overlap': FINALE_OVERLAP } as CSSProperties}
+            >
+              <div ref={stageRef} className={styles.finale}>
+                <span className={styles.finaleWord}>
+                  {finale.words.map((token, index) => (
+                    <Fragment key={token.index}>
+                      {index > 0 && ' '}
+
+                      {renderWithEmoji(token.text, {
+                        emoji: styles.emoji,
+                        image: styles.emojiImage,
+                      })}
+                    </Fragment>
+                  ))}
+
+                  <span
+                    aria-hidden="true"
+                    className={cn(styles.finaleLayer, 'text-gradient')}
+                  >
+                    {finale.words.map((token, index) => (
+                      <Fragment key={token.index}>
+                        {index > 0 && ' '}
+
+                        {renderWithEmoji(token.text, {
+                          emoji: styles.emoji,
+                          image: styles.emojiImage,
+                        })}
+                      </Fragment>
+                    ))}
+                  </span>
+                </span>
+              </div>
+            </div>
+          )}
 
         </div>
 
         {/* =================================================
-            BENTO (VIDEO ONLY FOR NOW, MORE CARDS COME LATER)
+            BENTO
         ================================================= */}
 
         {video && (
