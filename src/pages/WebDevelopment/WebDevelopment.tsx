@@ -1,26 +1,18 @@
-import { Wrapper, Grid } from "@/components";
+import { Wrapper } from '@/components'
 
-import Hero from "./Hero";
-import WhatWeBuild from "./WhatWeBuild";
-import WhyItMatters from "./WhyItMatters";
+import WebDevHero from './WebDevHero'
+import WebDevSolutions from './WebDevSolutions'
+import WebDevWhy from './WebDevWhy'
+
 
 function WebDevelopment() {
-    return (
-        <Wrapper title="Web Development" path="web-development">
-            <Wrapper.FullBleed className="relative">
-                
-                <Wrapper.Background />
-                <Wrapper.Body>
-                    <Grid.VStack gap={12}>
-                        <Hero />
-                        <WhatWeBuild />
-                        <WhyItMatters />
-                    </Grid.VStack>
-                </Wrapper.Body>
-                
-            </Wrapper.FullBleed>
-        </Wrapper>
-    );
+  return (
+    <Wrapper title="Web Development" path="web-development">
+      <WebDevHero />
+      <WebDevSolutions />
+      <WebDevWhy />
+    </Wrapper>
+  )
 }
 
-export default WebDevelopment;
+export default WebDevelopment

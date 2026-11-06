@@ -1,6 +1,40 @@
 @reference "../../../index.css";
 
 /* =========================================================
+   REGISTERED PROPERTIES
+========================================================= */
+
+@property --veil-top {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --veil-right {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --veil-bottom {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --veil-left {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --veil-radius {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+/* =========================================================
    ROOT
 ========================================================= */
 
@@ -8,42 +42,105 @@
   @apply pointer-events-none fixed inset-0;
 
   --ease-expand: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-radius: cubic-bezier(0.65, 0, 0.35, 1);
+  --blur-height: 9rem;
   --veil-blur: 64px;
-  --veil-tint: 0.55;
 
   z-index: 9000;
 }
 
 /* =========================================================
-   WASH
+   VEIL
 ========================================================= */
 
-.wash {
-  @apply pointer-events-auto fixed inset-0 opacity-0;
+.veil {
+  @apply pointer-events-auto fixed inset-0 bg-foreground opacity-0;
+
+  clip-path: inset(
+    var(--veil-top) var(--veil-right) var(--veil-bottom) var(--veil-left)
+    round var(--veil-radius)
+  );
+  will-change: opacity;
+  transition:
+    --veil-top var(--expand-ms, 750ms) var(--ease-expand),
+    --veil-right var(--expand-ms, 750ms) var(--ease-expand),
+    --veil-bottom var(--expand-ms, 750ms) var(--ease-expand),
+    --veil-left var(--expand-ms, 750ms) var(--ease-expand),
+    --veil-radius var(--expand-ms, 750ms) var(--ease-radius),
+    opacity 200ms linear calc(var(--expand-ms, 750ms) - 200ms);
+}
+
+.root[data-expanded='true'] .veil {
+  @apply opacity-100;
+
+  transition:
+    --veil-top var(--expand-ms, 750ms) var(--ease-expand),
+    --veil-right var(--expand-ms, 750ms) var(--ease-expand),
+    --veil-bottom var(--expand-ms, 750ms) var(--ease-expand),
+    --veil-left var(--expand-ms, 750ms) var(--ease-expand),
+    --veil-radius var(--expand-ms, 750ms) var(--ease-radius),
+    opacity 200ms linear 0s;
+}
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo {
+  @apply absolute inset-0;
+
+  will-change: transform;
+  transition: transform var(--expand-ms, 750ms) var(--ease-expand);
+}
+
+.image {
+  @apply size-full object-cover;
+}
+
+.plain {
+  background: #0f172a;
+}
+
+.root[data-tone='violet'] .plain {
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgb(223 79 255 / 0.55), transparent 60%),
+    radial-gradient(100% 80% at 0% 100%, rgb(147 51 234 / 0.6), transparent 60%),
+    #0f172a;
+}
+
+.root[data-tone='sunset'] .plain {
+  background:
+    radial-gradient(120% 90% at 15% 0%, rgb(255 146 92 / 0.45), transparent 60%),
+    radial-gradient(100% 80% at 100% 100%, rgb(147 51 234 / 0.6), transparent 60%),
+    #0f172a;
+}
+
+/* =========================================================
+   ZONE
+========================================================= */
+
+.zone {
+  @apply pointer-events-none absolute inset-x-0 bottom-0;
+
+  height: var(--blur-height);
+  will-change: transform;
+  transition: transform var(--expand-ms, 750ms) var(--ease-expand);
+}
+
+/* =========================================================
+   PLATE
+========================================================= */
+
+.plate {
+  @apply pointer-events-none absolute inset-0 opacity-0;
 
   -webkit-backdrop-filter: blur(var(--veil-blur)) saturate(1.15);
   backdrop-filter: blur(var(--veil-blur)) saturate(1.15);
-  will-change: clip-path, opacity;
-  transition:
-    clip-path var(--expand-ms, 750ms) var(--ease-expand),
-    opacity calc(var(--expand-ms, 750ms) * 0.8) var(--ease-expand);
+  will-change: opacity;
+  transition: opacity calc(var(--expand-ms, 750ms) * 0.9) var(--ease-expand);
 }
 
-.root[data-tone='violet'] .wash {
-  background:
-    radial-gradient(120% 90% at 85% 0%, rgb(223 79 255 / 0.35), transparent 60%),
-    radial-gradient(100% 80% at 0% 100%, rgb(147 51 234 / 0.45), transparent 60%),
-    rgb(8 6 20 / var(--veil-tint));
-}
-
-.root[data-tone='sunset'] .wash {
-  background:
-    radial-gradient(120% 90% at 15% 0%, rgb(255 146 92 / 0.32), transparent 60%),
-    radial-gradient(100% 80% at 100% 100%, rgb(147 51 234 / 0.45), transparent 60%),
-    rgb(8 6 20 / var(--veil-tint));
-}
-
-.root[data-expanded='true'] .wash {
+.root[data-expanded='true'] .plate {
   @apply opacity-100;
 }
 
@@ -198,7 +295,11 @@
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .wash,
+  .veil,
+  .root[data-expanded='true'] .veil,
+  .photo,
+  .zone,
+  .plate,
   .stage,
   .stage[data-visible='true'],
   .slide,

@@ -7,7 +7,7 @@
 .card {
   --blur-height: 9rem;
 
-  @apply relative isolate overflow-hidden rounded-2xl bg-foreground text-white ring-1 ring-inset ring-white/10;
+  @apply relative isolate cursor-pointer overflow-hidden rounded-2xl bg-foreground text-white ring-1 ring-inset ring-white/10;
 
   min-height: clamp(24rem, 62svh, 30rem);
 }
@@ -17,6 +17,10 @@
     min-height: 22rem;
     aspect-ratio: 3 / 2;
   }
+}
+
+.card:focus-visible {
+  @apply outline-2 outline-offset-4 outline-primary;
 }
 
 .plain {
@@ -62,7 +66,7 @@
 }
 
 .heading {
-  @apply m-0 shrink-0;
+  @apply m-0 mx-auto flex w-max max-w-full shrink-0 items-center gap-3 text-white;
 
   height: var(--head-h);
   transition: opacity 250ms ease;
@@ -70,14 +74,6 @@
 
 .card[data-covered='true'] .heading {
   opacity: 0;
-}
-
-.trigger {
-  @apply relative mx-auto flex h-full w-max max-w-full cursor-pointer items-center gap-3 border-0 bg-transparent px-0 text-left text-white;
-}
-
-.trigger:focus-visible {
-  @apply rounded-xl outline-2 outline-offset-4 outline-white;
 }
 
 .titleText {
@@ -93,7 +89,7 @@
 }
 
 @media (hover: hover) {
-  .trigger:hover .chevron {
+  .card:hover .chevron {
     @apply bg-white/35;
   }
 }

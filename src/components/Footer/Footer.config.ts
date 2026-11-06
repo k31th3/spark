@@ -20,7 +20,7 @@ export const FOOTER_BACKDROP: string | undefined = FooterBackdrop
    COMPANY NAME
 ========================================================= */
 
-export const COMPANY_NAME = 'The Spark Info-Tech Enterprise'
+export const COMPANY_NAME = 'Spark Info-Tech Enterprise'
 
 /* =========================================================
    CTA

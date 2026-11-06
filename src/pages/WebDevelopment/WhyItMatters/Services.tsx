@@ -98,7 +98,7 @@ function Services()
             
             {/* Background */}
             <div className="absolute inset-0 -z-10 opacity-40 bg-[radial-gradient(#e9b8ff_1px,transparent_1px)] 
-                [background-size:18px_18px]"/>
+                bg-size-[18px_18px]"/>
 
             {/* Center Image */}
             <Image

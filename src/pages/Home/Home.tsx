@@ -2,7 +2,7 @@
 
 import { Wrapper, StructuredData, HomeHero, Projects } from "@/components";
 import type { Project } from "@/components";
-import { aboutUsSchema } from "@/config";
+import { aboutUsSchema, contact } from "@/config";
 
 import HomeAbout from "@/components/HomeAbout/HomeAbout";
 import HomeServices from "@/components/HomeServices/HomeServices";
@@ -16,7 +16,7 @@ import type { HomeFAQItem } from "@/components/HomeFaq/HomeFaq.types";
 
 import {
 	SitAnimation, Cahel, Logo, Hardware, Software, Security, Applications,
-	Finya, Ubas, Placeholder1, AboutVideo, TextBeforeGoogle, Human, WeKeepItSimple,
+	Finya, Ubas, QSystem, AboutVideo, TextBeforeGoogle, Human, WeKeepItSimple,
 	MoreThanMaintenance, FaqImg
 } from "@/assets";
 
@@ -49,10 +49,10 @@ const HERO = {
 ========================================================= */
 
 const PROJECTS: Project[] = [
-	{ id: "work-1", title: "Cahel", category: "Web design", year: "2026", image: Cahel, href: WORK_PAGE },
-	{ id: "work-2", title: "Finya", category: "App development", year: "2026", image: Finya, href: WORK_PAGE },
-	{ id: "work-3", title: "Ubas", category: "Branding", year: "2025", image: Ubas, href: WORK_PAGE },
-	{ id: "work-4", title: "Queuing System", category: "Web design", year: "2025", image: Placeholder1, href: WORK_PAGE },
+	{ id: "work-1", title: "Cahel", category: "Web design", year: "2026", image: Cahel, href: "/contact-us" },
+	{ id: "work-2", title: "Finya", category: "App development", year: "2026", image: Finya, href:"/contact-us" },
+	{ id: "work-3", title: "Ubas", category: "Branding", year: "2025", image: Ubas, href: "/contact-us" },
+	{ id: "work-4", title: "QSystem", category: "Web design", year: "2025", image: QSystem, href: "/contact-us" },
 ];
 
 /* =========================================================

@@ -19,7 +19,7 @@ function Hero() {
                 
                 <div
                     className="
-                        absolute inset-x-0 -top-40 -z-[10]
+                        absolute inset-x-0 -top-40 -z-10
                         h-[580px] w-full
                         bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.85)_70%,transparent_90%)]
                         sm:bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.45)_58%,transparent_80%)]

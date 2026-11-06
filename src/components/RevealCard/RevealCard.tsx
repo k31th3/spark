@@ -1,9 +1,17 @@
 import { useRef, useState } from 'react'
+import type { KeyboardEvent, MouseEvent } from 'react'
 import { cn } from '@/lib/utils'
 import ProgressiveBlur from '@/components/HomeWhyUs/ProgressiveBlur'
 import RevealStory from './RevealStory'
 import styles from './RevealCard.module.css'
 import type { RevealCardProps } from './RevealCard.types'
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+const isInsideCard = (event: { currentTarget: Element; target: EventTarget }) =>
+  event.currentTarget.contains(event.target as Node)
 
 /* =========================================================
    REVEAL CARD
@@ -19,18 +27,37 @@ function RevealCard({
   onOpenChange,
   className = '',
 }: RevealCardProps) {
-  const zoneRef = useRef<HTMLDivElement>(null)
-  const triggerRef = useRef<HTMLButtonElement>(null)
-
-  /* The story's veil takes over the card's blur while it is open */
+  const cardRef = useRef<HTMLElement>(null)
 
   const [covered, setCovered] = useState(false)
 
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    if (!isInsideCard(event)) return
+
+    onOpenChange(true)
+  }
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return
+    if (!isInsideCard(event)) return
+
+    event.preventDefault()
+    onOpenChange(true)
+  }
+
   return (
     <article
+      ref={cardRef}
+      role="button"
+      tabIndex={0}
+      aria-haspopup="dialog"
+      aria-expanded={open}
+      aria-label={title}
       data-open={open}
       data-covered={covered}
       data-tone={tone}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
       className={cn(styles.card, !image && styles.plain, className)}
     >
       {image && (
@@ -44,47 +71,36 @@ function RevealCard({
         />
       )}
 
-      {/* ===== PANEL: THE 9REM BLUR ZONE AT THE BOTTOM ===== */}
-
-      <div ref={zoneRef} className={styles.panel}>
+      <div className={styles.panel}>
 
         <div className={styles.blurHost}>
           <ProgressiveBlur />
         </div>
 
         <div className={styles.content}>
-          <h3 className={styles.heading}>
-            <button
-              ref={triggerRef}
-              type="button"
-              aria-haspopup="dialog"
-              aria-expanded={open}
-              onClick={() => onOpenChange(true)}
-              className={styles.trigger}
-            >
-              <span className={styles.titleText}>
-                {title}
-              </span>
+          <div className={styles.heading}>
+            <span className={styles.titleText}>
+              {title}
+            </span>
 
-              <span
-                aria-hidden="true"
-                className={styles.chevron}
+            <span
+              aria-hidden="true"
+              className={styles.chevron}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="18"
-                  height="18"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M6 15l6-6 6 6" />
-                </svg>
-              </span>
-            </button>
-          </h3>
+                <path d="M6 15l6-6 6 6" />
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -94,8 +110,9 @@ function RevealCard({
         title={title}
         lines={lines}
         tone={tone}
-        originRef={zoneRef}
-        returnFocusRef={triggerRef}
+        image={image}
+        originRef={cardRef}
+        returnFocusRef={cardRef}
         onCoveredChange={setCovered}
       />
     </article>

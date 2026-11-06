@@ -13,6 +13,7 @@ import { useLenis } from 'lenis/react'
 import { useScrollLock } from '@/hooks/useScrollLock'
 import { cn } from '@/lib/utils'
 
+import ProgressiveBlur from '@/components/HomeWhyUs/ProgressiveBlur'
 import type { RevealCardLine } from '@/components/RevealCard/RevealCard.types'
 
 import styles from './RevealStory.module.css'
@@ -29,14 +30,14 @@ const WORD_MS = 140
 const HOLD_BASE = 800
 const HOLD_PER_WORD = 35
 
+
+const UNCOVER_LEAD_MS = 200
+
 /* =========================================================
-   CLIP SHAPES
+   CARD SHAPE
 ========================================================= */
 
-const CLIP_OPEN = 'inset(0px 0px 0px 0px round 0px 0px 0px 0px)'
-
-const clipClosed = (zone: Zone) =>
-  `inset(${zone.top}px ${zone.right}px ${zone.bottom}px ${zone.left}px round 0px 0px 1rem 1rem)`
+const CARD_RADIUS = '1rem'
 
 /* =========================================================
    TYPES
@@ -47,6 +48,11 @@ type Zone = {
   right: number
   bottom: number
   left: number
+}
+
+type Origin = {
+  zone: Zone
+  photo: string
 }
 
 type Word = { text: string; i: number }
@@ -64,6 +70,8 @@ type RevealStoryProps = {
   title: string
   lines: RevealCardLine[]
   tone: 'violet' | 'sunset'
+
+  image?: string
 
   originRef: RefObject<HTMLElement | null>
 
@@ -112,6 +120,7 @@ function RevealStory({
   title,
   lines,
   tone,
+  image,
   originRef,
   returnFocusRef,
   onCoveredChange,
@@ -126,7 +135,10 @@ function RevealStory({
   const [playing, setPlaying] = useState(false)
   const [index, setIndex] = useState(0)
   const [exiting, setExiting] = useState(false)
-  const [zone, setZone] = useState<Zone>({ top: 0, right: 0, bottom: 0, left: 0 })
+  const [origin, setOrigin] = useState<Origin>({
+    zone: { top: 0, right: 0, bottom: 0, left: 0 },
+    photo: 'none',
+  })
 
   const slides = useMemo(() => buildSlides(lines), [lines])
   const last = slides.length - 1
@@ -143,7 +155,7 @@ function RevealStory({
 
   const close = useCallback(() => onOpenChangeRef.current(false), [])
 
-  const measure = useCallback((): Zone | null => {
+  const measure = useCallback((): Origin | null => {
     const element = originRef.current
 
     if (!element) return null
@@ -151,16 +163,35 @@ function RevealStory({
     const rect = element.getBoundingClientRect()
     const root = document.documentElement
 
-    return {
+    const vw = root.clientWidth
+    const vh = root.clientHeight
+
+    const zone: Zone = {
       top: rect.top,
       left: rect.left,
-      right: root.clientWidth - rect.right,
-      bottom: root.clientHeight - rect.bottom,
+      right: vw - rect.right,
+      bottom: vh - rect.bottom,
     }
-  }, [originRef])
+
+    const dx = rect.left + rect.width / 2 - vw / 2
+    const dy = rect.top + rect.height / 2 - vh / 2
+
+    const img = element.querySelector('img')
+
+    let scale = `scale(${rect.width / vw}, ${rect.height / vh})`
+
+    if (image && img && img.naturalWidth && img.naturalHeight) {
+      const cover = (w: number, h: number) =>
+        Math.max(w / img.naturalWidth, h / img.naturalHeight)
+
+      scale = `scale(${cover(rect.width, rect.height) / cover(vw, vh)})`
+    }
+
+    return { zone, photo: `translate(${dx}px, ${dy}px) ${scale}` }
+  }, [originRef, image])
 
   /* =======================================================
-     OPEN
+     OPEN / CLOSE
   ======================================================= */
 
   useEffect(() => {
@@ -169,7 +200,7 @@ function RevealStory({
 
       if (!start) return
 
-      setZone(start)
+      setOrigin(start)
       setIndex(0)
       setExiting(false)
       setMounted(true)
@@ -217,13 +248,20 @@ function RevealStory({
 
     const end = measure()
 
-    if (end) setZone(end)
+    if (end) setOrigin(end)
 
     const shrink = window.setTimeout(() => setExpanded(false), TEXT_MS)
+
+    const uncover = window.setTimeout(
+      () => onCoveredChangeRef.current?.(false),
+      TEXT_MS + EXPAND_MS - UNCOVER_LEAD_MS
+    )
+
     const done = window.setTimeout(finish, TEXT_MS + EXPAND_MS)
 
     return () => {
       window.clearTimeout(shrink)
+      window.clearTimeout(uncover)
       window.clearTimeout(done)
     }
   }, [open, measure, returnFocusRef])
@@ -345,8 +383,24 @@ function RevealStory({
 
   const slide = slides[index]
 
-  const washStyle: CSSProperties = {
-    clipPath: expanded ? CLIP_OPEN : clipClosed(zone),
+  const { zone } = origin
+
+  const veilStyle = {
+    '--veil-top': expanded ? '0px' : `${zone.top}px`,
+    '--veil-right': expanded ? '0px' : `${zone.right}px`,
+    '--veil-bottom': expanded ? '0px' : `${zone.bottom}px`,
+    '--veil-left': expanded ? '0px' : `${zone.left}px`,
+    '--veil-radius': expanded ? '0px' : CARD_RADIUS,
+  } as CSSProperties
+
+  const photoStyle: CSSProperties = {
+    transform: expanded ? 'none' : origin.photo,
+  }
+
+  const zoneStyle: CSSProperties = {
+    transform: expanded
+      ? 'translateY(0px)'
+      : `translateY(-${origin.zone.bottom}px)`,
   }
 
   return createPortal(
@@ -357,13 +411,38 @@ function RevealStory({
       style={{ '--expand-ms': `${EXPAND_MS}ms` } as CSSProperties}
     >
 
-      {/* ===== WASH: BLUR + TINT, REVEALED BY CLIP-PATH ===== */}
+      {/* ===== VEIL: THE CARD ITSELF, GROWING TO FILL THE SCREEN ===== */}
 
       <div
         aria-hidden="true"
-        className={styles.wash}
-        style={washStyle}
-      />
+        className={styles.veil}
+        style={veilStyle}
+      >
+        <div
+          className={cn(styles.photo, !image && styles.plain)}
+          style={photoStyle}
+        >
+          {image && (
+            <img
+              src={image}
+              alt=""
+              draggable={false}
+              decoding="async"
+              className={styles.image}
+            />
+          )}
+        </div>
+
+        {/* ===== THE CARD'S BLUR BAND ===== */}
+
+        <div className={styles.zone} style={zoneStyle}>
+          <ProgressiveBlur />
+        </div>
+
+        {/* ===== FULL-SCREEN BLUR + TINT, FADING IN AS IT EXPANDS ===== */}
+
+        <div className={styles.plate} />
+      </div>
 
       {/* ===== STORY ===== */}
 
@@ -419,7 +498,7 @@ function RevealStory({
               onClick={handleSkip}
               className={styles.skip}
             >
-              Skip
+              Close
             </button>
           </div>
         </div>

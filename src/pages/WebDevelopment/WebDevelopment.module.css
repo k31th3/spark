@@ -1,0 +1,246 @@
+@reference "../../index.css";
+
+/* =========================================================
+   SHARED
+========================================================= */
+
+.container {
+  @apply w-full max-w-7xl;
+}
+
+.section {
+  @apply relative bg-background;
+
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.eyebrow {
+  @apply text-sm text-muted;
+}
+
+.h2 {
+  @apply m-0 text-balance font-medium text-foreground;
+
+  font-size: clamp(2rem, 4.4vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.lead {
+  @apply m-0 text-base leading-relaxed text-muted sm:text-lg;
+}
+
+.buttons {
+  @apply flex flex-wrap items-center gap-3;
+}
+
+.tile {
+  @apply grid size-13 shrink-0 place-items-center rounded-xl bg-[#FDF2FF] text-[#D129DD];
+}
+
+/* =========================================================
+   MEDIA
+========================================================= */
+
+.mediaImage {
+  @apply block h-auto w-full select-none;
+}
+
+.mediaPlaceholder {
+  @apply w-full bg-neutral-100;
+
+  aspect-ratio: 6 / 7;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  @apply relative bg-background;
+
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.meta {
+  @apply flex items-center justify-between gap-6;
+}
+
+.scrollButton {
+  @apply hidden cursor-pointer items-center gap-2 sm:inline-flex;
+}
+
+.scrollLabel {
+  @apply text-sm text-muted transition-colors duration-200;
+}
+
+.scrollButton:hover .scrollLabel {
+  @apply text-foreground;
+}
+
+.scrollArrow {
+  @apply text-muted transition-transform duration-200;
+}
+
+.scrollButton:hover .scrollArrow {
+  @apply translate-y-0.5 text-foreground;
+}
+
+.title {
+  @apply m-0 mt-10 text-balance text-center font-medium text-foreground sm:mt-14;
+
+  font-size: clamp(2.75rem, 9.6vw, 8.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.subtitle {
+  @apply mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-muted sm:mt-8 sm:text-lg;
+}
+
+.heroButtons {
+  @apply mt-8 justify-center sm:mt-10;
+}
+
+.heroImage {
+  @apply mx-auto mt-12 w-full max-w-4xl sm:mt-16;
+}
+
+.features {
+  @apply m-0 mt-14 grid list-none grid-cols-2 gap-x-6 gap-y-10 p-0 sm:mt-20 lg:grid-cols-4;
+}
+
+.feature {
+  @apply min-w-0;
+}
+
+.featureBody {
+  @apply flex flex-col items-center gap-2 text-center;
+}
+
+.featureBody .tile {
+  @apply mb-2;
+}
+
+.featureTitle {
+  @apply m-0 text-base font-medium text-foreground;
+}
+
+.featureText {
+  @apply m-0 max-w-[14rem] text-sm leading-relaxed text-muted;
+}
+
+/* =========================================================
+   WEB SOLUTIONS
+========================================================= */
+
+.solutions {
+  @apply grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16;
+}
+
+.solutionsText {
+  @apply flex flex-col items-start gap-6 lg:sticky lg:top-28;
+}
+
+.cards {
+  @apply m-0 flex list-none flex-col gap-4 p-0;
+}
+
+.cardSlot {
+  @apply sticky;
+
+  top: 6.5rem;
+}
+
+.card {
+  @apply relative flex flex-col rounded-2xl bg-[#121212] p-6 text-white;
+
+  aspect-ratio: 10 / 7;
+  min-height: 15rem;
+  transform: scale(max(0.88, calc(1 - var(--depth, 0) * 0.04)));
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+.card::after {
+  content: '';
+
+  @apply pointer-events-none absolute inset-0 rounded-[inherit] bg-white;
+
+  opacity: min(calc(var(--depth, 0) * 0.2), 0.5);
+}
+
+.cardTop {
+  @apply flex items-center justify-between;
+}
+
+.cardIndex {
+  @apply text-xs text-white/60;
+}
+
+.cardDot {
+  @apply size-2 rounded-full bg-[#D129DD];
+}
+
+.cardTile {
+  @apply mt-5 grid size-13 shrink-0 place-items-center rounded-xl bg-[#FDF2FF] text-[#D129DD];
+}
+
+.cardTitle {
+  @apply m-0 mt-8 text-2xl font-medium text-white sm:text-3xl;
+
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.cardText {
+  @apply m-0 mt-3 max-w-sm text-sm leading-relaxed text-white/60;
+}
+
+/* =========================================================
+   WHY IT MATTERS
+========================================================= */
+
+.whyGrid {
+  @apply grid gap-10 md:grid-cols-2 md:items-center md:gap-16;
+}
+
+.whyPanel {
+  @apply relative w-full overflow-hidden rounded-3xl bg-neutral-100;
+}
+
+.whyText {
+  @apply flex flex-col items-start gap-6;
+}
+
+.points {
+  @apply m-0 flex list-none flex-col gap-3 p-0;
+}
+
+.point {
+  @apply flex items-center gap-3 text-sm text-foreground sm:text-base;
+}
+
+.check {
+  @apply grid size-6.5 shrink-0 place-items-center rounded-lg bg-green-50 text-green-500;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollLabel,
+  .scrollArrow {
+    transition: none;
+  }
+
+  .card {
+    transform: none;
+    will-change: auto;
+  }
+
+  .card::after {
+    display: none;
+  }
+}
