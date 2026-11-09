@@ -1,74 +1,74 @@
-import { Grid, ProgressIndicator, 
-    Text, Icon } from "@/components";
-
-import { RiNumber1, RiNumber2, 
-    RiNumber3, RiNumber4, RiNumber5 } from "react-icons/ri";
+import { LuServer, LuHeadphones, LuShieldCheck, LuCloud, LuCompass } from "react-icons/lu";
+import { Text, Icon, Section, Wrapper, Reveal } from "@/components";
+import { LinkButton, SECTION, CONTAINER, SECTION_TITLE, ITEM_TITLE } from "../Shared";
 
 const services = [
-    {
-        title: "Managed IT Services",
-        description: "We manage your IT operations so you can focus on growing your business.",
-        icon: RiNumber1
-    },
-    {
-        title: "IT Support & Helpdesk",
-        description: "Fast, friendly, and reliable support for your teams anytime, anywhere.",
-        icon: RiNumber2
-    },
-    {
-        title: "Cybersecurity",
-        description: "Protect your systems, data, and users with multi-layered security solutions.",
-        icon: RiNumber3
-    },
-    {
-        title: "Cloud Solutions",
-        description: "Move, manage, and optimize your workloads in the cloud with confidence.",
-        icon: RiNumber4
-    },
-    {
-        title: "IT Consulting",
-        description: "Strategic guidance to align technology with your business goals.",
-        icon: RiNumber5
-    }
+    { title: "Managed IT Services", icon: LuServer, wide: false,
+      href: "/support-and-maintenance",
+      description: "We manage your IT operations so you can focus on growing your business." },
+    { title: "IT Support & Helpdesk", icon: LuHeadphones, wide: false,
+      href: "/support-and-maintenance",
+      description: "Fast, friendly, and reliable support for your teams anytime, anywhere." },
+    { title: "Cybersecurity", icon: LuShieldCheck, wide: false,
+      href: "/services?tab=2",
+      description: "Protect your systems, data, and users with multi-layered security solutions." },
+    { title: "Cloud Solutions", icon: LuCloud, wide: true,
+      href: "/cloud-solutions",
+      description: "Move, manage, and optimize your workloads in the cloud with confidence." },
+    { title: "IT Consulting", icon: LuCompass, wide: true,
+      href: "/contact-us",
+      description: "Strategic guidance to align technology with your business goals." }
 ];
 
-function OurCoreItServices()
-{
+function OurCoreItServices() {
     return (
-        <Grid cols={{ base: 12 }} gap={8}>
-            <Grid.Item span={{ base: 12, lg: 6, md: 10 }}>
-                <Text variant="caption" color="primary" className="uppercase font-bold">
-                    our core it services
-                </Text>
-                <Grid.VStack gap={2}>
-                    <Text variant="h2" className="font-bold text-xl sm:text-2xl lg:text-2xl tracking-tight">
-                        End-to-end IT solutions for <span className="text-gradient">every business need</span>. 
-                    </Text>
-                    <ProgressIndicator size="sm" color="primary" />
-                </Grid.VStack>
-            </Grid.Item>
+        <Section id="core-services" spacing="none" className={SECTION}>
+            <Wrapper.Body className={CONTAINER}>
+                <Reveal variant="slide">
+                    <div className="relative isolate">
 
-            <Grid.Item span={{ base: 12 }}>
-                <Grid cols={{ base: 12 }} gap={8}>
-                    {services.map((service, index) => {
-                        return (
-                            <Grid.Item span={{ base: 6, lg: 3, md: 4 }} key={`ourCoreItServices${index}`}>
-                                <Grid.VStack gap={2}>
-                                    <Grid.HStack gap={2} align="center">
-                                        <Icon icon={service.icon} size="xs" avatar={true} />
-                                        <Text variant="h6" as="p">{service.title}</Text>
-                                    </Grid.HStack>
-                                    <Text variant="label" className="block leading-4">
-                                        {service.description}
-                                    </Text>
-                                </Grid.VStack>
-                            </Grid.Item>
-                        );
-                    })}
-                </Grid>
-            </Grid.Item>    
-        </Grid>
-    )
+                        <div
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-x-0 top-1/4 -z-10 mx-auto h-[28rem] max-w-5xl blur-3xl
+                                bg-[radial-gradient(ellipse_at_30%_70%,rgba(209,41,221,0.28),transparent_55%),radial-gradient(ellipse_at_65%_20%,rgba(255,143,39,0.20),transparent_55%)]" />
+
+                        <div className="mb-12 vstack items-center gap-3 text-center sm:mb-16">
+                            <h2 className={SECTION_TITLE}>Our Core IT Services</h2>
+                            <Text variant="bodySmall" color="muted" className="max-w-md">
+                                End-to-end IT solutions for every business need.
+                            </Text>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-6">
+                            {services.map(({ title, description, icon, href, wide }) => (
+                                <article
+                                    key={title}
+                                    className={`vstack min-h-[270px] justify-between gap-8 rounded-3xl border border-gray-100 bg-white p-6
+                                        shadow-[0_10px_40px_rgba(80,40,120,0.08)]
+                                        ${wide ? "md:col-span-3" : "md:col-span-2"}`}>
+                                    <div className="vstack gap-5">
+                                       
+                                        <Icon
+                                            icon={icon}
+                                            variant="gradient"
+                                            size="lg"
+                                            style={{ fill: "none", stroke: "url(#iconGradient)" }} />
+                                        <h3 className={ITEM_TITLE}>{title}</h3>
+                                        <Text variant="bodySmall" color="muted">{description}</Text>
+                                    </div>
+                                    <div>
+                                        <LinkButton to={href} variant="dark" size="sm" glow roll>
+                                            Learn More
+                                        </LinkButton>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </Reveal>
+            </Wrapper.Body>
+        </Section>
+    );
 }
 
 export default OurCoreItServices;

@@ -1,93 +1,59 @@
-import { Grid, ProgressIndicator, 
-    Text, Image, Icon } from "@/components";
-
-import { HeroBgWebp } from "@/assets/ItServices";
-import HelpButton from  "./HelpButton";
-
-
+import { Image, Text, Section, Wrapper } from "@/components";
+import { HeroGraphics } from "@/assets/ItServices"; // TODO: swap for the circuit-board photo from Figma
+import { FiArrowDown } from "react-icons/fi";
 import { LuActivity, LuZap, LuShieldCheck } from "react-icons/lu";
 
+import { SectionLabel, IconTile, HelpButton, SECTION_FIRST, CONTAINER } from "../Shared";
+
 const features = [
-    {
-        title: "Proactive",
-        subtitle: "Monitoring",
-        icon: LuActivity
-    },
-    {
-        title: "Fast",
-        subtitle: "Response",
-        icon: LuZap
-    },
-    {
-        title: "Secure by",
-        subtitle: "Design",
-        icon: LuShieldCheck
-    }
+    { title: "Proactive Monitoring", text: "We catch issues before they slow your team down.", icon: LuActivity },
+    { title: "Fast Response", text: "Real people on your ticket, fast.", icon: LuZap },
+    { title: "Secure by Design", text: "Security built into every system we run.", icon: LuShieldCheck }
 ];
 
-function Hero()
-{
+function Hero() {
     return (
-        <Grid cols={{ base: 12 }}>
+        <Section spacing="none" className={SECTION_FIRST}>
+<Wrapper.Body className={CONTAINER}>
+<div className="vstack items-center gap-8">
 
-            <Grid.Item span={{ base: 12 }}>
-                <Image
-                    src={HeroBgWebp}
-                    alt="Hero background"
-                    loading="eager"
-                    fetchPriority="high"
-                    className="absolute -top-40 h-[580px] left-0 w-full object-cover -z-10 rounded-bl-[100%]" />
+            <div className="flex w-full items-center justify-between">
+                <SectionLabel>Services</SectionLabel>
+                <a href="#core-services" className="inline-flex items-center gap-1 text-[11px] text-muted">
+                    (Scroll down) <FiArrowDown />
+                </a>
+            </div>
 
-                <div
-                    className="
-                        absolute inset-x-0 -top-40 -z-[10]
-                        h-[580px] w-full
-                        bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.85)_70%,transparent_90%)]
-                        sm:bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.45)_58%,transparent_80%)]
-                    "/>
-
-                <Text variant="h6" as="p" color="primary" className="uppercase mb-6 font-bold">
-                    it services
-                    <ProgressIndicator size="sm" />
+            <div className="vstack items-center gap-5 text-center">
+                <h1 className="text-5xl font-medium leading-[1.05] sm:text-7xl lg:text-8xl tracking-[-0.035em] text-foreground">Info-Tech Services</h1>
+                <Text variant="bodySmall" color="muted" className="max-w-xl sm:text-base">
+                    Reliable, secure, and scalable IT services that keep your business
+                    running smoothly, so you can focus on what matters.
                 </Text>
+                <HelpButton className="justify-center" primary="brand" />
+            </div>
 
-                <Grid.VStack gap={4}>
-                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
-                        Technology That <span className="text-primary">Works</span>. <br />
-                        <span className="text-gradient">Support</span> That <span className="text-gradient">Cares</span>.
-                    </Text>
-                    <Text variant="bodySmall" className="mb-4 block leading-6 max-w-[400px]">                   
-                        Reliable, secure, and scalable IT services that keep your
-                        business running smoothly-so you can focus on what matters.
-                    </Text>
-                    <HelpButton />
-                </Grid.VStack>
-            </Grid.Item>
+            <Image
+                src={HeroGraphics}
+                alt="Technician installing a network card into a server rack"
+                loading="eager"
+                fetchPriority="high"
+                wrapperClassName="w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-3xl"
+                className="h-full w-full object-cover" />
 
-            <Grid.Item span={{ base: 12 }}>
-                <Grid.HStack gap={2} align="center">
-                    {features.map(({ title, subtitle, icon }, index) => (
-                        <Grid.HStack key={title} gap={8}>
-                            
-                            <Grid.HStack gap={4} align="center">
-                                
-                                <Icon icon={icon} variant="pink" />
-                                <Text variant="label">
-                                    {title} <br /> <Text variant="label" className="font-medium">{subtitle}</Text>
-                                </Text>
-
-                            </Grid.HStack>
-
-                            {index < features.length - 1 && (
-                                <div className="h-12 w-[2px] bg-gray-200" />
-                            )}
-                        </Grid.HStack>
-                    ))}
-                </Grid.HStack>
-            </Grid.Item>
-
-        </Grid>
-    )
+            <ul className="grid w-full grid-cols-1 gap-8 pt-2 sm:grid-cols-3">
+                {features.map(({ title, text, icon }) => (
+                    <li key={title} className="vstack items-center gap-2 text-center">
+                        <IconTile icon={icon} />
+                        <h3 className="text-2xl font-medium tracking-[-0.02em] text-foreground">{title}</h3>
+                        <Text variant="body" color="muted" className="max-w-[280px]">{text}</Text>
+                    </li>
+                ))}
+            </ul>
+        </div>
+</Wrapper.Body>
+</Section>
+    );
 }
 
 export default Hero;

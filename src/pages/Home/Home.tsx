@@ -2,7 +2,7 @@
 
 import { Wrapper, StructuredData, HomeHero, Projects } from "@/components";
 import type { Project } from "@/components";
-import { aboutUsSchema, contact } from "@/config";
+import { aboutUsSchema } from "@/config";
 
 import HomeAbout from "@/components/HomeAbout/HomeAbout";
 import HomeServices from "@/components/HomeServices/HomeServices";
@@ -78,7 +78,7 @@ const ABOUT = {
 			"A crazy idea.",
 			"A conversation.",
 			"Confidence.",
-			"Friendships...",
+			"Friendships.",
 			"Possibilities.",
 		],
 	],

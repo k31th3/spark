@@ -1,31 +1,18 @@
 "use client";
 
-import { Wrapper, Grid } from "@/components";
-import { Hero, WhySparkItServices, OurCoreItServices,
-    Productivity, OurContent } from  "./";
+import { Wrapper } from "@/components";
+import { Hero, WhySparkItServices, OurCoreItServices, Productivity, OurContent } from "./";
 
 function ItServices() {
     return (
         <Wrapper title="IT Services" path="it-services">
-
-            <Wrapper.FullBleed className="relative">
-
-                <Wrapper.Body>
-                    <Grid.VStack gap={12}>
-
-                        <Hero />
-                        {/*<Industries />*/}
-                        <WhySparkItServices />
-                        <OurCoreItServices />
-                        <Productivity />
-                        <OurContent />
-
-                    </Grid.VStack>
-                </Wrapper.Body>
-
-            </Wrapper.FullBleed>
+            <Hero />
+            <OurCoreItServices />
+            <WhySparkItServices />
+            <Productivity />
+            <OurContent />
         </Wrapper>
-    )
+    );
 }
 
 export default ItServices;

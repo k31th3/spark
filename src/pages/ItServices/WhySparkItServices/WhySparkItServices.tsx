@@ -1,58 +1,49 @@
-import { LuBadgeCheck } from "react-icons/lu";
+import { LuCheck } from "react-icons/lu";
+import { Image, Text, Section, Wrapper, Reveal } from "@/components";
+import { WhySpark } from "@/assets/ItServices";
+import { SectionLabel, IconTile, SECTION, CONTAINER, SECTION_TITLE } from "@/pages/ItServices/Shared";
 
-import { Grid, ProgressIndicator, 
-    Text, Icon } from "@/components";
-
-import Services from  "./Services";
-
-const Descriptions = [
+const points = [
     "Reduce downtime and IT disruptions",
     "Strengthen security and data protection",
     "Optimize performance and productivity",
-    "Access expert support when you need lit"
+    "Access expert support when you need it"
 ];
 
-function WhySparkItServices()
-{
+function WhySparkItServices() {
     return (
-        <Grid cols={{ base: 12 }} gap={8}>
-            <Grid.Item span={{ base: 12, lg: 6, md: 6 }}>
-                <Grid.HStack gap={2} className="mb-4">
-                    <Text variant="caption" color="primary" className="uppercase font-bold">
-                        why spark
-                    </Text>
-                    <ProgressIndicator size="xs" color="primary" />
-                </Grid.HStack>
+        <Section spacing="none" className={SECTION}>
+<Wrapper.Body className={CONTAINER}>
+<Reveal variant="slide">
+<div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16">
 
-                <Grid.VStack gap={4}>
-                    <Text variant="h2" className="font-bold text-2xl tracking-tight sm:text-3xl lg:text-3xl">
-                        We handle the technology behind your <span className="text-gradient">success</span>. 
-                    </Text>
-                    <Text variant="bodySmall" className="block leading-6 max-w-[400px]">                   
-                        From day-to-day IT operations to complex infrastructure 
-                        needs, we deliver solutions that are secure, efficient, 
-                        and built to scale with your business.
-                    </Text>
+            <Image
+                src={WhySpark}
+                alt="Team working together on a laptop"
+                wrapperClassName="w-full aspect-[4/5] overflow-hidden rounded-3xl"
+                className="h-full w-full object-cover" />
 
-                    <div>
-                    {Descriptions.map(
-                        (item, index) => (
-                            <Grid.HStack gap={2} align="center" key={`descriptions${index}`}>
-                                <Icon icon={LuBadgeCheck} size="sm" variant="success" />
-                                <Text variant="bodySmall" className="block leading-6"> 
-                                    {item}
-                                </Text>
-                            </Grid.HStack>
-                        )
-                    )}
-                    </div>
-                </Grid.VStack>
-            </Grid.Item>
-            <Grid.Item span={{ base: 12, lg: 6, md: 6 }} className="relative p-20">
-                <Services />
-            </Grid.Item>
-        </Grid>
-    )
+            <div className="vstack gap-5">
+                <SectionLabel>Why Spark</SectionLabel>
+                <h2 className={SECTION_TITLE}>We handle the technology behind your success.</h2>
+                <Text variant="body" color="muted" className="max-w-md">
+                    From day-to-day IT operations to complex infrastructure needs, we deliver
+                    solutions that are secure, efficient, and built to scale with your business.
+                </Text>
+                <ul className="vstack gap-3 pt-2">
+                    {points.map(point => (
+                        <li key={point} className="flex items-center gap-3">
+                            <IconTile icon={LuCheck} tone="green" className="h-8 w-8 rounded-lg" />
+                            <Text variant="bodySmall">{point}</Text>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+</Reveal>
+</Wrapper.Body>
+</Section>
+    );
 }
 
 export default WhySparkItServices;

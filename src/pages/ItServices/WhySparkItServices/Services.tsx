@@ -1,6 +1,6 @@
 
 import { Grid, Icon, Image } from "@/components";
-import { LateNightTechCollabWebp } from "@/assets/ItServices";
+import { WhySpark } from "@/assets/ItServices";
 
 import {
     LuServer,
@@ -93,7 +93,7 @@ function Services()
             
             {/* Background */}
             <div className="absolute inset-0 -z-10 opacity-40 bg-[radial-gradient(#e9b8ff_1px,transparent_1px)] 
-                [background-size:18px_18px]"/>
+                bg-size-[18px_18px]"/>
 
             {/* Animated White Circle */}
             <motion.div
@@ -131,7 +131,7 @@ function Services()
                     bg-pink-100
                 ">
                 <Image
-                    src={LateNightTechCollabWebp}
+                    src={WhySpark}
                     alt="Late Night Tech Collab"
                     wrapperClassName="h-full w-full"
                     className=" block h-full w-full object-cover object-center "/>
