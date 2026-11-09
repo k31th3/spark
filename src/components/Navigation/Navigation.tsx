@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import style from "./Navigation.module.css";
 
 import { tabs } from "./tabs";
+import type { Tab } from "./tabs";
+import NavDropdown from "./NavDropdown";
 import { Logo } from "@/assets";
 import { Roll } from "@/components/Roll";
 import { scrollToTop } from "@/utils";
@@ -41,7 +43,7 @@ function splitBrandName(name = "") {
 }
 
 /* =========================================================
-   ACTIVE SECTION (HOME ONLY)
+   ACTIVE SECTION
 ========================================================= */
 
 function useActiveSection(ids: string[], enabled: boolean) {
@@ -71,8 +73,6 @@ function useActiveSection(ids: string[], enabled: boolean) {
                     return;
                 }
 
-                /* Leaving the active section with nothing entering clears it */
-
                 setActive((current) =>
                     entries.some((e) => e.target.id === current)
                         ? null
@@ -100,6 +100,8 @@ export default function Navigation() {
 
     const scrolled = useScrolled(50);
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const [expandedId, setExpandedId] = useState<number | null>(null);
 
     const onHome = pathname === "/" || pathname === "/home";
     const activeSection = useActiveSection(
@@ -145,6 +147,44 @@ export default function Navigation() {
     };
 
     /* =======================================================
+       DESKTOP / DOCK LINK
+    ======================================================= */
+
+    const renderTab = (tab: Tab, placement: "down" | "up") => {
+        const { id, title, hash, children } = tab;
+
+        const isActive = activeSection === hash;
+        const childActive =
+            children?.some((child) => child.href === pathname) ?? false;
+
+        const link = (
+            <Link
+                key={id}
+                to={{ pathname: "/", hash: `#${hash}` }}
+                onClick={(event) => goTo(event, hash)}
+                aria-current={isActive ? "true" : undefined}
+                className={cn(
+                    style.link,
+                    (isActive || childActive) && style.linkActive
+                )}>
+                {title}
+            </Link>
+        );
+
+        if (!children?.length) return link;
+
+        return (
+            <NavDropdown
+                key={id}
+                trigger={link}
+                items={children}
+                label={`${title} pages`}
+                placement={placement}
+            />
+        );
+    };
+
+    /* =======================================================
        MOBILE MENU
     ======================================================= */
 
@@ -161,8 +201,6 @@ export default function Navigation() {
 
         return () => document.removeEventListener("keydown", onKeyDown);
     }, [menuOpen]);
-
-    /* Close when the viewport grows to desktop */
 
     useEffect(() => {
         const query = window.matchMedia(DESKTOP_QUERY);
@@ -194,56 +232,40 @@ export default function Navigation() {
 
                     {/* BRAND */}
 
-                        <Link
-                            to="/"
-                            data-roll
-                            onClick={goHome}
-                            className={style.brand}
-                            aria-label={`${site.companyName} | Homepage`}>
+                    <Link
+                        to="/"
+                        data-roll
+                        onClick={goHome}
+                        className={style.brand}
+                        aria-label={`${site.companyName} | Homepage`}>
 
-                            <img
-                                src={Logo}
-                                alt=""
-                                aria-hidden="true"
-                                draggable={false}
-                                className={style.brandLogo}
-                            />
+                        <img
+                            src={Logo}
+                            alt=""
+                            aria-hidden="true"
+                            draggable={false}
+                            className={style.brandLogo}
+                        />
 
-                            <span className={style.companyName}>
-                                <Roll>{brand.start}</Roll>
+                        <span className={style.companyName}>
+                            <Roll>{brand.start}</Roll>
 
-                                {brand.rest && (
-                                    <span aria-hidden="true" className={style.rest}>
-                                        <span className={style.restClip}>
-                                            <span className={style.restText}>
-                                                {brand.rest}
-                                            </span>
+                            {brand.rest && (
+                                <span aria-hidden="true" className={style.rest}>
+                                    <span className={style.restClip}>
+                                        <span className={style.restText}>
+                                            {brand.rest}
                                         </span>
                                     </span>
-                                )}
-                            </span>
-                        </Link>
+                                </span>
+                            )}
+                        </span>
+                    </Link>
 
                     {/* DESKTOP LINKS */}
 
                     <nav className={style.nav} aria-label="Primary navigation">
-                        {tabs.map(({ id, title, hash }) => {
-                            const isActive = activeSection === hash;
-
-                            return (
-                                <Link
-                                    key={id}
-                                    to={{ pathname: "/", hash: `#${hash}` }}
-                                    onClick={(event) => goTo(event, hash)}
-                                    aria-current={isActive ? "true" : undefined}
-                                    className={cn(
-                                        style.link,
-                                        isActive && style.linkActive
-                                    )}>
-                                    {title}
-                                </Link>
-                            );
-                        })}
+                        {tabs.map((tab) => renderTab(tab, "down"))}
                     </nav>
 
                     {/* ACTIONS */}
@@ -309,23 +331,7 @@ export default function Navigation() {
                 </Link>
 
                 <div className={style.dockLinks}>
-                    {tabs.map(({ id, title, hash }) => {
-                        const isActive = activeSection === hash;
-
-                        return (
-                            <Link
-                                key={id}
-                                to={{ pathname: "/", hash: `#${hash}` }}
-                                onClick={(event) => goTo(event, hash)}
-                                aria-current={isActive ? "true" : undefined}
-                                className={cn(
-                                    style.link,
-                                    isActive && style.linkActive
-                                )}>
-                                {title}
-                            </Link>
-                        );
-                    })}
+                    {tabs.map((tab) => renderTab(tab, "up"))}
                 </div>
 
                 <div className={style.dockCta}>
@@ -352,26 +358,115 @@ export default function Navigation() {
                     <nav
                         className={style.mobileNav}
                         aria-label="Mobile navigation">
-                        {tabs.map(({ id, title, hash }, index) => {
+                        {tabs.map(({ id, title, hash, children }, index) => {
                             const isActive = activeSection === hash;
+                            const childActive =
+                                children?.some((child) => child.href === pathname) ??
+                                false;
+
+                            const indexLabel = (
+                                <span className={style.mobileIndex}>
+                                    ({String(index + 1).padStart(3, "0")})
+                                </span>
+                            );
+
+                            /* ===== PLAIN LINK ===== */
+
+                            if (!children?.length) {
+                                return (
+                                    <Link
+                                        key={id}
+                                        to={{ pathname: "/", hash: `#${hash}` }}
+                                        onClick={(event) => goTo(event, hash)}
+                                        className={cn(
+                                            style.mobileLink,
+                                            isActive && style.mobileLinkActive
+                                        )}>
+                                        {indexLabel}
+
+                                        <span className={style.mobileTitle}>
+                                            {title}
+                                        </span>
+                                    </Link>
+                                );
+                            }
+
+                            /* ===== LINK + ACCORDION ===== */
+
+                            const expanded = expandedId === id;
+                            const subId = `${MOBILE_MENU_ID}-${id}-pages`;
 
                             return (
-                                <Link
-                                    key={id}
-                                    to={{ pathname: "/", hash: `#${hash}` }}
-                                    onClick={(event) => goTo(event, hash)}
-                                    className={cn(
-                                        style.mobileLink,
-                                        isActive && style.mobileLinkActive
-                                    )}>
-                                    <span className={style.mobileIndex}>
-                                        ({String(index + 1).padStart(3, "0")})
-                                    </span>
+                                <div key={id} className={style.mobileGroup}>
+                                    <div className={style.mobileRow}>
+                                        <Link
+                                            to={{ pathname: "/", hash: `#${hash}` }}
+                                            onClick={(event) => goTo(event, hash)}
+                                            className={cn(
+                                                style.mobileRowLink,
+                                                (isActive || childActive) &&
+                                                    style.mobileLinkActive
+                                            )}>
+                                            {indexLabel}
 
-                                    <span className={style.mobileTitle}>
-                                        {title}
-                                    </span>
-                                </Link>
+                                            <span className={style.mobileTitle}>
+                                                {title}
+                                            </span>
+                                        </Link>
+
+                                        <button
+                                            type="button"
+                                            className={cn(
+                                                style.mobileToggle,
+                                                expanded && style.mobileToggleOpen
+                                            )}
+                                            aria-expanded={expanded}
+                                            aria-controls={subId}
+                                            aria-label={`${
+                                                expanded ? "Collapse" : "Expand"
+                                            } ${title} pages`}
+                                            onClick={() =>
+                                                setExpandedId(expanded ? null : id)
+                                            }
+                                        />
+                                    </div>
+
+                                    <div
+                                        id={subId}
+                                        className={cn(
+                                            style.mobileSub,
+                                            expanded && style.mobileSubOpen
+                                        )}>
+                                        <div className={style.mobileSubInner}>
+                                            <ul role="list">
+                                                {children.map((child) => {
+                                                    const current =
+                                                        child.href === pathname;
+
+                                                    return (
+                                                        <li key={child.href}>
+                                                            <Link
+                                                                to={child.href}
+                                                                onClick={closeMenu}
+                                                                aria-current={
+                                                                    current
+                                                                        ? "page"
+                                                                        : undefined
+                                                                }
+                                                                className={cn(
+                                                                    style.mobileSubLink,
+                                                                    current &&
+                                                                        style.mobileSubLinkActive
+                                                                )}>
+                                                                {child.title}
+                                                            </Link>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             );
                         })}
                     </nav>

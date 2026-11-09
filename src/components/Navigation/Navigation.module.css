@@ -115,6 +115,87 @@
   @apply text-primary;
 }
 
+/* ===== DROPDOWN (SERVICES) ===== */
+
+.dropdown {
+  @apply relative inline-flex items-center gap-1;
+}
+
+.dropdownToggle {
+  @apply flex size-6 shrink-0 items-center justify-center rounded-full text-foreground transition-colors duration-300;
+}
+
+.dropdownToggle:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
+}
+
+@media (hover: hover) {
+  .dropdownToggle:hover {
+    @apply text-primary;
+  }
+}
+
+.dropdownChevron {
+  @apply size-3.5 transition-transform duration-300 ease-out;
+}
+
+.dropdownOpen .dropdownChevron {
+  @apply rotate-180;
+}
+
+.dropdownOpen .dropdownToggle {
+  @apply text-primary;
+}
+
+.dropdownPanel {
+  @apply invisible absolute left-1/2 z-50 -translate-x-1/2 scale-95 opacity-0;
+
+  transition:
+    translate 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease,
+    visibility 0s linear 300ms;
+}
+
+.dropdownPanelDown {
+  @apply top-full origin-top -translate-y-1 pt-4;
+}
+
+.dropdownPanelUp {
+  @apply bottom-full origin-bottom translate-y-1 pb-4;
+}
+
+.dropdownOpen .dropdownPanel {
+  @apply visible translate-y-0 scale-100 opacity-100;
+
+  transition:
+    translate 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease,
+    visibility 0s linear 0s;
+}
+
+.dropdownCard {
+  @apply min-w-60 rounded-2xl border border-neutral-200 bg-white/95 p-2 shadow-[0_12px_40px_-8px_rgb(0_0_0/0.25)] backdrop-blur-xl;
+}
+
+.dropdownList {
+  @apply flex flex-col;
+}
+
+.dropdownLink {
+  @apply block whitespace-nowrap rounded-xl px-4 py-2.5 text-sm text-foreground transition-colors duration-200;
+}
+
+.dropdownLink:hover,
+.dropdownLink:focus-visible {
+  @apply bg-neutral-100 text-primary;
+}
+
+.dropdownLinkActive {
+  @apply text-primary;
+}
+
 .actions {
   @apply flex items-center gap-4 justify-self-end;
 }
@@ -189,14 +270,16 @@
   @apply h-12 w-auto object-contain;
 }
 
+/* ===== MOBILE PANEL (SCROLLS WHEN THE ACCORDION IS EXPANDED ON SMALL PHONES) ===== */
+
 .mobilePanel {
-  @apply fixed inset-0 z-40 flex flex-col bg-white px-6 pb-10 pt-28 md:hidden;
+  @apply fixed inset-0 z-40 flex flex-col overflow-y-auto overscroll-contain bg-white px-6 pb-10 pt-28 md:hidden;
 
   animation: menuIn 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .mobileNav {
-  @apply flex flex-col;
+  @apply flex shrink-0 flex-col;
 }
 
 .mobileLink {
@@ -215,8 +298,87 @@
   @apply text-primary;
 }
 
+/* ===== MOBILE ACCORDION (SERVICES) ===== */
+
+.mobileGroup {
+  @apply border-b border-neutral-200;
+}
+
+.mobileRow {
+  @apply flex items-center gap-3;
+}
+
+.mobileRowLink {
+  @apply flex flex-1 items-baseline gap-4 py-5;
+}
+
+.mobileToggle {
+  @apply relative flex size-11 shrink-0 items-center justify-center rounded-full border border-neutral-300 transition-colors duration-300;
+}
+
+.mobileToggle::before,
+.mobileToggle::after {
+  content: '';
+
+  @apply absolute h-0.5 w-4 rounded-full bg-foreground transition-[rotate,background-color] duration-300 ease-out;
+}
+
+.mobileToggle::after {
+  @apply rotate-90;
+}
+
+.mobileToggleOpen {
+  @apply border-primary;
+}
+
+.mobileToggleOpen::before,
+.mobileToggleOpen::after {
+  @apply bg-primary;
+}
+
+.mobileToggleOpen::after {
+  @apply rotate-0;
+}
+
+.mobileSub {
+  @apply invisible grid grid-rows-[0fr];
+
+  transition:
+    grid-template-rows 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 400ms;
+}
+
+.mobileSubOpen {
+  @apply visible grid-rows-[1fr];
+
+  transition:
+    grid-template-rows 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
+}
+
+.mobileSubInner {
+  @apply min-h-0 overflow-hidden;
+}
+
+.mobileSubLink {
+  @apply block py-3 pl-[4.5rem] text-xl text-muted transition-colors duration-200;
+}
+
+.mobileSubLink:hover,
+.mobileSubLink:focus-visible {
+  @apply text-primary;
+}
+
+.mobileSubLinkActive {
+  @apply text-primary;
+}
+
+.mobileSubInner ul {
+  @apply pb-3;
+}
+
 .mobileCta {
-  @apply mt-auto;
+  @apply mt-auto pt-8;
 }
 
 .mobileCta button {
@@ -248,7 +410,17 @@
   .rest,
   .restText,
   .dock,
-  .dockVisible {
+  .dockVisible,
+  .dropdownPanel,
+  .dropdownChevron,
+  .dropdownLink,
+  .dropdownToggle,
+  .mobileSub,
+  .mobileSubOpen,
+  .mobileToggle,
+  .mobileToggle::before,
+  .mobileToggle::after,
+  .mobileSubLink {
     transition: none;
   }
 
