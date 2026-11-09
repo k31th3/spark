@@ -1,0 +1,44 @@
+@reference "../../index.css";
+
+.content,
+.footer {
+  --content-radius: clamp(1.5rem, 3vw, 3rem);
+}
+
+.flat {
+  --content-radius: 0px;
+}
+
+.content {
+  @apply relative z-10 overflow-clip bg-background;
+
+  border-bottom-left-radius: var(--content-radius);
+  border-bottom-right-radius: var(--content-radius);
+}
+
+.footer {
+  @apply sticky z-0;
+  margin-top: calc(var(--content-radius) * -1);
+  bottom: min(0px, calc(100svh - var(--footer-height, 0px)));
+}
+
+.footer > * {
+  padding-top: var(--content-radius);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    border-radius: 0;
+  }
+
+  .footer {
+    @apply relative;
+
+    margin-top: 0;
+    bottom: auto;
+  }
+
+  .footer > * {
+    padding-top: 0;
+  }
+}

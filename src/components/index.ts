@@ -30,6 +30,7 @@ export * from "./RevealCard"
 export * from "./HomeFaq";
 export * from "./HomeWhyUs";
 export * from "./HomeAbout";
+export * from "./FooterReveal";
 
 // for icon gradient
 export { default as IconGradient } from "./IconGradient";

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Button, Section, Wrapper } from '@/components'
+import { Button, Reveal, Section, Wrapper } from '@/components'
 import { cn } from '@/lib/utils'
 
 import FooterGlyph from '@/components/Footer/FooterGlyph'
@@ -104,9 +104,11 @@ function FooterMinimal({
 
           {details.length > 0 && (
             <dl className={styles.details}>
-              {details.map((detail) => (
-                <div
+              {details.map((detail, index) => (
+                <Reveal
                   key={detail.label}
+                  variant="slide"
+                  delay={index * 100}
                   className={styles.detail}
                 >
                   <dt className={styles.detailLabel}>
@@ -127,34 +129,37 @@ function FooterMinimal({
                       detail.value
                     )}
                   </dd>
-                </div>
+                </Reveal>
               ))}
             </dl>
           )}
 
           {columns.length > 0 && (
             <div className={styles.columns}>
-              {columns.map((column) => (
-                <nav
+              {columns.map((column, index) => (
+                <Reveal
                   key={column.heading}
-                  aria-label={column.heading}
+                  variant="slide"
+                  delay={150 + index * 100}
                   className={styles.column}
                 >
-                  <h3 className={styles.columnHeading}>
-                    {column.heading}
-                  </h3>
+                  <nav aria-label={column.heading}>
+                    <h3 className={styles.columnHeading}>
+                      {column.heading}
+                    </h3>
 
-                  <ul
-                    role="list"
-                    className={styles.links}
-                  >
-                    {column.links.map((link) => (
-                      <li key={`${link.href}-${link.label}`}>
-                        <FooterNavLink link={link} />
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
+                    <ul
+                      role="list"
+                      className={styles.links}
+                    >
+                      {column.links.map((link) => (
+                        <li key={`${link.href}-${link.label}`}>
+                          <FooterNavLink link={link} />
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </Reveal>
               ))}
             </div>
           )}
@@ -163,7 +168,11 @@ function FooterMinimal({
 
         {/* ===== BRAND ROW ===== */}
 
-        <div className={styles.brandRow}>
+        <Reveal
+          variant="fade"
+          delay={100}
+          className={styles.brandRow}
+        >
           <div className={styles.brand}>
             <FooterGlyph
               variant="solid"
@@ -185,11 +194,15 @@ function FooterMinimal({
           >
             Back to top
           </Button>
-        </div>
+        </Reveal>
 
         {/* ===== BOTTOM ROW ===== */}
 
-        <div className={styles.bottom}>
+        <Reveal
+          variant="fade"
+          delay={150}
+          className={styles.bottom}
+        >
 
           <p className={styles.copyright}>
             ©{year} {companyName}. All rights reserved.
@@ -223,7 +236,7 @@ function FooterMinimal({
             </ul>
           )}
 
-        </div>
+        </Reveal>
       </Wrapper.Body>
     </Section>
   )

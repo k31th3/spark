@@ -7,6 +7,9 @@ import { Navigation, IconGradient,
 /* ===== APPLICANT FOOTER: IMPORTED BY PATH TO AVOID A CIRCULAR IMPORT WITH "@/components" ===== */
 import FooterMinimal from "@/pages/Careers/CareerFooter/FooterMinimal";
 
+/* ===== FOOTER REVEAL: IMPORTED BY PATH FOR THE SAME REASON ===== */
+import FooterReveal from "@/components/FooterReveal/FooterReveal";
+
 import useOnlineStatus from "@/hooks/useOnlineStatus";
 import NoInternet from "@/pages/NoInternet";
 
@@ -47,12 +50,17 @@ function AppRoutes() {
                                 {/* Navigation renders its own header, floating dock and mobile panel */}
                                 <Navigation />
 
-                                <main className={isHome ? undefined : "pt-20 md:pt-40"}>
-                                    <DefaultQueryWrapper />
-                                </main>
+                                {/* ===== PAGE CONTENT ON TOP, FOOTER (CLIENT OR APPLICANT) REVEALED UNDERNEATH ===== */}
+                                {/* ===== ROUNDED PAGE CORNERS ON EVERY PAGE EXCEPT CAREERS (SHARP EDGES THERE) ===== */}
 
-                                {/* ===== FOOTER: CLIENT OR APPLICANT, NEVER BOTH ===== */}
-                                {isCareers ? <FooterMinimal /> : <Footer />}
+                                <FooterReveal
+                                    rounded={!isCareers}
+                                    footer={isCareers ? <FooterMinimal /> : <Footer />}
+                                >
+                                    <main className={isHome ? undefined : "pt-20 md:pt-40"}>
+                                        <DefaultQueryWrapper />
+                                    </main>
+                                </FooterReveal>
                             </div>
                         </>
                     }>

@@ -163,14 +163,16 @@ function Footer({
           </Wrapper.Body>
         )}
 
-        {/* ===== LOGO GRAPHIC (CROPPED AT THE DIVIDER) ===== */}
+        {/* ===== LOGO GRAPHIC (CROPPED AT THE DIVIDER, RISES UP INTO PLACE) ===== */}
 
-        <div
+        <Reveal
+          variant="rise"
+          delay={300}
           aria-hidden="true"
           className={styles.graphic}
         >
           <FooterGlyph className={styles.graphicGlyph} />
-        </div>
+        </Reveal>
       </div>
 
       {/* =====================================================
@@ -196,9 +198,11 @@ function Footer({
 
             {details.length > 0 && (
               <dl className={styles.details}>
-                {details.map((detail) => (
-                  <div
+                {details.map((detail, index) => (
+                  <Reveal
                     key={detail.label}
+                    variant="slide"
+                    delay={index * 100}
                     className={styles.detail}
                   >
                     <dt className={styles.detailLabel}>
@@ -219,34 +223,37 @@ function Footer({
                         detail.value
                       )}
                     </dd>
-                  </div>
+                  </Reveal>
                 ))}
               </dl>
             )}
 
             {columns.length > 0 && (
               <div className={styles.columns}>
-                {columns.map((column) => (
-                  <nav
+                {columns.map((column, index) => (
+                  <Reveal
                     key={column.heading}
-                    aria-label={column.heading}
+                    variant="slide"
+                    delay={150 + index * 100}
                     className={styles.column}
                   >
-                    <h3 className={styles.columnHeading}>
-                      {column.heading}
-                    </h3>
+                    <nav aria-label={column.heading}>
+                      <h3 className={styles.columnHeading}>
+                        {column.heading}
+                      </h3>
 
-                    <ul
-                      role="list"
-                      className={styles.links}
-                    >
-                      {column.links.map((link) => (
-                        <li key={`${link.href}-${link.label}`}>
-                          <FooterNavLink link={link} />
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
+                      <ul
+                        role="list"
+                        className={styles.links}
+                      >
+                        {column.links.map((link) => (
+                          <li key={`${link.href}-${link.label}`}>
+                            <FooterNavLink link={link} />
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  </Reveal>
                 ))}
               </div>
             )}
@@ -255,7 +262,11 @@ function Footer({
 
           {/* ===== BRAND ROW ===== */}
 
-          <div className={styles.brandRow}>
+          <Reveal
+            variant="fade"
+            delay={100}
+            className={styles.brandRow}
+          >
             <div className={styles.brand}>
               <FooterGlyph
                 variant="solid"
@@ -277,11 +288,15 @@ function Footer({
             >
               Back to top
             </Button>
-          </div>
+          </Reveal>
 
           {/* ===== BOTTOM ROW ===== */}
 
-          <div className={styles.bottom}>
+          <Reveal
+            variant="fade"
+            delay={150}
+            className={styles.bottom}
+          >
 
             <p className={styles.copyright}>
               ©{year} {companyName}. All rights reserved.
@@ -315,7 +330,7 @@ function Footer({
               </ul>
             )}
 
-          </div>
+          </Reveal>
         </Wrapper.Body>
       </div>
     </Section>

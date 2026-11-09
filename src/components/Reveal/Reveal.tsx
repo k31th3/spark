@@ -4,6 +4,7 @@ import { useInView } from '@/hooks/useInView'
 import type { RevealProps } from './Reveal.types'
 
 import { getTransformClass } from './Reveal.helpers'
+import { useRevealGate } from './Reveal.context'
 
 /* =========================================================
    REVEAL
@@ -20,11 +21,14 @@ function Reveal({
   const { ref, isInView } =
     useInView<HTMLDivElement>()
 
+  const gate = useRevealGate()
+  const visible = isInView && gate
+
   const transformClass =
     getTransformClass(
       variant,
       direction,
-      isInView
+      visible
     )
 
   return (
@@ -33,8 +37,6 @@ function Reveal({
       className={cn(
         /* =================================================
            BASE TRANSITION
-           (v4 animates translate and scale as their own
-           properties, so they must be listed explicitly)
         ================================================= */
 
         'transition-[opacity,translate,scale,filter]',
@@ -61,7 +63,7 @@ function Reveal({
            PERFORMANCE
         ================================================= */
 
-        !isInView && 'will-change-transform',
+        !visible && 'will-change-transform',
 
         /* =================================================
            USER CLASS
