@@ -1,51 +1,46 @@
-import { Grid, Chip, 
-    Text, Image } from "@/components";
+import { Grid, Image, Text, Section, Wrapper } from "@/components";
+import { HeroGraphics } from "@/assets/CloudSolutions";
+import { FiArrowDown } from "react-icons/fi";
 
-import { HeroBgWebp } from "@/assets/CloudSolutions";
-import HelpButton from  "./HelpButton";
+import { SectionLabel, CtaButtons } from "@/pages/CloudSolutions/Shared";
+import FeatureHighlights from "../FeatureHighlights";
+import styles from "./Hero.module.css";
 
-function Hero()
-{
+function Hero() {
     return (
-        <Grid cols={{ base: 12 }}>
+        <Section spacing="none" className={styles.section}>
+            <Wrapper.Body className={styles.container}>
+                <Grid.VStack gap={8} align="center">
 
-            <Grid.Item span={{ base: 12 }}>
-                <Image
-                    src={HeroBgWebp}
-                    alt="Hero background"
-                    loading="eager"
-                    fetchPriority="high"
-                    className="absolute -top-40 h-[580px] left-0 w-full object-cover -z-10" />
+                    <Grid.HStack justify="between" align="center" className={styles.topRow}>
+                        <SectionLabel>Services</SectionLabel>
+                        <a href="#what-we-offer" className={styles.scrollHint}>
+                            (Scroll down) <FiArrowDown />
+                        </a>
+                    </Grid.HStack>
 
-                <div
-                    className="
-                        absolute inset-x-0 -top-40 -z-[10]
-                        h-[580px] w-full
-                        bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.85)_68%,transparent_90%)]
-                        sm:bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.45)_58%,transparent_80%)]
-                    "/>
+                    <Grid.VStack gap={5} align="center" className={styles.heading}>
+                        <h1 className={styles.title}>Cloud Solutions</h1>
+                        <Text variant="bodySmall" color="muted" className={styles.subtitle}>
+                            Scalable. Secure. Reliable. Our cloud solutions help you innovate faster,
+                            reduce costs, and stay ahead, wherever your business takes you.
+                        </Text>
+                        <CtaButtons tone="brand" className="justify-center" />
+                    </Grid.VStack>
 
-                <Chip variant="gradient" size="sm" className="uppercase border-0 
-                    shadow-lg shadow-orange-500/50 mb-6">
-                    cloud solutions
-                </Chip>
- 
-                <Grid.VStack gap={4}>
-                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
-                        Elevate Your Business <br />
-                        with the Power of <span className="text-gradient">Cloud</span>.
-                    </Text>
-                    <Text variant="bodySmall" className="mb-4 block leading-6 max-w-[400px]">
-                        Scalable. Secure. Reliable. Our cloud solutions help you 
-                        innovate faster, reduce costs, and stay ahead— 
-                        wherever your business takes you.
-                    </Text>
-                    <HelpButton />
+                    <Image
+                        src={HeroGraphics}
+                        alt="Spark logo rising above a cloud"
+                        loading="eager"
+                        fetchPriority="high"
+                        wrapperClassName={styles.graphic}
+                        className={styles.graphicImage} />
+
+                    <FeatureHighlights />
                 </Grid.VStack>
-            </Grid.Item>
-
-        </Grid>
-    )
+            </Wrapper.Body>
+        </Section>
+    );
 }
 
 export default Hero;

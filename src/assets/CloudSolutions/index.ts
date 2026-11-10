@@ -1,1 +1,12 @@
 export { default as HeroBgWebp } from "./heroBg.webp";
+export { default as HeroGraphics } from "./cloud-hero.webp";
+export { default as Offer1 } from "./cloud-migration.webp";
+export { default as Offer2 } from "./cloud-infrastructure.webp";
+export { default as Offer3 } from "./cloud-storage.webp";
+export { default as Offer4 } from "./cloud-appdev.webp";
+export { default as Offer5 } from "./disaster-recovery.webp";
+export { default as Offer6 } from "./cloud-management.webp";
+export { default as Journey1 } from "./assess-and-plan.webp";
+export { default as Journey2 } from "./migration.webp";
+export { default as Journey3 } from "./optimize.webp";
+export { default as Journey4 } from "./manage-and-support.webp";

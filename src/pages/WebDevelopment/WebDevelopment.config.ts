@@ -3,7 +3,7 @@ import { FiBarChart2, FiCloud, FiGlobe, FiSettings } from 'react-icons/fi'
 import type { IconType } from 'react-icons'
 
 
-import { WebDevHero } from '@/assets/WebDevelopment'
+import { WebDevHero, WhyItMatters } from '@/assets/WebDevelopment'
 
 /* =========================================================
    HERO
@@ -102,10 +102,8 @@ export const WHY = {
     'Build a strong foundation for growth',
   ],
 
-  /* The design shows an empty gray panel here. Import an image and put it
-     here when there is one: it will fill the panel. */
-  image: undefined as string | undefined,
-  imageAlt: '',
+  image: WhyItMatters,
+  imageAlt: 'Why it matters',
 }
 
 /* =========================================================

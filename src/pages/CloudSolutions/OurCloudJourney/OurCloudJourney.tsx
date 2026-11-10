@@ -1,79 +1,74 @@
-import { Grid, ProgressIndicator, 
-    Text, Icon, Card } from "@/components";
+import { useState } from "react";
+import { Grid, Image, Section, Text, Wrapper, Reveal } from "@/components";
+import { cn } from "@/lib/utils";
+import { Journey1, Journey2, Journey3, Journey4 } from "@/assets/CloudSolutions";
 
-import { RiNumber1, RiNumber2, 
-    RiNumber3, RiNumber4 } from "react-icons/ri";
+import { SectionLabel } from "@/pages/ItServices/Shared";
+import styles from "./OurCloudJourney.module.css";
 
 const steps = [
-    {
-        title: "Assess & Plan",
-        info: "We evaluate your needs and current environment, then design the right cloud strategy for your business.",
-        icon: RiNumber1
-    },
-    {
-        title: "Migrate",
-        info: "We migrate your applications and data securely.",
-        icon: RiNumber2
-    },
-    {
-        title: "Optimize",
-        info: "We fine-tune for performance, security, and cost-efficiency.",
-        icon: RiNumber3
-    },
-    {
-        title: "Manage & Support",
-        info: "We continuously monitor and support your cloud environment.",
-        icon: RiNumber4
-    }
+    { title: "Assess & Plan", image: Journey1,
+      info: "We evaluate your needs and current environment, then design the right cloud strategy for your business." },
+    { title: "Migrate", image: Journey2,
+      info: "We migrate your applications and data securely." },
+    { title: "Optimize", image: Journey3,
+      info: "We fine-tune for performance, security, and cost-efficiency." },
+    { title: "Manage & Support", image: Journey4,
+      info: "We continuously monitor and support your cloud environment." }
 ];
 
-function OurCloudJourney()
-{
+function OurCloudJourney() {
+    const [active, setActive] = useState(0);
+
     return (
-        <Grid cols={{ base: 12 }} gap={8}>
-            <Grid.Item span={{ base: 12, lg: 8, md: 10 }} start={{ lg: 3, md: 2 }} className="text-center">
-                <Grid.VStack gap={2}>
-                    <Grid.HStack gap={2} align="center" justify="center">
-                        <Text variant="caption" color="primary" className="uppercase font-bold">
-                            our cloud journey
-                        </Text>
-                        <ProgressIndicator size="xs" />
-                    </Grid.HStack>
-                    <Text variant="h2" className="font-bold text-2xl tracking-tight sm:text-3xl lg:text-3xl">
-                        Your success, Step by step. 
-                    </Text>
-                </Grid.VStack>
-            </Grid.Item>
+        <Section spacing="none" className={styles.section}>
+            <Wrapper.Body className={styles.container}>
+                <Reveal variant="slide">
+                    <Grid cols={{ base: 1, md: 5 }} gap={{ base: 10, md: 16 }}>
 
-            <Grid.Item span={{ base: 12, lg: 12, md: 8 }} start={{ md: 3 }}>
-                <Grid cols={{ base: 12 }} gap={8} className="justify-between">
-        
-                    {steps.map(
-                        ({ title, info, icon }, index) => (
-                            <Grid.Item span={{ base: 6, lg: 3 }} key={`HowSupportWorks${index}`}>
-                                <Card className="h-full shadow-none">
-                                    <Card.Body className="text-center">
-                                        <Grid.VStack gap={2} justify="center" align="center">
-                                            <Icon icon={icon} size="md" variant="danger"
-                                                 avatar={true} className="mb-2" />
-                                            <Text variant="caption" className="font-semibold">
-                                               {title} 
-                                            </Text>
-                                            <Text variant="label" color="muted">
-                                               {info} 
-                                            </Text>
-                                        </Grid.VStack>
-                                    </Card.Body>
-                                </Card>
-                            </Grid.Item>
-                        )
-                    )}
+                        {/* Steps */}
+                        <Grid.Item span={{ base: 1, md: 2 }}>
+                            <Grid.VStack gap={5} className={styles.header}>
+                                <SectionLabel>Our Cloud Journey</SectionLabel>
+                                <h2 className={styles.title}>
+                                    Your Success,<br />Step by step
+                                </h2>
+                            </Grid.VStack>
 
-                </Grid>
-            </Grid.Item>
+                            <Grid.VStack gap={2}>
+                                {steps.map(({ title, info }, index) => (
+                                    <button
+                                        key={title}
+                                        type="button"
+                                        aria-current={index === active ? "step" : undefined}
+                                        onClick={() => setActive(index)}
+                                        className={cn(styles.step, index === active && styles.active)}>
+                                        <span className={styles.number}>{index + 1}</span>
+                                        <span className={styles.stepText}>
+                                            <span className={styles.stepTitle}>{title}</span>
+                                            <Text variant="bodySmall" color="muted">{info}</Text>
+                                        </span>
+                                    </button>
+                                ))}
+                            </Grid.VStack>
+                        </Grid.Item>
 
-        </Grid>
-    )
+                        {/* Photo */}
+                        <Grid.Item span={{ base: 1, md: 3 }} className={styles.photo}>
+                            {steps.map(({ title, image }, index) => (
+                                <Image
+                                    key={title}
+                                    src={image}
+                                    alt={index === active ? title : ""}
+                                    wrapperClassName={cn(styles.layer, index === active && styles.layerActive)}
+                                    className={styles.layerImage} />
+                            ))}
+                        </Grid.Item>
+                    </Grid>
+                </Reveal>
+            </Wrapper.Body>
+        </Section>
+    );
 }
 
 export default OurCloudJourney;

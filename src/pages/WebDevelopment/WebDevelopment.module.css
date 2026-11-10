@@ -202,15 +202,29 @@
 ========================================================= */
 
 .whyGrid {
-  @apply grid gap-10 md:grid-cols-2 md:items-center md:gap-16;
+  @apply grid gap-10 md:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] md:items-stretch md:gap-16;
 }
 
+
 .whyPanel {
-  @apply relative w-full overflow-hidden rounded-3xl bg-neutral-100;
+  @apply relative mx-auto w-full max-w-md overflow-hidden rounded-3xl bg-neutral-100 md:mx-0 md:max-w-none;
+  aspect-ratio: 4 / 5;
+}
+
+.whyPanel .mediaImage,
+.whyPanel .mediaPlaceholder {
+  @apply absolute inset-0 size-full;
+
+  aspect-ratio: auto;
+}
+
+.whyPanel .mediaImage {
+  @apply object-cover;
+  object-position: 50% 50%;
 }
 
 .whyText {
-  @apply flex flex-col items-start gap-6;
+  @apply flex flex-col items-start gap-6 md:justify-center;
 }
 
 .points {
