@@ -1,0 +1,97 @@
+@reference "../../../index.css";
+
+.section {
+  @apply relative bg-background;
+
+  padding-block: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  @apply mb-10;
+}
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   STEPS
+========================================================= */
+
+.step {
+  @apply flex w-full cursor-pointer gap-4 border-l-2 border-gray-100 p-4 text-left opacity-[0.48];
+
+  transition:
+    opacity 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease;
+}
+
+@media (hover: hover) {
+  .step:hover {
+    opacity: 0.75;
+  }
+}
+
+.step:focus-visible {
+  @apply outline-2 outline-primary;
+}
+
+.step.active {
+  @apply border-primary bg-purple-50 opacity-100;
+}
+
+.number {
+  @apply grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-purple-100 font-medium text-primary;
+}
+
+.stepText {
+  @apply flex flex-col gap-1;
+}
+
+.stepTitle {
+  @apply text-lg font-medium text-foreground;
+}
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo {
+  @apply relative overflow-hidden rounded-3xl bg-neutral-100;
+
+  min-height: 26rem;
+}
+
+.layer {
+  @apply absolute inset-0 opacity-0;
+
+  transition: opacity 500ms ease;
+}
+
+.layer.layerActive {
+  opacity: 1;
+}
+
+.layerImage {
+  @apply h-full w-full object-cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step,
+  .layer {
+    transition: none;
+  }
+}

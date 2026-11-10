@@ -1,1 +1,12 @@
 export { default as HeroBgWebp } from "./heroBg.webp";
+export { default as HeroImg } from "./system-int-hero.webp";
+export { default as Integration1 } from "./CRM-systems.webp";
+export { default as Integration2 } from "./ERP-systems.webp";
+export { default as Integration3 } from "./e-commerce.webp";
+export { default as Integration4 } from "./payment.webp";
+export { default as Integration5 } from "./3rd-party-app.webp";
+export { default as Integration6 } from "./custom-systems.webp";
+export { default as Process1 } from "./understand.webp";
+export { default as Process2 } from "./plan.webp";
+export { default as Process3 } from "./integrate.webp";
+export { default as Process4 } from "./support.webp";

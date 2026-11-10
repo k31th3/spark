@@ -1,0 +1,44 @@
+@reference "../../../index.css";
+
+.section {
+  @apply relative;
+
+  padding-block: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+.title {
+  @apply font-medium text-white;
+
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.lead {
+  @apply max-w-2xl opacity-60;
+}
+
+.stats {
+  @apply w-full;
+}
+
+.value {
+  @apply font-display text-4xl font-medium text-white;
+
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 40rem) {
+  .value {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+.description {
+  @apply max-w-[260px] opacity-60;
+}

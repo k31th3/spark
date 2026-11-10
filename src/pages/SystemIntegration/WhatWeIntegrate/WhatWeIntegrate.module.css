@@ -1,0 +1,116 @@
+@reference "../../../index.css";
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+  @apply relative bg-background;
+
+  padding-block: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  @apply mb-12 sm:mb-16;
+}
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.lead {
+  @apply max-w-xl;
+}
+
+.actions {
+  @apply md:justify-self-end;
+}
+
+/* =========================================================
+   SCROLLER
+========================================================= */
+
+.scroller {
+  @apply flex snap-x snap-mandatory overflow-x-auto pb-2;
+
+  --edge: max(1.5rem, calc((100% - 80rem) / 2 + 1.5rem));
+
+  gap: 1rem;
+  padding-inline: var(--edge);
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: none;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+  @apply flex shrink-0 snap-start flex-col overflow-hidden rounded-2xl bg-neutral-100;
+
+  width: 85vw;
+}
+
+@media (min-width: 40rem) {
+  .card {
+    width: 28rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .card {
+    width: 34rem;
+  }
+}
+
+.frame {
+  @apply w-full overflow-hidden;
+
+  aspect-ratio: 15 / 8;
+}
+
+.image {
+  @apply h-full w-full object-cover;
+}
+
+.body {
+  @apply flex-1 p-6;
+
+  min-height: 13rem;
+}
+
+.name {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.controls {
+  @apply mt-10;
+}
+
+.arrow {
+  @apply h-12 w-12 p-0;
+}

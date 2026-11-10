@@ -1,30 +1,15 @@
 "use client";
 
-import { Wrapper, Grid } from "@/components";
-import { Hero, FeatureHighlights,
-    WhatWeIntegrate, OurIntegrationProcess,
-    RealBusinessImpact } from  "./";
+import { Wrapper } from "@/components";
+import { Hero, WhatWeIntegrate, RealBusinessImpact, OurIntegrationProcess } from "./";
 
-function SystemIntegration() 
-{
+function SystemIntegration() {
     return (
         <Wrapper title="System Integration" path="system-integration">
-
-            <Wrapper.FullBleed className="relative">
-
-                <Wrapper.Body>
-                    <Grid.VStack gap={12}>
-
-                        <Hero />
-                        <FeatureHighlights />
-                        <WhatWeIntegrate />
-                        <RealBusinessImpact />
-                        <OurIntegrationProcess />
-
-                    </Grid.VStack>
-                </Wrapper.Body>
-
-            </Wrapper.FullBleed>
+            <Hero />
+            <WhatWeIntegrate />
+            <RealBusinessImpact />
+            <OurIntegrationProcess />
         </Wrapper>
     );
 }

@@ -1,51 +1,46 @@
-import { Grid, Chip, 
-    Text, Image } from "@/components";
+import { Grid, Image, Text, Section, Wrapper } from "@/components";
+import { HeroImg } from "@/assets/SystemIntegration";
+import { FiArrowDown } from "react-icons/fi";
 
-import { HeroBgWebp } from "@/assets/SystemIntegration";
-import HelpButton from  "./HelpButton";
+import { SectionLabel, CtaButtons } from "../Shared";
+import FeatureHighlights from "../FeatureHighlights";
+import styles from "./Hero.module.css";
 
-function Hero()
-{
+function Hero() {
     return (
-        <Grid cols={{ base: 12 }}>
+        <Section spacing="none" className={styles.section}>
+            <Wrapper.Body className={styles.container}>
+                <Grid.VStack gap={8} align="center">
 
-            <Grid.Item span={{ base: 12 }}>
-                <Image
-                    src={HeroBgWebp}
-                    alt="Hero background"
-                    loading="eager"
-                    fetchPriority="high"
-                    className="absolute -top-40 h-[580px] left-0 w-full object-cover -z-10" />
+                    <Grid.HStack justify="between" align="center" className={styles.topRow}>
+                        <SectionLabel>Services</SectionLabel>
+                        <a href="#what-we-integrate" className={styles.scrollHint}>
+                            (Scroll down) <FiArrowDown />
+                        </a>
+                    </Grid.HStack>
 
-                <div
-                    className="
-                        absolute inset-x-0 -top-40 -z-[10]
-                        h-[580px] w-full
-                        bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.85)_68%,transparent_90%)]
-                        sm:bg-[linear-gradient(to_right,#FFF_0%,rgba(255,255,255,.98)_30%,rgba(255,255,255,.45)_58%,transparent_80%)]
-                    "/>
+                    <Grid.VStack gap={5} align="center" className={styles.heading}>
+                        <h1 className={styles.title}>System Integration</h1>
+                        <Text variant="bodySmall" color="muted" className={styles.subtitle}>
+                            We integrate the right systems, applications, and technologies to help your
+                            business operate as one seamless, efficient, and future-ready solution.
+                        </Text>
+                        <CtaButtons tone="brand" className="justify-center" />
+                    </Grid.VStack>
 
-                <Chip variant="gradient" size="sm" className="uppercase border-0 
-                    shadow-lg shadow-orange-500/50 mb-6">
-                    system integration
-                </Chip>
+                    <Image
+                        src={HeroImg}
+                        alt="Glowing app icons connected by a gradient"
+                        loading="eager"
+                        fetchPriority="high"
+                        wrapperClassName={styles.graphic}
+                        className={styles.graphicImage} />
 
-                <Grid.VStack gap={4}>
-                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
-                        Connect. Integrate. <br />
-                        Make It Work <span className="text-gradient">Together</span>.
-                    </Text>
-                    <Text variant="bodySmall" className="mb-4 block leading-6 max-w-[400px]">
-                        We integrate the right systems, applications, and technologies
-                        to help your business operate as one seamless, efficient,
-                        and future-ready solution.
-                    </Text>
-                    <HelpButton />
+                    <FeatureHighlights />
                 </Grid.VStack>
-            </Grid.Item>
-
-        </Grid>
-    )
+            </Wrapper.Body>
+        </Section>
+    );
 }
 
 export default Hero;
