@@ -1,58 +1,45 @@
+import { Grid, Image, Text, Section, Wrapper } from "@/components";
+import { Hero as HeroGraphic } from "@/assets/SupportAndMaintenance";
+import { FiArrowDown } from "react-icons/fi";
 
-import { Grid, Chip, 
-    Text, Card } from "@/components";
+import { SectionLabel, CtaButtons } from "../Shared";
+import ServicesHighlights from "../ServicesHighlights";
+import styles from "./Hero.module.css";
 
-import HelpButton from  "./HelpButton";
-import ServicesHighlights from  "./ServicesHighlights";
-import WeHelpYou from  "./WeHelpYou";
-
-function Hero() 
-{
+function Hero() {
     return (
-        <Grid cols={{ base: 12 }}>
-            <Grid.Item span={{ base: 12, lg: 8, md: 10 }} start={{ lg: 3, md: 2 }} className="text-center">
-                
-                <Grid.VStack gap={4}>
+        <Section spacing="none" className={styles.section}>
+            <Wrapper.Body className={styles.container}>
+                <Grid.VStack gap={8} align="center">
 
-                    <div>
-                        <Chip variant="gradient" size="sm" className="border-0 shadow-lg shadow-orange-500/50">
-                            Support and Maintenance
-                        </Chip>
-                    </div>
+                    <Grid.HStack justify="between" align="center" className={styles.topRow}>
+                        <SectionLabel>Services</SectionLabel>
+                        <a href="#what-we-help-you-with" className={styles.scrollHint}>
+                            (Scroll down) <FiArrowDown />
+                        </a>
+                    </Grid.HStack>
 
-                    <Text variant="h1" className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl">
-                        Keep Your Technology Running Without the <span className="text-gradient">Worry</span>. 
-                    </Text>
+                    <Grid.VStack gap={5} align="center" className={styles.heading}>
+                        <h1 className={styles.title}>Support and Maintenance</h1>
+                        <Text variant="bodySmall" color="muted" className={styles.subtitle}>
+                            From everyday maintenance to unexpected technical issues, we provide the
+                            support you need to keep your systems running smoothly.
+                        </Text>
+                        <CtaButtons tone="brand" primaryLabel="Get Support" className="justify-center" />
+                    </Grid.VStack>
 
-                    <Text variant="label">
-                        From everyday maintenance to unexpected technical issues, <br />
-                        we provide to support you need to keep your systems running smoothly. 
-                    </Text>
+                    <Image
+                        src={HeroGraphic}
+                        alt="Gradient hard hat with a wrench"
+                        loading="eager"
+                        fetchPriority="high"
+                        wrapperClassName={styles.graphic}
+                        className={styles.graphicImage} />
 
-                    <HelpButton />
-
+                    <ServicesHighlights />
                 </Grid.VStack>
-
-            </Grid.Item>
-
-            <Grid.Item span={{ base: 12, lg: 10, md: 10 }} start={{ lg: 2, md: 2 }}>
-
-                <Card className="shadow-lg shadow-pink-500/10 p-5">
-                    <Card.Body>
-                    
-                        <ServicesHighlights />
-
-                    </Card.Body> 
-                </Card>
-
-            </Grid.Item>
-
-            <Grid.Item span={{ base: 12 }}>
-
-                <WeHelpYou />
-
-            </Grid.Item>
-        </Grid>
+            </Wrapper.Body>
+        </Section>
     );
 }
 

@@ -1,26 +1,15 @@
 "use client";
 
-import { Wrapper, Grid } from "@/components";
-import { Hero, MoreThanMaintenance,
-    HowSupportWorks } from  "./";
+import { Wrapper } from "@/components";
+import { Hero, WeHelpYou, MoreThanMaintenance, HowSupportWorks } from "./";
 
-function SupportAndMaintenance() 
-{
+function SupportAndMaintenance() {
     return (
         <Wrapper title="Support and Maintenance" path="support-and-maintenance">
-            <Wrapper.Background/>
-
-            <Wrapper.FullBleed className="relative">
-
-                <Wrapper.Body>
-                    <Grid.VStack gap={12}>
-                        <Hero />
-                        <MoreThanMaintenance />
-                        <HowSupportWorks />
-                    </Grid.VStack>
-                </Wrapper.Body>
-
-            </Wrapper.FullBleed>
+            <Hero />
+            <WeHelpYou />
+            <MoreThanMaintenance />
+            <HowSupportWorks />
         </Wrapper>
     );
 }

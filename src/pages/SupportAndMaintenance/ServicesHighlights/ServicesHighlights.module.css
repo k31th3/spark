@@ -1,0 +1,20 @@
+@reference "../../../index.css";
+
+.grid {
+  @apply w-full pt-8;
+}
+
+.item {
+  @apply text-center;
+}
+
+.title {
+  @apply font-medium text-foreground;
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.text {
+  @apply max-w-[280px];
+}

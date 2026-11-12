@@ -1,0 +1,83 @@
+@reference "../../../index.css";
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+  @apply relative bg-background;
+
+  padding-block: 8rem;
+}
+
+.section.pinned {
+  padding-block: 0;
+}
+
+.container {
+  @apply w-full max-w-7xl;
+}
+
+/* =========================================================
+   PINNED TRACK
+========================================================= */
+
+.track {
+  height: 380svh;
+}
+
+.stage {
+  @apply flex items-center;
+
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: clip;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.lead {
+  @apply max-w-md;
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+  @apply flex flex-col justify-between gap-8 rounded-2xl p-8;
+  background-color: var(--color-neutral-100);
+  isolation: isolate;
+  box-shadow: 0 18px 40px -14px rgb(0 0 0 / 0.16);
+}
+
+.pile {
+  @apply relative w-full;
+
+  height: 24rem;
+}
+
+.card.stacked {
+  @apply absolute inset-0;
+  transform-origin: 50% 85%;
+  will-change: transform;
+}
+
+.name {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}

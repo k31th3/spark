@@ -5,12 +5,13 @@ type Tone = "brand" | "dark" | "light";
 
 interface Props {
     tone?: Tone;
+    primaryLabel?: string;
     className?: string;
 }
 
 const mailto = `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`;
 
-function CtaButtons({ tone = "dark", className = "" }: Props) {
+function CtaButtons({ tone = "dark", primaryLabel = "Let's Integrate", className = "" }: Props) {
     const onDark = tone === "light";
 
     return (
@@ -22,7 +23,7 @@ function CtaButtons({ tone = "dark", className = "" }: Props) {
                 glow={tone === "dark"}
                 roll
                 arrow>
-                Let's Integrate
+                {primaryLabel}
             </Button>
 
             <Button

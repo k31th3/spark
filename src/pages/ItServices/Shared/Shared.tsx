@@ -9,18 +9,24 @@ export function SectionLabel({ children }: { children: ReactNode }) {
     );
 }
 
-export function IconTile({ icon: IconCmp, tone = "pink", className = "" }: {
+export function IconTile({ icon: IconCmp, tone = "pink", size = "md", className = "" }: {
     icon: ComponentType<{ className?: string }>;
-    tone?: "pink" | "green";
+    tone?: "pink" | "green" | "orange";
+    size?: "md" | "lg";
     className?: string;
 }) {
     const tones = {
         pink: "bg-fuchsia-50 text-fuchsia-600",
-        green: "bg-green-50 text-green-600"
+        green: "bg-green-50 text-green-600",
+        orange: "bg-orange-50 text-orange-500"
+    };
+    const sizes = {
+        md: { tile: "h-11 w-11 rounded-xl", icon: "h-5 w-5" },
+        lg: { tile: "h-16 w-16 rounded-2xl", icon: "h-8 w-8" }
     };
     return (
-        <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${tones[tone]} ${className}`}>
-            <IconCmp className="h-5 w-5" />
+        <span className={`grid shrink-0 place-items-center ${sizes[size].tile} ${tones[tone]} ${className}`}>
+            <IconCmp className={sizes[size].icon} />
         </span>
     );
 }

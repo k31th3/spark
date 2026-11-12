@@ -1,82 +1,72 @@
+import { useState } from "react";
+import { Grid, Image, Section, Text, Wrapper, Reveal } from "@/components";
+import { cn } from "@/lib/utils";
+import { Support, Investigate, Update, Business } from "@/assets/SupportAndMaintenance";
 
-import { Grid, ProgressIndicator, 
-    Text, Icon, Card } from "@/components";
-
-import { RiNumber1, RiNumber2, 
-    RiNumber3, RiNumber4 } from "react-icons/ri";
+import { SectionLabel } from "../Shared";
+import styles from "./HowSupportWorks.module.css";
 
 const steps = [
-
-    {
-        title: "Reach Out",
-        info: "Tell us what's happening. We'll start by understanding the issue.",
-        icon: RiNumber1
-    },
-    {
-        title: "We Investigate",
-        info: "Our team looks into the problem and identifies what needs attention.",
-        icon: RiNumber2
-    },
-    {
-        title: "We Keep You Updated",
-        info: "No disappearing into the void. We keep communication clear throughout.",
-        icon: RiNumber3
-    },
-    {
-        title: "Back to Business",
-        info: "Once resolved, we make sure everything is working property again.",
-        icon: RiNumber4
-    }
-
+    { title: "Reach Out", image: Support,
+      info: "Tell us what's happening. We'll start by understanding the issue." },
+    { title: "We Investigate", image: Investigate,
+      info: "Our team looks into the problem and identifies what needs attention." },
+    { title: "We Keep You Updated", image: Update,
+      info: "No disappearing into the void. We keep communication clear throughout." },
+    { title: "Back to Business", image: Business,
+      info: "Once resolved, we make sure everything is working properly again." }
 ];
 
-function HowSupportWorks()
-{
+function HowSupportWorks() {
+    const [active, setActive] = useState(0);
+
     return (
-        <Grid cols={{ base: 12 }} gap={8}>
-            <Grid.Item span={{ base: 12, lg: 8, md: 10 }} start={{ lg: 3, md: 2 }} className="text-center">
-                <Grid.VStack gap={2}>
-                    <Grid.HStack gap={2} align="center" justify="center">
-                        <Text variant="caption" color="primary" className="uppercase font-bold">
-                            how support works 
-                        </Text>
-                        <ProgressIndicator size="xs" />
-                    </Grid.HStack>
-                    <Text variant="h3" className="font-bold">
-                        Simple Support. Clear <span className="text-gradient">Communication</span>. 
-                    </Text>
-                </Grid.VStack>
-            </Grid.Item>
+        <Section spacing="none" className={styles.section}>
+            <Wrapper.Body className={styles.container}>
+                <Reveal variant="slide">
+                    <Grid cols={{ base: 1, md: 5 }} gap={{ base: 10, md: 16 }}>
 
-            <Grid.Item span={{ base: 12, lg: 12, md: 8 }} start={{ md: 3 }}>
-                <Grid cols={{ base: 12 }} gap={8} className="justify-between">
-        
-                    {steps.map(
-                        ({ title, info, icon }, index) => (
-                            <Grid.Item span={{ base: 6, lg: 3 }} key={`HowSupportWorks${index}`}>
-                                <Card className="h-full shadow-none">
-                                    <Card.Body className="text-center">
-                                        <Grid.VStack gap={2} justify="center" align="center">
-                                            <Icon icon={icon} size="md" variant="danger"
-                                                 avatar={true} className="mb-2" />
-                                            <Text variant="caption" className="font-semibold">
-                                               {title} 
-                                            </Text>
-                                            <Text variant="label" color="muted">
-                                               {info} 
-                                            </Text>
-                                        </Grid.VStack>
-                                    </Card.Body>
-                                </Card>
-                            </Grid.Item>
-                        )
-                    )}
+                        <Grid.Item span={{ base: 1, md: 2 }} order={{ md: 2 }}>
+                            <Grid.VStack gap={5} className={styles.header}>
+                                <SectionLabel>How Support Works</SectionLabel>
+                                <h2 className={styles.title}>
+                                    Simple Support,<br />Clear Communication
+                                </h2>
+                            </Grid.VStack>
 
-                </Grid>
-            </Grid.Item>
+                            <Grid.VStack gap={2}>
+                                {steps.map(({ title, info }, index) => (
+                                    <button
+                                        key={title}
+                                        type="button"
+                                        aria-current={index === active ? "step" : undefined}
+                                        onClick={() => setActive(index)}
+                                        className={cn(styles.step, index === active && styles.active)}>
+                                        <span className={styles.number}>{index + 1}</span>
+                                        <span className={styles.stepText}>
+                                            <span className={styles.stepTitle}>{title}</span>
+                                            <Text variant="bodySmall" color="muted">{info}</Text>
+                                        </span>
+                                    </button>
+                                ))}
+                            </Grid.VStack>
+                        </Grid.Item>
 
-        </Grid>
-    )
+                        <Grid.Item span={{ base: 1, md: 3 }} order={{ md: 1 }} className={styles.photo}>
+                            {steps.map(({ title, image }, index) => (
+                                <Image
+                                    key={title}
+                                    src={image}
+                                    alt={index === active ? title : ""}
+                                    wrapperClassName={cn(styles.layer, index === active && styles.layerActive)}
+                                    className={styles.layerImage} />
+                            ))}
+                        </Grid.Item>
+                    </Grid>
+                </Reveal>
+            </Wrapper.Body>
+        </Section>
+    );
 }
 
 export default HowSupportWorks;

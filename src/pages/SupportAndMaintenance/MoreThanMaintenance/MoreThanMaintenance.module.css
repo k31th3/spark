@@ -1,0 +1,113 @@
+@reference "../../../index.css";
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+  @apply relative bg-background;
+
+  padding-block: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.lead {
+  @apply max-w-xl;
+}
+
+.action {
+  @apply md:justify-self-end;
+}
+
+/* =========================================================
+   STATUS CARD
+========================================================= */
+
+.statusCard {
+  @apply rounded-t-2xl bg-neutral-100 md:rounded-l-2xl md:rounded-tr-none;
+
+  min-height: 20rem;
+}
+
+.statusInner {
+  @apply h-full p-8;
+}
+
+.operational {
+  @apply font-medium;
+}
+
+.value {
+  @apply font-display font-medium;
+
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(270deg, #11a836 0%, #20e2c2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.count {
+  @apply inline-grid;
+}
+
+.ghost,
+.live {
+  grid-area: 1 / 1;
+}
+
+.ghost {
+  @apply invisible;
+}
+
+.unit {
+  @apply text-xl font-medium text-foreground;
+}
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo {
+  @apply relative overflow-hidden rounded-b-2xl bg-neutral-100 md:rounded-r-2xl md:rounded-bl-none;
+  aspect-ratio: 3 / 2;
+}
+
+.photoWrap {
+  @apply absolute inset-0 h-full w-full;
+}
+
+.photoImage {
+  @apply h-full w-full object-cover;
+
+  object-position: 70% 25%;
+}
+
+/* =========================================================
+   CHECKS
+========================================================= */
+.checks {
+  @apply flex flex-col gap-6 p-8 md:flex-row md:items-center md:justify-around;
+}
+
+.check {
+  @apply text-lg font-medium text-foreground;
+}
