@@ -65,7 +65,7 @@
     rounded-xl 
     bg-violet-100 
     text-violet-600 
-    flex-shrink-0;
+    shrink-0;
 }
 
 .sectionBodyContentTitle {
