@@ -1,0 +1,85 @@
+@reference "../../../index.css";
+
+.section {
+  @apply relative bg-background;
+
+  /* top spacing comes from <main> on inner pages */
+  padding-bottom: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+.topRow {
+  @apply w-full;
+}
+
+.scrollHint {
+  @apply inline-flex items-center gap-1 text-[11px] text-muted;
+}
+
+.heading {
+  @apply text-center;
+}
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.subtitle {
+  @apply max-w-md;
+}
+
+@media (min-width: 40rem) {
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* =========================================================
+   CATEGORY CHIPS
+========================================================= */
+
+.chips {
+  @apply flex-wrap;
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search {
+  @apply flex w-full max-w-xl items-center rounded-xl bg-neutral-100 pl-4;
+
+  transition: outline-color 150ms ease;
+}
+
+.search:focus-within {
+  @apply outline-2 -outline-offset-2 outline-primary;
+}
+
+.input {
+  @apply block min-w-0 grow bg-transparent py-3.5 pr-3 text-base text-foreground;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  @apply text-muted;
+}
+
+.iconSlot {
+  @apply grid shrink-0 place-items-center pr-4;
+}
+
+.clear {
+  @apply cursor-pointer rounded-full;
+}
