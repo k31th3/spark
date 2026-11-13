@@ -31,7 +31,7 @@
 }
 
 .action {
-  @apply md:justify-self-end;
+  @apply md:self-center md:justify-self-center;
 }
 
 /* =========================================================

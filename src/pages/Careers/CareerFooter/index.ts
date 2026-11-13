@@ -1,1 +1,0 @@
-export { default as CareerFooter } from './FooterMinimal'

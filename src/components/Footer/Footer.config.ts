@@ -1,8 +1,6 @@
 import { FaDiscord, FaLinkedin } from 'react-icons/fa6'
 import { RiInstagramFill } from 'react-icons/ri'
 
-import FooterBackdrop from '@/assets/Footer/footer-backdrop.webp'
-
 import type {
   FooterColumn,
   FooterCta,
@@ -11,19 +9,13 @@ import type {
 } from './Footer.types'
 
 /* =========================================================
-   BACKDROP IMAGE (BEHIND THE CTA)
-========================================================= */
-
-export const FOOTER_BACKDROP: string | undefined = FooterBackdrop
-
-/* =========================================================
    COMPANY NAME
 ========================================================= */
 
 export const COMPANY_NAME = 'Spark Info-Tech Enterprise'
 
 /* =========================================================
-   CTA
+   CTA (DEFAULT TEXT)
 ========================================================= */
 
 export const FOOTER_CTA: FooterCta = {

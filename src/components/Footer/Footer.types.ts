@@ -33,7 +33,7 @@ export type FooterDetail = {
 }
 
 /* =========================================================
-   CTA (TOP PART OF THE FOOTER)
+   CTA TEXT
 ========================================================= */
 
 export type FooterCta = {
@@ -45,15 +45,16 @@ export type FooterCta = {
 }
 
 /* =========================================================
-   PROPS (ALL OPTIONAL: DEFAULTS COME FROM Footer.config.ts)
+   PROPS
 ========================================================= */
 
 export type FooterProps = HTMLAttributes<HTMLElement> & {
-  backdrop?: string
-
   companyName?: string
-  cta?: FooterCta
   details?: FooterDetail[]
   columns?: FooterColumn[]
   socialLinks?: SocialLink[]
+}
+
+export type CtaSectionProps = HTMLAttributes<HTMLElement> & {
+  cta?: FooterCta
 }

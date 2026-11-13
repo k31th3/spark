@@ -6,9 +6,7 @@ import FooterGlyph from './FooterGlyph'
 import { getCurrentYear, scrollToPageTop } from './Footer.helpers'
 import {
   COMPANY_NAME,
-  FOOTER_BACKDROP,
   FOOTER_COLUMNS,
-  FOOTER_CTA,
   FOOTER_DETAILS,
   FOOTER_SOCIAL_LINKS,
 } from './Footer.config'
@@ -70,269 +68,168 @@ function FooterNavLink({ link }: { link: FooterLink }) {
 }
 
 /* =========================================================
-   FOOTER (CTA + SITE FOOTER IN ONE)
+   FOOTER
 ========================================================= */
 
 function Footer({
-  backdrop = FOOTER_BACKDROP,
   companyName = COMPANY_NAME,
-  cta = FOOTER_CTA,
   details = FOOTER_DETAILS,
   columns = FOOTER_COLUMNS,
   socialLinks = FOOTER_SOCIAL_LINKS,
   className = '',
   ...props
 }: FooterProps) {
-  const { pathname } = useLocation()
   const year = getCurrentYear()
 
   return (
     <Section
       as="footer"
-      id="contact"
       spacing="none"
       className={cn(styles.footer, className)}
       {...props}
     >
+      <Wrapper.Body className={cn(styles.container, styles.wrapper)}>
 
-      {/* =====================================================
-          CTA
-      ===================================================== */}
+        {/* ===== MAIN: DETAILS + LINK COLUMNS ===== */}
 
-      <div className={styles.top}>
+        <div className={styles.main}>
 
-        {backdrop && (
-          <div
-            aria-hidden="true"
-            className={styles.backdrop}
-          >
-            <img
-              src={backdrop}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              draggable={false}
-              className={styles.backdropImage}
-            />
-          </div>
-        )}
-
-        {cta && (
-          <Wrapper.Body className={cn(styles.container, styles.cta)}>
-            <Reveal variant="slide">
-              <h2 className={styles.ctaTitle}>
-                {cta.title}
-                {cta.highlight && (
-                  <>
-                    {' '}
-                    <span className={styles.ctaHighlight}>
-                      {cta.highlight}
-                    </span>
-                  </>
-                )}
-              </h2>
-            </Reveal>
-
-            {cta.subtitle && (
-              <Reveal
-                variant="fade"
-                delay={100}
-              >
-                <p className={styles.ctaSubtitle}>
-                  {cta.subtitle}
-                </p>
-              </Reveal>
-            )}
-
-            {cta.ctaHref && cta.ctaHref !== pathname && (
-              <Reveal
-                variant="fade"
-                delay={200}
-              >
-                <Button
-                  href={cta.ctaHref}
-                  variant="light"
-                  size="hero"
-                  roll
-                  arrow
+          {details.length > 0 && (
+            <dl className={styles.details}>
+              {details.map((detail, index) => (
+                <Reveal
+                  key={detail.label}
+                  variant="slide"
+                  delay={index * 100}
+                  className={styles.detail}
                 >
-                  {cta.ctaLabel ?? "Let's Get Started"}
-                </Button>
-              </Reveal>
-            )}
-          </Wrapper.Body>
-        )}
+                  <dt className={styles.detailLabel}>
+                    ({detail.label})
+                  </dt>
 
-        {/* ===== LOGO GRAPHIC (CROPPED AT THE DIVIDER, RISES UP INTO PLACE) ===== */}
+                  <dd className={styles.detailValue}>
+                    {detail.href ? (
+                      <a
+                        href={detail.href}
+                        {...(isExternal(detail.href)
+                          ? { target: '_blank', rel: 'noopener noreferrer' }
+                          : {})}
+                      >
+                        {detail.value}
+                      </a>
+                    ) : (
+                      detail.value
+                    )}
+                  </dd>
+                </Reveal>
+              ))}
+            </dl>
+          )}
 
-        <Reveal
-          variant="rise"
-          delay={300}
-          aria-hidden="true"
-          className={styles.graphic}
-        >
-          <FooterGlyph className={styles.graphicGlyph} />
-        </Reveal>
-      </div>
+          {columns.length > 0 && (
+            <div className={styles.columns}>
+              {columns.map((column, index) => (
+                <Reveal
+                  key={column.heading}
+                  variant="slide"
+                  delay={150 + index * 100}
+                  className={styles.column}
+                >
+                  <nav aria-label={column.heading}>
+                    <h3 className={styles.columnHeading}>
+                      {column.heading}
+                    </h3>
 
-      {/* =====================================================
-          FOOTER CONTENT
-      ===================================================== */}
+                    <ul
+                      role="list"
+                      className={styles.links}
+                    >
+                      {column.links.map((link) => (
+                        <li key={`${link.href}-${link.label}`}>
+                          <FooterNavLink link={link} />
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </Reveal>
+              ))}
+            </div>
+          )}
 
-      <div className={styles.lower}>
-
-        {/* ===== BLURRED REFLECTION OF THE LOGO BELOW THE DIVIDER ===== */}
-
-        <div
-          aria-hidden="true"
-          className={styles.reflection}
-        >
-          <FooterGlyph className={styles.reflectionGlyph} />
         </div>
 
-        <Wrapper.Body className={cn(styles.container, styles.wrapper)}>
+        {/* ===== BRAND ROW ===== */}
 
-          {/* ===== MAIN: DETAILS + LINK COLUMNS ===== */}
+        <Reveal
+          variant="fade"
+          delay={100}
+          className={styles.brandRow}
+        >
+          <div className={styles.brand}>
+            <FooterGlyph
+              variant="solid"
+              className={styles.logo}
+            />
 
-          <div className={styles.main}>
-
-            {details.length > 0 && (
-              <dl className={styles.details}>
-                {details.map((detail, index) => (
-                  <Reveal
-                    key={detail.label}
-                    variant="slide"
-                    delay={index * 100}
-                    className={styles.detail}
-                  >
-                    <dt className={styles.detailLabel}>
-                      ({detail.label})
-                    </dt>
-
-                    <dd className={styles.detailValue}>
-                      {detail.href ? (
-                        <a
-                          href={detail.href}
-                          {...(isExternal(detail.href)
-                            ? { target: '_blank', rel: 'noopener noreferrer' }
-                            : {})}
-                        >
-                          {detail.value}
-                        </a>
-                      ) : (
-                        detail.value
-                      )}
-                    </dd>
-                  </Reveal>
-                ))}
-              </dl>
-            )}
-
-            {columns.length > 0 && (
-              <div className={styles.columns}>
-                {columns.map((column, index) => (
-                  <Reveal
-                    key={column.heading}
-                    variant="slide"
-                    delay={150 + index * 100}
-                    className={styles.column}
-                  >
-                    <nav aria-label={column.heading}>
-                      <h3 className={styles.columnHeading}>
-                        {column.heading}
-                      </h3>
-
-                      <ul
-                        role="list"
-                        className={styles.links}
-                      >
-                        {column.links.map((link) => (
-                          <li key={`${link.href}-${link.label}`}>
-                            <FooterNavLink link={link} />
-                          </li>
-                        ))}
-                      </ul>
-                    </nav>
-                  </Reveal>
-                ))}
-              </div>
-            )}
-
+            <p className={styles.companyName}>
+              {companyName}
+            </p>
           </div>
 
-          {/* ===== BRAND ROW ===== */}
-
-          <Reveal
-            variant="fade"
-            delay={100}
-            className={styles.brandRow}
+          <Button
+            variant="light"
+            size="sm"
+            roll
+            arrow="up"
+            className={styles.backToTop}
+            onClick={scrollToPageTop}
           >
-            <div className={styles.brand}>
-              <FooterGlyph
-                variant="solid"
-                className={styles.logo}
-              />
+            Back to top
+          </Button>
+        </Reveal>
 
-              <p className={styles.companyName}>
-                {companyName}
-              </p>
-            </div>
+        {/* ===== BOTTOM ROW ===== */}
 
-            <Button
-              variant="light"
-              size="sm"
-              roll
-              arrow="up"
-              className={styles.backToTop}
-              onClick={scrollToPageTop}
+        <Reveal
+          variant="fade"
+          delay={150}
+          className={styles.bottom}
+        >
+
+          <p className={styles.copyright}>
+            ©{year} {companyName}. All rights reserved.
+          </p>
+
+          {socialLinks.length > 0 && (
+            <ul
+              role="list"
+              className={styles.socialLinks}
             >
-              Back to top
-            </Button>
-          </Reveal>
+              {socialLinks.map((link) => {
+                const SocialIcon = link.icon
 
-          {/* ===== BOTTOM ROW ===== */}
+                return (
+                  <li key={`${link.href}-${link.label}`}>
+                    <a
+                      href={link.href}
+                      aria-label={link.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.socialLink}
+                    >
+                      <SocialIcon
+                        aria-hidden="true"
+                        size={20}
+                      />
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
 
-          <Reveal
-            variant="fade"
-            delay={150}
-            className={styles.bottom}
-          >
-
-            <p className={styles.copyright}>
-              ©{year} {companyName}. All rights reserved.
-            </p>
-
-            {socialLinks.length > 0 && (
-              <ul
-                role="list"
-                className={styles.socialLinks}
-              >
-                {socialLinks.map((link) => {
-                  const SocialIcon = link.icon
-
-                  return (
-                    <li key={`${link.href}-${link.label}`}>
-                      <a
-                        href={link.href}
-                        aria-label={link.label}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.socialLink}
-                      >
-                        <SocialIcon
-                          aria-hidden="true"
-                          size={20}
-                        />
-                      </a>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-
-          </Reveal>
-        </Wrapper.Body>
-      </div>
+        </Reveal>
+      </Wrapper.Body>
     </Section>
   )
 }

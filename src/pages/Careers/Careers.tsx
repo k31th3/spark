@@ -1,6 +1,5 @@
 import { Wrapper } from '@/components'
 
-import CareersCta from './CareersCta'
 import CareersHero from './CareersHero'
 import CareersMission from './CareersMission'
 import CareersPositions from './CareersPositions'
@@ -17,7 +16,6 @@ function Careers() {
       <CareersWhy />
       <CareersMission />
       <CareersPositions />
-      <CareersCta />
     </Wrapper>
   )
 }

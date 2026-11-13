@@ -305,65 +305,6 @@
 }
 
 /* =========================================================
-   CTA
-========================================================= */
-
-.ctaSection {
-  @apply relative bg-[#101010];
-
-  padding-block: clamp(4rem, 8vw, 7rem) clamp(2rem, 4vw, 3rem);
-}
-
-.ctaCard {
-  @apply relative isolate flex flex-col items-start gap-5 overflow-hidden rounded-3xl p-8 sm:p-12 lg:p-14;
-
-  min-height: clamp(18rem, 28vw, 24rem);
-  justify-content: center;
-  background:
-    linear-gradient(to bottom, rgb(255 255 255 / 0.72) 0%, rgb(255 255 255 / 0) 62%),
-    linear-gradient(
-      90deg,
-      #d129dd 0%,
-      #ff8f27 30%,
-      #ffd86b 47%,
-      #ffffff 68%,
-      #f3c4ff 100%
-    );
-}
-
-.ctaCard::before {
-  content: '';
-
-  @apply pointer-events-none absolute inset-0 -z-10;
-
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgb(255 255 255 / 0.55) 0,
-      rgb(255 255 255 / 0.55) 1px,
-      transparent 1px,
-      transparent 5rem
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgb(255 255 255 / 0.22) 0,
-      rgb(255 255 255 / 0) 5rem
-    );
-}
-
-.ctaTitle {
-  @apply m-0 max-w-xl text-balance font-medium text-foreground;
-
-  font-size: clamp(1.75rem, 3.6vw, 3rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-}
-
-.ctaText {
-  @apply m-0 max-w-sm text-sm text-neutral-800 sm:text-base;
-}
-
-/* =========================================================
    REDUCED MOTION
 ========================================================= */
 

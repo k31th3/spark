@@ -1,5 +1,0 @@
-@reference "../../../index.css";
-
-.container {
-  @apply w-full max-w-7xl;
-}

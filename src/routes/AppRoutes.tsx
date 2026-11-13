@@ -4,8 +4,11 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Navigation, IconGradient,
          ScrollToTop, Footer } from "@/components";
 
-/* ===== APPLICANT FOOTER: IMPORTED BY PATH TO AVOID A CIRCULAR IMPORT WITH "@/components" ===== */
-import FooterMinimal from "@/pages/Careers/CareerFooter/FooterMinimal";
+/* ===== CTA SECTION: IMPORTED BY PATH TO AVOID A CIRCULAR IMPORT WITH "@/components" ===== */
+import CtaSection from "@/components/Footer/CtaSection";
+
+/* ===== CAREERS CTA TEXT ===== */
+import { CTA as CAREERS_CTA, getApplyHref } from "@/pages/Careers/Careers.config";
 
 /* ===== FOOTER REVEAL: IMPORTED BY PATH FOR THE SAME REASON ===== */
 import FooterReveal from "@/components/FooterReveal/FooterReveal";
@@ -29,9 +32,18 @@ function AppRoutes() {
 
     const isHome = pathname === "/";
 
-    /* ===== CAREERS IS FOR APPLICANTS: IT GETS ITS OWN FOOTER ===== */
+    /* ===== CAREERS ONLY CHANGES THE CTA TEXT AND KEEPS SHARP EDGES ===== */
 
     const isCareers = pathname === "/careers" || pathname.startsWith("/careers/");
+
+    const cta = isCareers
+        ? {
+            title: CAREERS_CTA.title,
+            subtitle: CAREERS_CTA.text,
+            ctaLabel: CAREERS_CTA.ctaLabel,
+            ctaHref: getApplyHref(),
+        }
+        : undefined;
 
     if (import.meta.env.PROD && !isOnline) {
         return <NoInternet />;
@@ -50,15 +62,17 @@ function AppRoutes() {
                                 {/* Navigation renders its own header, floating dock and mobile panel */}
                                 <Navigation />
 
-                                {/* ===== PAGE CONTENT ON TOP, FOOTER (CLIENT OR APPLICANT) REVEALED UNDERNEATH ===== */}
-                                {/* ===== ROUNDED PAGE CORNERS ON EVERY PAGE EXCEPT CAREERS (SHARP EDGES THERE) ===== */}
+                                {/* ===== PAGE CONTENT (ENDING WITH THE CTA) ON TOP, FOOTER REVEALED UNDERNEATH ===== */}
 
                                 <FooterReveal
-                                    rounded={!isCareers}
-                                    footer={isCareers ? <FooterMinimal /> : <Footer />}
+                                    rounded={false}
+                                    footer={<Footer />}
                                 >
                                     <main className={isHome ? undefined : "pt-20 md:pt-40"}>
                                         <DefaultQueryWrapper />
+
+                                        {/* ===== CTA: LAST SECTION OF EVERY PAGE ===== */}
+                                        <CtaSection cta={cta} />
                                     </main>
                                 </FooterReveal>
                             </div>

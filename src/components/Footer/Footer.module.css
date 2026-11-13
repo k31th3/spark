@@ -5,7 +5,6 @@
 ========================================================= */
 
 .footer {
-  --logo-size: clamp(14rem, 34vw, 30rem);
   --footer-bg: #101010;
 
   @apply relative overflow-hidden text-white;
@@ -14,94 +13,16 @@
 }
 
 .container {
-  @apply w-full max-w-6xl;
-}
-
-/* =========================================================
-   TOP: CTA OVER THE GRADIENT
-========================================================= */
-.top {
-  @apply relative isolate overflow-hidden;
-
-  background:
-    radial-gradient(70% 80% at 90% 100%, rgb(255 146 92 / 0.95), transparent 64%),
-    radial-gradient(60% 75% at 52% 108%, rgb(223 79 255 / 0.95), transparent 68%),
-    radial-gradient(80% 95% at 6% 100%, rgb(104 25 160 / 0.95), transparent 68%),
-    #050505;
-}
-
-.backdrop {
-  @apply pointer-events-none absolute inset-0 -z-10 overflow-hidden;
-
-  background-color: var(--footer-bg);
-}
-
-.backdropImage {
-  @apply size-full object-cover object-bottom;
-}
-
-.cta {
-  @apply flex flex-col items-center gap-6 pt-20 text-center md:pt-28;
-}
-
-.ctaTitle {
-  @apply max-w-3xl text-balance font-medium text-white;
-
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.035em;
-}
-
-.ctaHighlight {
-  color: #a855f7;
-}
-
-.ctaSubtitle {
-  @apply max-w-md text-sm text-neutral-300 sm:text-base;
-}
-
-/* =========================================================
-   LOGO GRAPHIC
-========================================================= */
-
-.graphic {
-  @apply pointer-events-none relative mx-auto mt-16 select-none overflow-hidden;
-
-  width: var(--logo-size);
-  height: calc(var(--logo-size) * 0.6);
-}
-
-.graphicGlyph {
-  @apply block h-auto w-full;
-}
-
-/* =========================================================
-   LOWER: DETAILS, LINKS, BRAND, SOCIALS
-========================================================= */
-
-.lower {
-  @apply relative border-t border-white/10;
-}
-
-.reflection {
-  @apply pointer-events-none absolute inset-x-0 top-0 z-0 select-none overflow-hidden;
-
-  height: calc(var(--logo-size) * 0.4);
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
-  mask-image: linear-gradient(to bottom, black, transparent);
-}
-
-.reflectionGlyph {
-  @apply absolute left-1/2 -translate-x-1/2 opacity-50 blur-[10px];
-
-  top: calc(var(--logo-size) * -0.6);
-  width: var(--logo-size);
-  height: auto;
+  @apply w-full max-w-7xl;
 }
 
 .wrapper {
   @apply relative z-10 pb-28 pt-12;
 }
+
+/* =========================================================
+   MAIN: DETAILS + LINK COLUMNS
+========================================================= */
 
 .main {
   @apply grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start;

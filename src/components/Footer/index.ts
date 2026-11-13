@@ -1,7 +1,5 @@
-export { default } from "./Footer";
-export type { FooterProps } from "./Footer.types";
+export { default } from './Footer'
+export { default as CtaSection } from './CtaSection'
 
-export { default as SitWithUs }  from "./SitWithUs";
-export { default as Navigation } from "./Navigation";
-export { default as NeedHelp }   from "./NeedHelp";
-export { default as Social }     from "./Social";
+export * from './Footer.config'
+export type * from './Footer.types'
