@@ -94,9 +94,9 @@ export * from "./SupportAndMaintenance"
 export * from "./SystemIntegration"
 
 /* =========================================================
-   TOS
+   TERMS OF SERVICE
 ========================================================= */
-export * from "./TermsOfService"
+export * from "./TOS"
 
 /* =========================================================
    WEBDEV

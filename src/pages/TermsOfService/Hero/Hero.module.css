@@ -1,0 +1,54 @@
+@reference "../../../index.css";
+
+.section {
+  @apply relative bg-background;
+  padding-bottom: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+.topRow {
+  @apply w-full;
+}
+
+.scrollHint {
+  @apply inline-flex items-center gap-1 text-[11px] text-muted;
+}
+
+.heading {
+  @apply text-center;
+}
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.subtitle {
+  @apply max-w-4xl;
+}
+
+/* =========================================================
+   GRAPHIC
+========================================================= */
+
+.graphic {
+  @apply w-full overflow-hidden rounded-3xl bg-neutral-50;
+
+  aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 40rem) {
+  .graphic {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.graphicImage {
+  @apply h-full w-full object-cover object-center;
+}

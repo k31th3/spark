@@ -1,9 +1,20 @@
+import type { ReactNode } from "react";
 import { LuCalendar } from "react-icons/lu";
 
 import { Grid, Reveal, Section, Text, Wrapper } from "@/components";
 
 import { Contents, LAST_UPDATED } from "../Contents";
 import styles from "./Policy.module.css";
+
+const EMAIL = /([\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g;
+
+function linkEmails(text: string): ReactNode[] {
+    return text.split(EMAIL).map((part, index) =>
+        index % 2 === 1
+            ? <a key={index} href={`mailto:${part}`} className={styles.link}>{part}</a>
+            : part
+    );
+}
 
 function Policy() {
     return (
@@ -22,7 +33,7 @@ function Policy() {
                                 <section key={title}>
                                     <Grid.VStack gap={4}>
                                         <h2 className={styles.title}>{index + 1}. {title}</h2>
-                                        <Text variant="body" color="muted">{text}</Text>
+                                        <Text variant="body" color="muted">{linkEmails(text)}</Text>
                                     </Grid.VStack>
                                 </section>
                             ))}

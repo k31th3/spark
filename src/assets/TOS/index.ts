@@ -1,0 +1,1 @@
+export { default as TosHero } from "./TOS_hero.webp";

@@ -1,0 +1,55 @@
+@reference "../../../index.css";
+
+.section {
+  @apply relative bg-background;
+  padding-bottom: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+/* narrow reading column */
+.content {
+  @apply mx-auto w-full max-w-3xl;
+}
+
+/* =========================================================
+   LAST UPDATED
+========================================================= */
+
+.updated {
+  @apply inline-flex w-fit items-center gap-3 rounded-full bg-neutral-100 px-5 py-3 text-base text-foreground;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.list {
+  @apply list-decimal pl-6 text-base text-muted;
+
+  line-height: 1.75rem;
+}
+
+.list li {
+  @apply pl-1;
+
+  margin-block: 0.125rem;
+}
+
+.text strong {
+  @apply font-semibold text-foreground;
+}
+
+.link {
+  @apply text-primary underline underline-offset-4;
+}
