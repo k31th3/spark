@@ -1,0 +1,34 @@
+@reference "../../../index.css";
+
+.section {
+  @apply relative bg-background;
+  padding-bottom: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+.content {
+  @apply mx-auto w-full max-w-3xl;
+}
+
+/* =========================================================
+   LAST UPDATED
+========================================================= */
+
+.updated {
+  @apply inline-flex w-fit items-center gap-3 rounded-full bg-neutral-100 px-5 py-3 text-base text-foreground;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}

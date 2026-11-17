@@ -1,5 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import type {
+    CSSProperties,
     FocusEvent,
     KeyboardEvent,
     MouseEvent,
@@ -34,7 +35,7 @@ type NavDropdownProps = {
 };
 
 /* =========================================================
-   SURFACE DETECTION
+   SURFACE DETECTION (LIGHT OR DARK BEHIND THE PANEL)
 ========================================================= */
 
 function parseColor(value: string) {
@@ -270,11 +271,11 @@ export default function NavDropdown({
                     data-tone={tone}
                     className={style.dropdownCard}>
                     <ul role="list" className={style.dropdownList}>
-                        {items.map((item) => {
+                        {items.map((item, index) => {
                             const current = item.href === pathname;
 
                             return (
-                                <li key={item.href}>
+                                <li key={item.href} style={{ "--i": index } as CSSProperties}>
                                     <Link
                                         to={item.href}
                                         aria-current={current ? "page" : undefined}
@@ -282,7 +283,7 @@ export default function NavDropdown({
                                             style.dropdownLink,
                                             current && style.dropdownLinkActive
                                         )}>
-                                        {item.title}
+                                        <span className={style.dropdownLinkText}>{item.title}</span>
                                     </Link>
                                 </li>
                             );

@@ -4,4 +4,4 @@ export { default as Stat } from "./stat-graphics.webp";
 export { default as Support } from "./how-support-works.webp";
 export { default as Investigate } from "./investigate.webp";
 export { default as Update } from "./communicate.webp";
-export { default as Business } from "./back-to-business.webp";
+export { default as BackToBusiness } from "./back-to-business.webp";

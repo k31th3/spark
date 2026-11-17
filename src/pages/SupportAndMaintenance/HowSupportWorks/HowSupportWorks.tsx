@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Grid, Image, Section, Text, Wrapper, Reveal } from "@/components";
 import { cn } from "@/lib/utils";
-import { Support, Investigate, Update, Business } from "@/assets/SupportAndMaintenance";
+import { Support, Investigate, Update, BackToBusiness } from "@/assets/SupportAndMaintenance";
 
 import { SectionLabel } from "../Shared";
 import styles from "./HowSupportWorks.module.css";
@@ -13,7 +13,7 @@ const steps = [
       info: "Our team looks into the problem and identifies what needs attention." },
     { title: "We Keep You Updated", image: Update,
       info: "No disappearing into the void. We keep communication clear throughout." },
-    { title: "Back to Business", image: Business,
+    { title: "Back to Business", image: BackToBusiness,
       info: "Once resolved, we make sure everything is working properly again." }
 ];
 

@@ -1,0 +1,1 @@
+export { default as PrivacyHero } from "./privacy_policy_hero.webp";
