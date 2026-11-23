@@ -1,8 +1,12 @@
 @reference "../../../index.css";
 
+/* =========================================================
+   SECTION
+========================================================= */
+
 .section {
   @apply relative bg-background;
-  padding-bottom: 8rem;
+  padding-bottom: 5rem;
 }
 
 .container {
@@ -10,7 +14,7 @@
 }
 
 .content {
-  @apply mx-auto w-full max-w-3xl;
+  @apply mx-auto w-full max-w-6xl;
 }
 
 /* =========================================================

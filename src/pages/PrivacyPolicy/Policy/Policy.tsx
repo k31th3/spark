@@ -22,7 +22,7 @@ function Policy() {
             <Wrapper.Body className={styles.container}>
                 <Reveal variant="slide">
                     <div className={styles.content}>
-                        <Grid.VStack gap={14}>
+                        <Grid.VStack gap={8}>
 
                             <p className={styles.updated}>
                                 <LuCalendar size={20} aria-hidden="true" />
@@ -31,7 +31,7 @@ function Policy() {
 
                             {Contents.map(({ title, text }, index) => (
                                 <section key={title}>
-                                    <Grid.VStack gap={4}>
+                                    <Grid.VStack gap={3}>
                                         <h2 className={styles.title}>{index + 1}. {title}</h2>
                                         <Text variant="body" color="muted">{linkEmails(text)}</Text>
                                     </Grid.VStack>

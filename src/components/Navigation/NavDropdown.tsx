@@ -38,20 +38,112 @@ type NavDropdownProps = {
    SURFACE DETECTION (LIGHT OR DARK BEHIND THE PANEL)
 ========================================================= */
 
-function parseColor(value: string) {
-    const numbers = value.match(/[\d.]+/g)?.map(Number) ?? [];
+let scratch: CanvasRenderingContext2D | null | undefined;
 
-    if (numbers.length < 3) return null;
+function getScratch() {
+    if (scratch === undefined) {
+        const canvas = document.createElement("canvas");
 
-    const scale = value.startsWith("color(") ? 255 : 1;
+        canvas.width = 1;
+        canvas.height = 1;
 
-    return {
-        r: numbers[0] * scale,
-        g: numbers[1] * scale,
-        b: numbers[2] * scale,
-        a: numbers[3] ?? 1,
-    };
+        scratch = canvas.getContext("2d", { willReadFrequently: true });
+    }
+
+    return scratch;
 }
+
+type Rgba = { r: number; g: number; b: number; a: number };
+
+const brightnessOf = ({ r, g, b }: Rgba) => (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+const toneFromBrightness = (value: number): Tone => (value < 0.5 ? "dark" : "light");
+
+function parseColor(value: string): Rgba | null {
+    const ctx = getScratch();
+
+    if (!ctx || !value || value === "transparent") return null;
+
+    const sentinel = "#010203";
+
+    ctx.fillStyle = sentinel;
+    ctx.fillStyle = value;
+
+    if (ctx.fillStyle === sentinel) return null;
+
+    ctx.clearRect(0, 0, 1, 1);
+    ctx.fillRect(0, 0, 1, 1);
+
+    const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+
+    return { r, g, b, a: a / 255 };
+}
+
+function gradientBrightness(value: string): number | null {
+    const matches = value.match(/(?:rgba?|hsla?|oklch|oklab|lch|lab|color)\([^)]*\)/g);
+
+    if (!matches) return null;
+
+    let total = 0;
+    let count = 0;
+
+    for (const match of matches) {
+        const color = parseColor(match);
+
+        if (!color || color.a < 0.5) continue;
+
+        total += brightnessOf(color);
+        count += 1;
+    }
+
+    return count ? total / count : null;
+}
+
+function imageBrightness(img: HTMLImageElement, x: number, y: number): number | null {
+    const ctx = getScratch();
+
+    if (!ctx || !img.complete || !img.naturalWidth) return null;
+
+    const rect = img.getBoundingClientRect();
+    const { naturalWidth: nw, naturalHeight: nh } = img;
+    const styles = getComputedStyle(img);
+
+    let scaleX = rect.width / nw;
+    let scaleY = rect.height / nh;
+
+    if (styles.objectFit === "cover") scaleX = scaleY = Math.max(scaleX, scaleY);
+    else if (styles.objectFit === "contain") scaleX = scaleY = Math.min(scaleX, scaleY);
+    else if (styles.objectFit === "none") scaleX = scaleY = 1;
+    else if (styles.objectFit === "scale-down") scaleX = scaleY = Math.min(1, scaleX, scaleY);
+
+    const [posX, posY] = styles.objectPosition
+        .split(" ")
+        .map((part) => (part.endsWith("%") ? parseFloat(part) / 100 : 0.5));
+
+    const left = rect.left + (rect.width - nw * scaleX) * posX;
+    const top = rect.top + (rect.height - nh * scaleY) * posY;
+
+    const sx = (x - left) / scaleX;
+    const sy = (y - top) / scaleY;
+
+    if (sx < 0 || sy < 0 || sx >= nw || sy >= nh) return null;
+
+    const size = Math.max(4, Math.round(Math.min(nw, nh) * 0.02));
+
+    try {
+        ctx.clearRect(0, 0, 1, 1);
+        ctx.drawImage(img, sx - size / 2, sy - size / 2, size, size, 0, 0, 1, 1);
+
+        const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+
+        if (a < 128) return null;
+
+        return brightnessOf({ r, g, b, a: a / 255 });
+    } catch {
+        return null;
+    }
+}
+
 
 function toneAtPoint(x: number, y: number, root: HTMLElement): Tone | null {
     for (const element of document.elementsFromPoint(x, y)) {
@@ -59,15 +151,27 @@ function toneAtPoint(x: number, y: number, root: HTMLElement): Tone | null {
 
         if (root.contains(el) || el.contains(root)) continue;
 
-        const forced = el.dataset.surface;
+        const forced = el.closest<HTMLElement>("[data-surface]")?.dataset.surface;
         if (forced === "light" || forced === "dark") return forced;
 
-        const color = parseColor(getComputedStyle(el).backgroundColor);
-        if (!color || color.a < 0.5) continue;
+        /* Photos */
+        if (el instanceof HTMLImageElement) {
+            const value = imageBrightness(el, x, y);
 
-        const brightness = (0.299 * color.r + 0.587 * color.g + 0.114 * color.b) / 255;
+            if (value !== null) return toneFromBrightness(value);
 
-        return brightness < 0.5 ? "dark" : "light";
+            continue;
+        }
+
+        const styles = getComputedStyle(el);
+
+        /* Solid backgrounds */
+        const color = parseColor(styles.backgroundColor);
+        if (color && color.a >= 0.5) return toneFromBrightness(brightnessOf(color));
+
+        /* Gradient backgrounds */
+        const gradient = gradientBrightness(styles.backgroundImage);
+        if (gradient !== null) return toneFromBrightness(gradient);
     }
 
     return null;
@@ -257,6 +361,8 @@ export default function NavDropdown({
                     />
                 </svg>
             </button>
+
+            {/* ===== PANEL (THE OUTER PADDING IS A HOVER BRIDGE SO IT DOESN'T CLOSE IN THE GAP) ===== */}
 
             <div
                 id={panelId}

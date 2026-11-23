@@ -10,7 +10,7 @@ function Hero() {
     return (
         <Section spacing="none" className={styles.section}>
             <Wrapper.Body className={styles.container}>
-                <Grid.VStack gap={8} align="center">
+                <Grid.VStack gap={6} align="center">
 
                     <Grid.HStack justify="between" align="center" className={styles.topRow}>
                         <SectionLabel>Legal</SectionLabel>
@@ -19,7 +19,7 @@ function Hero() {
                         </a>
                     </Grid.HStack>
 
-                    <Grid.VStack gap={5} align="center" className={styles.heading}>
+                    <Grid.VStack gap={4} align="center" className={styles.heading}>
                         <h1 className={styles.title}>Privacy Policy</h1>
                         <Text variant="body" color="muted" className={styles.subtitle}>
                             Your privacy is important to us. This policy explains how we collect,

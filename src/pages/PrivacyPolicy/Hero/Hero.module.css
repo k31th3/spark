@@ -1,13 +1,21 @@
 @reference "../../../index.css";
 
+/* =========================================================
+   SECTION
+========================================================= */
+
 .section {
   @apply relative bg-background;
-  padding-bottom: 8rem;
+  padding-bottom: 1rem;
 }
 
 .container {
   @apply max-w-7xl;
 }
+
+/* =========================================================
+   TOP ROW
+========================================================= */
 
 .topRow {
   @apply w-full;
@@ -16,6 +24,10 @@
 .scrollHint {
   @apply inline-flex items-center gap-1 text-[11px] text-muted;
 }
+
+/* =========================================================
+   HEADING
+========================================================= */
 
 .heading {
   @apply text-center;
@@ -39,16 +51,16 @@
 
 .graphic {
   @apply w-full overflow-hidden rounded-3xl bg-neutral-50;
-
   aspect-ratio: 4 / 3;
 }
 
 @media (min-width: 40rem) {
   .graphic {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
   }
 }
 
 .graphicImage {
-  @apply h-full w-full object-cover object-center;
+  @apply h-full w-full object-cover;
+  object-position: 50% 35%;
 }
