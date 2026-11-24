@@ -1,149 +1,26 @@
-import { useState } from "react";
+"use client";
 
-import { motion } from "motion/react";
-import { TbArrowNarrowRight } from "react-icons/tb";
+import { useMemo, useState } from "react";
 
-import { Wrapper, Text, Chip,
-		 Image, Card, Icon, 
-         Button} from "@/components";
+import { Wrapper } from "@/components";
 
-import { companyPortfolioPng } from "@/assets/CompanyPortfolio";
-import { cards, tabs, icons, colors } from "./Content";
+import { ALL, cards, tabs } from "./Content";
+import { Hero, PortfolioGrid } from "./";
 
 function CompanyPortfolio() {
+    const [active, setActive] = useState<string>(ALL);
 
-	const [activeTab, setActiveTab] = useState("All Projects");
+    const projects = useMemo(
+        () => (active === ALL ? cards : cards.filter(card => card.category === active)),
+        [active]
+    );
 
-  	const filteredProjects =
-    activeTab === "All Projects" ? cards
-      : cards.filter(
-          (card) => card.category === activeTab
-        );
-
-	return <>
-
-		<Wrapper title="Company Portfolio" path="company-portfolio">
-
-			<Wrapper.FullBleed className="relative min-h-screen">
-
-                <Wrapper.Background/>
-
-                <Wrapper.Body className="vstack gap-20">
-                    
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
-                    
-                        <div className="flex flex-col gap-4 sm:w-auto w-full">
-                            <div className="mb-4">
-                                <Chip variant="primary" size="md" className="uppercase">
-                                    our work
-                                </Chip>
-                            </div>
-                            <Text variant="h1" className="lg:text-1xl">
-                                <span className="text-gradient">Company</span> Portfolio
-                            </Text>
-
-                            <Text variant="caption">
-                                Real challenges, Smart solutions,<br />
-                                Measurable results.
-                            </Text>
-                        </div>
-                        
-                        <div className="flex">
-                            <Image
-                            src={companyPortfolioPng}
-                            alt="Company Portfolio"
-                            className="w-full max-w-[480px] object-cover"/>
-                        </div>
-
-                    </div>
-
-                    <div className="mb-2 relative md:w-full
-                          w-screen max-md:left-1/2 max-md:-translate-x-1/2 ">
-                        <div className="w-full md:w-fit bg-white md:rounded-full shadow-md overflow-hidden absolute">
-                            <div className="px-4 py-2 md:p-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-
-                            <div className="flex w-max gap-2">
-                                    {tabs.map((tab) => (
-                                        <Button
-                                            key={tab}
-                                            type="button"
-                                            onClick={() => setActiveTab(tab)}
-                                            variant="ghost"
-                                            size="sm"
-                                            className={`
-                                                relative whitespace-nowrap cursor-pointer h-10 px-4 
-                                                text-xs shadow-sm
-                                                ${
-                                                    activeTab === tab
-                                                      ? "text-white"
-                                                      : "text-dark hover:bg-gray-100 "
-                                                }`}>
-                                            {activeTab === tab && (
-                                                <motion.div
-                                                    layoutId="tab-indicator"
-                                                    className="absolute inset-0 rounded-full bg-gradient shadow-sm"
-                                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                                />
-                                            )}
-                                            <span className="relative z-10">{tab}</span>
-                                        </Button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-                        {filteredProjects.map((project) => {
-                            const icon = icons[project.category];
-                            const color = colors[project.category];
-                            return (
-                                <Card key={project.id}>
-                                    <Card.Body>
-                                        <div className="hstack gap-4 mb-4">
-
-                                            <div>
-                                                <Icon icon={icon} size="md" avatar={true} variant={color} />
-                                            </div>
-                                            
-                                            <div className="flex flex-col gap-2">
-                                                <Chip variant={color} size="sm">
-                                                    {project.category}
-                                                </Chip>
-                                                <div>
-                                                    <Text variant="h6" as="span" className="animate-pulse text-gray-800 bg-gray-800 
-                                                        rounded-full p-0 text-[12px] mb-4">
-                                                        {project.title}
-                                                    </Text>
-                                                    <Text variant="label" className="animate-pulse text-gray-500 bg-gray-500 line-clamp-3 
-                                                        rounded-sm">
-                                                        {project.information}
-                                                    </Text>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-
-                                        <div>
-                                            <Button variant="ghost" size="sm" className="hover:opacity-80 
-                                                hover:bg-transparent text-primary items-center gap-1 p-0">
-                                                Go to information <Icon icon={TbArrowNarrowRight} size="md" variant="primary" />
-                                            </Button>
-                                        </div>                                        
-
-                                    </Card.Body>
-                                </Card>
-                            );
-                        })}
-                    </div>
- 
-                </Wrapper.Body>
-
-            </Wrapper.FullBleed>
-
-		</Wrapper>
-
-	</>
+    return (
+        <Wrapper title="Company Portfolio" path="company-portfolio">
+            <Hero tabs={tabs} active={active} onChange={setActive} />
+            <PortfolioGrid projects={projects} />
+        </Wrapper>
+    );
 }
 
 export default CompanyPortfolio;

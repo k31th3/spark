@@ -1,17 +1,10 @@
-import { IconType } from "react-icons";
-import { CgIfDesign, CgWebsite } from "react-icons/cg";
-import { MdDeveloperMode } from "react-icons/md";
-import { VscDeveloperTools } from "react-icons/vsc";
-import { FaComputer } from "react-icons/fa6";
+import type { IconType } from "react-icons";
+import { LuLaptop, LuSmartphone, LuPlug, LuPenTool, LuCpu } from "react-icons/lu";
 
-type IconVariant =
-  | "default"
-  | "primary"
-  | "success"
-  | "warning"
-  | "danger"
-  | "gradient";
-  
+import { Placeholder1, Placeholder2, Placeholder3 } from "@/assets/CompanyPortfolio";
+
+export const ALL = "All";
+
 export const categories = [
     "Web Development",
     "Mobile App",
@@ -22,27 +15,25 @@ export const categories = [
 
 export type Category = (typeof categories)[number];
 
-export const tabs = ["All Projects", ...categories] as const;
-
-export interface Icon {
-    category: Category;
-    icon: IconType;
-}
+export const tabs = [ALL, ...categories] as const;
 
 export const icons: Record<Category, IconType> = {
-    "Web Development": CgWebsite,
-    "Mobile App": MdDeveloperMode,
-    "System Integration": VscDeveloperTools,
-    "UI/UX Design": CgIfDesign,
-    "Hardware": FaComputer
+    "Web Development": LuLaptop,
+    "Mobile App": LuSmartphone,
+    "System Integration": LuPlug,
+    "UI/UX Design": LuPenTool,
+    "Hardware": LuCpu
 };
 
-export const colors: Record<Category, IconVariant> = {
-    "Web Development": "danger",
-    "Mobile App": "warning",
-    "System Integration": "success",
-    "UI/UX Design": "primary",
-    "Hardware": "gradient"
+/* tint of the category pill (see PortfolioGrid.module.css) */
+export type Tone = "teal" | "purple" | "green" | "cyan" | "orange";
+
+export const tones: Record<Category, Tone> = {
+    "Web Development": "teal",
+    "Mobile App": "purple",
+    "System Integration": "green",
+    "UI/UX Design": "cyan",
+    "Hardware": "orange"
 };
 
 export interface Card {
@@ -51,7 +42,10 @@ export interface Card {
     category: Category;
     information: string;
     link: string;
+    image?: string;
 }
+
+export const placeholders = [Placeholder1, Placeholder2, Placeholder3];
 
 export const cards: Card[] = [
     {
@@ -80,6 +74,42 @@ export const cards: Card[] = [
         title: "E-commerce",
         category: "Web Development",
         information: "A responsive e-commerce website where users can browse products, view product details, add items to their cart, and complete purchases.",
+        link: ""
+    },
+
+    {
+        id: 5,
+        title: "POS & Inventory Integration",
+        category: "System Integration",
+        information: "A connected point-of-sale and inventory setup that keeps stock levels, sales, and reports in sync across every branch.",
+        link: ""
+    },
+    {
+        id: 6,
+        title: "Fitness Tracking App",
+        category: "Mobile App",
+        information: "A mobile app that lets members log workouts, follow training plans, and see their progress over time.",
+        link: ""
+    },
+    {
+        id: 7,
+        title: "Smart Kiosk Rollout",
+        category: "Hardware",
+        information: "Self-service kiosks configured, deployed, and monitored across multiple locations with remote management.",
+        link: ""
+    },
+    {
+        id: 8,
+        title: "Design System Library",
+        category: "UI/UX Design",
+        information: "A reusable component library and style guide that keeps a growing product consistent across every screen.",
+        link: ""
+    },
+    {
+        id: 9,
+        title: "Office Network Upgrade",
+        category: "Hardware",
+        information: "A full network refresh with new access points, cabling, and monitoring for a faster and more reliable workplace.",
         link: ""
     }
 ];

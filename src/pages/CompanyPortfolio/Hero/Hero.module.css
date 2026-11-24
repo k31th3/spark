@@ -1,0 +1,49 @@
+@reference "../../../index.css";
+
+.section {
+  @apply relative bg-background;
+  padding-bottom: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+.topRow {
+  @apply w-full;
+}
+
+.scrollHint {
+  @apply inline-flex items-center gap-1 text-[11px] text-muted;
+}
+
+.heading {
+  @apply text-center;
+}
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.subtitle {
+  @apply max-w-md;
+}
+
+@media (min-width: 40rem) {
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* =========================================================
+   CATEGORY CHIPS
+========================================================= */
+
+.chips {
+  @apply max-w-2xl flex-wrap;
+}

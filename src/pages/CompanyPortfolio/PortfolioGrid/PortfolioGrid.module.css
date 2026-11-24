@@ -1,0 +1,107 @@
+@reference "../../../index.css";
+
+.section {
+  @apply relative bg-background;
+
+  padding-bottom: 8rem;
+}
+
+.container {
+  @apply max-w-7xl;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.grid {
+  @apply grid grid-cols-1 gap-x-6 gap-y-14 sm:grid-cols-2;
+}
+
+.column {
+  display: contents;
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  .column:nth-child(odd) {
+    padding-top: 4rem;
+  }
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+  @apply block;
+}
+
+.frame {
+  @apply relative w-full overflow-hidden rounded-xl bg-neutral-100;
+
+  aspect-ratio: 4 / 3;
+}
+
+.image {
+  @apply h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)];
+}
+
+@media (hover: hover) {
+  .card:hover .image {
+    @apply scale-[1.04];
+  }
+}
+
+.body {
+  @apply px-3 pt-4;
+}
+
+.title {
+  @apply font-medium text-foreground;
+
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  @apply mt-2 line-clamp-3;
+}
+
+/* =========================================================
+   CATEGORY PILL
+========================================================= */
+
+.pill {
+  @apply mt-4 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium;
+}
+
+.teal { @apply bg-teal-50 text-teal-700; }
+.purple { @apply bg-purple-50 text-purple-600; }
+.green { @apply bg-green-50 text-green-700; }
+.cyan { @apply bg-cyan-50 text-cyan-700; }
+.orange { @apply bg-orange-50 text-orange-600; }
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty {
+  @apply py-16 text-center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+}
