@@ -1,18 +1,27 @@
+import { useState } from "react";
+
 import { LuShieldCheck } from "react-icons/lu";
 
-import { Button, Form, Toast, Turnstile } from "@/components";
+import { Grid, Form, Button, Toast,
+    Text, Icon, Turnstile } from "@/components";
 
-import type { ContactFormData } from "./ContactApi";
 import { FormFields } from "./Hero/ContactForm/FormFields";
 import { useContactForm } from "./Hero/ContactForm/useContactForm";
 
-import styles from "./ContactUs.module.css";
+import ContactReview, { type ReviewRow } from "./ContactReview";
+import ContactSuccess from "./ContactSuccess";
 
-/* =========================================================
-   CONTACT FORM
-========================================================= */
+type Field = (typeof FormFields)[number];
+
+/* Label shown in the review list: the field label, else its placeholder */
+function labelOf(field: Field): string {
+    if ("label" in field && typeof field.label === "string") return field.label;
+    if ("placeholder" in field && typeof field.placeholder === "string") return field.placeholder;
+    return String(field.name);
+}
 
 function ContactForm() {
+
     const {
         formData,
         isSubmitting,
@@ -20,52 +29,76 @@ function ContactForm() {
         turnstileRef,
         setTurnstileToken,
         handleChange,
-        submitForm,
+        submitForm
     } = useContactForm();
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [reviewOpen, setReviewOpen] = useState(false);
+    const [sentOpen, setSentOpen] = useState(false);
+
+    /* ----- step 1: the form is submitted -> show the review modal ----- */
+    const handleSubmit = (
+        e: React.FormEvent<HTMLFormElement>
+    ) => {
         e.preventDefault();
 
-        if (isSubmitting) return;
-
-        if (!turnstileToken) {
-            Toast.error("Please complete the verification to continue.");
+        if (isSubmitting) {
             return;
         }
 
-        submitForm(turnstileToken);
+        if (!turnstileToken) {
+            Toast.error(
+                "Please check the box above to continue."
+            );
+            return;
+        }
+
+        setReviewOpen(true);
     };
 
-    return (
-        <Form
-            autoComplete="off"
-            onSubmit={handleSubmit}
-            className={styles.card}
-        >
-            <div className={styles.fields}>
-                {FormFields.map((field) => {
-                    const value =
-                        formData[field.name as keyof ContactFormData];
+    /* ----- step 2: confirmed in the modal -> really send ----- */
+    const handleConfirm = async () => {
+        if (isSubmitting || !turnstileToken) return;
 
-                    return (
-                        <div
-                            key={field.id}
-                            className={
-                                field.type === "textarea"
-                                    ? styles.fieldFull
-                                    : undefined
-                            }
-                        >
+        /* ASSUMPTION: submitForm resolves to `true` when the message was sent.
+           If useContactForm doesn't return that yet, see the note in the chat. */
+        const sent = (await submitForm(turnstileToken)) as unknown;
+
+        /* a Turnstile token can only be used once */
+        setTurnstileToken("");
+        turnstileRef.current?.reset();
+
+        setReviewOpen(false);
+
+        if (sent === true) {
+            setSentOpen(true);
+        }
+    };
+
+    const reviewRows: ReviewRow[] = FormFields.map((field) => ({
+        id: field.id,
+        label: labelOf(field),
+        value: String(formData[field.name] ?? "").trim()
+    }));
+
+    return (
+        <>
+            <Form
+                    autoComplete="off"
+                    onSubmit={handleSubmit}>
+
+                <Grid cols={{ base: 12 }} gap={4} >
+
+                    {FormFields.map((field) => (
+                        <Grid.Item key={field.id} span={field.span} >
                             {field.type === "textarea" ? (
                                 <Form.Textarea
                                     name={field.name}
                                     id={field.id}
-                                    aria-label="Message"
                                     placeholder={field.placeholder}
                                     required={field.required}
-                                    value={value}
+                                    value={formData[field.name]}
                                     onChange={handleChange}
-                                    className="rounded-xl"
+                                    className="rounded-md"
                                 />
                             ) : (
                                 <Form.Input
@@ -75,62 +108,78 @@ function ContactForm() {
                                     label={field.label}
                                     required={field.required}
                                     floating="top"
-                                    value={value}
+                                    value={formData[field.name]}
                                     onChange={handleChange}
-                                    className="rounded-xl"
+                                    className="rounded-md"
                                 />
                             )}
-                        </div>
-                    );
-                })}
-            </div>
+                        </Grid.Item>
+                    ))}
 
-            <div className={styles.footerRow}>
-                <Turnstile
-                    ref={turnstileRef}
-                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
-                    action="contact"
-                    theme="light"
-                    onSuccess={(token) => setTurnstileToken(token)}
-                    onError={() => {
-                        setTurnstileToken("");
-                        turnstileRef.current?.reset();
-                    }}
-                    onExpire={() => {
-                        setTurnstileToken("");
-                        turnstileRef.current?.reset();
-                    }}
-                />
-
-                <Button
-                    type="submit"
-                    variant="brand"
-                    size="hero"
-                    roll={!isSubmitting}
-                    arrow={!isSubmitting}
-                    disabled={isSubmitting || !turnstileToken}
-                    className={styles.submit}
-                >
-                    {isSubmitting ? (
-                        <>
-                            <span
-                                aria-hidden="true"
-                                className={styles.spinner}
+                    <Grid.Item span={{ base: 12 }}>
+                        <Grid cols={{ base: 12 }} gap={4} >
+                            <Grid.Item span={{ base: 12, lg: 6, md: 6, sm: 6 }}>
+                            <Turnstile
+                                ref={turnstileRef}
+                                siteKey={
+                                    import.meta.env.VITE_TURNSTILE_SITE_KEY
+                                }
+                                action="contact"
+                                theme="light"
+                                onSuccess={(token) => {
+                                    setTurnstileToken(token);
+                                }}
+                                onError={() => {
+                                    setTurnstileToken("");
+                                    turnstileRef.current?.reset();
+                                }}
+                                onExpire={() => {
+                                    setTurnstileToken("");
+                                    turnstileRef.current?.reset();
+                                }}
                             />
-                            Sending
-                        </>
-                    ) : (
-                        "Send message"
-                    )}
-                </Button>
-            </div>
+                            </Grid.Item>
 
-            <p className={styles.privacy}>
-                <LuShieldCheck aria-hidden="true" size={14} />
-                We respect your privacy. Your information will never be
-                shared.
-            </p>
-        </Form>
+                            <Grid.Item span={{ base: 12, lg: 6, md: 6, sm: 6 }}>
+                                <div className="text-end">
+                                    <Button
+                                        type="submit"
+                                        variant="brand"
+                                        size="sm"
+                                        roll
+                                        arrow
+                                        className="gap-2 mb-2 min-w-[140px]"
+                                        disabled={isSubmitting || !turnstileToken}>
+                                        Send Message
+                                    </Button>
+                                </div>
+                            </Grid.Item>
+                        </Grid>
+
+                        <Grid.HStack gap={2} align="center">
+                            <Icon icon={LuShieldCheck} size="sm" />
+
+                            <Text variant="label">
+                                We respect your privacy.
+                                Your information will
+                                never be shared
+                            </Text>
+                        </Grid.HStack>
+                    </Grid.Item>
+                </Grid>
+            </Form>
+
+            <ContactReview
+                open={reviewOpen}
+                rows={reviewRows}
+                isSubmitting={isSubmitting}
+                onClose={() => setReviewOpen(false)}
+                onConfirm={handleConfirm} />
+
+            <ContactSuccess
+                open={sentOpen}
+                onClose={() => setSentOpen(false)} />
+        </>
     );
 }
 

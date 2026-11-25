@@ -1,0 +1,47 @@
+@reference "../../index.css";
+
+/* =========================================================
+   REVIEW
+========================================================= */
+
+.rows {
+  @apply overflow-hidden rounded-2xl bg-neutral-100;
+}
+
+.row {
+  @apply grid gap-1 px-5 py-4 sm:grid-cols-[8rem_1fr] sm:gap-6;
+}
+
+.row + .row {
+  border-top: 1px solid rgb(0 0 0 / 0.06);
+}
+
+.label {
+  @apply text-sm text-muted;
+}
+
+.value {
+  @apply m-0 wrap-break-word whitespace-pre-wrap text-base text-foreground;
+}
+
+.empty {
+  @apply text-muted;
+}
+
+.spinner {
+  @apply size-5 animate-spin rounded-full border-2 border-white/30 border-t-white;
+}
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.badge {
+  @apply grid size-14 shrink-0 place-items-center rounded-2xl bg-green-50 text-green-600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}

@@ -31,6 +31,7 @@ export * from "./HomeFaq";
 export * from "./HomeWhyUs";
 export * from "./HomeAbout";
 export * from "./FooterReveal";
+export * from "./Modal";
 
 // for icon gradient
 export { default as IconGradient } from "./IconGradient";
